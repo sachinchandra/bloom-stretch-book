@@ -35,9 +35,9 @@ dialog.auth{max-width:420px;width:calc(100vw - 32px);padding:26px 24px;border-ra
   dlg.innerHTML=`<button class="x" id="aClose" aria-label="Close">✕</button>
   <div id="aOut"><h2 id="aTitle">Save your progress</h2><p>Sign in to keep your ticks, baby's details and stretch log safe, and in sync on every phone and laptop you use.</p>
    <button class="btn gbtn" id="aGoogle" type="button">${G}Continue with Google</button>
-   <div class="or">or use your email</div>
-   <div id="aStepEmail"><label for="aEmail">Email</label><input id="aEmail" type="email" autocomplete="email" placeholder="you@example.com"><button class="btn pri" id="aSend" type="button">Email me a 6-digit code</button></div>
-   <div id="aStepCode" hidden><label for="aCode">Code sent to <span id="aSentTo"></span></label><input id="aCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••"><button class="btn pri" id="aVerify" type="button">Verify and sign in</button><button class="linkbtn" id="aBack" type="button">Use a different email</button></div></div>
+   <div class="or" id="aOr">or use your email</div>
+   <div id="aStepEmail"><label for="aEmail">Email</label><input id="aEmail" type="email" autocomplete="email" placeholder="you@example.com"><button class="btn pri" id="aSend" type="button">Email me a sign-in link</button></div>
+   <div id="aStepCode" hidden><p style="margin:0 0 10px">We emailed <b id="aSentTo"></b>. Open the link in that email <b>on this device</b> to sign in. If the email shows a 6-digit code instead, type it here.</p><label for="aCode">6-digit code (if your email has one)</label><input id="aCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••"><button class="btn pri" id="aVerify" type="button">Verify and sign in</button><button class="linkbtn" id="aBack" type="button">Use a different email</button></div></div>
   <div id="aIn" hidden><h2>Your account</h2><div class="who"><span>Signed in as</span><b id="aWho"></b><span id="aSync"></span></div>
    <div class="stack"><button class="btn" id="aOutBtn" type="button">Sign out</button><button class="btn danger" id="aDel" type="button">Delete my saved data</button><p id="aDelConfirm" hidden>This removes your ticks, baby details and stretch log from the cloud. <button class="linkbtn" id="aDelYes" type="button" style="color:var(--crit)">Yes, delete it</button></p></div></div>
   <p class="amsg" id="aMsg" role="status"></p>`;
@@ -87,6 +87,7 @@ dialog.auth{max-width:420px;width:calc(100vw - 32px);padding:26px 24px;border-ra
   });
   const _push=push;push=async()=>{timer=null;return _push()};
 
+  fetch(C.supabaseUrl+'/auth/v1/settings',{headers:{apikey:C.supabaseAnonKey}}).then(r=>r.json()).then(st=>{if(!(st.external&&st.external.google)){$('aGoogle').hidden=true;$('aOr').hidden=true}}).catch(()=>{});
   btn.onclick=()=>{msg('');$('aDelConfirm').hidden=true;dlg.showModal()};
   $('aClose').onclick=()=>dlg.close();
   dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
@@ -95,7 +96,7 @@ dialog.auth{max-width:420px;width:calc(100vw - 32px);padding:26px 24px;border-ra
   $('aSend').onclick=async()=>{const email=$('aEmail').value.trim();if(!/^\S+@\S+\.\S+$/.test(email))return msg('Enter a valid email address.',true);
     $('aSend').disabled=true;msg('Sending code…');const {error}=await sb.auth.signInWithOtp({email,options:{shouldCreateUser:true}});$('aSend').disabled=false;
     if(error)return msg(error.status===429?'Too many requests. Wait a minute and try again.':error.message,true);
-    sentTo=email;$('aSentTo').textContent=email;$('aStepEmail').hidden=true;$('aStepCode').hidden=false;msg('Check your inbox (and spam) for the code.');$('aCode').focus()};
+    sentTo=email;$('aSentTo').textContent=email;$('aStepEmail').hidden=true;$('aStepCode').hidden=false;msg('Check your inbox and spam folder.');$('aCode').focus()};
   $('aVerify').onclick=async()=>{const token=$('aCode').value.replace(/\D/g,'');if(token.length<6)return msg('Enter the 6-digit code from the email.',true);
     $('aVerify').disabled=true;msg('Checking…');const {error}=await sb.auth.verifyOtp({email:sentTo,token,type:'email'});$('aVerify').disabled=false;
     if(error)return msg('That code didn\'t work. Check it, or request a new one.',true);msg('')};

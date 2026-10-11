@@ -3,11 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Pregnancy stretches and baby care: holding, feeding, milestones, warning signs, Indian vaccine schedule and shopping list.">
+<meta name="description" content="Pregnancy stretches, baby holding and feeding guides, milestones, emergency signs, the Indian vaccine schedule and a shopping checklist. Sign in to track your progress.">
+<meta name="theme-color" content="#8A2D6B">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BloomMom">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<title>Bloom Parent Book</title>
+<title>BloomMom: pregnancy &amp; baby care</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
@@ -77,6 +83,9 @@ h1 em{font-style:normal;color:var(--plum)}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:.74rem;border-radius:6px;padding:2px 7px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
 .tag.lab{background:var(--plum-tint);color:var(--plum);border-color:transparent;font-weight:700}
+.tag.ok{background:var(--ok);color:var(--surface);border-color:transparent;font-weight:700}
+.done-btn[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:var(--surface);font-weight:700}
+.weekline{margin:10px 0 0;font-weight:700;color:var(--teal)}
 .tag.pt{background:var(--teal-soft);color:var(--teal);border-color:transparent;font-weight:700}
 .desc{margin:2px 0 0;font-size:.9rem;line-height:1.45}
 .desc.big{font-size:1rem;margin:0 0 12px}
@@ -275,7 +284,7 @@ svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
 
 <nav class="appnav" aria-label="Sections">
   <div class="appnav-in">
-    <a class="brand" href="#mom">Bloom</a>
+    <a class="brand" href="#mom">BloomMom</a>
     <div class="seg" role="tablist">
       <button role="tab" id="navMom" data-view="mom">Mom care</button>
       <button role="tab" id="navBaby" data-view="baby">Baby care</button>
@@ -289,6 +298,7 @@ svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
       <div class="eyebrow">Mom care · second trimester → labour day</div>
       <h1>Pregnancy <em>stretches</em></h1>
       <p class="lede">The stretches and labour positions from your prenatal class, redrawn as moving figures. Tap any card to watch it slowly with the instructor's cues, the technique, and what the partner does.</p>
+      <p class="weekline" id="weekLine"></p>
     </div>
     <aside class="care">
       <strong>Before you start</strong>
@@ -362,6 +372,7 @@ svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
     </div>
     <div class="info-col">
       <div class="info-top"><h2 id="dTitle"></h2><button class="x" id="dClose" aria-label="Close">✕</button></div>
+      <button class="btn done-btn" id="dDone" aria-pressed="false">Mark done today</button>
       <div class="facts" id="dFacts"></div>
       <div><h4>Cues in the animation</h4><ol class="cues" id="dCues"></ol></div>
       <div><h4>Technique</h4><ol id="dSteps"></ol></div>
@@ -917,6 +928,13 @@ function makeSvg(){const s=document.createElementNS(SVGNS,'svg');s.setAttribute(
 function capIndex(ex,i){let c=0;for(let k=0;k<ex.cues.length;k++)if(ex.cues[k].i<=i)c=k;return c}
 
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mstate={log:{}};
+try{Object.assign(mstate,JSON.parse(localStorage.getItem('bloom-mom')||'{}'))}catch(e){}
+const msave=()=>{try{localStorage.setItem('bloom-mom',JSON.stringify(mstate))}catch(e){}if(window.bloomOnSave)window.bloomOnSave()};
+const dayKey=(d=new Date())=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const doneToday=id=>(mstate.log[id]||[]).includes(dayKey());
+const weekCount=()=>{const t=new Date();const keys=new Set();for(let i=0;i<7;i++){const d=new Date(t);d.setDate(t.getDate()-i);keys.add(dayKey(d))}let n=0;Object.values(mstate.log).forEach(a=>a.forEach(k=>{if(keys.has(k))n++}));return n};
+function toggleDone(id){const k=dayKey(),a=mstate.log[id]||[];mstate.log[id]=a.includes(k)?a.filter(x=>x!==k):[...a,k];msave()}
 const thumbs=new Map();
 let last=performance.now();
 function loop(now){
@@ -950,7 +968,7 @@ function renderList(){
     const grid=sec.querySelector('.grid');
     items.forEach(ex=>{
       const b=document.createElement('button');b.className='card';b.dataset.id=ex.id;
-      const tags=[ex.partner?'<span class="tag pt">With partner</span>':'',ex.labour?'<span class="tag lab">Labour</span>':'',...ex.props.map(p=>`<span class="tag">${p}</span>`)].join('');
+      const tags=[doneToday(ex.id)?'<span class="tag ok">✓ Done today</span>':'',ex.partner?'<span class="tag pt">With partner</span>':'',ex.labour?'<span class="tag lab">Labour</span>':'',...ex.props.map(p=>`<span class="tag">${p}</span>`)].join('');
       b.innerHTML=`<div class="stg"></div><div class="txt"><h3>${ex.name}</h3><div class="tags">${tags}</div><p class="desc">${ex.desc}</p>${timingHTML(ex.tm)}<span class="more">Watch with cues →</span></div>`;
       const svg=makeSvg();b.querySelector('.stg').appendChild(svg);
       const key=ex.frames[Math.min(2,ex.frames.length-1)];const t0=ex.frames.slice(0,Math.min(3,ex.frames.length)).reduce((s,f)=>s+f.d+f.hold,0)-key.hold/2;
@@ -977,6 +995,7 @@ function drawDetail(){
     [...$('dCues').children].forEach((li,k)=>li.classList.toggle('on',k===ci))}
 }
 function currentList(){return EX.filter(visible).filter(e=>state.cat==='all'||e.cat===state.cat)}
+function syncDoneBtn(){const on=detail.ex&&doneToday(detail.ex.id);$('dDone').setAttribute('aria-pressed',!!on);$('dDone').textContent=on?'✓ Done today':'Mark done today'}
 function openDetail(id){
   const ex=EX.find(e=>e.id===id);detail.ex=ex;detail.t=0;detail.lastCue=-1;
   $('dTitle').textContent=ex.name;
@@ -989,12 +1008,15 @@ function openDetail(id){
   $('dCare').innerHTML=`<strong>Take care.</strong> ${ex.care}`;
   $('dSrc').textContent=`Redrawn from your class clip ${ex.clip}.`;
   $('dLegPt').hidden=!ex.hasPt;
+  syncDoneBtn();
   $('dPlay').textContent=detail.playing?'Pause':'Play';
   drawDetail();
   if(!dlg.open)dlg.showModal();
   try{history.replaceState(null,'','#'+ex.id)}catch(e){}
 }
 $('dClose').onclick=()=>dlg.close();
+$('dDone').onclick=()=>{toggleDone(detail.ex.id);syncDoneBtn();renderList();renderWeek()};
+function renderWeek(){const el=document.getElementById('weekLine');if(el){const n=weekCount();el.textContent=n?`${n} stretch session${n>1?'s':''} done in the last 7 days.`:'Open a stretch and tap “Mark done today” to track your sessions.'}}
 dlg.addEventListener('close',()=>{detail.ex=null;try{history.replaceState(null,'','#mom')}catch(e){}});
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
 $('dPlay').onclick=()=>{detail.playing=!detail.playing;$('dPlay').textContent=detail.playing?'Pause':'Play'};
@@ -1005,7 +1027,7 @@ function step(dir){const L=currentList();const i=L.findIndex(e=>e.id===detail.ex
 $('dPrev').onclick=()=>step(-1);$('dNext').onclick=()=>step(1);
 dlg.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);else if(e.key==='ArrowLeft')step(-1);else if(e.key===' '&&e.target.tagName!=='BUTTON'){e.preventDefault();$('dPlay').click()}});
 
-renderChips();renderList();requestAnimationFrame(loop);
+renderChips();renderList();renderWeek();requestAnimationFrame(loop);
 </script>
 
 <script>
@@ -1155,7 +1177,7 @@ const VXOPT=[
 /* ---------- state ---------- */
 const bstate={sub:'milestones',ms:null,dob:'',done:{},ec:{},shop:{},shopMust:false,shopHide:false};
 try{Object.assign(bstate,JSON.parse(localStorage.getItem('bloom-baby')||'{}'))}catch(e){}
-const bsave=()=>{try{localStorage.setItem('bloom-baby',JSON.stringify({dob:bstate.dob,done:bstate.done,ec:bstate.ec,sub:bstate.sub,shop:bstate.shop,shopMust:bstate.shopMust,shopHide:bstate.shopHide}))}catch(e){}};
+const bsave=()=>{try{localStorage.setItem('bloom-baby',JSON.stringify({dob:bstate.dob,done:bstate.done,ec:bstate.ec,sub:bstate.sub,shop:bstate.shop,shopMust:bstate.shopMust,shopHide:bstate.shopHide}))}catch(e){}if(window.bloomOnSave)window.bloomOnSave()};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const DAY=864e5;
 function dobDate(){if(!bstate.dob)return null;const d=new Date(bstate.dob+'T00:00:00');return isNaN(d)?null:d}
@@ -1485,7 +1507,15 @@ renderAge();renderMilestones();renderNotice();renderEmergency();renderVaccines()
   let v='mom';try{v=localStorage.getItem('bloom-view')||'mom'}catch(e){}showView(v);
 })();
 
+window.bloomRerender=()=>{dobIn.value=bstate.dob||'';renderAge();renderMilestones();renderVaccines();renderShopping();renderEmergency();renderList();renderWeek()};
+window.bloomState=()=>({baby:{dob:bstate.dob,done:bstate.done,ec:bstate.ec,shop:bstate.shop},mom:{log:mstate.log}});
+window.bloomApply=(st)=>{if(st.baby){['dob','done','ec','shop'].forEach(k=>{if(st.baby[k]!==undefined)bstate[k]=st.baby[k]})}if(st.mom&&st.mom.log)mstate.log=st.mom.log;
+  try{localStorage.setItem('bloom-mom',JSON.stringify(mstate));localStorage.setItem('bloom-baby',JSON.stringify({dob:bstate.dob,done:bstate.done,ec:bstate.ec,sub:bstate.sub,shop:bstate.shop,shopMust:bstate.shopMust,shopHide:bstate.shopHide}))}catch(e){}window.bloomRerender()};
 </script>
 
+<script src="/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/auth.js"></script>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));</script>
 </body>
 </html>

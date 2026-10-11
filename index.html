@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Prenatal stretches and labour positions, redrawn as animated figures with hold times, cues and partner steps.">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Bloom Stretch Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
+<style>
+/* Layout: filter bar over a card grid of looping figure animations; a dialog opens one exercise as stage + cue list + technique. */
+:root{
+  --bg:#F2F5F3; --surface:#FFFFFF; --ink:#231F29; --muted:#5C6068; --line:#D9E0DC; --line-strong:#B9C4BF;
+  --plum:#8A2D6B; --plum-soft:#B64F92; --teal:#1E7C77; --teal-soft:#DCEEEC; --plum-tint:#F6E9F1;
+  --mom:#8A2D6B; --mom2:#CC93B9; --belly:#A8468A; --pt:#2C5D72; --pt2:#93B6C5;
+  --prop:#D5DEDA; --prop2:#A2B3AD; --ball:#5B7C93; --mat:#3AA39C; --wall:#E5EBE8; --gnd:#E9EEEB; --bed:#E7B9B0; --cush:#7FB9C9;
+  --stage:#F8FAF9;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141317; --surface:#1D1B21; --ink:#EEEAF1; --muted:#A6A2AE; --line:#2E2B34; --line-strong:#4A4652;
+  --plum:#E48CC3; --plum-soft:#C66AA6; --teal:#5CC2BA; --teal-soft:#183331; --plum-tint:#2D1D28;
+  --mom:#E07DBA; --mom2:#7A4468; --belly:#EFA0D0; --pt:#86BCD3; --pt2:#3E6070;
+  --prop:#33393A; --prop2:#56615F; --ball:#6F93AB; --mat:#2F8F89; --wall:#202426; --gnd:#1A1D1E; --bed:#7A4B46; --cush:#3F7F90;
+  --stage:#18171B; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#141317; --surface:#1D1B21; --ink:#EEEAF1; --muted:#A6A2AE; --line:#2E2B34; --line-strong:#4A4652;
+  --plum:#E48CC3; --plum-soft:#C66AA6; --teal:#5CC2BA; --teal-soft:#183331; --plum-tint:#2D1D28;
+  --mom:#E07DBA; --mom2:#7A4468; --belly:#EFA0D0; --pt:#86BCD3; --pt2:#3E6070;
+  --prop:#33393A; --prop2:#56615F; --ball:#6F93AB; --mat:#2F8F89; --wall:#202426; --gnd:#1A1D1E; --bed:#7A4B46; --cush:#3F7F90;
+  --stage:#18171B; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
+
+header.top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:end;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px}
+h1{font-size:clamp(2.3rem,5.4vw,3.9rem);font-weight:800;letter-spacing:-.025em}
+h1 em{font-style:normal;color:var(--plum)}
+.lede{color:var(--muted);max-width:56ch;margin:12px 0 0}
+.care{background:var(--plum-tint);border-radius:var(--r);padding:16px 18px;font-size:.92rem}
+.care strong{display:block;font-family:var(--display);font-size:1rem;margin-bottom:4px}
+.care ul{margin:6px 0 0;padding-left:18px}
+
+.bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;padding-block:18px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line-strong);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:.92rem;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip .n{color:var(--muted);font-variant-numeric:tabular-nums;font-size:.8rem}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip[aria-pressed="true"] .n{color:inherit;opacity:.7}
+.toggles{display:flex;gap:8px;flex-wrap:wrap}
+.tog{border:1px dashed var(--line-strong);background:transparent;border-radius:999px;padding:6px 12px;font-size:.88rem;cursor:pointer}
+.tog[aria-pressed="true"]{border-style:solid;border-color:var(--teal);background:var(--teal-soft);color:var(--ink)}
+
+.section-h{display:flex;align-items:baseline;gap:12px;margin:26px 0 12px}
+.section-h h2{font-size:1.45rem;font-weight:700}
+.section-h p{margin:0;color:var(--muted);font-size:.92rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .15s ease, border-color .15s ease}
+.card:hover{transform:translateY(-2px);border-color:var(--line-strong)}
+.card .stg{background:var(--stage);aspect-ratio:260/200;max-width:100%;border-bottom:1px solid var(--line)}
+.card .stg svg{width:100%;height:100%;display:block}
+.card .txt{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.card h3{font-size:1.06rem;font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:.74rem;border-radius:6px;padding:2px 7px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.tag.lab{background:var(--plum-tint);color:var(--plum);border-color:transparent;font-weight:700}
+.tag.pt{background:var(--teal-soft);color:var(--teal);border-color:transparent;font-weight:700}
+.desc{margin:2px 0 0;font-size:.9rem;line-height:1.45}
+.desc.big{font-size:1rem;margin:0 0 12px}
+.tm{margin:6px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tm div{background:var(--surface);padding:7px 10px;min-width:0}
+.tm dt{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);font-weight:700}
+.tm dd{margin:1px 0 0;font-size:.86rem;line-height:1.35;font-variant-numeric:tabular-nums}
+.more{margin-top:4px;font-size:.84rem;color:var(--plum);font-weight:700}
+.sub{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:10px;font-size:.86rem;color:var(--muted)}
+.sub b{color:var(--ink)}
+#dFacts{display:block}
+.empty{color:var(--muted);padding:30px 0}
+
+/* detail dialog */
+dialog{border:0;padding:0;background:var(--surface);color:var(--ink);border-radius:20px;width:min(1060px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto}
+dialog::backdrop{background:rgba(20,16,24,.55)}
+.dlg{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.stage-col{background:var(--stage);padding:20px;display:flex;flex-direction:column;gap:12px;position:sticky;top:0;align-self:start}
+.stage-col svg{width:100%;aspect-ratio:260/200;max-width:100%;display:block}
+.capline{min-height:3.2em;font-family:var(--display);font-weight:700;font-size:1.18rem;line-height:1.25;display:flex;gap:10px;align-items:flex-start}
+.capline .stepn{flex:none;font-family:var(--body);font-size:.75rem;letter-spacing:.08em;color:var(--teal);border:1.5px solid var(--teal);border-radius:999px;padding:2px 8px;margin-top:3px;font-variant-numeric:tabular-nums}
+.prog{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--plum)}
+.ctrls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line-strong);background:var(--surface);border-radius:10px;padding:8px 14px;cursor:pointer;font-size:.92rem}
+.btn.pri{background:var(--plum);border-color:var(--plum);color:var(--surface);font-weight:700;min-width:96px}
+.legend{display:flex;gap:14px;font-size:.8rem;color:var(--muted);margin-left:auto}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.info-col{padding:24px 26px 28px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.info-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.info-top h2{font-size:1.8rem;font-weight:800;letter-spacing:-.015em}
+.x{border:0;background:var(--bg);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.2rem;flex:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.fact{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.fact b{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.fact span{font-size:.95rem}
+.info-col h4{font-family:var(--display);font-size:1.02rem;margin:0 0 6px}
+.info-col ol,.info-col ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.cues li{color:var(--muted);transition:color .2s}
+.cues li.on{color:var(--ink);font-weight:700}
+.note{border-left:3px solid var(--plum);padding:4px 0 4px 12px;font-size:.93rem}
+.why{font-size:.95rem;margin:0}
+.src{font-size:.8rem;color:var(--muted)}
+.navrow{display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding-top:14px}
+
+/* svg figure + props */
+svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.m{stroke:var(--mom)} .m2{stroke:var(--mom2)} .q{stroke:var(--pt)} .q2{stroke:var(--pt2)}
+.fm{fill:var(--mom)} .fq{fill:var(--pt)} .fm2{fill:var(--mom2)} .fq2{fill:var(--pt2)}
+.belly{fill:var(--belly)}
+.gnd{fill:var(--gnd)} .fl{stroke:var(--line-strong);stroke-width:1}
+.pr{fill:var(--prop)} .pr2{fill:var(--prop2)} .ball{fill:var(--ball)} .seam{fill:none;stroke:var(--stage);stroke-width:1.2;opacity:.5}
+.mat{fill:var(--mat)} .bol{fill:var(--plum-soft)} .wall{fill:var(--wall)} .wl{stroke:var(--line-strong);stroke-width:1.5}
+.blk{fill:var(--plum-soft);opacity:.75} .bed{fill:var(--bed)} .pil{fill:var(--prop2)} .cush{fill:var(--cush)} .scarf{fill:none;stroke:#E0A13A;stroke-width:3.2;stroke-linecap:round}
+.press{fill:none;stroke:var(--teal);stroke-width:1.4;stroke-dasharray:2 3}
+
+@media (max-width:820px){
+  header.top{grid-template-columns:1fr}
+  .dlg{grid-template-columns:1fr}
+  .stage-col{position:static}
+  dialog{width:100vw;max-width:100vw;max-height:100dvh;height:100dvh;border-radius:0;margin:0}
+  .legend{margin-left:0}
+}
+@media (max-width:440px){ .wrap{padding-inline:16px} .grid{grid-template-columns:1fr;gap:14px} }
+@media (prefers-reduced-motion:reduce){ .card{transition:none} }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Second trimester → labour day</div>
+      <h1>Bloom <em>Stretch</em> Book</h1>
+      <p class="lede">The stretches and labour positions from your prenatal class, redrawn as moving figures. Tap any card to watch it slowly with the instructor's cues, the technique, and what the partner does.</p>
+    </div>
+    <aside class="care">
+      <strong>Before you start</strong>
+      <ul>
+        <li>Move only within a comfortable range. Mild stretch, never pain.</li>
+        <li>Breathe in through the nose, out through the mouth. Never hold the breath.</li>
+        <li>Stop and call your doctor or midwife for bleeding, fluid leaking, dizziness, chest pain, or regular tightenings before 37 weeks.</li>
+        <li>The labour positions are reminders of what your instructor taught. Check them with your care team first.</li>
+      </ul>
+    </aside>
+  </header>
+
+  <div class="bar" role="toolbar" aria-label="Filter exercises">
+    <div class="chips" id="chips"></div>
+    <div class="toggles">
+      <button class="tog" id="tPartner" aria-pressed="false">With partner only</button>
+      <button class="tog" id="tLabour" aria-pressed="false">Useful in labour</button>
+    </div>
+  </div>
+
+  <main id="list"></main>
+</div>
+
+<dialog id="dlg" aria-labelledby="dTitle">
+  <div class="dlg">
+    <div class="stage-col">
+      <div id="dStage" role="img" aria-label="Animated illustration"></div>
+      <div class="prog"><i id="dProg"></i></div>
+      <div class="capline" aria-live="polite"><span class="stepn" id="dStepN">1/4</span><span id="dCap"></span></div>
+      <div class="ctrls">
+        <button class="btn pri" id="dPlay">Pause</button>
+        <button class="btn" id="dRestart">Restart</button>
+        <button class="btn" id="dSpeed">Speed 1×</button>
+        <div class="legend"><span><i style="background:var(--mom)"></i>Mum</span><span id="dLegPt"><i style="background:var(--pt)"></i>Partner</span></div>
+      </div>
+    </div>
+    <div class="info-col">
+      <div class="info-top"><h2 id="dTitle"></h2><button class="x" id="dClose" aria-label="Close">✕</button></div>
+      <div class="facts" id="dFacts"></div>
+      <div><h4>Cues in the animation</h4><ol class="cues" id="dCues"></ol></div>
+      <div><h4>Technique</h4><ol id="dSteps"></ol></div>
+      <div id="dPtWrap"><h4>Partner's role</h4><ul id="dPt"></ul></div>
+      <p class="why" id="dWhy"></p>
+      <div class="note" id="dCare"></div>
+      <div class="src" id="dSrc"></div>
+      <div class="navrow"><button class="btn" id="dPrev">← Previous</button><button class="btn" id="dNext">Next →</button></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ---------- figure engine ---------- */
+const FL=186, W=260, H=200;
+const D=a=>[Math.sin(a*Math.PI/180),Math.cos(a*Math.PI/180)];
+const add=(a,b,k=1)=>[a[0]+b[0]*k,a[1]+b[1]*k];
+const rot=(v,t)=>{const c=Math.cos(t),s=Math.sin(t);return[v[0]*c-v[1]*s,v[0]*s+v[1]*c]};
+function ik(B,T,a,b){
+  const dx=T[0]-B[0],dy=T[1]-B[1];const d=Math.hypot(dx,dy)||0.001;const u=[dx/d,dy/d];
+  const dc=Math.min(Math.max(d,Math.abs(a-b)+0.5),a+b-0.2);
+  const al=Math.acos(Math.min(1,Math.max(-1,(a*a+dc*dc-b*b)/(2*a*dc))));
+  return{E:add(B,u,dc),J:s=>add(B,rot(u,s*al),a)};
+}
+function solve(P){
+  const side=P.v!=='f',f=P.f||1,d=D(P.t),perp=[-d[1],d[0]],S=add(P.hip,d,44);
+  const sh=side?[S,S]:[add(S,perp,-11),add(S,perp,11)];
+  const hp=side?[P.hip,P.hip]:[add(P.hip,perp,-8),add(P.hip,perp,8)];
+  const mid=add(P.hip,d,22);
+  const limb=(B,T,a,b,i,kind)=>{
+    const r=ik(B,T,a,b);const ov=kind==='arm'?P.es:P.ks;let s;
+    if(ov&&ov[i])s=Math.sign(ov[i]);
+    else if(side)s=kind==='arm'?f:-f;
+    else{const sg=i===0?-1:1,j1=r.J(1),j2=r.J(-1);
+      const o=j=>((j[0]-mid[0])*perp[0]+(j[1]-mid[1])*perp[1])*sg;s=o(j1)>=o(j2)?1:-1}
+    return[B,r.J(s),r.E];
+  };
+  const arms=[0,1].map(i=>P.el&&P.el[i]?[sh[i],P.el[i],P.hands[i]]:limb(sh[i],P.hands[i],22,22,i,'arm'));
+  const legs=[0,1].map(i=>P.kn&&P.kn[i]?[hp[i],P.kn[i],P.feet[i]]:limb(hp[i],P.feet[i],32,32,i,'leg'));
+  const dh=D(P.h??P.t),hc=add(add(S,d,3),dh,11);
+  return{S,arms,legs,hc,dh,d,perp,f,side};
+}
+const n1=x=>Math.round(x*10)/10;
+const pl=(pts,c,w)=>`<polyline points="${pts.map(p=>n1(p[0])+','+n1(p[1])).join(' ')}" class="${c}" stroke-width="${w}"/>`;
+function fig(P,who){
+  if(!P)return'';
+  const k=solve(P),c=who,far=c+'2',mom=who==='m';let o='';
+  const foot=i=>{const E=k.legs[i][2];
+    if(k.side){const fa=P.fa!=null?(Array.isArray(P.fa)?P.fa[i]:P.fa):(k.f>0?90:-90);return pl([E,add(E,D(fa),7)],i===0?far:c,6)}
+    return`<circle cx="${n1(E[0])}" cy="${n1(E[1])}" r="3.6" class="f${c}"/>`};
+  if(k.side){o+=pl(k.arms[0],far,7)+pl(k.legs[0],far,9)+foot(0)}
+  else{o+=pl(k.legs[0],c,9)+foot(0)+pl(k.legs[1],c,9)+foot(1)}
+  o+=pl([P.hip,k.S],c,k.side?17:24);
+  if(mom&&!P.back){
+    if(k.side){const fw=[k.perp[0]*k.f,k.perp[1]*k.f],bc=add(add(P.hip,k.d,18),fw,7),ang=Math.atan2(k.d[1],k.d[0])*180/Math.PI;
+      o+=`<ellipse cx="${n1(bc[0])}" cy="${n1(bc[1])}" rx="12.5" ry="11" transform="rotate(${n1(ang)} ${n1(bc[0])} ${n1(bc[1])})" class="belly"/>`}
+    else{const bc=add(P.hip,k.d,15);o+=`<circle cx="${n1(bc[0])}" cy="${n1(bc[1])}" r="12.5" class="belly"/>`}
+  }
+  if(k.side){o+=pl(k.legs[1],c,9)+foot(1)+pl(k.arms[1],c,7)}
+  else{o+=pl(k.arms[0],c,7)+pl(k.arms[1],c,7)}
+  o+=pl([k.S,add(k.S,k.d,6)],c,8);
+  o+=`<circle cx="${n1(k.hc[0])}" cy="${n1(k.hc[1])}" r="9" class="f${c}"/>`;
+  if(mom){const ph=[-k.dh[1],k.dh[0]];
+    const bun=k.side?add(add(k.hc,ph,-7.5*k.f),k.dh,2.5):add(k.hc,k.dh,8.6);
+    o+=`<circle cx="${n1(bun[0])}" cy="${n1(bun[1])}" r="4.4" class="f${c}"/>`}
+  return o;
+}
+/* props */
+const R=(x,y,w,h,c,rx=0)=>`<rect x="${n1(x)}" y="${n1(y)}" width="${n1(w)}" height="${n1(h)}" rx="${rx}" class="${c}"/>`;
+const PR={
+  floor:()=>R(0,FL,W,H-FL,'gnd')+`<line x1="0" x2="${W}" y1="${FL}" y2="${FL}" class="fl"/>`,
+  mat:(a,b)=>R(a,FL-2.5,b-a,3,'mat',1.5),
+  chairS:(cx,f)=>{const bx=cx-f*14;return R(cx-15,153,30,5,'pr2',2)+R(bx-2,110,4,46,'pr2',2)+R(cx-14,157,3,FL-157,'pr2')+R(cx+11,157,3,FL-157,'pr2')},
+  chairF:cx=>R(cx-19,100,38,54,'pr',5)+R(cx-23,151,46,6,'pr2',2)+R(cx-21,156,3.5,FL-156,'pr2')+R(cx+17.5,156,3.5,FL-156,'pr2'),
+  wallL:x=>R(0,0,x,FL,'wall')+`<line x1="${x}" x2="${x}" y1="0" y2="${FL}" class="wl"/>`,
+  wallR:x=>R(x,0,W-x,FL,'wall')+`<line x1="${x}" x2="${x}" y1="0" y2="${FL}" class="wl"/>`,
+  wallBack:()=>R(0,0,W,FL,'wall'),
+  ball:(x,y,r,ry)=>{ry=ry||r;return`<ellipse cx="${n1(x)}" cy="${n1(y)}" rx="${n1(r)}" ry="${n1(ry)}" class="ball"/><path d="M${n1(x-r*.72)},${n1(y-ry*.15)} Q${n1(x)},${n1(y+ry*.4)} ${n1(x+r*.72)},${n1(y-ry*.15)}" class="seam"/>`},
+  bolster:(a,b,cy,r)=>R(a,cy-r,b-a,2*r,'bol',r),
+  block:(x,y,w,h)=>R(x,y,w,h,'blk',2),
+  bed:(a,b,top)=>R(a+4,top+8,4,FL-top-8,'pr2')+R(b-8,top+8,4,FL-top-8,'pr2')+R(a,top,b-a,11,'bed',3),
+  pillow:(x,y)=>`<ellipse cx="${x}" cy="${y}" rx="13" ry="4.5" class="pil"/>`,
+  peanut:(x,y)=>`<circle cx="${x-6}" cy="${y}" r="7.5" class="ball"/><circle cx="${x+6}" cy="${y}" r="7.5" class="ball"/><rect x="${x-6}" y="${y-5.5}" width="12" height="11" class="ball"/>`,
+  cushion:(a,b,top)=>R(a,top,b-a,FL-top,'cush',6),
+  press:(x,y)=>`<circle cx="${x}" cy="${y}" r="7" class="press"/>`,
+};
+
+/* pose helpers */
+const st=(x,f=1,o={})=>({v:'s',f,hip:[x,123],t:180,hands:[[x-f*3,121],[x+f*2,122]],feet:[[x-f*3,FL],[x+f*4,FL]],...o});
+const stF=(x,o={})=>({v:'f',hip:[x,123],t:180,hands:[[x-17,121],[x+17,121]],feet:[[x-11,FL],[x+11,FL]],...o});
+const sitF=(x,o={})=>({v:'f',hip:[x,150],t:180,hands:[[x-12,147],[x+12,147]],kn:[[x-15,153],[x+15,153]],feet:[[x-17,FL],[x+17,FL]],...o});
+const sitS=(x,f=1,o={})=>({v:'s',f,hip:[x,152],t:180,hands:[[x+f*20,146],[x+f*22,147]],feet:[[x+f*26,FL],[x+f*30,FL]],...o});
+const K=(d,hold,cap,m,q,p)=>({d,hold,cap,m,q,p});
+const hipHands=(hx,hy)=>[[hx-13,hy-4],[hx+13,hy-4]];
+
+/* ---------- exercises ---------- */
+const CATS=[
+  {id:'seated',name:'Seated on a chair',blurb:'Upper-body release with your partner standing behind.'},
+  {id:'standing',name:'Standing & wall',blurb:'Hip mobility, balance and back stretches.'},
+  {id:'ball',name:'Birth ball',blurb:'Gentle pelvic movement while you sit.'},
+  {id:'floor',name:'On the mat',blurb:'Floor stretches, child\'s pose and knee-chest.'},
+  {id:'labour',name:'Labour positions',blurb:'Comfort and positioning moves for labour day.'},
+];
+
+const EX=[
+/* ---- seated ---- */
+{id:'side-stretch',cat:'seated',name:'Partner side stretch',partner:true,props:['Chair'],dose:'3–5 breaths each side',clip:'IMG_7024, 7025',
+ order:['q','P','m'],props_:()=>PR.floor()+PR.chairF(130),
+ frames:[
+  K(1.2,.6,'Sit tall. Partner rests hands on the shoulders',sitF(130),stF(130,{hands:[[119,105],[141,105]]})),
+  K(1.4,.6,'Inhale · lift the right arm',sitF(130,{hands:[[118,147],[145,61]]}),stF(130,{hands:[[119,105],[145,62]]})),
+  K(1.8,2.2,'Exhale · lean left while the partner supports the arm',sitF(130,{t:200,h:206,hands:[[110,150],[103,68]]}),stF(130,{hands:[[107,111],[103,68]]})),
+  K(1.4,.4,'Inhale · come back to centre',sitF(130,{hands:[[118,147],[145,61]]}),stF(130,{hands:[[119,105],[145,62]]})),
+  K(1.2,.4,'Lower the arm and relax',sitF(130),stF(130,{hands:[[119,105],[141,105]]})),
+  K(1.4,.6,'Inhale · lift the left arm',sitF(130,{hands:[[115,61],[142,147]]}),stF(130,{hands:[[115,62],[141,105]]})),
+  K(1.8,2.2,'Exhale · lean right, partner supports',sitF(130,{t:160,h:154,hands:[[157,68],[150,150]]}),stF(130,{hands:[[157,68],[153,111]]})),
+  K(1.4,.4,'Inhale · back to centre',sitF(130,{hands:[[115,61],[142,147]]}),stF(130,{hands:[[115,62],[141,105]]})),
+ ],
+ steps:['Sit on a sturdy chair, feet flat and hip-width apart. Get comfortable and settle your breath.','Lift one arm straight up beside the ear.','Breathing out, lean slowly to the opposite side. Keep both sit bones on the chair.','Lift the chin slightly and take 3–5 slow breaths in the stretch.','Breathe in to come back up, lower the arm, then repeat on the other side.'],
+ pt:['Stand behind the chair. Rest one hand on her far shoulder to keep her steady.','Hold the raised wrist and gently draw it up and outward to lengthen the side. Don\'t push her deeper.','She says "stop" where she feels the most stretch. Hold there while she breathes.'],
+ why:'Opens the side ribs and waist, giving the diaphragm more room as the bump grows, and eases upper-back stiffness.',
+ care:'Keep the lean small. If you feel pulling in the belly or ribs, come up a little.'},
+
+{id:'elbow-stretch',cat:'seated',name:'Overhead elbow stretch',partner:true,props:['Chair'],dose:'Hold 20–30 s each arm',clip:'IMG_7027',
+ order:['q','P','m'],props_:()=>PR.floor()+PR.chairS(122,1),
+ frames:[
+  K(1.2,.6,'Sit tall with your partner standing behind you',sitS(122,1,{el:[null,[121,130]]}),st(96,1,{hands:[[116,110],[119,108]]})),
+  K(1.5,.6,'Bend the right arm overhead, hand behind the head',sitS(122,1,{el:[null,[128,86]],hands:[[142,146],[112,94]]}),st(96,1,{hands:[[116,110],[128,86]]})),
+  K(1.8,2.4,'Partner draws the elbow back to his chest · lean back, chin up',sitS(122,1,{t:188,h:196,el:[null,[119,86]],hands:[[140,146],[106,94]]}),st(96,1,{t:185,hands:[[113,110],[119,86]]})),
+  K(.1,1.4,'Breathe in · breathe out',sitS(122,1,{t:188,h:196,el:[null,[119,86]],hands:[[140,146],[106,94]]}),st(96,1,{t:185,hands:[[113,110],[119,86]]})),
+  K(1.4,.6,'Release slowly and lower the arm',sitS(122,1,{el:[null,[121,130]]}),st(96,1,{hands:[[116,110],[119,108]]})),
+ ],
+ steps:['Sit tall on a chair. Partner stands close behind you.','Bend one arm overhead so the hand drops behind your head and the elbow points up.','Lean back to rest against your partner and lift the chin a little.','Breathe in and out slowly for 20–30 seconds, then change arms.'],
+ pt:['Hold her elbow and wrist. Draw the elbow gently back toward your own chest.','Lean forward so she can rest on you. Let her set the intensity and speed.','You can slowly slide your palm down the back of her upper arm.'],
+ why:'Stretches the back of the upper arm, the side of the back and the shoulder, which tighten from carrying and changed posture.',
+ care:'Find a comfortable range. Stop if you feel tingling down the arm.'},
+
+{id:'neck-release',cat:'seated',name:'Neck release',partner:true,props:['Chair'],dose:'3 breaths each side',clip:'IMG_7026',
+ order:['q','P','m'],props_:()=>PR.floor()+PR.chairF(130),
+ frames:[
+  K(1.2,.5,'Sit tall, shoulders relaxed',sitF(130),stF(130,{hands:[[113,121],[147,121]]})),
+  K(1.4,.5,'Bring the right hand over the head to the left ear',sitF(130,{hands:[[118,147],[123,84]]}),stF(130,{hands:[[118,104],[147,121]]})),
+  K(1.8,2.4,'Exhale · let the head tilt right. Left hand reaches down',sitF(130,{h:150,hands:[[106,166],[129,85]]}),stF(130,{hands:[[118,106],[147,121]]})),
+  K(1.4,.4,'Lift the head back to centre',sitF(130),stF(130,{hands:[[113,121],[147,121]]})),
+  K(1.4,.5,'Left hand over the head to the right ear',sitF(130,{hands:[[137,84],[142,147]]}),stF(130,{hands:[[113,121],[142,104]]})),
+  K(1.8,2.4,'Exhale · tilt left. Right hand reaches down',sitF(130,{h:210,hands:[[131,85],[154,166]]}),stF(130,{hands:[[113,121],[142,106]]})),
+ ],
+ steps:['Sit tall with shoulders soft and away from the ears.','Bring one hand over the top of the head to rest on the opposite ear.','Breathing out, let the weight of the hand tilt the head toward that shoulder. Don\'t pull.','Let the other arm hang or reach toward the floor to deepen the stretch.','Hold for 3 slow breaths, return the head to centre, then switch sides.'],
+ pt:['Stand behind and rest a palm on the shoulder that is being stretched, so it stays down.','You can steady her head with a hand, but never press it.'],
+ why:'Releases the neck and upper shoulders, a common spot for tension and headaches in pregnancy.',
+ care:'Keep it slow and small. No neck circles if you feel dizzy.'},
+
+{id:'prayer-reach',cat:'seated',name:'Overhead reach & shoulder opener',partner:true,props:['Chair'],dose:'5 slow rounds',clip:'IMG_7028',
+ order:['q','P','m'],props_:()=>PR.floor()+PR.chairF(130),
+ frames:[
+  K(1.2,.5,'Sit tall, knees wide',sitF(130),stF(130,{hands:[[113,121],[147,121]]})),
+  K(1.6,1.6,'Inhale · palms together overhead, partner supports the arms',sitF(130,{hands:[[128,64],[132,64]]}),stF(130,{hands:[[116,84],[144,84]]})),
+  K(1.5,1.2,'Exhale · fingertips to the shoulders, elbows wide',sitF(130,{hands:[[121,99],[139,99]]}),stF(130,{hands:[[106,104],[154,104]]})),
+  K(1.6,1.6,'Inhale · open the arms up into a wide V',sitF(130,{hands:[[100,68],[160,68]]}),stF(130,{hands:[[102,72],[158,72]]})),
+  K(1.4,.6,'Exhale · lower the arms',sitF(130),stF(130,{hands:[[113,121],[147,121]]})),
+ ],
+ steps:['Sit tall with knees apart and feet flat.','Breathing in, join the palms and reach them straight up.','Breathing out, bend the elbows and bring the fingertips to the shoulders. Circle the elbows slowly if that feels good.','Breathing in, open the arms up and out into a wide V.','Breathe out to lower. Repeat about 5 rounds.'],
+ pt:['Stand behind. Support the upper arms or wrists so she can relax into the reach.','Follow her rhythm and keep a light hold.'],
+ why:'Mobilises the shoulders and opens the chest, counteracting the rounded posture that comes with a heavier front.',
+ care:'If your hands tingle overhead, keep the arms lower.'},
+
+/* ---- standing ---- */
+{id:'wall-chest',cat:'standing',name:'Wall chest opener',partner:true,props:['Wall'],dose:'Hold 20–30 s each side',clip:'IMG_7029',
+ order:['P','q','m'],props_:()=>PR.floor()+PR.wallL(96),
+ frames:[
+  K(1.2,.5,'Stand side-on to a wall',stF(150),stF(205)),
+  K(1.4,.6,'Left palm on the wall at shoulder height',stF(150,{hands:[[97,80],[167,121]]}),stF(205,{hands:[[163,83],[222,121]]})),
+  K(1.8,2.6,'Exhale · step forward and turn the chest away from the wall',stF(152,{t:175,h:162,hands:[[97,80],[169,121]],feet:[[142,FL],[165,FL]]}),stF(205,{hands:[[167,85],[222,121]]})),
+  K(1.4,.6,'Turn back and lower the arm',stF(150),stF(205)),
+ ],
+ steps:['Stand side-on to a wall, about an arm\'s length away.','Place the near palm flat on the wall at shoulder height, fingers pointing back.','Breathing out, step the near foot forward and slowly turn the chest away from the wall until you feel a stretch across the chest and front of the shoulder.','Hold 20–30 seconds with easy breathing. Turn around and repeat on the other arm.'],
+ pt:['Stand on her open side. Place a hand on the front of her free shoulder to guide the turn.','Move slowly with her. Stop when she says it\'s enough.'],
+ why:'Stretches the chest and front of the shoulders, helping posture and making breathing feel easier.',
+ care:'Keep the hand at or below shoulder height. Stop if the hand goes numb.'},
+
+{id:'wall-lean',cat:'standing',name:'Wall lean & hip sway',partner:true,labour:true,props:['Wall'],dose:'1–2 minutes, or through a contraction',clip:'IMG_7030',
+ order:['P','m','q'],props_:()=>PR.wallBack()+PR.floor(),
+ frames:[
+  K(1.2,.5,'Face the wall, feet wide',stF(120,{back:true,feet:[[100,FL],[140,FL]]}),stF(168,{back:true})),
+  K(1.5,.8,'Hands high on the wall · let the head and belly hang',stF(120,{back:true,hip:[120,128],hands:[[104,50],[136,50]],feet:[[100,FL],[140,FL]]}),stF(168,{back:true,hands:[[132,114],[140,104]]})),
+  K(1.4,.6,'Sway the hips to the left',stF(120,{back:true,hip:[113,129],t:171,hands:[[104,50],[136,50]],feet:[[100,FL],[140,FL]]}),stF(168,{back:true,hands:[[128,116],[138,108]]})),
+  K(1.4,.6,'and to the right · partner rubs the low back',stF(120,{back:true,hip:[127,129],t:189,hands:[[104,50],[136,50]],feet:[[100,FL],[140,FL]]}),stF(168,{back:true,hands:[[136,114],[142,102]]})),
+  K(1.4,.6,'Back to centre · breathe out slowly',stF(120,{back:true,hip:[120,128],hands:[[104,50],[136,50]],feet:[[100,FL],[140,FL]]}),stF(168,{back:true,hands:[[132,114],[140,104]]})),
+ ],
+ steps:['Face a wall with feet wider than hips and toes slightly turned out.','Place both hands high on the wall and let your chest and belly relax toward it.','Sway or circle the hips slowly side to side.','Breathe in through the nose and out long through the mouth.'],
+ pt:['Stand behind or beside her. Massage the lower back and the shoulder blades with firm, slow strokes.','Ask what pressure feels good and keep checking in.'],
+ why:'Upright and forward-leaning, it takes weight off the back, uses gravity, and gives room for the baby to rotate. A good contraction position.',
+ care:'Keep the knees soft. Rest whenever you need to.'},
+
+{id:'hip-circles',cat:'standing',name:'Hip rocks, circles & figure-eights',labour:true,props:[],dose:'About 30 s each movement',clip:'IMG_7031',
+ props_:()=>PR.floor()+PR.mat(90,170),
+ frames:(()=>{const fr=[];const P=(x,y,t=180,cap,d=1.1,h=.25)=>fr.push(K(d,h,cap,stF(130,{hip:[x,y],t,hands:hipHands(x,y),feet:[[110,FL],[150,FL]]})));
+  P(130,125,180,'Feet wide, hands on hips',1.1,.5);
+  P(136,127,176,'Half-circle to the right');P(130,129,180,'');P(124,127,184,'Half-circle to the left');P(130,125,180,'');
+  P(134,129,174,'Figure-eight: bend the right knee, rotate');P(130,126,180,'');P(126,129,186,'bend the left knee, rotate');P(130,125,180,'Breathe in through the nose, out through the mouth',1.1,.6);
+  return fr})(),
+ steps:['Stand with feet wider than hips, knees soft, hands on hips.','Rock: shift the hips forward, then push them back until you feel a stretch in the back of the thighs. About 30 seconds.','Half-circles: push the hips forward and sweep them to the right, then forward and sweep to the left. About 30 seconds.','Figure-eights: bend the right knee and roll the hip around, then bend the left knee and roll the other way, drawing an 8. About 30 seconds.','Breathe in through the nose and out through the mouth throughout. Stop any time you want a break.'],
+ pt:['Stand nearby for balance if she wants a hand.','In labour, you can massage the back of the thighs during the rocking.'],
+ why:'Mobilising movements that loosen the hip joints and pelvis. In labour, moving the pelvis helps you cope and helps the baby find its way down.',
+ care:'Move slowly and keep the movements comfortable. You never need to push into them.'},
+
+{id:'leg-swings',cat:'standing',name:'Wall-supported leg swings',props:['Wall'],dose:'10 swings each leg',clip:'IMG_7036',
+ props_:()=>PR.floor()+PR.wallL(76),
+ frames:[
+  K(1.1,.5,'Stand side-on, hand on the wall',stF(128,{hands:[[77,88],[141,119]]})),
+  K(1,.2,'Swing the outer leg out',stF(128,{hands:[[77,88],[141,119]],feet:[[120,FL],[162,175]]})),
+  K(1,.2,'and back across, like a pendulum',stF(128,{hands:[[77,88],[141,119]],feet:[[121,FL],[118,178]]})),
+  K(1,.2,'Out again · keep the standing knee soft',stF(128,{hands:[[77,88],[141,119]],feet:[[120,FL],[162,175]]})),
+  K(1,.4,'Place the foot down',stF(128,{hands:[[77,88],[141,119]]})),
+ ],
+ steps:['Stand side-on to a wall and rest the near hand on it for balance.','Shift your weight onto the leg nearest the wall, knee soft.','Swing the outer leg gently forward and back, then out to the side and across, like a pendulum.','Do about 10 easy swings, then turn around and swap legs.'],
+ pt:['Stand close by if her balance feels off.'],
+ why:'Loosens the hip joints and helps balance as your centre of gravity shifts.',
+ care:'Keep the swings small. Skip this if you have pubic bone (SPD) pain.'},
+
+{id:'step-ups',cat:'standing',name:'Wall step-ups',labour:true,props:['Wall','Step or block'],dose:'5–8 each side',clip:'IMG_7037',
+ props_:()=>PR.floor()+PR.wallR(198)+PR.block(166,170,22,16),
+ frames:[
+  K(1.1,.5,'Face the wall, hands on it',st(156,1,{hands:[[196,84],[196,86]]})),
+  K(1.3,.4,'Step the right foot up onto the block',st(156,1,{hip:[157,121],hands:[[196,84],[196,86]],feet:[[152,FL],[176,170]]})),
+  K(1.2,1.2,'Lean gently into the raised leg · breathe',st(156,1,{hip:[162,124],t:172,hands:[[196,84],[196,86]],feet:[[152,FL],[176,170]]})),
+  K(1.2,.4,'Step down',st(156,1,{hands:[[196,84],[196,86]]})),
+  K(1.3,.4,'Now the left foot up',st(156,1,{hip:[157,121],hands:[[196,84],[196,86]],feet:[[176,170],[152,FL]]})),
+  K(1.2,1.2,'Lean in and breathe',st(156,1,{hip:[162,124],t:172,hands:[[196,84],[196,86]],feet:[[176,170],[152,FL]]})),
+ ],
+ steps:['Stand facing a wall with a low step or yoga block in front of you.','Place both hands on the wall for support.','Lift one foot onto the block and gently lean your weight toward it, keeping the back straight.','Hold for a breath or two, step down and switch legs.'],
+ pt:['Hold the block steady or stand beside her for support.'],
+ why:'An asymmetrical stance tilts the pelvis and creates more room on one side. Stair-stepping is often used in labour to help the baby descend.',
+ care:'Use a low, stable step. Avoid it if you have pelvic girdle pain.'},
+
+{id:'partner-squat',cat:'standing',name:'Partner-supported squat',partner:true,labour:true,props:[],dose:'5 slow squats',clip:'IMG_7038',
+ props_:()=>PR.floor(),
+ frames:[
+  K(1.2,.5,'Face each other and hold hands',st(100,1,{hands:[[146,100],[146,101]]}),st(192,-1,{hands:[[146,100],[146,101]]})),
+  K(2,1.6,'Both sink slowly into a squat · keep the heels down',st(100,1,{hip:[98,160],t:166,feet:[[110,FL],[114,FL]],hands:[[148,118],[148,119]]}),st(192,-1,{hip:[194,160],t:194,feet:[[182,FL],[178,FL]],hands:[[148,118],[148,119]]})),
+  K(.1,1.2,'Breathe in · breathe out',st(100,1,{hip:[98,160],t:166,feet:[[110,FL],[114,FL]],hands:[[148,118],[148,119]]}),st(192,-1,{hip:[194,160],t:194,feet:[[182,FL],[178,FL]],hands:[[148,118],[148,119]]})),
+  K(2,.6,'Push through the feet to stand together',st(100,1,{hands:[[146,100],[146,101]]}),st(192,-1,{hands:[[146,100],[146,101]]})),
+ ],
+ steps:['Face your partner, feet wider than hips and toes turned out. Hold each other\'s wrists or hands.','Lean back slightly against each other\'s grip and sink slowly into a squat, keeping heels down and knees over toes.','Hold for one or two breaths.','Press through the feet to rise together.'],
+ pt:['Mirror her and squat at the same time so your weight balances hers.','Keep a firm grip and say what you\'re doing as you go.'],
+ why:'Squatting opens the pelvic outlet and strengthens the legs. The partner\'s counterweight makes it safe and controlled.',
+ care:'Only go as low as is comfortable. Avoid deep squats late in pregnancy if the baby is breech, unless your care team says otherwise.'},
+
+{id:'wall-l-stretch',cat:'standing',name:'Wall L-stretch with hip traction',partner:true,props:['Wall'],dose:'Hold 30 s',clip:'IMG_7039',
+ order:['P','q','m'],props_:()=>PR.floor()+PR.wallR(204),
+ frames:[
+  K(1.2,.5,'Stand facing the wall, hands on it',st(158,1,{hands:[[202,80],[202,82]]}),st(70,1)),
+  K(2,.8,'Walk the hands down and step back into an L-shape',st(116,1,{t:92,h:96,hands:[[202,118],[202,120]],feet:[[112,FL],[117,FL]]}),st(70,1)),
+  K(1.5,2.6,'Partner holds the hips and gently pulls back',st(116,1,{t:92,h:96,hands:[[202,118],[202,120]],feet:[[112,FL],[117,FL]]}),st(92,1,{t:186,hands:[[108,118],[111,121]],feet:[[86,FL],[96,FL]]})),
+  K(.1,1.4,'Hold 30 seconds · breathe in through the nose',st(116,1,{t:92,h:96,hands:[[202,118],[202,120]],feet:[[112,FL],[117,FL]]}),st(92,1,{t:186,hands:[[108,118],[111,121]],feet:[[86,FL],[96,FL]]})),
+  K(2,.6,'Partner releases · walk the hands up the wall',st(158,1,{hands:[[202,80],[202,82]]}),st(70,1)),
+ ],
+ steps:['Stand facing a wall and place your hands on it at shoulder height.','Walk the hands down to hip height while stepping the feet back, until the back is flat and the body makes an L-shape.','Keep the feet hip-width apart, knees soft, head in line with the arms.','Hold about 30 seconds with slow breaths, then walk the hands back up.'],
+ pt:['Stand behind her and hold the front of her hips or upper thighs.','Gently pull back until she feels a comfortable stretch along the back. Hold, then ease off slowly.'],
+ why:'Lengthens the spine, shoulders and the back of the legs, and relieves lower-back compression.',
+ care:'Come up slowly to avoid light-headedness.'},
+
+{id:'back-to-back',cat:'standing',name:'Back-to-back stretch',partner:true,props:[],dose:'3 gentle rounds',clip:'IMG_7040',
+ order:['P','q','m'],props_:()=>PR.floor()+PR.mat(80,190),
+ frames:[
+  K(1.2,.6,'Stand back to back and link elbows',st(122,1,{hands:[[128,116],[130,118]]}),st(138,-1,{hands:[[132,116],[130,118]]})),
+  K(2.2,2.2,'Partner hinges forward slowly · she rests back over him',st(124,1,{t:204,h:218,hip:[126,121],hands:[[118,104],[120,106]]}),st(140,-1,{t:222,hip:[142,121],hands:[[118,104],[120,106]],feet:[[146,FL],[150,FL]]})),
+  K(.1,1.2,'Breathe in, breathe out',st(124,1,{t:204,h:218,hip:[126,121],hands:[[118,104],[120,106]]}),st(140,-1,{t:222,hip:[142,121],hands:[[118,104],[120,106]],feet:[[146,FL],[150,FL]]})),
+  K(2,.8,'Return to neutral · drop the shoulders',st(122,1,{hands:[[128,116],[130,118]]}),st(138,-1,{hands:[[132,116],[130,118]]})),
+ ],
+ steps:['Stand back to back with your partner and hook your elbows together.','Drop the shoulders and find a neutral position, leaning on each other.','Your partner bends forward a little so you rest back over his back and feel a stretch through the front of the body and spine.','Breathe in through the nose and out through the mouth, then come back to neutral. Repeat if it felt good.'],
+ pt:['Bend forward slowly and only a little. Her feet should stay on the floor.','Keep talking to each other about what you\'re doing.'],
+ why:'A gentle back bend that opens the chest and front body and relieves a stiff upper back.',
+ care:'Skip it if you feel unsteady, dizzy or have back pain that gets worse when you arch. Feet stay on the ground.'},
+
+{id:'partner-tree',cat:'standing',name:'Partner tree pose',partner:true,props:[],dose:'3–5 breaths each side',clip:'IMG_7041',
+ props_:()=>PR.floor()+PR.mat(80,180),
+ frames:[
+  K(1.2,.5,'Stand side by side, inside arms around each other\'s waists',stF(115,{hands:[[98,121],[146,118]]}),stF(150,{hands:[[119,118],[167,121]]})),
+  K(1.4,.6,'Lift the outer foot to the inner calf',stF(115,{hands:[[98,121],[146,118]],feet:[[121,152],[121,FL]]}),stF(150,{hands:[[119,118],[167,121]]})),
+  K(1.6,2.6,'Join outer palms overhead · inhale and exhale',stF(115,{hands:[[129,44],[146,118]],feet:[[121,152],[121,FL]]}),stF(150,{hands:[[119,118],[132,44]]})),
+  K(1.4,.6,'Lower arms and foot',stF(115,{hands:[[98,121],[146,118]]}),stF(150,{hands:[[119,118],[167,121]]})),
+ ],
+ steps:['Stand next to your partner and wrap your inside arms around each other\'s waists.','Shift your weight onto the inside leg. Place the outer foot on the inner calf or ankle (not the knee).','Bring the outer hands up and join palms overhead.','Lift the chin slightly and take 3–5 breaths, then switch sides.'],
+ pt:['Be the steady "trunk". Keep a firm hold at her waist.','Match her breathing and lower together.'],
+ why:'Builds balance and ankle stability, which help as the body changes shape. The partner makes it safe.',
+ care:'Keep the foot low (ankle or calf). Never press it into the knee.'},
+
+{id:'partner-warrior',cat:'standing',name:'Partner warrior II',partner:true,props:[],dose:'3–5 breaths each side',clip:'IMG_7042',
+ props_:()=>PR.floor(),
+ frames:[
+  K(1.2,.5,'Wide stance, partners side by side',stF(105,{feet:[[80,FL],[142,FL]],hip:[110,126],kn:[[91,156],[130,156]]}),stF(200,{feet:[[163,FL],[225,FL]],hip:[195,126],kn:[[175,156],[214,156]]})),
+  K(1.4,.6,'Arms out at shoulder height · hold hands',stF(105,{feet:[[80,FL],[142,FL]],hip:[110,126],kn:[[91,156],[130,156]],hands:[[56,84],[156,84]]}),stF(200,{feet:[[163,FL],[225,FL]],hip:[195,126],kn:[[175,156],[214,156]],hands:[[156,84],[250,84]]})),
+  K(1.6,2.4,'Bend the front knee over the ankle · breathe',stF(105,{feet:[[80,FL],[142,FL]],hip:[100,134],kn:[[82,160],[125,160]],hands:[[48,92],[152,92]]}),stF(200,{feet:[[163,FL],[225,FL]],hip:[205,134],kn:[[180,160],[223,160]],hands:[[154,92],[256,92]]})),
+  K(1.4,.6,'Straighten up',stF(105,{feet:[[80,FL],[142,FL]],hip:[110,126],kn:[[91,156],[130,156]],hands:[[56,84],[156,84]]}),stF(200,{feet:[[163,FL],[225,FL]],hip:[195,126],kn:[[175,156],[214,156]],hands:[[156,84],[250,84]]})),
+ ],
+ steps:['Stand with feet wide. Turn the front foot out and the back foot slightly in.','Lift the arms to shoulder height and hold your partner\'s hand on the inside.','Bend the front knee so it sits over the ankle. Keep the torso upright.','Breathe for 3–5 breaths, straighten, then face the other way.'],
+ pt:['Mirror her stance and hold her hand firmly for balance.','Keep the arm steady rather than pulling.'],
+ why:'Strengthens the legs, opens the hips and builds stamina for labour.',
+ care:'Keep the stance shorter if you feel pubic or groin pain.'},
+
+/* ---- ball ---- */
+{id:'ball-circles',cat:'ball',name:'Birth ball hip circles',labour:true,props:['Birth ball'],dose:'1–2 minutes',clip:'IMG_7032, 7033',
+ props_:p=>PR.floor()+PR.ball(p.bx,168,18),
+ frames:(()=>{const fr=[];const P=(x,y,cap,d=1.1,h=.1)=>fr.push(K(d,h,cap,{v:'f',hip:[x,y],t:180+(130-x)*.6,hands:hipHands(x,y),kn:[[104+(x-130)*.3,157],[156+(x-130)*.3,157]],feet:[[100,FL],[160,FL]]},null,{bx:130+(x-130)*.5}));
+  P(130,149,'Sit tall, feet wide, hands on hips',1.1,.5);P(136,149,'Draw slow circles with the hips');P(130,152,'');P(124,149,'');P(130,146,'');P(136,149,'Breathe slowly');P(130,152,'');P(124,149,'');P(130,146,'Change direction whenever you like',1.1,.4);return fr})(),
+ steps:['Sit in the middle of a birth ball with feet flat and wider than hips. Knees should be a little lower than the hips.','Place your hands on your hips.','Roll the pelvis in slow, wide circles. Change direction every few circles.','When you\'re rested and active you can do this standing. When tired, sit on the ball.'],
+ pt:['Sit or kneel in front and hold her hands or knees if she wants more stability.'],
+ why:'Keeps the pelvis moving and relaxed, eases back pain, and in labour helps the baby settle into a good position.',
+ care:'Use a ball sized so your hips are above your knees. Keep the feet planted.'},
+
+{id:'ball-rock',cat:'ball',name:'Ball rocking with a chair',labour:true,props:['Birth ball','Chair'],dose:'1–2 minutes',clip:'IMG_7034',
+ props_:p=>PR.floor()+PR.chairS(176,1)+PR.ball(p.bx,168,18),
+ frames:[
+  K(1.1,.5,'Sit on the ball, hands on the chair back',sitS(120,1,{hip:[120,150],feet:[[146,FL],[150,FL]],hands:[[160,116],[162,116]]}),null,{bx:120}),
+  K(1.4,.4,'Rock forward',sitS(120,1,{hip:[126,150],t:166,feet:[[146,FL],[150,FL]],hands:[[160,116],[162,116]]}),null,{bx:123}),
+  K(1.4,.4,'Rock back',sitS(120,1,{hip:[116,150],t:182,feet:[[146,FL],[150,FL]],hands:[[158,116],[160,116]]}),null,{bx:118}),
+  K(1.4,.4,'Forward · breathe out',sitS(120,1,{hip:[126,150],t:166,feet:[[146,FL],[150,FL]],hands:[[160,116],[162,116]]}),null,{bx:123}),
+  K(1.4,.4,'Back · breathe in',sitS(120,1,{hip:[116,150],t:182,feet:[[146,FL],[150,FL]],hands:[[158,116],[160,116]]}),null,{bx:118}),
+ ],
+ steps:['Sit on the ball facing the back of a sturdy chair (or a bed or counter).','Hold the chair back with both hands.','Rock the pelvis slowly forward and back, letting the ball roll a little under you.','Keep breathing in a slow rhythm with the movement.'],
+ pt:['Hold the chair still, or sit in it facing her so she can hold your hands.'],
+ why:'The chair gives you stability so you can relax and keep the pelvis moving without worrying about balance.',
+ care:'Make sure the chair can\'t slide.'},
+
+{id:'ball-bounce',cat:'ball',name:'Gentle ball bounce',labour:true,props:['Birth ball'],dose:'1–3 minutes',clip:'IMG_7035',
+ props_:p=>PR.floor()+PR.ball(124,168+(18-p.sq),18,p.sq),
+ frames:(()=>{const fr=[];const P=(y,sq,cap,d=.55,h=.05)=>fr.push(K(d,h,cap,sitS(124,1,{hip:[124,y],feet:[[150,FL],[154,FL]],hands:[[135,y-22],[138,y-14]]}),null,{sq}));
+  P(150,18,'Sit tall with hands on the belly',1,.6);P(153,16.4,'Bounce gently');P(149,18.4,'');P(153,16.4,'Breathe slowly with the bounce');P(149,18.4,'');P(153,16.4,'');P(149,18.4,'Let the baby settle',.55,.4);return fr})(),
+ steps:['Sit centred on the ball with feet flat and wide.','Rest your hands on your belly and close your eyes if you like.','Bounce very gently, letting your weight drop into the ball.','Keep the breath slow and even.'],
+ pt:['Sit or kneel in front and hold her knees if she wants extra stability.'],
+ why:'A soothing rhythmic movement that relaxes the pelvic floor. In labour, it is a comfortable way to stay upright.',
+ care:'Small bounces only, feet planted.'},
+
+/* ---- floor ---- */
+{id:'ankle-pumps',cat:'floor',name:'Ankle pumps',partner:true,props:['Mat'],dose:'10–15 pumps',clip:'IMG_7043',
+ props_:()=>PR.floor()+PR.mat(30,240),
+ frames:(()=>{const fr=[];const P=(fa,fq,cap,d=.9,h=.25)=>fr.push(K(d,h,cap,{v:'s',f:1,hip:[70,178],t:200,hands:[[52,182],[55,182]],feet:[[130,180],[133,180]],fa},{v:'s',f:-1,hip:[198,178],t:160,hands:[[216,182],[214,182]],feet:[[137,180],[135,180]],fa:fq}));
+  P(180,180,'Sit tall, legs straight, soles facing each other',1,.6);P(118,242,'Push the toes forward');P(202,158,'Pull the toes toward you');P(118,242,'Forward · inhale');P(202,158,'Toward you · exhale');P(180,180,'Relax the feet',.9,.5);return fr})(),
+ steps:['Sit on the mat with legs straight and lean back on your hands.','Point the toes forward, away from you.','Pull the toes back toward you so you feel the calves stretch.','Keep a slow rhythm with your breath: 10–15 pumps.'],
+ pt:['Sit opposite her, legs straight and feet near hers, and pump together so you keep the same rhythm.'],
+ why:'Gets the circulation going in the legs, eases swelling and helps prevent calf cramps.',
+ care:'If you get a calf cramp, pull the toes toward you and hold until it eases.'},
+
+{id:'wide-fold',cat:'floor',name:'Wide-leg forward fold',partner:true,props:['Mat'],dose:'Hold at least 30 s',clip:'IMG_7044',
+ props_:()=>PR.floor()+PR.mat(30,240),
+ frames:[
+  K(1.2,.5,'Sit with legs wide. Partner sits facing you',{v:'s',f:1,hip:[70,178],t:180,hands:[[92,176],[96,176]],feet:[[132,180],[134,180]]},{v:'s',f:-1,hip:[198,176],t:180,hands:[[184,176],[182,176]],feet:[[176,182],[180,184]]}),
+  K(1.6,.6,'Reach forward · partner holds your forearms',{v:'s',f:1,hip:[70,178],t:140,hands:[[140,150],[142,151]],feet:[[132,180],[134,180]]},{v:'s',f:-1,hip:[198,176],t:200,hands:[[142,150],[144,151]],feet:[[176,182],[180,184]]}),
+  K(1.6,2.6,'Partner gently draws you closer · hold 30 s',{v:'s',f:1,hip:[70,178],t:125,h:118,hands:[[148,156],[150,157]],feet:[[132,180],[134,180]]},{v:'s',f:-1,hip:[198,176],t:205,hands:[[150,156],[152,157]],feet:[[176,182],[180,184]]}),
+  K(.1,1.2,'In through the nose, out through the mouth',{v:'s',f:1,hip:[70,178],t:125,h:118,hands:[[148,156],[150,157]],feet:[[132,180],[134,180]]},{v:'s',f:-1,hip:[198,176],t:205,hands:[[150,156],[152,157]],feet:[[176,182],[180,184]]}),
+  K(1.6,.6,'Gently come out',{v:'s',f:1,hip:[70,178],t:180,hands:[[92,176],[96,176]],feet:[[132,180],[134,180]]},{v:'s',f:-1,hip:[198,176],t:180,hands:[[184,176],[182,176]],feet:[[176,182],[180,184]]}),
+ ],
+ steps:['Sit tall on the mat with the legs spread comfortably wide, toes pointing up.','Your partner sits cross-legged facing you.','Reach forward with a long spine. Your partner takes your forearms, or your waist if they can reach.','Let your partner gently draw you forward until you feel the inner thighs stretch. Hold at least 30 seconds.','Breathe deeply in through the nose and out through the mouth, then come out slowly.'],
+ pt:['Pull slowly and steadily. Never bounce or jerk.','Stop as soon as she says. Hold the position for her rather than pushing further.'],
+ why:'Opens the inner thighs and hips and lengthens the lower back.',
+ care:'Fold from the hips and leave room for the bump. Go less deep if you feel pubic or groin pain.'},
+
+{id:'side-bend-floor',cat:'floor',name:'Seated side bend',props:['Mat'],dose:'3 breaths each side',clip:'IMG_7051',
+ props_:()=>PR.floor()+PR.mat(60,200),
+ frames:[
+  K(1.2,.5,'Sit cross-legged, hands on the knees',{v:'f',hip:[130,176],t:180,hands:[[106,170],[154,170]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+  K(1.4,.4,'Right hand on the floor · left arm reaches up',{v:'f',hip:[130,176],t:180,hands:[[124,90],[160,182]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+  K(1.8,2.2,'Exhale · lean right, let the head follow',{v:'f',hip:[130,176],t:160,h:150,hands:[[152,96],[162,182]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+  K(1.4,.4,'Inhale · back to centre',{v:'f',hip:[130,176],t:180,hands:[[106,170],[154,170]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+  K(1.4,.4,'Left hand down · right arm up',{v:'f',hip:[130,176],t:180,hands:[[100,182],[136,90]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+  K(1.8,2.2,'Exhale · lean left',{v:'f',hip:[130,176],t:200,h:210,hands:[[98,182],[108,96]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+ ],
+ steps:['Sit cross-legged on a mat or folded blanket. Hands rest on the knees.','Place one hand on the floor beside you and reach the other arm up.','Breathing out, lean toward the hand on the floor. Let the head tilt gently the same way.','Breathe into the stretched side for 3 breaths, come back up, and switch.'],
+ pt:['Sit behind her as a backrest if she wants support.'],
+ why:'Stretches the side body and the muscles between the ribs, freeing up space to breathe.',
+ care:'Sit on a cushion if your knees are higher than your hips.'},
+
+{id:'butterfly',cat:'floor',name:'Butterfly with knee press',partner:true,props:['Mat'],dose:'1 minute',clip:'IMG_7052',
+ props_:()=>PR.floor()+PR.mat(60,200),
+ frames:[
+  K(1.2,.5,'Sit tall, soles of the feet together',{v:'f',hip:[130,174],t:180,hands:[[127,182],[133,182]],kn:[[99,176],[161,176]],feet:[[124,184],[136,184]]}),
+  K(.8,.1,'Flutter the knees gently',{v:'f',hip:[130,174],t:180,hands:[[127,181],[133,181]],kn:[[101,167],[159,167]],feet:[[124,184],[136,184]]}),
+  K(.8,.1,'',{v:'f',hip:[130,174],t:180,hands:[[127,182],[133,182]],kn:[[99,176],[161,176]],feet:[[124,184],[136,184]]}),
+  K(.8,.1,'Breathe out and let the knees drop',{v:'f',hip:[130,174],t:180,hands:[[127,181],[133,181]],kn:[[101,167],[159,167]],feet:[[124,184],[136,184]]}),
+  K(.8,1.6,'Hold · partner may press the knees very lightly',{v:'f',hip:[130,174],t:180,hands:[[127,182],[133,182]],kn:[[99,176],[161,176]],feet:[[124,184],[136,184]]}),
+ ],
+ steps:['Sit tall and bring the soles of the feet together, heels a comfortable distance from you.','Hold the feet or ankles and let the knees fall out to the sides.','Flutter the knees gently up and down like wings.','Then sit still and breathe, letting the knees sink with each breath out. Lean forward slightly if it feels good.'],
+ pt:['Kneel beside or behind her. Rest your palms on her knees and press very gently, only as much as she asks for.'],
+ why:'Opens the hips and inner thighs and is a restful way to sit with the pelvis open.',
+ care:'Never force the knees down. Skip the partner press if you have pubic bone pain.'},
+
+{id:'childs-pose',cat:'floor',name:'Supported child\'s pose',labour:true,props:['Mat','Bolster or pillows'],dose:'1–3 minutes',clip:'IMG_7045, 7046',
+ props_:()=>PR.floor()+PR.mat(60,226)+PR.bolster(144,206,174,9),
+ frames:[
+  K(1.2,.5,'Kneel with knees wide and a bolster in front',{v:'s',f:1,hip:[134,153],t:180,hands:[[133,152],[136,152]],feet:[[104,184],[106,184]],fa:[-80,-80]}),
+  K(1.5,.4,'Sit back toward the heels',{v:'s',f:1,hip:[114,168],t:150,hands:[[146,170],[148,170]],feet:[[104,184],[106,184]],fa:[-80,-80]}),
+  K(1.8,2,'Fold forward · rest the chest and cheek on the bolster',{v:'s',f:1,hip:[114,168],t:100,h:112,hands:[[188,170],[190,172]],feet:[[104,184],[106,184]],fa:[-80,-80]}),
+  K(1.4,.4,'Breathe into the back',{v:'s',f:1,hip:[114,166],t:102,h:113,hands:[[188,170],[190,172]],feet:[[104,184],[106,184]],fa:[-80,-80]}),
+  K(1.4,1.2,'Let the shoulders soften',{v:'s',f:1,hip:[114,168],t:100,h:112,hands:[[188,170],[190,172]],feet:[[104,184],[106,184]],fa:[-80,-80]}),
+ ],
+ steps:['Kneel on a mat with big toes together and knees wide to make room for the bump.','Place a bolster or a stack of pillows lengthwise in front of you.','Sit back toward the heels, then fold forward and rest your chest and one cheek on the bolster.','Hug the bolster or let the arms rest on the floor. Breathe slowly into the back.','Turn the head halfway through.'],
+ pt:['Rest your hands on her lower back or stroke slowly down either side of the spine.'],
+ why:'A restful position that releases the lower back and hips. Useful for resting between contractions.',
+ care:'Add height under the chest if the belly feels squashed. Put a cushion between heels and hips if the knees complain.'},
+
+{id:'knee-chest',cat:'floor',name:'Knee-chest with sacral pressure',partner:true,labour:true,props:['Cushion','Mat'],dose:'30 s to a few minutes',clip:'IMG_7047, 7048, 7049, 7050',
+ order:['P','q','m','F'],props_:()=>PR.floor()+PR.mat(70,220)+PR.cushion(100,150,174),
+ front:()=>PR.press(118,140),
+ frames:[
+  K(1.2,.5,'Kneel on a cushion, hands on the floor',{v:'s',f:1,hip:[124,148],t:110,h:115,hands:[[166,184],[168,184]],feet:[[92,180],[94,180]],fa:[-80,-80]},st(70,1)),
+  K(1.8,.6,'Lower to the forearms · hips stay high, head rests on the arms',{v:'s',f:1,hip:[124,146],t:60,h:70,hands:[[184,184],[186,184]],feet:[[92,180],[94,180]],fa:[-80,-80]},st(70,1)),
+  K(1.5,2.2,'Partner presses both palms on the sacrum',{v:'s',f:1,hip:[124,146],t:60,h:70,hands:[[184,184],[186,184]],feet:[[92,180],[94,180]],fa:[-80,-80]},st(96,1,{hip:[96,140],t:150,hands:[[116,140],[119,141]],feet:[[82,FL],[88,FL]]})),
+  K(1.2,.8,'Lean in on the exhale',{v:'s',f:1,hip:[124,147],t:60,h:70,hands:[[184,184],[186,184]],feet:[[92,180],[94,180]],fa:[-80,-80]},st(96,1,{hip:[97,141],t:146,hands:[[117,142],[120,143]],feet:[[82,FL],[88,FL]]})),
+  K(1.2,.8,'Ease off on the inhale',{v:'s',f:1,hip:[124,146],t:60,h:70,hands:[[184,184],[186,184]],feet:[[92,180],[94,180]],fa:[-80,-80]},st(96,1,{hip:[96,140],t:150,hands:[[116,140],[119,141]],feet:[[82,FL],[88,FL]]})),
+ ],
+ steps:['Kneel on a firm cushion or folded mat, knees hip-width or wider.','Lower onto the forearms and rest the head on the hands. The hips stay higher than the chest.','Let the belly hang and the back relax. Breathe slowly.','To come out, walk the hands back and sit up slowly.'],
+ pt:['Stand or kneel behind her. Place both palms flat on the sacrum (the flat bony area just above the buttocks).','Press steadily as she breathes out or through a contraction, and ease off as she breathes in.','Ask "harder or softer?" and adjust.'],
+ why:'Takes pressure off the cervix and lower back, can help a baby turn from a back-to-back position, and gives relief from back labour.',
+ care:'Come up slowly. Avoid this position if you\'ve been told the baby must not move off the cervix, or if it causes dizziness or heartburn.'},
+
+/* ---- labour ---- */
+{id:'rebozo',cat:'labour',name:'Rebozo hip sifting',partner:true,labour:true,props:['Long scarf or sheet','Mat'],dose:'1–3 minutes',clip:'IMG_7053',
+ order:['P','q','m','F'],props_:()=>PR.floor()+PR.mat(50,220)+PR.pillow(80,183),
+ front:p=>`<path d="M${n1(p.ax)},${n1(p.ay)} C${n1(p.ax-6)},170 128,180 132,183" class="scarf"/><path d="M${n1(p.ax+3)},${n1(p.ay+1)} C${n1(p.ax+10)},172 158,180 154,183" class="scarf"/>`,
+ frames:(()=>{const fr=[];const M=(y=176)=>({v:'s',f:1,hip:[142,y],t:-90,h:-90,hands:[[124,170],[126,168]],feet:[[176,184],[179,184]],fa:[90,90]});
+  const Q=(dy)=>({v:'s',f:-1,hip:[160,146],t:205,hands:[[147,149+dy],[150,150+dy]],feet:[[150,FL],[146,FL]]});
+  fr.push(K(1.2,.6,'Lie back, knees bent, scarf under the hips',M(),Q(0),{ax:147,ay:149}));
+  fr.push(K(1.2,.4,'Partner takes both ends and lifts slightly',M(175),Q(-4),{ax:147,ay:145}));
+  for(let i=0;i<6;i++){const s=i%2?3:-3;fr.push(K(.32,.02,i<2?'Gently jiggle, side to side, in a rhythm':(i<4?'She lets the hips go loose':'Breathe slowly'),M(175+(i%2?.6:0)),Q(-4+s*.6),{ax:147,ay:145+s*.6}))}
+  fr.push(K(1.2,.8,'Lower slowly and rest',M(),Q(0),{ax:147,ay:149}));return fr})(),
+ steps:['Lie on your back on a mat with knees bent and a pillow under the head. Use your side if lying back makes you dizzy.','Your partner slides a long scarf or folded sheet under your hips.','Your partner stands over you, holds both ends, and lifts just enough to take a little weight.','Your partner shifts the ends alternately in a small, steady rhythm. You let the hips relax and move.'],
+ pt:['Bend your knees and keep your back straight. Lift with the legs.','Keep the movements small, soft and rhythmic. Watch her face and stop if she\'s uncomfortable.'],
+ why:'A traditional technique to relax the pelvic and belly muscles, which may give the baby more room to shift position.',
+ care:'Learn it with your instructor first. Limit time flat on the back in later pregnancy, and roll to the side if you feel faint.'},
+
+{id:'side-lying-release',cat:'labour',name:'Side-lying release',partner:true,labour:true,props:['Bed'],dose:'3 breaths each side',clip:'IMG_7054',
+ order:['q','P','m'],props_:()=>PR.floor()+PR.bed(30,186,140)+PR.pillow(86,136),
+ frames:[
+  K(1.2,.6,'Lie on your side at the edge of the bed',{v:'f',hip:[146,128],t:-90,h:-90,hands:[[94,136],[124,136]],kn:[[168,137],[170,126]],feet:[[184,137],[184,129]],es:[1,1]},stF(130,{hands:[[112,108],[147,113]]})),
+  K(1.6,.6,'Partner steadies the hip and shoulder',{v:'f',hip:[146,128],t:-90,h:-90,hands:[[94,136],[124,136]],kn:[[168,137],[170,126]],feet:[[184,137],[184,129]],es:[1,1]},stF(130,{hands:[[110,114],[148,117]]})),
+  K(2,2.6,'Let the top leg slide off the edge and hang · breathe',{v:'f',hip:[146,128],t:-90,h:-90,hands:[[94,136],[124,136]],kn:[[168,137],[166,141]],feet:[[184,137],[168,177]],es:[1,1]},stF(130,{hands:[[110,114],[148,117]]})),
+  K(.1,1.6,'Stay for 3 slow breaths',{v:'f',hip:[146,128],t:-90,h:-90,hands:[[94,136],[124,136]],kn:[[168,137],[166,141]],feet:[[184,137],[168,177]],es:[1,1]},stF(130,{hands:[[110,114],[148,117]]})),
+  K(1.8,.8,'Bring the leg back up and rest',{v:'f',hip:[146,128],t:-90,h:-90,hands:[[94,136],[124,136]],kn:[[168,137],[170,126]],feet:[[184,137],[184,129]],es:[1,1]},stF(130,{hands:[[112,108],[147,113]]})),
+ ],
+ steps:['Lie on your side right at the edge of a firm bed, with the back and hips lined up straight along the edge.','Bottom leg straight, a pillow under the head, bottom arm under the pillow.','Your partner stands behind you and steadies the top hip so you don\'t roll forward.','Let the top leg slide forward off the edge and hang down toward the floor, relaxed.','Stay for about 3 breaths, bring the leg back up, then do the other side.'],
+ pt:['Stand behind her. One hand keeps her shoulder steady, the other hand rests on the top of her hip to stop it rolling forward.','You can guide the leg slowly down and back up.'],
+ why:'Releases the pelvic floor and the ligaments around the pelvis, which can help when labour stalls or the baby hasn\'t engaged.',
+ care:'Always do both sides. Do it with your care team\'s okay and after learning it in class.'},
+
+{id:'peanut-ball',cat:'labour',name:'Peanut ball side-lying',labour:true,props:['Peanut ball','Bed'],dose:'Change sides every 30–60 min',clip:'IMG_7055',
+ order:['P','m','F'],props_:()=>PR.floor()+PR.bed(30,214,140)+PR.pillow(80,136),
+ front:p=>PR.peanut(p.px,p.py),
+ frames:[
+  K(1.2,.6,'Lie on your side, ball between the knees',{v:'f',hip:[140,128],t:-90,h:-90,hands:[[88,136],[116,136]],kn:[[170,137],[168,111]],feet:[[198,137],[194,124]],es:[1,1]},null,{px:168,py:124}),
+  K(1.5,.8,'Bring the pelvis forward',{v:'f',hip:[146,129],t:-94,h:-90,hands:[[88,136],[116,136]],kn:[[174,137],[173,111]],feet:[[200,137],[198,124]],es:[1,1]},null,{px:173,py:124}),
+  K(1.5,2.2,'Lift the top knee higher · toes in, knees wide',{v:'f',hip:[146,129],t:-94,h:-90,hands:[[88,136],[116,136]],kn:[[174,137],[174,104]],feet:[[200,137],[192,130]],es:[1,1]},null,{px:174,py:120}),
+  K(1.5,.8,'Settle back and rest',{v:'f',hip:[140,128],t:-90,h:-90,hands:[[88,136],[116,136]],kn:[[170,137],[168,111]],feet:[[198,137],[194,124]],es:[1,1]},null,{px:168,py:124}),
+ ],
+ steps:['Lie on your side with a pillow under the head and a peanut ball between the knees and ankles.','Bring the pelvis slightly forward and keep the top leg raised on the ball.','For more opening at the bottom of the pelvis, keep the knees wide and turn the toes in so the feet are close together.','Switch sides every 30–60 minutes, or as your midwife suggests.'],
+ pt:['Help her reposition the ball and pillows when she changes sides.','Keep water nearby and help her turn.'],
+ why:'Keeps the pelvis open while resting. Useful if you are tired or have an epidural and can\'t move around.',
+ care:'Ask your nurse or midwife which size ball and which position suits the stage of labour.'},
+
+{id:'legs-on-ball',cat:'labour',name:'Legs on the ball, partner-held',partner:true,labour:true,props:['Large ball','Mat'],dose:'1–2 minutes',clip:'IMG_7056',
+ props_:p=>PR.floor()+PR.mat(40,240)+PR.pillow(220,183)+PR.ball(p.bx,164,20),
+ frames:[
+  K(1.2,.6,'Lie back with the calves resting on a large ball',{v:'s',f:-1,hip:[158,176],t:90,h:90,hands:[[180,183],[182,181]],feet:[[106,146],[108,146]],fa:[150,150]},{v:'s',f:1,hip:[64,160],t:160,hands:[[86,156],[88,150]],feet:[[72,FL],[78,FL]]},{bx:110}),
+  K(1.6,.8,'Partner holds the ball steady, like a bridge',{v:'s',f:-1,hip:[158,176],t:90,h:90,hands:[[180,183],[182,181]],feet:[[106,146],[108,146]],fa:[150,150]},{v:'s',f:1,hip:[66,160],t:156,hands:[[90,154],[92,148]],feet:[[72,FL],[78,FL]]},{bx:110}),
+  K(1.6,1,'He rolls the ball slowly toward her',{v:'s',f:-1,hip:[158,176],t:90,h:90,hands:[[180,183],[182,181]],feet:[[118,146],[120,146]],fa:[150,150]},{v:'s',f:1,hip:[76,160],t:156,hands:[[102,154],[104,148]],feet:[[72,FL],[78,FL]]},{bx:122}),
+  K(1.6,1,'and slowly back',{v:'s',f:-1,hip:[158,176],t:90,h:90,hands:[[180,183],[182,181]],feet:[[106,146],[108,146]],fa:[150,150]},{v:'s',f:1,hip:[66,160],t:156,hands:[[90,154],[92,148]],feet:[[72,FL],[78,FL]]},{bx:110}),
+ ],
+ steps:['Lie back with a pillow under your head and rest both calves on a large birth ball.','Your partner kneels or squats at the ball and holds it steady with both hands.','Let the legs relax completely. Your partner rolls the ball slowly toward you, bending your knees, and back again.','Breathe slowly and let the hips and lower back go loose.'],
+ pt:['Hold the ball firmly like a bridge so she doesn\'t have to use her own strength.','Move slowly and guide her legs. Keep the ball centred.'],
+ why:'Relaxes the legs, hips and lower back and gives gentle movement to the pelvis without effort from her.',
+ care:'Don\'t lie flat on your back for long in later pregnancy. Prop the upper body on pillows, or stop if you feel faint.'},
+];
+
+/* ---------- description + timing per exercise ---------- */
+const INFO={
+ 'side-stretch':['Sitting on a chair, one arm reaches overhead and you lean gently to the opposite side while your partner holds the raised wrist and steadies your shoulder.',{hold:'15–20 s in the lean (3–5 slow breaths)',reps:'3 times per side',sides:'Right, then left',total:'About 2 min'}],
+ 'elbow-stretch':['One arm bends overhead with the hand behind your head. Your partner draws the elbow back toward his chest while you lean back on him and lift the chin.',{hold:'20–30 s per arm',reps:'2 times per arm',sides:'Both arms',total:'About 2 min'}],
+ 'neck-release':['One hand rests over the head on the opposite ear and the head tilts slowly toward the shoulder, while the other hand reaches down to the floor.',{hold:'15–20 s (3 slow breaths)',reps:'2 times per side',sides:'Right, then left',total:'About 1½ min'}],
+ 'prayer-reach':['A breathing flow: palms together overhead, fingertips to the shoulders, then arms open into a wide V. Your partner supports the arms from behind.',{hold:'3–5 s in each position (one breath)',reps:'5 full rounds',sides:'Both arms together',total:'About 1½ min'}],
+ 'wall-chest':['One palm on the wall at shoulder height. You step forward and turn the chest away to stretch the front of the shoulder.',{hold:'20–30 s per side',reps:'2 times per side',sides:'Right arm, then left',total:'About 2 min'}],
+ 'wall-lean':['Face the wall with feet wide and hands high, let the belly hang toward the wall and sway the hips while your partner rubs your lower back.',{hold:'Sway continuously for 1–2 min',reps:'2–3 sets, rest 30 s between',sides:'Side to side',total:'3–5 min. In labour: through each contraction (60–90 s)'}],
+ 'hip-circles':['Standing with feet wide and hands on hips: rock the hips forward and back, sweep them in half-circles, then draw figure-eights by bending one knee at a time.',{hold:'30 s on each movement (about 6–8 slow reps)',reps:'1–2 rounds of all three movements',sides:'Both directions',total:'About 3 min'}],
+ 'leg-swings':['Hold the wall for balance and swing the outer leg like a pendulum: forward and back, then out to the side and across.',{hold:'No hold: 10 slow swings (about 20 s)',reps:'2 sets per leg',sides:'Turn around to swap legs',total:'About 2 min'}],
+ 'step-ups':['Hands on the wall, one foot up on a low step or block. You lean gently into the raised leg, then step down and switch.',{hold:'About 10 s in the lean (2 breaths)',reps:'5–8 per side',sides:'Alternate right and left',total:'2–3 min'}],
+ 'partner-squat':['Face your partner holding hands and sink into a squat together, using each other\'s weight as a counterbalance.',{hold:'10–15 s at the bottom (1–2 breaths)',reps:'5 squats, rest 20 s between',sides:'Both legs together',total:'About 2 min'}],
+ 'wall-l-stretch':['Hands on the wall at hip height, step back until your body makes an L-shape. Your partner holds your hips and gently pulls back to lengthen the spine.',{hold:'30 s',reps:'2–3 times, rest 15 s between',sides:'Whole back',total:'About 2 min'}],
+ 'back-to-back':['Stand back to back with elbows linked. Your partner hinges forward a little so you rest back over him and feel your front body and spine open.',{hold:'10–15 s in the stretch',reps:'3 times',sides:'n/a',total:'About 1½ min'}],
+ 'partner-tree':['Balance on one leg with the other foot on the inner calf, arms around each other\'s waists and outer palms joined overhead.',{hold:'15–30 s (3–5 breaths)',reps:'2 times per side',sides:'Swap places to change legs',total:'About 2 min'}],
+ 'partner-warrior':['A wide-legged lunge with arms out at shoulder height, holding your partner\'s hand. You bend the front knee over the ankle.',{hold:'15–30 s (3–5 breaths)',reps:'2 times per side',sides:'Turn to face the other way',total:'About 2 min'}],
+ 'ball-circles':['Sitting on a birth ball with feet wide and hands on hips, roll the pelvis in slow, wide circles.',{hold:'No hold: 10 slow circles each way (about 1 min)',reps:'2 sets',sides:'Clockwise, then anticlockwise',total:'2–3 min'}],
+ 'ball-rock':['Sitting on the ball and holding the back of a chair, you rock the pelvis slowly forward and back.',{hold:'No hold: continuous rocking',reps:'15–20 slow rocks',sides:'Forward and back',total:'1–2 min'}],
+ 'ball-bounce':['Sit on the ball with hands on the belly and bounce very gently in rhythm with slow breathing.',{hold:'No hold: continuous small bounces',reps:'1 set',sides:'n/a',total:'1–3 min'}],
+ 'ankle-pumps':['Sitting with legs straight, point the toes away, then pull them toward you. Your partner can sit opposite and pump in the same rhythm.',{hold:'About 2 s at each end',reps:'10–15 pumps, 2 sets',sides:'Both feet together',total:'About 1 min. Repeat a few times a day for swelling'}],
+ 'wide-fold':['Sitting with legs wide, you reach forward while your partner, sitting opposite, holds your forearms and gently draws you closer.',{hold:'At least 30 s',reps:'2–3 times, rest 15 s between',sides:'Centre',total:'About 2 min'}],
+ 'side-bend-floor':['Sitting cross-legged, one hand goes to the floor, the other arm reaches up and over, and you lean to that side.',{hold:'15–20 s (3 breaths)',reps:'2 times per side',sides:'Right, then left',total:'About 1½ min'}],
+ 'butterfly':['Sitting with the soles together and knees falling outward, flutter the knees, then sit still and let them sink. Your partner can press very lightly on the knees.',{hold:'Flutter 30 s, then hold still 30–60 s',reps:'2 times',sides:'Both together',total:'About 2–3 min'}],
+ 'childs-pose':['Kneel with knees wide and fold forward so your chest and cheek rest on a bolster. A resting position.',{hold:'1–3 min',reps:'1–2 times. Turn the head halfway',sides:'n/a',total:'2–5 min. In labour: between contractions'}],
+ 'knee-chest':['On your knees and forearms with hips higher than chest, belly hanging, while your partner presses both palms on your sacrum.',{hold:'Start with 30 s, build up to 1–2 min',reps:'1–3 times, sit up slowly between',sides:'n/a',total:'Up to about 5 min. Partner presses on each exhale or contraction'}],
+ 'rebozo':['Lying on your back with knees bent, a scarf under the hips. Your partner holds both ends and jiggles it gently side to side so your hips relax.',{hold:'1–3 min of gentle sifting',reps:'2–3 rounds, rest 1 min on your side between',sides:'n/a',total:'5–10 min'}],
+ 'side-lying-release':['Lying on your side at the edge of the bed, you let the top leg slide off and hang while your partner steadies your hip and shoulder.',{hold:'3 deep breaths (about 30–45 s)',reps:'1 round per side (up to 3 in labour)',sides:'Always do both sides',total:'About 3 min'}],
+ 'peanut-ball':['Side-lying with a peanut ball between the knees, pelvis forward, top knee lifted and toes turned in to open the pelvis.',{hold:'Practice: 5–10 min. Labour: 30–60 min per side',reps:'Switch sides each time',sides:'Left and right',total:'As advised by your midwife'}],
+ 'legs-on-ball':['Lying back with the calves on a large ball. Your partner holds it steady like a bridge and rolls it slowly toward you and back.',{hold:'No hold: 10 slow rolls (about 1 min)',reps:'2 rounds',sides:'n/a',total:'1–2 min. Prop up on pillows if you feel faint'}],
+};
+EX.forEach(e=>{const r=INFO[e.id];e.desc=r[0];e.tm=r[1]});
+const TML=[['hold','Hold'],['reps','Repeat'],['sides','Sides'],['total','Total']];
+const timingHTML=tm=>`<dl class="tm">${TML.map(([k,l])=>`<div><dt>${l}</dt><dd>${tm[k]}</dd></div>`).join('')}</dl>`;
+
+/* ---------- player ---------- */
+const lerp=(a,b,e)=>{
+  if(typeof b==='number')return typeof a==='number'?a+(b-a)*e:b;
+  if(Array.isArray(b))return b.map((v,i)=>lerp(a&&a[i],v,e));
+  if(b&&typeof b==='object'){const o={};for(const k in b)o[k]=lerp(a?a[k]:undefined,b[k],e);return o}
+  return b};
+const ease=e=>e<.5?2*e*e:1-Math.pow(-2*e+2,2)/2;
+EX.forEach(ex=>{ex.frames.forEach(fr=>{[fr.m,fr.q].forEach(P=>{if(P&&P.h==null)P.h=P.t})});
+  ex.total=ex.frames.reduce((s,f)=>s+f.d+f.hold,0);
+  ex.cues=[];ex.frames.forEach((f,i)=>{if(f.cap)ex.cues.push({i,cap:f.cap})});
+  ex.hasPt=ex.frames.some(f=>f.q)});
+function sample(ex,t){
+  const fr=ex.frames,n=fr.length;t=((t%ex.total)+ex.total)%ex.total;let acc=0;
+  for(let i=0;i<n;i++){const f=fr[i],prev=fr[(i-1+n)%n];
+    if(t<acc+f.d){const e=ease((t-acc)/f.d);return{m:lerp(prev.m,f.m,e),q:f.q?lerp(prev.q||f.q,f.q,e):null,p:f.p?lerp(prev.p||f.p,f.p,e):{},i}}
+    acc+=f.d;if(t<acc+f.hold)return{m:f.m,q:f.q,p:f.p||{},i};acc+=f.hold}
+  const f=fr[n-1];return{m:f.m,q:f.q,p:f.p||{},i:n-1};
+}
+function scene(ex,s){
+  const order=ex.order||['P','q','m','F'];let o='';
+  for(const k of order){
+    if(k==='P')o+=ex.props_(s.p);
+    else if(k==='m')o+=fig(s.m,'m');
+    else if(k==='q')o+=fig(s.q,'q');
+    else if(k==='F'&&ex.front)o+=ex.front(s.p);
+  }
+  if(!order.includes('F')&&ex.front)o+=ex.front(s.p);
+  return o;
+}
+const SVGNS='http://www.w3.org/2000/svg';
+function makeSvg(){const s=document.createElementNS(SVGNS,'svg');s.setAttribute('viewBox',`0 0 ${W} ${H}`);s.setAttribute('aria-hidden','true');return s}
+function capIndex(ex,i){let c=0;for(let k=0;k<ex.cues.length;k++)if(ex.cues[k].i<=i)c=k;return c}
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const thumbs=new Map();
+let last=performance.now();
+function loop(now){
+  const dt=Math.min(.1,(now-last)/1000);last=now;
+  thumbs.forEach(th=>{if(!th.vis)return;th.t+=dt;th.acc+=dt;if(th.acc<1/24)return;th.acc=0;th.svg.innerHTML=scene(th.ex,sample(th.ex,th.t))});
+  if(detail.ex&&detail.playing){detail.t+=dt*detail.speed;drawDetail()}
+  requestAnimationFrame(loop);
+}
+
+/* ---------- list UI ---------- */
+const state={cat:'all',partner:false,labour:false};
+try{const s=JSON.parse(localStorage.getItem('bloom-filters')||'null');if(s)Object.assign(state,s)}catch(e){}
+const chipsEl=document.getElementById('chips'),listEl=document.getElementById('list');
+function save(){try{localStorage.setItem('bloom-filters',JSON.stringify(state))}catch(e){}}
+function visible(ex){return(!state.partner||ex.partner)&&(!state.labour||ex.labour)}
+function renderChips(){
+  const opts=[{id:'all',name:'All'},...CATS.map(c=>({id:c.id,name:c.name.replace(' on a chair','').replace(' & wall','')}))];
+  chipsEl.innerHTML=opts.map(o=>{const n=EX.filter(e=>(o.id==='all'||e.cat===o.id)&&visible(e)).length;
+    return`<button class="chip" data-cat="${o.id}" aria-pressed="${state.cat===o.id}">${o.name}<span class="n">${n}</span></button>`}).join('');
+  document.getElementById('tPartner').setAttribute('aria-pressed',state.partner);
+  document.getElementById('tLabour').setAttribute('aria-pressed',state.labour);
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{const th=thumbs.get(e.target);if(th)th.vis=e.isIntersecting&&!reduce}),{rootMargin:'80px'});
+function renderList(){
+  thumbs.forEach((th,el)=>io.unobserve(el));thumbs.clear();listEl.innerHTML='';let any=false;
+  CATS.forEach(c=>{
+    if(state.cat!=='all'&&state.cat!==c.id)return;
+    const items=EX.filter(e=>e.cat===c.id&&visible(e));if(!items.length)return;any=true;
+    const sec=document.createElement('section');
+    sec.innerHTML=`<div class="section-h"><h2>${c.name}</h2><p>${c.blurb}</p></div><div class="grid"></div>`;
+    const grid=sec.querySelector('.grid');
+    items.forEach(ex=>{
+      const b=document.createElement('button');b.className='card';b.dataset.id=ex.id;
+      const tags=[ex.partner?'<span class="tag pt">With partner</span>':'',ex.labour?'<span class="tag lab">Labour</span>':'',...ex.props.map(p=>`<span class="tag">${p}</span>`)].join('');
+      b.innerHTML=`<div class="stg"></div><div class="txt"><h3>${ex.name}</h3><div class="tags">${tags}</div><p class="desc">${ex.desc}</p>${timingHTML(ex.tm)}<span class="more">Watch with cues →</span></div>`;
+      const svg=makeSvg();b.querySelector('.stg').appendChild(svg);
+      const key=ex.frames[Math.min(2,ex.frames.length-1)];const t0=ex.frames.slice(0,Math.min(3,ex.frames.length)).reduce((s,f)=>s+f.d+f.hold,0)-key.hold/2;
+      svg.innerHTML=scene(ex,sample(ex,t0));
+      const th={ex,svg,t:t0,acc:0,vis:false};thumbs.set(b,th);io.observe(b);
+      b.addEventListener('click',()=>openDetail(ex.id));
+      grid.appendChild(b)});
+    listEl.appendChild(sec)});
+  if(!any)listEl.innerHTML='<p class="empty">Nothing matches these filters. Turn a filter off to see more.</p>';
+}
+chipsEl.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;state.cat=b.dataset.cat;save();renderChips();renderList()});
+document.getElementById('tPartner').onclick=()=>{state.partner=!state.partner;save();renderChips();renderList()};
+document.getElementById('tLabour').onclick=()=>{state.labour=!state.labour;save();renderChips();renderList()};
+
+/* ---------- detail ---------- */
+const dlg=document.getElementById('dlg'),$=id=>document.getElementById(id);
+const detail={ex:null,t:0,playing:!reduce,speed:1,svg:makeSvg(),lastCue:-1};
+$('dStage').appendChild(detail.svg);
+function drawDetail(){
+  const ex=detail.ex,s=sample(ex,detail.t);detail.svg.innerHTML=scene(ex,s);
+  const tt=((detail.t%ex.total)+ex.total)%ex.total;$('dProg').style.width=(tt/ex.total*100).toFixed(1)+'%';
+  const ci=capIndex(ex,s.i);
+  if(ci!==detail.lastCue){detail.lastCue=ci;$('dCap').textContent=ex.cues[ci].cap;$('dStepN').textContent=`${ci+1}/${ex.cues.length}`;
+    [...$('dCues').children].forEach((li,k)=>li.classList.toggle('on',k===ci))}
+}
+function currentList(){return EX.filter(visible).filter(e=>state.cat==='all'||e.cat===state.cat)}
+function openDetail(id){
+  const ex=EX.find(e=>e.id===id);detail.ex=ex;detail.t=0;detail.lastCue=-1;
+  $('dTitle').textContent=ex.name;
+  const cat=CATS.find(c=>c.id===ex.cat).name;
+  $('dFacts').innerHTML=`<p class="desc big">${ex.desc}</p>`+timingHTML(ex.tm)+`<div class="sub">${[['Props',ex.props.length?ex.props.join(', '):'None'],['Who',ex.partner?'Mum + partner':'Mum'],['Section',cat]].map(([a,b])=>`<span><b>${a}:</b> ${b}</span>`).join('')}</div>`;
+  $('dCues').innerHTML=ex.cues.map(c=>`<li>${c.cap}</li>`).join('');
+  $('dSteps').innerHTML=ex.steps.map(s=>`<li>${s}</li>`).join('');
+  $('dPtWrap').hidden=!(ex.pt&&ex.pt.length);$('dPt').innerHTML=(ex.pt||[]).map(s=>`<li>${s}</li>`).join('');
+  $('dWhy').innerHTML=`<strong>Why it helps.</strong> ${ex.why}`;
+  $('dCare').innerHTML=`<strong>Take care.</strong> ${ex.care}`;
+  $('dSrc').textContent=`Redrawn from your class clip ${ex.clip}.`;
+  $('dLegPt').hidden=!ex.hasPt;
+  $('dPlay').textContent=detail.playing?'Pause':'Play';
+  drawDetail();
+  if(!dlg.open)dlg.showModal();
+  try{history.replaceState(null,'','#'+ex.id)}catch(e){}
+}
+$('dClose').onclick=()=>dlg.close();
+dlg.addEventListener('close',()=>{detail.ex=null;try{history.replaceState(null,'',' ')}catch(e){}});
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+$('dPlay').onclick=()=>{detail.playing=!detail.playing;$('dPlay').textContent=detail.playing?'Pause':'Play'};
+$('dRestart').onclick=()=>{detail.t=0;detail.lastCue=-1;drawDetail()};
+const speeds=[1,.5,1.5];let si=0;
+$('dSpeed').onclick=()=>{si=(si+1)%speeds.length;detail.speed=speeds[si];$('dSpeed').textContent=`Speed ${speeds[si]}×`};
+function step(dir){const L=currentList();const i=L.findIndex(e=>e.id===detail.ex.id);const nx=L[(i+dir+L.length)%L.length];if(nx)openDetail(nx.id)}
+$('dPrev').onclick=()=>step(-1);$('dNext').onclick=()=>step(1);
+dlg.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);else if(e.key==='ArrowLeft')step(-1);else if(e.key===' '&&e.target.tagName!=='BUTTON'){e.preventDefault();$('dPlay').click()}});
+
+renderChips();renderList();requestAnimationFrame(loop);
+const h=location.hash.slice(1);if(h&&EX.find(e=>e.id===h))openDetail(h);
+</script>
+
+</body>
+</html>

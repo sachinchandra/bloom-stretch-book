@@ -1513,6 +1513,7 @@ window.bloomApply=(st)=>{if(st.baby){['dob','done','ec','shop'].forEach(k=>{if(s
   try{localStorage.setItem('bloom-mom',JSON.stringify(mstate));localStorage.setItem('bloom-baby',JSON.stringify({dob:bstate.dob,done:bstate.done,ec:bstate.ec,sub:bstate.sub,shop:bstate.shop,shopMust:bstate.shopMust,shopHide:bstate.shopHide}))}catch(e){}window.bloomRerender()};
 </script>
 
+<footer style="max-width:1180px;margin:0 auto;padding:0 20px 40px;font-size:.85rem;color:var(--muted)"><a href="/privacy.html" style="color:inherit">Privacy</a> · <a href="/terms.html" style="color:inherit">Terms</a></footer>
 <script src="/config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="/auth.js"></script>

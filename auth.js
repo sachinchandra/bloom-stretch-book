@@ -6,7 +6,7 @@
 .acct .av{width:26px;height:26px;border-radius:50%;background:var(--plum);color:var(--surface);display:grid;place-items:center;font-family:var(--display);font-size:.85rem}
 .acct .st{font-weight:400;color:var(--muted);font-size:.78rem}
 .appnav-in{flex-wrap:wrap}
-dialog.auth{max-width:420px;width:calc(100vw - 32px);padding:26px 24px;border-radius:18px;height:auto;max-height:calc(100dvh - 32px)}
+dialog.auth{max-width:420px!important;width:calc(100vw - 32px)!important;padding:26px 24px;border-radius:18px!important;height:auto!important;max-height:calc(100dvh - 32px)!important;margin:auto!important}
 .auth h2{font-size:1.5rem;margin:0 0 6px}.auth p{margin:0 0 14px;color:var(--muted);font-size:.93rem}
 .auth label{display:block;font-weight:700;font-size:.85rem;margin-bottom:6px}
 .auth input{width:100%;font:inherit;padding:11px 12px;border:1px solid var(--line-strong);border-radius:10px;background:var(--bg);color:var(--ink);margin-bottom:10px}

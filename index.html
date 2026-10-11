@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Prenatal stretches and labour positions, redrawn as animated figures with hold times, cues and partner steps.">
+<meta name="description" content="Pregnancy stretches and baby care: milestones, warning signs and the Indian vaccine schedule.">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<title>Bloom Stretch Book</title>
+<title>Bloom Parent Book</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
@@ -19,6 +19,7 @@
   --mom:#8A2D6B; --mom2:#CC93B9; --belly:#A8468A; --pt:#2C5D72; --pt2:#93B6C5;
   --prop:#D5DEDA; --prop2:#A2B3AD; --ball:#5B7C93; --mat:#3AA39C; --wall:#E5EBE8; --gnd:#E9EEEB; --bed:#E7B9B0; --cush:#7FB9C9;
   --stage:#F8FAF9;
+  --crit:#B42A23; --crit-bg:#FBECEA; --warn:#A8620A; --warn-bg:#FBF1E2; --ok:#2E7D4F;
   --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
   --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
   --r:14px;
@@ -28,13 +29,13 @@
   --plum:#E48CC3; --plum-soft:#C66AA6; --teal:#5CC2BA; --teal-soft:#183331; --plum-tint:#2D1D28;
   --mom:#E07DBA; --mom2:#7A4468; --belly:#EFA0D0; --pt:#86BCD3; --pt2:#3E6070;
   --prop:#33393A; --prop2:#56615F; --ball:#6F93AB; --mat:#2F8F89; --wall:#202426; --gnd:#1A1D1E; --bed:#7A4B46; --cush:#3F7F90;
-  --stage:#18171B; color-scheme:dark }}
+  --stage:#18171B; --crit:#FF8A80; --crit-bg:#3A1A18; --warn:#F2B35E; --warn-bg:#33261A; --ok:#6BCB8F; color-scheme:dark }}
 :root[data-theme="dark"]{
   --bg:#141317; --surface:#1D1B21; --ink:#EEEAF1; --muted:#A6A2AE; --line:#2E2B34; --line-strong:#4A4652;
   --plum:#E48CC3; --plum-soft:#C66AA6; --teal:#5CC2BA; --teal-soft:#183331; --plum-tint:#2D1D28;
   --mom:#E07DBA; --mom2:#7A4468; --belly:#EFA0D0; --pt:#86BCD3; --pt2:#3E6070;
   --prop:#33393A; --prop2:#56615F; --ball:#6F93AB; --mat:#2F8F89; --wall:#202426; --gnd:#1A1D1E; --bed:#7A4B46; --cush:#3F7F90;
-  --stage:#18171B; color-scheme:dark }
+  --stage:#18171B; --crit:#FF8A80; --crit-bg:#3A1A18; --warn:#F2B35E; --warn-bg:#33261A; --ok:#6BCB8F; color-scheme:dark }
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
@@ -86,6 +87,84 @@ h1 em{font-style:normal;color:var(--plum)}
 .sub{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:10px;font-size:.86rem;color:var(--muted)}
 .sub b{color:var(--ink)}
 #dFacts{display:block}
+
+/* app nav */
+.appnav{border-bottom:1px solid var(--line);background:var(--surface)}
+.appnav-in{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-family:var(--display);font-weight:800;font-size:1.3rem;color:var(--plum);text-decoration:none;letter-spacing:-.02em}
+.seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:3px;gap:3px}
+.seg button{border:0;background:transparent;border-radius:9px;padding:7px 14px;cursor:pointer;font-weight:700;font-size:.92rem;color:var(--muted)}
+.seg button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+/* baby care */
+.sos{background:var(--crit-bg);color:var(--crit);border-radius:12px;padding:10px 14px;font-size:.92rem;margin-bottom:18px}
+.sos .num{font-family:var(--display);font-weight:800;font-size:1.05rem;user-select:all}
+.dobbox{background:var(--teal-soft);border-radius:var(--r);padding:16px 18px;display:flex;flex-direction:column;gap:8px;font-size:.92rem}
+.dobbox input{font:inherit;padding:8px 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);color:var(--ink);max-width:220px}
+.dobbox p{margin:0;color:var(--muted)}
+.dobbox p b{color:var(--ink);font-family:var(--display);font-size:1.1rem}
+.chip.warn{border-color:var(--crit);color:var(--crit)}
+.chip.warn[aria-pressed="true"]{background:var(--crit);border-color:var(--crit);color:var(--surface)}
+.panel{display:flex;flex-direction:column;gap:18px;padding-top:6px}
+.foot{color:var(--muted);font-size:.82rem;margin-top:34px;max-width:80ch}
+.agechips{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.agechips button{flex:none;border:1px solid var(--line-strong);background:var(--surface);border-radius:10px;padding:8px 12px;cursor:pointer;font-size:.9rem;display:flex;flex-direction:column;align-items:flex-start;line-height:1.2}
+.agechips button small{font-size:.7rem;color:var(--muted)}
+.agechips button[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--surface)}
+.agechips button[aria-pressed="true"] small{color:inherit;opacity:.8}
+.agechips button.now{box-shadow:inset 0 -3px 0 var(--teal)}
+.ms-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.ms-head h2{font-size:1.6rem;font-weight:800}
+.ms-head p{margin:0;color:var(--muted)}
+.ms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.ms{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;min-width:0}
+.ms h3{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.ms h3 i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.ms ul,.tip ul,.tier ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:.93rem}
+.ms.flag{background:var(--warn-bg);border-color:transparent;grid-column:1/-1}
+.ms.flag ul{display:block;columns:3 220px;column-gap:28px}.ms.flag li{margin-bottom:5px;break-inside:avoid}
+[hidden]{display:none!important}
+.ms.flag h3{color:var(--warn)}
+.growth{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.growth div{background:var(--surface);padding:10px 14px}
+.growth b{display:block;font-family:var(--display);font-size:1.05rem}
+.growth span{font-size:.84rem;color:var(--muted)}
+.tips{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.tip{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;min-width:0}
+.tip h3{font-size:1.08rem;margin-bottom:8px}
+.tip .watch{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line-strong);font-size:.88rem;color:var(--warn)}
+.tier{border-radius:var(--r);padding:16px 18px;border:1px solid var(--line);background:var(--surface)}
+.tier header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.tier header h2{font-size:1.25rem}
+.tier header span{font-size:.85rem;color:var(--muted)}
+.pill{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+.tier.t1{border:2px solid var(--crit);background:var(--crit-bg)} .t1 .pill{background:var(--crit);color:var(--surface)}
+.tier.t2{border-color:var(--warn)} .t2 .pill{background:var(--warn);color:var(--surface)}
+.t3 .pill{background:var(--ok);color:var(--surface)}
+.tier ul{columns:2 280px;column-gap:28px;display:block}
+.tier li{break-inside:avoid;margin-bottom:6px}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.ecard label{display:flex;flex-direction:column;gap:3px;font-size:.8rem;color:var(--muted);margin-bottom:8px}
+.ecard input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line-strong);border-radius:8px;padding:7px 9px}
+.vx-key{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.86rem;color:var(--muted);align-items:center}
+.vx{display:flex;flex-direction:column;gap:10px}
+.vrow{display:grid;grid-template-columns:150px minmax(0,1fr) 150px;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.vrow.next{border:2px solid var(--teal)}
+.vrow.done{opacity:.62}
+.vage b{font-family:var(--display);font-size:1.12rem;display:block}
+.vage span{font-size:.82rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.vlist{display:flex;flex-wrap:wrap;gap:6px}
+.vac{border:1px solid var(--line-strong);border-radius:8px;padding:4px 9px;font-size:.88rem;background:var(--bg)}
+.vac.uip{border-color:var(--ok)}
+.vac.uip::after{content:" ● free";color:var(--ok);font-size:.7rem;font-weight:700}
+.vnote{font-size:.84rem;color:var(--muted);margin:8px 0 0}
+.vstat{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.vstat .st{font-size:.75rem;font-weight:700;border-radius:999px;padding:3px 10px;background:var(--bg);color:var(--muted)}
+.st.due{background:var(--teal);color:var(--surface)} .st.over{background:var(--warn);color:var(--surface)} .st.ok{background:var(--ok);color:var(--surface)}
+.vstat label{font-size:.85rem;display:flex;gap:6px;align-items:center;cursor:pointer}
+.vstat input{width:18px;height:18px;accent-color:var(--ok)}
+.optv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+@media (max-width:640px){ .vrow{grid-template-columns:1fr} .vstat{flex-direction:row;align-items:center;justify-content:space-between;text-align:left} .seg button{padding:7px 10px} }
 .empty{color:var(--muted);padding:30px 0}
 
 /* detail dialog */
@@ -143,11 +222,21 @@ svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
 @media (prefers-reduced-motion:reduce){ .card{transition:none} }
 </style>
 
-<div class="wrap">
+<nav class="appnav" aria-label="Sections">
+  <div class="appnav-in">
+    <a class="brand" href="#mom">Bloom</a>
+    <div class="seg" role="tablist">
+      <button role="tab" id="navMom" data-view="mom">Mom care</button>
+      <button role="tab" id="navBaby" data-view="baby">Baby care</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="view-mom">
   <header class="top">
     <div>
-      <div class="eyebrow">Second trimester → labour day</div>
-      <h1>Bloom <em>Stretch</em> Book</h1>
+      <div class="eyebrow">Mom care · second trimester → labour day</div>
+      <h1>Pregnancy <em>stretches</em></h1>
       <p class="lede">The stretches and labour positions from your prenatal class, redrawn as moving figures. Tap any card to watch it slowly with the instructor's cues, the technique, and what the partner does.</p>
     </div>
     <aside class="care">
@@ -170,6 +259,35 @@ svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
   </div>
 
   <main id="list"></main>
+</div>
+
+<div class="wrap" id="view-baby" hidden>
+  <div class="sos" role="note"><b>Emergency?</b> Call <span class="num">112</span> (all emergencies) or <span class="num">108</span> (ambulance). Go to the nearest hospital with a paediatric emergency.</div>
+  <header class="top">
+    <div>
+      <div class="eyebrow">Baby care · birth to 3 years</div>
+      <h1>Baby <em>care</em></h1>
+      <p class="lede">Milestones to look forward to, everyday things to keep an eye on, the signs that need a doctor now, and the vaccine schedule most Indian paediatricians follow.</p>
+    </div>
+    <aside class="dobbox">
+      <label for="dob"><strong>Baby's date of birth</strong></label>
+      <input type="date" id="dob">
+      <p id="ageLine">Add it to see your baby's age, the milestones for that age, and vaccine due dates. Saved only in this browser.</p>
+    </aside>
+  </header>
+  <div class="bar subbar" role="tablist" aria-label="Baby care topics">
+    <div class="chips" id="babyTabs">
+      <button class="chip" data-sub="milestones">Milestones</button>
+      <button class="chip" data-sub="notice">Things to notice</button>
+      <button class="chip warn" data-sub="emergency">Emergency signs</button>
+      <button class="chip" data-sub="vaccines">Vaccines</button>
+    </div>
+  </div>
+  <section id="p-milestones" class="panel"></section>
+  <section id="p-notice" class="panel" hidden></section>
+  <section id="p-emergency" class="panel" hidden></section>
+  <section id="p-vaccines" class="panel" hidden></section>
+  <p class="foot">General guidance for healthy, full-term babies, based on IAP (Indian Academy of Pediatrics) recommendations, India's National Immunization Schedule, WHO/IMNCI danger signs and CDC developmental milestones. It does not replace your paediatrician. For babies born early, use corrected age.</p>
 </div>
 
 <dialog id="dlg" aria-labelledby="dTitle">
@@ -806,7 +924,7 @@ function openDetail(id){
   try{history.replaceState(null,'','#'+ex.id)}catch(e){}
 }
 $('dClose').onclick=()=>dlg.close();
-dlg.addEventListener('close',()=>{detail.ex=null;try{history.replaceState(null,'',' ')}catch(e){}});
+dlg.addEventListener('close',()=>{detail.ex=null;try{history.replaceState(null,'','#mom')}catch(e){}});
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
 $('dPlay').onclick=()=>{detail.playing=!detail.playing;$('dPlay').textContent=detail.playing?'Pause':'Play'};
 $('dRestart').onclick=()=>{detail.t=0;detail.lastCue=-1;drawDetail()};
@@ -817,7 +935,261 @@ $('dPrev').onclick=()=>step(-1);$('dNext').onclick=()=>step(1);
 dlg.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);else if(e.key==='ArrowLeft')step(-1);else if(e.key===' '&&e.target.tagName!=='BUTTON'){e.preventDefault();$('dPlay').click()}});
 
 renderChips();renderList();requestAnimationFrame(loop);
-const h=location.hash.slice(1);if(h&&EX.find(e=>e.id===h))openDetail(h);
+</script>
+
+<script>
+/* ================= BABY CARE ================= */
+const DOMAINS=[['social','Social & emotional','var(--plum)'],['lang','Language & communication','var(--teal)'],['cog','Thinking & learning','var(--ball)'],['move','Movement & physical','var(--warn)']];
+const MS=[
+ {id:'nb',label:'Newborn',sub:'0–1 month',m:0,
+  social:['Looks at faces for a few seconds','Calms when held, rocked or spoken to softly'],
+  lang:['Cries to say hungry, wet or uncomfortable','Startles or blinks at loud sounds'],
+  cog:['Focuses best on things 20–30 cm away, about the distance to your face while feeding','Prefers faces and high-contrast black-and-white patterns'],
+  move:['Strong reflexes: rooting (turns to a touch on the cheek), sucking, gripping your finger, startle (arms fling out)','Lifts the head briefly and turns it side to side on the tummy'],
+  flags:['Feeds poorly or is too sleepy to feed','Does not react to loud sounds','Arms and legs are very stiff or very floppy','Jaundice that is spreading or lasts beyond 2 weeks']},
+ {id:'m2',label:'2 months',sub:'8 weeks',m:2,
+  social:['Calms down when spoken to or picked up','Looks at your face','Seems happy to see you','Smiles back when you talk or smile (the social smile)'],
+  lang:['Makes sounds other than crying, like cooing','Reacts to loud sounds'],
+  cog:['Watches you as you move','Looks at a toy for several seconds'],
+  move:['Holds the head up briefly during tummy time','Moves both arms and both legs','Opens the hands briefly'],
+  flags:['No reaction to loud sounds','Does not watch things as they move','Does not smile at people','Cannot lift the head at all during tummy time']},
+ {id:'m4',label:'4 months',sub:'16 weeks',m:4,
+  social:['Smiles on their own to get your attention','Chuckles when you try to make them laugh','Moves or makes sounds to keep your attention'],
+  lang:['Coos: "oooo", "aahh"','Makes sounds back when you talk','Turns the head toward your voice'],
+  cog:['Opens the mouth when hungry and sees the breast or bottle','Looks at their own hands with interest'],
+  move:['Holds the head steady without support when held','Holds a toy you put in the hand','Swings an arm at toys','Brings hands to the mouth','Pushes up onto elbows or forearms on the tummy'],
+  flags:['Head still wobbly when held upright','Does not bring things to the mouth','Does not push down with the legs when feet touch a hard surface','One eye constantly turns in or out','Does not coo or make sounds']},
+ {id:'m6',label:'6 months',sub:'half a year',m:6,
+  social:['Knows familiar people','Likes looking at themselves in a mirror','Laughs'],
+  lang:['Takes turns making sounds with you','Blows "raspberries"','Squeals'],
+  cog:['Puts things in the mouth to explore them','Reaches to grab a toy they want','Closes the lips to show they don\'t want more food'],
+  move:['Rolls from tummy to back','Pushes up with straight arms on the tummy','Leans on the hands to support themselves when sitting'],
+  flags:['Does not try to reach things','Shows no affection for caregivers','Does not respond to sounds around them','Cannot roll over in either direction','Does not laugh or make squealing sounds','Seems very stiff or very floppy']},
+ {id:'m9',label:'9 months',sub:'',m:9,
+  social:['Shy, clingy or fearful around strangers','Shows several facial expressions: happy, sad, angry, surprised','Looks when you call their name','Reacts when you leave (looks, reaches or cries)','Smiles or laughs at peek-a-boo'],
+  lang:['Babbles "mamamama", "bababababa"','Lifts arms up to be picked up'],
+  cog:['Looks for objects when dropped out of sight','Bangs two things together'],
+  move:['Gets into a sitting position alone','Sits without support','Moves things from one hand to the other','Uses fingers to rake food toward themselves'],
+  flags:['Does not bear weight on the legs with support','Does not sit with help','Does not babble','Does not respond to their own name','Does not look where you point','Does not pass toys from one hand to the other']},
+ {id:'m12',label:'12 months',sub:'1 year',m:12,
+  social:['Plays games with you like pat-a-cake'],
+  lang:['Waves bye-bye','Calls a parent "mama", "dada" or another special name','Understands "no" (pauses or stops)'],
+  cog:['Puts something into a container, like a block in a cup','Looks for things they saw you hide'],
+  move:['Pulls up to stand','Walks holding on to furniture (cruising)','Drinks from an open cup you hold','Picks up small things between thumb and pointer finger (pincer grasp)'],
+  flags:['Does not crawl or move around at all','Cannot stand when supported','Does not search for things they see you hide','Says no single words','Does not use gestures like waving or shaking the head','Does not point to things']},
+ {id:'m15',label:'15 months',sub:'',m:15,
+  social:['Copies other children while playing','Shows you an object they like','Claps when excited','Hugs a doll or soft toy','Shows affection: hugs, cuddles, kisses'],
+  lang:['Tries to say one or two words besides mama/dada','Looks at a familiar object when you name it','Follows directions given with a gesture and words','Points to ask for something or for help'],
+  cog:['Tries to use things the right way: phone, cup, book','Stacks at least two small objects'],
+  move:['Takes a few steps alone','Feeds themselves some food with fingers'],
+  flags:['Is not trying to take steps','Has no words at all','Does not point to show things','Does not respond when you name a familiar object']},
+ {id:'m18',label:'18 months',sub:'1½ years',m:18,
+  social:['Moves away from you but checks you are close','Points to show you something interesting','Puts hands out to have them washed','Looks at a few pages of a book with you','Helps dress themselves by pushing an arm through a sleeve'],
+  lang:['Tries to say three or more words besides mama/dada','Follows one-step directions without gestures, like "give it to me"'],
+  cog:['Copies you doing chores, like sweeping','Plays with toys simply, like pushing a toy car'],
+  move:['Walks without holding on','Scribbles','Drinks from an open cup (may spill)','Tries to use a spoon','Climbs on and off a sofa or chair without help'],
+  flags:['Cannot walk','Has fewer than 6 words','Does not point to show you things','Does not know what familiar things are for','Does not copy others','Does not notice or mind when a caregiver leaves or returns']},
+ {id:'y2',label:'2 years',sub:'24 months',m:24,
+  social:['Notices when others are hurt or upset','Looks at your face to see how to react in a new situation'],
+  lang:['Points to things in a book when you ask','Says at least two words together, like "more milk"','Points to at least two body parts','Uses gestures like blowing a kiss or nodding yes'],
+  cog:['Holds something in one hand while using the other','Tries switches, knobs or buttons on a toy','Plays with more than one toy at the same time'],
+  move:['Kicks a ball','Runs','Walks up a few stairs with or without help','Eats with a spoon'],
+  flags:['Does not use two-word phrases','Does not know what to do with common things (brush, phone, spoon)','Does not copy actions or words','Does not follow simple instructions','Does not walk steadily']},
+ {id:'y3',label:'3 years',sub:'36 months',m:36,
+  social:['Calms down within 10 minutes after you leave, e.g. at day care','Notices other children and joins them to play'],
+  lang:['Has back-and-forth conversations of at least two exchanges','Asks who, what, where or why questions','Says what is happening in a picture','Says their first name when asked','Is understood by others most of the time'],
+  cog:['Draws a circle after you show how','Avoids touching hot objects when warned'],
+  move:['Strings large beads or pasta','Puts on some clothes alone, like loose pants or a jacket','Uses a spoon and fork'],
+  flags:['Falls down a lot or has trouble with stairs','Speech is very unclear or they drool a lot','Does not speak in sentences','Does not understand simple instructions','Does not play pretend or with other children','Does not make eye contact']},
+];
+const GROWTH=[['Week 1','Up to 7–10% weight loss is normal'],['Day 10–14','Back to birth weight'],['0–3 months','Gains about 150–200 g a week'],['4–5 months','About double the birth weight'],['12 months','About triple the birth weight; length up by about 50%'],['6–10 months','First tooth usually appears'],['12–18 months','Soft spot on the head closes']];
+
+const TIPS=[
+ {h:'Feeding',l:['Breast milk only for the first 6 months: no water, honey, gripe water, ghutti or janam ghutti.','Newborns feed 8–12 times in 24 hours, roughly every 2–3 hours, including at night.','Hunger cues: turning to the breast (rooting), hands to the mouth, lip smacking. Crying is a late cue.','Burp halfway through and after each feed. Small spit-ups after feeds are normal.','From 6 months, start solids: mashed dal-rice, khichdi, ragi, mashed fruit and vegetables. One new food every 3–4 days, no salt or sugar before 1 year.','No honey before 1 year. No cow\'s milk as the main drink before 1 year.'],w:'Fewer than 6 wet nappies a day after day 5, or weight not regained by 2 weeks: see the doctor.'},
+ {h:'Nappies & poop',l:['Days 1–2: black, sticky meconium.','Days 3–5: changes to greenish.','Then breastfed poop is mustard-yellow, soft and seedy. Formula poop is firmer and tan.','At least 6 wet nappies a day from day 5 means baby is getting enough milk.','After 6 weeks, a breastfed baby may poop after every feed or only once in several days. Both are fine if it stays soft.'],w:'White, chalky or very pale poop, black poop after day 4, blood in poop, or hard pellets.'},
+ {h:'Skin & body: normal things',l:['Milia (tiny white spots on the nose), baby acne and peeling skin settle without creams.','Mongolian spots: blue-grey patches on the lower back or bottom. Very common in Indian babies. They are not bruises and fade over years.','Swollen breasts, sometimes with a drop of milk, in boys and girls. In girls, a little white discharge or spotting in the first week. Both come from the mother\'s hormones.','The soft spot (fontanelle) on top of the head may pulse. It is safe to touch gently while washing hair.','Sneezing, hiccups, noisy breathing in sleep, crossed eyes now and then, and the startle reflex are all normal.'],w:'Rash with fever, blisters, or skin that looks grey, blue or mottled.'},
+ {h:'Jaundice',l:['Yellow skin and eyes on days 2–5 are common, especially in breastfed babies.','Check in daylight: press a fingertip on the forehead or chest and see if the skin looks yellow as it blanches.','Feed often. Frequent feeds help clear jaundice.','Sunlight through a window is not a reliable treatment. Follow the doctor\'s bilirubin test advice.'],w:'Yellow in the first 24 hours, yellow reaching the palms or soles, a very sleepy baby, or jaundice beyond 2 weeks.'},
+ {h:'Umbilical cord',l:['Keep the stump clean and dry. Fold the nappy below it.','Do not apply oil, powder, ash, turmeric or ointments unless the doctor advises.','Sponge baths until it falls off, usually in 7–14 days.','A drop of blood when it falls off is normal.'],w:'Redness spreading onto the tummy, pus, a bad smell, or bleeding that continues.'},
+ {h:'Sleep',l:['Newborns sleep 14–17 hours a day in short stretches. Long night sleep comes gradually.','Always put baby to sleep on the back, on a firm flat surface.','Keep pillows, bolsters, soft toys, loose blankets and bumpers away from the face.','Room-share in the early months. Avoid bed-sharing if anyone smokes, has had alcohol or sedating medicine, or is very tired.','Swaddle with room for the hips: legs should bend up and out. Stop swaddling once baby starts trying to roll.'],w:'Long pauses in breathing, or blue colour during sleep: emergency.'},
+ {h:'Crying & settling',l:['Crying often peaks around 6–8 weeks, usually in the evening, and eases by 3–4 months.','Go through a checklist: hunger, burp, nappy, too hot or cold, tired, wants to be held.','Try skin-to-skin, swaddling, gentle rocking, a "shh" sound or white noise, or a walk.','If you feel overwhelmed, put baby down safely in the cot and step away for a few minutes. Never shake a baby.'],w:'High-pitched, weak or non-stop crying for more than 2–3 hours, or crying with fever or poor feeding.'},
+ {h:'Temperature',l:['Normal: 36.5–37.5 °C (97.7–99.5 °F). Use a digital thermometer in the armpit.','Feel the back of the neck or chest to judge warmth, not the hands and feet (they are often cool).','Dress baby in one more layer than you are wearing. Avoid over-wrapping in summer.','Kangaroo care (skin-to-skin on your chest) is the best way to keep a small baby warm.'],w:'38 °C (100.4 °F) or more, or below 35.5 °C, in a baby under 3 months: go to hospital.'},
+ {h:'Traditional practices: safer choices',l:['Skip kajal or surma in the eyes. It can contain lead and cause eye infections.','Do not put oil in the ears, nose or on the soft spot. A gentle body oil massage is fine.','No vigorous stretching of the limbs or shaping of the nose and head during massage.','Avoid black threads or chains around the neck while baby sleeps (choking or strangling risk).','Ask before giving any home remedy, gutti or herbal drops.'],w:''},
+ {h:'Daily care & checks',l:['Vitamin D drops (400 IU a day) from the first weeks, as your paediatrician advises.','Tummy time while awake and watched, a few minutes several times a day from the first days.','Hearing screen (OAE) before discharge or within the first month.','Wash hands before handling baby. Keep visitors with a cold or cough away.','Well-baby visits usually happen at the vaccine visits. Bring the vaccine card each time and track weight and length on the growth chart.'],w:'Constant eye-turning after 4 months, or no reaction to sounds: mention it at the next visit.'},
+];
+
+const TIERS=[
+ {c:'t1',pill:'Go now',h:'Go to hospital now, or call 112 / 108',s:'Don\'t wait for an appointment.',l:[
+  '<b>Fever under 3 months:</b> 38 °C (100.4 °F) or higher. Also too cold: below 35.5 °C.',
+  '<b>Breathing trouble:</b> fast breathing (60 or more breaths a minute under 2 months, 50 or more at 2–12 months), chest sucking in below the ribs, grunting, nostrils flaring, or pauses over 15–20 seconds.',
+  '<b>Blue or grey</b> lips, tongue or face.',
+  '<b>Not able to feed:</b> won\'t suck at all, or vomits everything.',
+  '<b>Very sleepy,</b> hard to wake, floppy or limp.',
+  '<b>Fits or convulsions:</b> stiffening, jerking, eyes rolling, or repeated lip smacking you can\'t stop.',
+  '<b>Jaundice in the first 24 hours,</b> or yellow reaching the palms and soles.',
+  '<b>Green (bile) vomit,</b> blood in vomit, or a swollen, hard tummy.',
+  '<b>Dehydration:</b> no wet nappy for 6–8 hours, sunken soft spot, dry mouth, no tears.',
+  '<b>Bulging soft spot</b> when calm, especially with fever or vomiting.',
+  '<b>Rash that does not fade</b> when you press a glass against it.',
+  '<b>Bleeding that won\'t stop,</b> or a lot of blood in the poop.',
+  '<b>Injury or swallowing:</b> fall from a bed or height followed by vomiting, drowsiness or a swelling; swallowed a button battery, magnet, medicine or chemical.',
+  '<b>Choking</b> and baby cannot cry, cough or breathe: start infant first aid (below) and call 112.',
+ ]},
+ {c:'t2',pill:'Today',h:'Call the paediatrician today',s:'Same-day advice or visit.',l:[
+  'Fever of 38 °C or more at 3–6 months, any fever lasting more than 2 days, or fever with unusual crankiness.',
+  'Feeding much less than usual, or fewer wet nappies.',
+  'Diarrhoea (more than 6 watery stools a day) or vomiting more than 2–3 times.',
+  'Redness, pus or a bad smell around the umbilical cord.',
+  'Jaundice getting deeper, or lasting beyond 2 weeks (3 weeks if born early). Pale poop or dark urine is urgent.',
+  'Red, swollen eyelids or yellow-green sticky discharge from the eyes.',
+  'White patches in the mouth that don\'t wipe off, with poor feeding.',
+  'Cough with noisy breathing, or pulling at the ear with fever.',
+  'Crying that is high-pitched or can\'t be soothed for more than 2–3 hours.',
+ ]},
+ {c:'t3',pill:'Next visit',h:'Mention it at the next check-up',s:'Write it down so you remember.',l:[
+  'Mild rash, dry skin or cradle cap (scaly scalp).',
+  'Spit-ups after feeds, if baby is gaining weight and happy.',
+  'Eye that keeps turning in or out after 4 months.',
+  'Not reacting to sounds, or missing milestones for their age.',
+  'Flat spot on the head, possible tongue-tie, or a soft bulge at the belly button (umbilical hernia).',
+  'Hard or infrequent poop, with a baby who is otherwise well.',
+ ]},
+];
+
+/* vaccine schedule: IAP ACVIP 2023 + National Immunization Schedule (UIP) */
+const VX=[
+ {age:'Birth',d:0,v:[['BCG',1],['OPV 0',1],['Hepatitis B 1',1]],n:'Hep B birth dose ideally within 24 hours of birth. BCG leaves a small scar on the left upper arm after a few weeks; this is expected.'},
+ {age:'6 weeks',d:42,v:[['DTwP / DTaP 1',1],['IPV 1',1],['Hib 1',1],['Hepatitis B 2',1],['Rotavirus 1',1],['PCV 1',1]],n:'Government centres give DTwP + Hep B + Hib as one Pentavalent shot, plus OPV 1 and fractional IPV. Private clinics often give a single "hexavalent" shot (DTaP-IPV-Hib-HepB).'},
+ {age:'10 weeks',d:70,v:[['DTwP / DTaP 2',1],['IPV 2',0],['Hib 2',1],['Hepatitis B 3',1],['Rotavirus 2',1],['PCV 2',0]],n:'Under the government schedule, OPV 2 is given here and PCV/IPV are not. Paracetamol for fever only if your doctor advises the dose.'},
+ {age:'14 weeks',d:98,v:[['DTwP / DTaP 3',1],['IPV 3',1],['Hib 3',1],['Hepatitis B 4',0],['Rotavirus 3',1],['PCV 3',1]],n:'Rotavirus dose 3 only for 3-dose brands (Rotavac, Rotasiil). Rotarix is 2 doses. Government centres give OPV 3 here too.'},
+ {age:'6 months',d:182,v:[['Influenza 1',0],['Typhoid conjugate (TCV)',0]],n:'TCV can be given any time between 6 and 9 months. Flu vaccine needs 2 doses 4 weeks apart the first time.'},
+ {age:'7 months',d:212,v:[['Influenza 2',0]],n:'After this, one flu shot every year until 5 years, ideally before the monsoon or flu season.'},
+ {age:'9 months',d:273,v:[['MMR 1',1]],n:'Government centres give MR 1, plus PCV booster, fractional IPV 3, JE 1 (in JE-endemic districts) and the first Vitamin A dose at 9–12 months.'},
+ {age:'12 months',d:365,v:[['Hepatitis A 1',0]],n:'Live Hep A vaccine is a single dose. Inactivated Hep A needs a second dose 6 months later.'},
+ {age:'12–15 months',d:365,v:[['PCV booster',1]],n:'Under the government schedule, the PCV booster is given at 9 months.'},
+ {age:'15 months',d:456,v:[['MMR 2',1],['Varicella (chickenpox) 1',0]],n:'Government centres give MR 2 at 16–24 months.'},
+ {age:'16–18 months',d:487,v:[['DTwP / DTaP booster 1',1],['IPV booster 1',0],['Hib booster 1',0]],n:'Government centres give DPT booster 1 and OPV booster at 16–24 months, plus JE 2 in endemic districts.'},
+ {age:'18–19 months',d:548,v:[['Hepatitis A 2',0],['Varicella 2',0]],n:'Hep A 2 only if the inactivated vaccine was used. Varicella 2 is given 3–6 months after dose 1.'},
+ {age:'4–6 years',d:1461,v:[['DTwP / DTaP booster 2',1],['IPV booster 2',0],['MMR 3',0]],n:'Government centres give DPT booster 2 at 5–6 years.'},
+ {age:'9–14 years',d:3287,v:[['HPV (2 doses, 6 months apart)',1]],n:'Recommended for girls, and can be given to boys. Being added to the government programme for girls.'},
+ {age:'10–12 years',d:3652,v:[['Tdap / Td',1]],n:'Government centres give Td at 10 and again at 16 years.'},
+];
+const VXOPT=[
+ ['Japanese Encephalitis (JE)','2 doses at 9 months and 16–18 months, if you live in or travel to a JE-endemic area. Free in endemic districts.'],
+ ['Meningococcal','For high-risk children or travel (e.g. Hajj, some countries). Ask your paediatrician.'],
+ ['Rabies (pre-exposure)','Consider if you have a pet at home or many stray dogs nearby. After any animal bite, wash with soap and water for 15 minutes and see a doctor the same day.'],
+ ['Cholera','Only during outbreaks or for travel to affected areas.'],
+ ['Vitamin A','Not a vaccine. Given free with MR at 9 months, then every 6 months until 5 years at government centres.'],
+];
+
+/* ---------- state ---------- */
+const bstate={sub:'milestones',ms:null,dob:'',done:{},ec:{}};
+try{Object.assign(bstate,JSON.parse(localStorage.getItem('bloom-baby')||'{}'))}catch(e){}
+const bsave=()=>{try{localStorage.setItem('bloom-baby',JSON.stringify({dob:bstate.dob,done:bstate.done,ec:bstate.ec,sub:bstate.sub}))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const DAY=864e5;
+function dobDate(){if(!bstate.dob)return null;const d=new Date(bstate.dob+'T00:00:00');return isNaN(d)?null:d}
+function today(){const t=new Date();t.setHours(0,0,0,0);return t}
+function ageMonths(){const d=dobDate();if(!d)return null;const t=today();let m=(t.getFullYear()-d.getFullYear())*12+(t.getMonth()-d.getMonth());if(t.getDate()<d.getDate())m--;return m}
+function ageText(){const d=dobDate();if(!d)return'';const days=Math.round((today()-d)/DAY);if(days<0)return'not born yet';
+  if(days<84){const w=Math.floor(days/7),r=days%7;return w?`${w} week${w>1?'s':''}${r?` ${r} day${r>1?'s':''}`:''}`:`${days} day${days===1?'':'s'}`}
+  const m=ageMonths();if(m<24)return`${m} months`;const y=Math.floor(m/12),mm=m%12;return`${y} year${y>1?'s':''}${mm?` ${mm} month${mm>1?'s':''}`:''}`}
+const fmt=d=>d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+
+function currentMs(){const m=ageMonths();if(m==null||m<0)return null;let pick=MS[0];MS.forEach(x=>{if(x.m<=m)pick=x});return pick.id}
+
+/* ---------- renderers ---------- */
+function renderAge(){
+  const el=document.getElementById('ageLine');const a=ageText();
+  el.innerHTML=a?(a==='not born yet'?'Due date saved. Milestones and vaccine dates start from birth.':`Your baby is <b>${esc(a)}</b> old.`):'Add it to see your baby\'s age, the milestones for that age, and vaccine due dates. Saved only in this browser.';
+}
+function renderMilestones(){
+  const cur=currentMs();const sel=bstate.ms||cur||'m2';const x=MS.find(m=>m.id===sel)||MS[1];
+  const i=MS.indexOf(x),next=MS[i+1];
+  document.getElementById('p-milestones').innerHTML=`
+   <div class="agechips" role="group" aria-label="Choose age">${MS.map(m=>`<button data-ms="${m.id}" aria-pressed="${m.id===x.id}" class="${m.id===cur?'now':''}">${m.label}<small>${m.id===cur?'Your baby now':(m.sub||'&nbsp;')}</small></button>`).join('')}</div>
+   <div class="ms-head"><h2>By ${x.id==='nb'?'the end of the first month':x.label}</h2><p>Most babies do these by this age.${next?` Next check: ${next.label}.`:''}</p></div>
+   <div class="ms-grid">${DOMAINS.map(([k,l,c])=>`<div class="ms"><h3><i style="background:${c}"></i>${l}</h3><ul>${x[k].map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>`).join('')}
+   <div class="ms flag"><h3>Talk to your paediatrician if baby…</h3><ul>${x.flags.map(s=>`<li>${esc(s)}</li>`).join('')}<li>Loses skills they once had (at any age)</li></ul></div></div>
+   <div><h3 style="font-size:1.1rem;margin:8px 0 10px">Growth at a glance</h3><div class="growth">${GROWTH.map(([a,b])=>`<div><b>${a}</b><span>${b}</span></div>`).join('')}</div></div>
+   <p class="vnote">Every baby develops at their own pace, within a range. These are the skills most babies (about 3 in 4) have by each age. A missed milestone is a reason to ask, not to panic. Early help works best.</p>`;
+}
+function renderNotice(){
+  document.getElementById('p-notice').innerHTML=`<div class="tips">${TIPS.map(t=>`<div class="tip"><h3>${t.h}</h3><ul>${t.l.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>${t.w?`<div class="watch"><b>Watch for:</b> ${esc(t.w)}</div>`:''}</div>`).join('')}</div>`;
+}
+function renderEmergency(){
+  const ec=bstate.ec||{};
+  const f=(id,l,ph)=>`<label>${l}<input id="ec-${id}" value="${esc(ec[id]||'')}" placeholder="${ph}"></label>`;
+  document.getElementById('p-emergency').innerHTML=TIERS.map(t=>`<div class="tier ${t.c}"><header><span class="pill">${t.pill}</span><h2>${t.h}</h2><span>${t.s}</span></header><ul>${t.l.map(s=>`<li>${s}</li>`).join('')}</ul></div>`).join('')+`
+   <div class="duo">
+    <div class="tip"><h3>Infant choking (under 1 year)</h3><ul>
+     <li>If baby is coughing hard or crying, let them cough. Watch closely.</li>
+     <li>If baby cannot cry, cough or breathe: shout for help and have someone call <b>112</b>.</li>
+     <li><b>5 back blows:</b> lay baby face-down along your forearm, head lower than the chest, jaw supported. Give 5 firm blows between the shoulder blades with the heel of your hand.</li>
+     <li><b>5 chest thrusts:</b> turn baby face-up on your other arm, head low. Push 5 times on the centre of the chest, just below the nipple line, with two fingers.</li>
+     <li>Repeat until the object comes out. Don\'t sweep blindly with a finger. If baby becomes unresponsive, start infant CPR.</li></ul>
+     <div class="watch">A short infant first-aid and CPR class before delivery is worth it. Many hospitals in India run one.</div></div>
+    <div class="tip"><h3>Count breaths the right way</h3><ul>
+     <li>Count when baby is calm or asleep, not crying or feeding.</li>
+     <li>Watch the tummy rise and fall and count for a full 60 seconds.</li>
+     <li>Fast breathing: 60 or more a minute under 2 months, 50 or more at 2–12 months, 40 or more at 1–5 years.</li>
+     <li>Lift the shirt and look for the chest sucking in below the ribs with each breath.</li></ul>
+     <h3 style="margin-top:14px">Fever basics</h3><ul>
+     <li>Measure, don\'t guess: digital thermometer in the armpit.</li>
+     <li>Give fever medicine only in the dose your paediatrician sets for baby\'s weight. Never aspirin.</li>
+     <li>Keep feeding, dress lightly, and don\'t use cold-water sponging.</li></ul></div>
+    <div class="tip ecard"><h3>Your emergency card</h3>
+     ${f('ped','Paediatrician (name & phone)','Dr. … · 98…')}${f('hosp','Nearest hospital with a children\'s emergency','Hospital name, area')}${f('blood','Baby\'s blood group / allergies','e.g. O+ · no known allergies')}${f('weight','Latest weight (for medicine doses)','e.g. 5.2 kg on 1 Nov')}
+     <p class="vnote">Saved only in this browser on this device. Also save these numbers in your phone. Emergency: <b>112</b> · Ambulance: <b>108</b>.</p></div>
+   </div>`;
+  ['ped','hosp','blood','weight'].forEach(k=>{document.getElementById('ec-'+k).addEventListener('input',e=>{bstate.ec[k]=e.target.value;bsave()})});
+}
+function renderVaccines(){
+  const dob=dobDate(),t=today();let nextIdx=-1;
+  const rows=VX.map((r,i)=>{const id='v'+i,done=!!bstate.done[id];let st='',cls='';const due=dob?new Date(dob.getTime()+r.d*DAY):null;
+    if(dob){if(done){st='Done';cls='ok'}else{const diff=Math.round((due-t)/DAY);
+      if(diff<-30){st='Overdue';cls='over'}else if(diff<=7){st='Due now';cls='due'}else{st=diff<70?`In ${Math.round(diff/7)} weeks`:`In ${Math.round(diff/30.4)} months`}
+      if(nextIdx<0)nextIdx=i}}
+    return{r,i,id,done,st,cls,due}});
+  document.getElementById('p-vaccines').innerHTML=`
+   <div class="ms-head"><h2>Vaccine schedule</h2><p>As recommended by the Indian Academy of Pediatrics (IAP 2023).${dob?' Due dates are worked out from your baby\'s birth date.':' Add the birth date above to see due dates.'}</p></div>
+   <p class="vnote" style="margin:0"><span class="vac uip">Vaccine</span> &nbsp;Green-marked doses are free at government centres and Anganwadi sessions (Universal Immunization Programme). The rest are mostly given at private clinics, at a cost. Tick "Given" on each row when done. It is saved in this browser only; your vaccine card remains the official record.</p>
+   <div class="vx">${rows.map(x=>`<div class="vrow ${x.done?'done':''} ${x.i===nextIdx?'next':''}">
+     <div class="vage"><b>${x.r.age}</b><span>${x.due?fmt(x.due):''}</span></div>
+     <div><div class="vlist">${x.r.v.map(([n,u])=>`<span class="vac ${u?'uip':''}">${n}</span>`).join('')}</div><p class="vnote">${esc(x.r.n)}</p></div>
+     <div class="vstat">${x.st?`<span class="st ${x.cls}">${x.st}</span>`:''}<label><input type="checkbox" data-v="${x.id}" ${x.done?'checked':''}>Given</label></div></div>`).join('')}</div>
+   <div><h3 style="font-size:1.1rem;margin:10px 0">Optional or area-specific</h3><div class="optv">${VXOPT.map(([a,b])=>`<div class="tip"><h3 style="font-size:1rem">${a}</h3><p class="vnote" style="margin:0">${esc(b)}</p></div>`).join('')}</div></div>
+   <div class="tip"><h3>On vaccine day</h3><ul><li>Carry the vaccine card and note the brand and batch given.</li><li>Breastfeed during or right after the shot. It soothes and eases the pain.</li><li>Mild fever, fussiness and a sore lump at the injection site for 1–2 days are common. Don\'t rub or apply anything hot on the spot.</li><li>Missed a dose? Don\'t restart. Ask your paediatrician for the catch-up schedule.</li><li>Call the doctor for fever above 39 °C, crying for more than 3 hours, or a seizure (emergency).</li></ul></div>`;
+}
+document.getElementById('p-vaccines').addEventListener('change',e=>{const c=e.target.closest('[data-v]');if(!c)return;if(c.checked)bstate.done[c.dataset.v]=true;else delete bstate.done[c.dataset.v];bsave();renderVaccines()});
+document.getElementById('p-milestones').addEventListener('click',e=>{const b=e.target.closest('[data-ms]');if(!b)return;bstate.ms=b.dataset.ms;renderMilestones()});
+
+function setSub(sub){
+  if(!['milestones','notice','emergency','vaccines'].includes(sub))sub='milestones';bstate.sub=sub;bsave();
+  document.querySelectorAll('#babyTabs .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.sub===sub));
+  ['milestones','notice','emergency','vaccines'].forEach(s=>document.getElementById('p-'+s).hidden=s!==sub);
+}
+document.getElementById('babyTabs').addEventListener('click',e=>{const b=e.target.closest('[data-sub]');if(!b)return;setSub(b.dataset.sub);try{history.replaceState(null,'','#baby-'+b.dataset.sub)}catch(err){}});
+const dobIn=document.getElementById('dob');dobIn.value=bstate.dob||'';
+dobIn.addEventListener('change',()=>{bstate.dob=dobIn.value;bstate.ms=null;bsave();renderAge();renderMilestones();renderVaccines()});
+
+/* ---------- top-level router ---------- */
+function showView(v,sub){
+  document.getElementById('view-mom').hidden=v!=='mom';document.getElementById('view-baby').hidden=v!=='baby';
+  document.getElementById('navMom').setAttribute('aria-selected',v==='mom');document.getElementById('navBaby').setAttribute('aria-selected',v==='baby');
+  if(v==='baby')setSub(sub||bstate.sub);
+  try{localStorage.setItem('bloom-view',v)}catch(e){}
+}
+document.querySelector('.seg').addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;const v=b.dataset.view;showView(v);window.scrollTo(0,0);
+  try{history.replaceState(null,'',v==='mom'?'#mom':'#baby-'+bstate.sub)}catch(err){}});
+document.querySelector('.brand').addEventListener('click',e=>{e.preventDefault();showView('mom');try{history.replaceState(null,'','#mom')}catch(err){}});
+
+renderAge();renderMilestones();renderNotice();renderEmergency();renderVaccines();
+(()=>{const h=location.hash.slice(1);
+  if(h.startsWith('baby'))return showView('baby',h.split('-')[1]);
+  if(h&&EX.find(e=>e.id===h)){showView('mom');return openDetail(h)}
+  if(h==='mom')return showView('mom');
+  let v='mom';try{v=localStorage.getItem('bloom-view')||'mom'}catch(e){}showView(v);
+})();
 </script>
 
 </body>

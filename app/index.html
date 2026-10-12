@@ -1,0 +1,1712 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Pregnancy stretches, baby holding and feeding guides, milestones, emergency signs, the Indian vaccine schedule and a shopping checklist. Sign in to track your progress.">
+<meta name="theme-color" content="#8A2D6B">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BloomMom">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>BloomMom: pregnancy &amp; baby care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap">
+<style>
+/* Layout: filter bar over a card grid of looping figure animations; a dialog opens one exercise as stage + cue list + technique. */
+:root{
+  --bg:#F2F5F3; --surface:#FFFFFF; --ink:#231F29; --muted:#5C6068; --line:#D9E0DC; --line-strong:#B9C4BF;
+  --plum:#8A2D6B; --plum-soft:#B64F92; --teal:#1E7C77; --teal-soft:#DCEEEC; --plum-tint:#F6E9F1;
+  --mom:#8A2D6B; --mom2:#CC93B9; --belly:#A8468A; --pt:#2C5D72; --pt2:#93B6C5;
+  --prop:#D5DEDA; --prop2:#A2B3AD; --ball:#5B7C93; --mat:#3AA39C; --wall:#E5EBE8; --gnd:#E9EEEB; --bed:#E7B9B0; --cush:#7FB9C9;
+  --stage:#F8FAF9;
+  --babyskin:#B97C57; --swaddle:#EDB840; --babycloth:#7FB394; --milk:#FFF4DA;
+  --crit:#B42A23; --crit-bg:#FBECEA; --warn:#A8620A; --warn-bg:#FBF1E2; --ok:#2E7D4F;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141317; --surface:#1D1B21; --ink:#EEEAF1; --muted:#A6A2AE; --line:#2E2B34; --line-strong:#4A4652;
+  --plum:#E48CC3; --plum-soft:#C66AA6; --teal:#5CC2BA; --teal-soft:#183331; --plum-tint:#2D1D28;
+  --mom:#E07DBA; --mom2:#7A4468; --belly:#EFA0D0; --pt:#86BCD3; --pt2:#3E6070;
+  --prop:#33393A; --prop2:#56615F; --ball:#6F93AB; --mat:#2F8F89; --wall:#202426; --gnd:#1A1D1E; --bed:#7A4B46; --cush:#3F7F90;
+  --stage:#18171B; --babyskin:#D9A27F; --swaddle:#E0B243; --babycloth:#6FA585; --milk:#F3E6C4; --crit:#FF8A80; --crit-bg:#3A1A18; --warn:#F2B35E; --warn-bg:#33261A; --ok:#6BCB8F; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#141317; --surface:#1D1B21; --ink:#EEEAF1; --muted:#A6A2AE; --line:#2E2B34; --line-strong:#4A4652;
+  --plum:#E48CC3; --plum-soft:#C66AA6; --teal:#5CC2BA; --teal-soft:#183331; --plum-tint:#2D1D28;
+  --mom:#E07DBA; --mom2:#7A4468; --belly:#EFA0D0; --pt:#86BCD3; --pt2:#3E6070;
+  --prop:#33393A; --prop2:#56615F; --ball:#6F93AB; --mat:#2F8F89; --wall:#202426; --gnd:#1A1D1E; --bed:#7A4B46; --cush:#3F7F90;
+  --stage:#18171B; --babyskin:#D9A27F; --swaddle:#E0B243; --babycloth:#6FA585; --milk:#F3E6C4; --crit:#FF8A80; --crit-bg:#3A1A18; --warn:#F2B35E; --warn-bg:#33261A; --ok:#6BCB8F; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:6px}
+
+header.top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:end;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:10px}
+h1{font-size:clamp(2.3rem,5.4vw,3.9rem);font-weight:800;letter-spacing:-.025em}
+h1 em{font-style:normal;color:var(--plum)}
+.lede{color:var(--muted);max-width:56ch;margin:12px 0 0}
+.care{background:var(--plum-tint);border-radius:var(--r);padding:16px 18px;font-size:.92rem}
+.care strong{display:block;font-family:var(--display);font-size:1rem;margin-bottom:4px}
+.care ul{margin:6px 0 0;padding-left:18px}
+
+.bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;padding-block:18px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line-strong);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:.92rem;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.chip .n{color:var(--muted);font-variant-numeric:tabular-nums;font-size:.8rem}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip[aria-pressed="true"] .n{color:inherit;opacity:.7}
+.toggles{display:flex;gap:8px;flex-wrap:wrap}
+.tog{border:1px dashed var(--line-strong);background:transparent;border-radius:999px;padding:6px 12px;font-size:.88rem;cursor:pointer}
+.tog[aria-pressed="true"]{border-style:solid;border-color:var(--teal);background:var(--teal-soft);color:var(--ink)}
+
+.section-h{display:flex;align-items:baseline;gap:12px;margin:26px 0 12px}
+.section-h h2{font-size:1.45rem;font-weight:700}
+.section-h p{margin:0;color:var(--muted);font-size:.92rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column;transition:transform .15s ease, border-color .15s ease}
+.card:hover{transform:translateY(-2px);border-color:var(--line-strong)}
+.card .stg{background:var(--stage);aspect-ratio:260/200;max-width:100%;border-bottom:1px solid var(--line)}
+.card .stg svg{width:100%;height:100%;display:block}
+.card .txt{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.card h3{font-size:1.06rem;font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:.74rem;border-radius:6px;padding:2px 7px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.tag.lab{background:var(--plum-tint);color:var(--plum);border-color:transparent;font-weight:700}
+.tag.ok{background:var(--ok);color:var(--surface);border-color:transparent;font-weight:700}
+.done-btn[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:var(--surface);font-weight:700}
+.weekline{margin:10px 0 0;font-weight:700;color:var(--teal)}
+.tag.pt{background:var(--teal-soft);color:var(--teal);border-color:transparent;font-weight:700}
+.desc{margin:2px 0 0;font-size:.9rem;line-height:1.45}
+.desc.big{font-size:1rem;margin:0 0 12px}
+.tm{margin:6px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tm div{background:var(--surface);padding:7px 10px;min-width:0}
+.tm dt{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);font-weight:700}
+.tm dd{margin:1px 0 0;font-size:.86rem;line-height:1.35;font-variant-numeric:tabular-nums}
+.more{margin-top:4px;font-size:.84rem;color:var(--plum);font-weight:700}
+.sub{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:10px;font-size:.86rem;color:var(--muted)}
+.sub b{color:var(--ink)}
+#dFacts{display:block}
+
+/* app nav */
+.appnav{border-bottom:1px solid var(--line);background:var(--surface)}
+.appnav-in{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:10px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-family:var(--display);font-weight:800;font-size:1.3rem;color:var(--plum);text-decoration:none;letter-spacing:-.02em}
+.seg{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:3px;gap:3px}
+.seg button{border:0;background:transparent;border-radius:9px;padding:7px 14px;cursor:pointer;font-weight:700;font-size:.92rem;color:var(--muted)}
+.seg button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+/* baby care */
+.sos{background:var(--crit-bg);color:var(--crit);border-radius:12px;padding:10px 14px;font-size:.92rem;margin-bottom:18px}
+.sos .num{font-family:var(--display);font-weight:800;font-size:1.05rem;user-select:all}
+.dobbox{background:var(--teal-soft);border-radius:var(--r);padding:16px 18px;display:flex;flex-direction:column;gap:8px;font-size:.92rem}
+.dobbox input{font:inherit;padding:8px 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);color:var(--ink);max-width:220px}
+.dobbox p{margin:0;color:var(--muted)}
+.dobbox p b{color:var(--ink);font-family:var(--display);font-size:1.1rem}
+.chip.warn{border-color:var(--crit);color:var(--crit)}
+.chip.warn[aria-pressed="true"]{background:var(--crit);border-color:var(--crit);color:var(--surface)}
+.panel{display:flex;flex-direction:column;gap:18px;padding-top:6px}
+.foot{color:var(--muted);font-size:.82rem;margin-top:34px;max-width:80ch}
+.agechips{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.agechips button{flex:none;border:1px solid var(--line-strong);background:var(--surface);border-radius:10px;padding:8px 12px;cursor:pointer;font-size:.9rem;display:flex;flex-direction:column;align-items:flex-start;line-height:1.2}
+.agechips button small{font-size:.7rem;color:var(--muted)}
+.agechips button[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--surface)}
+.agechips button[aria-pressed="true"] small{color:inherit;opacity:.8}
+.agechips button.now{box-shadow:inset 0 -3px 0 var(--teal)}
+.ms-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.ms-head h2{font-size:1.6rem;font-weight:800}
+.ms-head p{margin:0;color:var(--muted)}
+.ms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.ms{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;min-width:0}
+.ms h3{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.ms h3 i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.ms ul,.tip ul,.tier ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:.93rem}
+.ms.flag{background:var(--warn-bg);border-color:transparent;grid-column:1/-1}
+.ms.flag ul{display:block;columns:3 220px;column-gap:28px}.ms.flag li{margin-bottom:5px;break-inside:avoid}
+[hidden]{display:none!important}
+/* mom planner */
+.today-head{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
+.ring{--p:0;width:86px;height:86px;border-radius:50%;background:conic-gradient(var(--ok) calc(var(--p)*1%),var(--line) 0);display:grid;place-items:center;flex:none}
+.ring b{width:68px;height:68px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-family:var(--display);font-size:1.25rem;font-variant-numeric:tabular-nums}
+.today-head h2{font-size:1.5rem;font-weight:800}
+.today-head p{margin:2px 0 0;color:var(--muted)}
+.slot h3{font-size:1.05rem;margin:4px 0 10px;display:flex;gap:8px;align-items:baseline}
+.slot h3 span{font-family:var(--body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.trow{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px 8px 8px;margin-bottom:8px}
+.trow.done{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 8%,var(--surface))}
+.trow svg{width:76px;height:58px;background:var(--stage);border-radius:8px;display:block}
+.trow .nm{font-weight:700;font-family:var(--display)}
+.trow .ds{font-size:.82rem;color:var(--muted)}
+.trow .acts{display:flex;gap:6px;align-items:center}
+.chk{border:2px solid var(--line-strong);background:var(--surface);border-radius:10px;padding:7px 12px;font-weight:700;cursor:pointer;font-size:.88rem;white-space:nowrap}
+.chk[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:var(--surface)}
+.linkb{background:none;border:0;color:var(--teal);font-weight:700;cursor:pointer;font-size:.88rem;padding:6px}
+.empty-card{background:var(--surface);border:1px dashed var(--line-strong);border-radius:var(--r);padding:22px;text-align:left}
+.empty-card h3{font-size:1.2rem;margin-bottom:6px}
+.tpls{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.tpl{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-align:left;cursor:pointer}
+.tpl:hover{border-color:var(--plum)}
+.tpl b{display:block;font-family:var(--display);margin-bottom:3px}
+.tpl span{font-size:.84rem;color:var(--muted)}
+.plan-tools{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:flex-end}
+.plan-tools label{display:flex;flex-direction:column;font-size:.8rem;color:var(--muted);gap:3px}
+.plan-tools input{font:inherit;padding:7px 9px;border:1px solid var(--line-strong);border-radius:8px;background:var(--surface);color:var(--ink)}
+.pgrid-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.pgrid{border-collapse:collapse;width:100%;min-width:640px;font-size:.88rem}
+.pgrid th,.pgrid td{border-bottom:1px solid var(--line);padding:6px;text-align:center}
+.pgrid th:first-child,.pgrid td:first-child{text-align:left;position:sticky;left:0;background:var(--surface);min-width:190px;padding-left:12px}
+.pgrid thead th{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);position:sticky;top:0;background:var(--surface)}
+.pgrid thead th.today{color:var(--plum)}
+.pgrid tr.cat td{background:var(--bg);font-family:var(--display);font-weight:700;font-size:.82rem;text-align:left}
+.cell{width:44px;height:30px;border-radius:8px;border:1px dashed var(--line-strong);background:transparent;cursor:pointer;font-weight:700;font-size:.75rem;color:var(--muted)}
+.cell.am{background:var(--swaddle);border:0;color:#3b2a00}
+.cell.pm{background:var(--pt);border:0;color:var(--surface)}
+.pgrid tfoot td{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.legend2{display:flex;gap:14px;flex-wrap:wrap;font-size:.84rem;color:var(--muted);align-items:center}
+.legend2 i{display:inline-block;width:22px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:4px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.stat b{display:block;font-family:var(--display);font-size:1.7rem;font-variant-numeric:tabular-nums}
+.stat span{font-size:.84rem;color:var(--muted)}
+.cal{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;max-width:560px}
+.cal-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cal-h h3{font-size:1.1rem}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal-g .dn{font-size:.7rem;text-align:center;color:var(--muted);letter-spacing:.06em}
+.cal-g .d{aspect-ratio:1;border-radius:8px;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.8rem;font-variant-numeric:tabular-nums;border:1px solid transparent}
+.cal-g .d small{font-size:.62rem;color:var(--muted)}
+.cal-g .d.part{background:color-mix(in srgb,var(--ok) 30%,var(--bg))}
+.cal-g .d.full{background:var(--ok);color:var(--surface)}
+.cal-g .d.full small{color:inherit;opacity:.85}
+.cal-g .d.miss{background:color-mix(in srgb,var(--crit) 12%,var(--bg))}
+.cal-g .d.now{border-color:var(--plum)}
+.cal-g .d.fut{opacity:.55}
+.toplist{margin:0;padding-left:20px;font-size:.92rem}
+
+.mkr{fill:none;stroke:var(--teal);stroke-width:1.5}
+.mkd{fill:var(--teal)}
+.mkl{stroke:var(--teal);stroke-width:.8;stroke-dasharray:2 1.5;fill:none}
+.mkt{font-family:var(--body);font-weight:700;font-size:6.4px;fill:var(--ink);paint-order:stroke;stroke:var(--stage);stroke-width:2.8px;stroke-linejoin:round}
+.ictl{display:flex;gap:6px;flex-wrap:wrap;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--stage)}
+.ictl .btn{padding:5px 10px;font-size:.82rem}
+.ictl .btn[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:var(--surface)}
+.icards.wide{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+@media (max-width:440px){.icards.wide{grid-template-columns:1fr}}
+.icards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.icard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.icard .stg{background:var(--stage);aspect-ratio:260/200;max-width:100%;border-bottom:1px solid var(--line)}
+.icard .stg svg{width:100%;height:100%;display:block}
+.icard .txt{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.icard h3{font-size:1.12rem}
+.icard ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px;font-size:.92rem}
+.capl{margin:0;font-family:var(--display);font-weight:700;font-size:.95rem;color:var(--plum);min-height:2.6em;display:flex;gap:6px}
+.capl i{font-style:normal;color:var(--teal)}
+.kv{font-size:.88rem;margin:0}.kv b{color:var(--teal)}
+.kv.c b{color:var(--warn)}
+.sec-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-top:10px}
+.sec-h h2{font-size:1.45rem;font-weight:800}
+.sec-h p{margin:0;color:var(--muted);font-size:.92rem}
+.stbl{width:100%;border-collapse:collapse;font-size:.92rem;min-width:620px}
+.stbl th,.stbl td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+.stbl th{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.stbl td:first-child{font-family:var(--display);font-weight:700;white-space:nowrap}
+.tblwrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.shop-top{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.shop-prog{flex:1 1 260px;display:flex;align-items:center;gap:10px;font-size:.92rem;font-variant-numeric:tabular-nums}
+.shop-prog .bar2{flex:1;height:8px;background:var(--line);border-radius:6px;overflow:hidden}
+.shop-prog .bar2 i{display:block;height:100%;background:var(--ok)}
+.shops{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;align-items:start}
+.shopc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.shopc h3{font-size:1.08rem;display:flex;justify-content:space-between;gap:8px;margin-bottom:6px}
+.shopc h3 span{font-family:var(--body);font-size:.8rem;color:var(--muted);font-weight:400;font-variant-numeric:tabular-nums}
+.sitem{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:4px 8px;padding:8px 0;border-top:1px solid var(--line);cursor:pointer;align-items:start}
+.sitem input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--ok)}
+.sitem .nm{font-size:.93rem}
+.sitem .nt{grid-column:2/4;font-size:.8rem;color:var(--muted)}
+.sitem .q{font-size:.78rem;border:1px solid var(--line-strong);border-radius:6px;padding:1px 6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sitem.got .nm{text-decoration:line-through;color:var(--muted)}
+.mtag{font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--plum);margin-left:6px}
+.skip{background:var(--crit-bg);border-radius:var(--r);padding:16px 18px}
+.skip h3{color:var(--crit);margin-bottom:8px;font-size:1.1rem}
+.skip ul{margin:0;padding-left:18px;columns:2 280px;column-gap:28px}
+.skip li{break-inside:avoid;margin-bottom:6px;font-size:.92rem}
+
+.ms.flag h3{color:var(--warn)}
+.growth{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.growth div{background:var(--surface);padding:10px 14px}
+.growth b{display:block;font-family:var(--display);font-size:1.05rem}
+.growth span{font-size:.84rem;color:var(--muted)}
+.tips{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.tip{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;min-width:0}
+.tip h3{font-size:1.08rem;margin-bottom:8px}
+.tip .watch{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line-strong);font-size:.88rem;color:var(--warn)}
+.tier{border-radius:var(--r);padding:16px 18px;border:1px solid var(--line);background:var(--surface)}
+.tier header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.tier header h2{font-size:1.25rem}
+.tier header span{font-size:.85rem;color:var(--muted)}
+.pill{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 10px}
+.tier.t1{border:2px solid var(--crit);background:var(--crit-bg)} .t1 .pill{background:var(--crit);color:var(--surface)}
+.tier.t2{border-color:var(--warn)} .t2 .pill{background:var(--warn);color:var(--surface)}
+.t3 .pill{background:var(--ok);color:var(--surface)}
+.tier ul{columns:2 280px;column-gap:28px;display:block}
+.tier li{break-inside:avoid;margin-bottom:6px}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.ecard label{display:flex;flex-direction:column;gap:3px;font-size:.8rem;color:var(--muted);margin-bottom:8px}
+.ecard input{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line-strong);border-radius:8px;padding:7px 9px}
+.vx-key{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.86rem;color:var(--muted);align-items:center}
+.vx{display:flex;flex-direction:column;gap:10px}
+.vrow{display:grid;grid-template-columns:150px minmax(0,1fr) 150px;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.vrow.next{border:2px solid var(--teal)}
+.vrow.done{opacity:.62}
+.vage b{font-family:var(--display);font-size:1.12rem;display:block}
+.vage span{font-size:.82rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.vlist{display:flex;flex-wrap:wrap;gap:6px}
+.vac{border:1px solid var(--line-strong);border-radius:8px;padding:4px 9px;font-size:.88rem;background:var(--bg)}
+.vac.uip{border-color:var(--ok)}
+.vac.uip::after{content:" ● free";color:var(--ok);font-size:.7rem;font-weight:700}
+.vnote{font-size:.84rem;color:var(--muted);margin:8px 0 0}
+.vstat{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.vstat .st{font-size:.75rem;font-weight:700;border-radius:999px;padding:3px 10px;background:var(--bg);color:var(--muted)}
+.st.due{background:var(--teal);color:var(--surface)} .st.over{background:var(--warn);color:var(--surface)} .st.ok{background:var(--ok);color:var(--surface)}
+.vstat label{font-size:.85rem;display:flex;gap:6px;align-items:center;cursor:pointer}
+.vstat input{width:18px;height:18px;accent-color:var(--ok)}
+.optv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+@media (max-width:640px){ .vrow{grid-template-columns:1fr} .vstat{flex-direction:row;align-items:center;justify-content:space-between;text-align:left} .seg button{padding:7px 10px} }
+.empty{color:var(--muted);padding:30px 0}
+
+/* detail dialog */
+dialog{border:0;padding:0;background:var(--surface);color:var(--ink);border-radius:20px;width:min(1060px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto}
+dialog::backdrop{background:rgba(20,16,24,.55)}
+.dlg{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.stage-col{background:var(--stage);padding:20px;display:flex;flex-direction:column;gap:12px;position:sticky;top:0;align-self:start}
+.stage-col svg{width:100%;aspect-ratio:260/200;max-width:100%;display:block}
+.capline{min-height:3.2em;font-family:var(--display);font-weight:700;font-size:1.18rem;line-height:1.25;display:flex;gap:10px;align-items:flex-start}
+.capline .stepn{flex:none;font-family:var(--body);font-size:.75rem;letter-spacing:.08em;color:var(--teal);border:1.5px solid var(--teal);border-radius:999px;padding:2px 8px;margin-top:3px;font-variant-numeric:tabular-nums}
+.prog{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--plum)}
+.ctrls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line-strong);background:var(--surface);border-radius:10px;padding:8px 14px;cursor:pointer;font-size:.92rem}
+.btn.pri{background:var(--plum);border-color:var(--plum);color:var(--surface);font-weight:700;min-width:96px}
+.legend{display:flex;gap:14px;font-size:.8rem;color:var(--muted);margin-left:auto}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.info-col{padding:24px 26px 28px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.info-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.info-top h2{font-size:1.8rem;font-weight:800;letter-spacing:-.015em}
+.x{border:0;background:var(--bg);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.2rem;flex:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.fact{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.fact b{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.fact span{font-size:.95rem}
+.info-col h4{font-family:var(--display);font-size:1.02rem;margin:0 0 6px}
+.info-col ol,.info-col ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.cues li{color:var(--muted);transition:color .2s}
+.cues li.on{color:var(--ink);font-weight:700}
+.note{border-left:3px solid var(--plum);padding:4px 0 4px 12px;font-size:.93rem}
+.why{font-size:.95rem;margin:0}
+.src{font-size:.8rem;color:var(--muted)}
+.navrow{display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding-top:14px}
+
+/* svg figure + props */
+svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.m{stroke:var(--mom)} .m2{stroke:var(--mom2)} .q{stroke:var(--pt)} .q2{stroke:var(--pt2)}
+.fm{fill:var(--mom)} .fq{fill:var(--pt)} .fm2{fill:var(--mom2)} .fq2{fill:var(--pt2)}
+.belly{fill:var(--belly)}
+.gnd{fill:var(--gnd)} .fl{stroke:var(--line-strong);stroke-width:1}
+.pr{fill:var(--prop)} .pr2{fill:var(--prop2)} .ball{fill:var(--ball)} .seam{fill:none;stroke:var(--stage);stroke-width:1.2;opacity:.5}
+.mat{fill:var(--mat)} .bol{fill:var(--plum-soft)} .wall{fill:var(--wall)} .wl{stroke:var(--line-strong);stroke-width:1.5}
+.blk{fill:var(--plum-soft);opacity:.75} .bed{fill:var(--bed)} .pil{fill:var(--prop2)} .cush{fill:var(--cush)} .scarf{fill:none;stroke:#E0A13A;stroke-width:3.2;stroke-linecap:round}
+.bw{stroke:var(--swaddle)} .bc{stroke:var(--babycloth)} .bs{stroke:var(--babyskin)} .fbs{fill:var(--babyskin)}
+.btl{stroke:var(--prop2)} .milk{stroke:var(--milk)} .tt{stroke:var(--warn)}
+.press{fill:none;stroke:var(--teal);stroke-width:1.4;stroke-dasharray:2 3}
+
+@media (max-width:820px){
+  header.top{grid-template-columns:1fr}
+  .dlg{grid-template-columns:1fr}
+  .stage-col{position:static}
+  dialog{width:100vw;max-width:100vw;max-height:100dvh;height:100dvh;border-radius:0;margin:0}
+  .legend{margin-left:0}
+}
+@media (max-width:440px){ .wrap{padding-inline:16px} .grid{grid-template-columns:1fr;gap:14px} }
+@media (prefers-reduced-motion:reduce){ .card{transition:none} }
+</style>
+
+<nav class="appnav" aria-label="Sections">
+  <div class="appnav-in">
+    <a class="brand" href="#mom">BloomMom</a>
+    <div class="seg" role="tablist">
+      <button role="tab" id="navMom" data-view="mom">Mom care</button>
+      <button role="tab" id="navBaby" data-view="baby">Baby care</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" id="view-mom">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Mom care · second trimester → labour day</div>
+      <h1>Pregnancy <em>stretches</em></h1>
+      <p class="lede">The stretches and labour positions from your prenatal class, redrawn as moving figures. Tap any card to watch it slowly with the instructor's cues, the technique, and what the partner does.</p>
+      <p class="weekline" id="weekLine"></p>
+    </div>
+    <aside class="care">
+      <strong>Before you start</strong>
+      <ul>
+        <li>Move only within a comfortable range. Mild stretch, never pain.</li>
+        <li>Breathe in through the nose, out through the mouth. Never hold the breath.</li>
+        <li>Stop and call your doctor or midwife for bleeding, fluid leaking, dizziness, chest pain, or regular tightenings before 37 weeks.</li>
+        <li>The labour positions are reminders of what your instructor taught. Check them with your care team first.</li>
+      </ul>
+    </aside>
+  </header>
+
+  <div class="bar subbar" role="tablist" aria-label="Mom care sections">
+    <div class="chips" id="momTabs">
+      <button class="chip" data-msub="today">Today</button>
+      <button class="chip" data-msub="plan">My plan</button>
+      <button class="chip" data-msub="progress">Progress</button>
+      <button class="chip" data-msub="library">All stretches</button>
+    </div>
+  </div>
+  <section id="m-today" class="panel"></section>
+  <section id="m-plan" class="panel" hidden></section>
+  <section id="m-progress" class="panel" hidden></section>
+  <div id="m-library" hidden>
+  <div class="bar" role="toolbar" aria-label="Filter exercises">
+    <div class="chips" id="chips"></div>
+    <div class="toggles">
+      <button class="tog" id="tPartner" aria-pressed="false">With partner only</button>
+      <button class="tog" id="tLabour" aria-pressed="false">Useful in labour</button>
+    </div>
+  </div>
+
+  <main id="list"></main>
+  </div>
+</div>
+
+<div class="wrap" id="view-baby" hidden>
+  <div class="sos" role="note"><b>Emergency?</b> Call <span class="num">112</span> (all emergencies) or <span class="num">108</span> (ambulance). Go to the nearest hospital with a paediatric emergency.</div>
+  <header class="top">
+    <div>
+      <div class="eyebrow">Baby care · birth to 3 years</div>
+      <h1>Baby <em>care</em></h1>
+      <p class="lede">Milestones to look forward to, everyday things to keep an eye on, the signs that need a doctor now, and the vaccine schedule most Indian paediatricians follow.</p>
+    </div>
+    <aside class="dobbox">
+      <label for="dob"><strong>Baby's date of birth</strong></label>
+      <input type="date" id="dob">
+      <p id="ageLine">Add it to see your baby's age, the milestones for that age, and vaccine due dates. Saved only in this browser.</p>
+    </aside>
+  </header>
+  <div class="bar subbar" role="tablist" aria-label="Baby care topics">
+    <div class="chips" id="babyTabs">
+      <button class="chip" data-sub="milestones">Milestones</button>
+      <button class="chip" data-sub="holding">Holding</button>
+      <button class="chip" data-sub="feeding">Feeding</button>
+      <button class="chip" data-sub="notice">Things to notice</button>
+      <button class="chip warn" data-sub="emergency">Emergency signs</button>
+      <button class="chip" data-sub="vaccines">Vaccines</button>
+      <button class="chip" data-sub="shopping">Shopping list</button>
+    </div>
+  </div>
+  <section id="p-milestones" class="panel"></section>
+  <section id="p-holding" class="panel" hidden></section>
+  <section id="p-feeding" class="panel" hidden></section>
+  <section id="p-notice" class="panel" hidden></section>
+  <section id="p-emergency" class="panel" hidden></section>
+  <section id="p-vaccines" class="panel" hidden></section>
+  <section id="p-shopping" class="panel" hidden></section>
+  <p class="foot">General guidance for healthy, full-term babies, based on IAP (Indian Academy of Pediatrics) recommendations, India's National Immunization Schedule, WHO/IMNCI danger signs and CDC developmental milestones. It does not replace your paediatrician. For babies born early, use corrected age.</p>
+</div>
+
+<dialog id="dlg" aria-labelledby="dTitle">
+  <div class="dlg">
+    <div class="stage-col">
+      <div id="dStage" role="img" aria-label="Animated illustration"></div>
+      <div class="prog"><i id="dProg"></i></div>
+      <div class="capline" aria-live="polite"><span class="stepn" id="dStepN">1/4</span><span id="dCap"></span></div>
+      <div class="ctrls">
+        <button class="btn pri" id="dPlay">Pause</button>
+        <button class="btn" id="dRestart">Restart</button>
+        <button class="btn" id="dSpeed">Speed 1×</button>
+        <div class="legend"><span><i style="background:var(--mom)"></i>Mum</span><span id="dLegPt"><i style="background:var(--pt)"></i>Partner</span></div>
+      </div>
+    </div>
+    <div class="info-col">
+      <div class="info-top"><h2 id="dTitle"></h2><button class="x" id="dClose" aria-label="Close">✕</button></div>
+      <button class="btn done-btn" id="dDone" aria-pressed="false">Mark done today</button>
+      <div class="facts" id="dFacts"></div>
+      <div><h4>Cues in the animation</h4><ol class="cues" id="dCues"></ol></div>
+      <div><h4>Technique</h4><ol id="dSteps"></ol></div>
+      <div id="dPtWrap"><h4>Partner's role</h4><ul id="dPt"></ul></div>
+      <p class="why" id="dWhy"></p>
+      <div class="note" id="dCare"></div>
+      <div class="src" id="dSrc"></div>
+      <div class="navrow"><button class="btn" id="dPrev">← Previous</button><button class="btn" id="dNext">Next →</button></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ---------- figure engine ---------- */
+const FL=186, W=260, H=200;
+const D=a=>[Math.sin(a*Math.PI/180),Math.cos(a*Math.PI/180)];
+const add=(a,b,k=1)=>[a[0]+b[0]*k,a[1]+b[1]*k];
+const rot=(v,t)=>{const c=Math.cos(t),s=Math.sin(t);return[v[0]*c-v[1]*s,v[0]*s+v[1]*c]};
+function ik(B,T,a,b){
+  const dx=T[0]-B[0],dy=T[1]-B[1];const d=Math.hypot(dx,dy)||0.001;const u=[dx/d,dy/d];
+  const dc=Math.min(Math.max(d,Math.abs(a-b)+0.5),a+b-0.2);
+  const al=Math.acos(Math.min(1,Math.max(-1,(a*a+dc*dc-b*b)/(2*a*dc))));
+  return{E:add(B,u,dc),J:s=>add(B,rot(u,s*al),a)};
+}
+function solve(P){
+  const side=P.v!=='f',f=P.f||1,d=D(P.t),perp=[-d[1],d[0]],S=add(P.hip,d,44);
+  const sh=side?[S,S]:[add(S,perp,-11),add(S,perp,11)];
+  const hp=side?[P.hip,P.hip]:[add(P.hip,perp,-8),add(P.hip,perp,8)];
+  const mid=add(P.hip,d,22);
+  const limb=(B,T,a,b,i,kind)=>{
+    const r=ik(B,T,a,b);const ov=kind==='arm'?P.es:P.ks;let s;
+    if(ov&&ov[i])s=Math.sign(ov[i]);
+    else if(side)s=kind==='arm'?f:-f;
+    else{const sg=i===0?-1:1,j1=r.J(1),j2=r.J(-1);
+      const o=j=>((j[0]-mid[0])*perp[0]+(j[1]-mid[1])*perp[1])*sg;s=o(j1)>=o(j2)?1:-1}
+    return[B,r.J(s),r.E];
+  };
+  const arms=[0,1].map(i=>P.el&&P.el[i]?[sh[i],P.el[i],P.hands[i]]:limb(sh[i],P.hands[i],22,22,i,'arm'));
+  const legs=[0,1].map(i=>P.kn&&P.kn[i]?[hp[i],P.kn[i],P.feet[i]]:limb(hp[i],P.feet[i],32,32,i,'leg'));
+  const dh=D(P.h??P.t),hc=add(add(S,d,3),dh,11);
+  return{S,arms,legs,hc,dh,d,perp,f,side};
+}
+const n1=x=>Math.round(x*10)/10;
+const pl=(pts,c,w)=>`<polyline points="${pts.map(p=>n1(p[0])+','+n1(p[1])).join(' ')}" class="${c}" stroke-width="${w}"/>`;
+function fig(P,who,ins,insTop){
+  if(!P)return'';ins=ins||'';
+  const k=solve(P),c=who,far=c+'2',mom=who==='m';let o='';
+  const foot=i=>{const E=k.legs[i][2];
+    if(k.side){const fa=P.fa!=null?(Array.isArray(P.fa)?P.fa[i]:P.fa):(k.f>0?90:-90);return pl([E,add(E,D(fa),7)],i===0?far:c,6)}
+    return`<circle cx="${n1(E[0])}" cy="${n1(E[1])}" r="3.6" class="f${c}"/>`};
+  if(k.side){o+=pl(k.arms[0],far,7)+pl(k.legs[0],far,9)+foot(0)}
+  else{o+=pl(k.legs[0],c,9)+foot(0)+pl(k.legs[1],c,9)+foot(1)}
+  o+=pl([P.hip,k.S],c,k.side?17:24);
+  if(mom&&!P.back&&!P.nb){
+    if(k.side){const fw=[k.perp[0]*k.f,k.perp[1]*k.f],bc=add(add(P.hip,k.d,18),fw,7),ang=Math.atan2(k.d[1],k.d[0])*180/Math.PI;
+      o+=`<ellipse cx="${n1(bc[0])}" cy="${n1(bc[1])}" rx="12.5" ry="11" transform="rotate(${n1(ang)} ${n1(bc[0])} ${n1(bc[1])})" class="belly"/>`}
+    else{const bc=add(P.hip,k.d,15);o+=`<circle cx="${n1(bc[0])}" cy="${n1(bc[1])}" r="12.5" class="belly"/>`}
+  }
+  if(k.side){o+=pl(k.legs[1],c,9)+foot(1)+(insTop?'':ins)+pl(k.arms[1],c,7)}
+  else{o+=(insTop?'':ins)+pl(k.arms[0],c,7)+pl(k.arms[1],c,7)}
+  o+=pl([k.S,add(k.S,k.d,6)],c,8);
+  o+=`<circle cx="${n1(k.hc[0])}" cy="${n1(k.hc[1])}" r="9" class="f${c}"/>`;
+  if(mom){const ph=[-k.dh[1],k.dh[0]];
+    const bun=k.side?add(add(k.hc,ph,-7.5*k.f),k.dh,2.5):add(k.hc,k.dh,8.6);
+    o+=`<circle cx="${n1(bun[0])}" cy="${n1(bun[1])}" r="4.4" class="f${c}"/>`}
+  if(insTop)o+=ins;
+  return o;
+}
+/* props */
+const R=(x,y,w,h,c,rx=0)=>`<rect x="${n1(x)}" y="${n1(y)}" width="${n1(w)}" height="${n1(h)}" rx="${rx}" class="${c}"/>`;
+const PR={
+  floor:()=>R(0,FL,W,H-FL,'gnd')+`<line x1="0" x2="${W}" y1="${FL}" y2="${FL}" class="fl"/>`,
+  mat:(a,b)=>R(a,FL-2.5,b-a,3,'mat',1.5),
+  chairS:(cx,f)=>{const bx=cx-f*14;return R(cx-15,153,30,5,'pr2',2)+R(bx-2,110,4,46,'pr2',2)+R(cx-14,157,3,FL-157,'pr2')+R(cx+11,157,3,FL-157,'pr2')},
+  chairF:cx=>R(cx-19,100,38,54,'pr',5)+R(cx-23,151,46,6,'pr2',2)+R(cx-21,156,3.5,FL-156,'pr2')+R(cx+17.5,156,3.5,FL-156,'pr2'),
+  wallL:x=>R(0,0,x,FL,'wall')+`<line x1="${x}" x2="${x}" y1="0" y2="${FL}" class="wl"/>`,
+  wallR:x=>R(x,0,W-x,FL,'wall')+`<line x1="${x}" x2="${x}" y1="0" y2="${FL}" class="wl"/>`,
+  wallBack:()=>R(0,0,W,FL,'wall'),
+  ball:(x,y,r,ry)=>{ry=ry||r;return`<ellipse cx="${n1(x)}" cy="${n1(y)}" rx="${n1(r)}" ry="${n1(ry)}" class="ball"/><path d="M${n1(x-r*.72)},${n1(y-ry*.15)} Q${n1(x)},${n1(y+ry*.4)} ${n1(x+r*.72)},${n1(y-ry*.15)}" class="seam"/>`},
+  bolster:(a,b,cy,r)=>R(a,cy-r,b-a,2*r,'bol',r),
+  block:(x,y,w,h)=>R(x,y,w,h,'blk',2),
+  bed:(a,b,top)=>R(a+4,top+8,4,FL-top-8,'pr2')+R(b-8,top+8,4,FL-top-8,'pr2')+R(a,top,b-a,11,'bed',3),
+  pillow:(x,y)=>`<ellipse cx="${x}" cy="${y}" rx="13" ry="4.5" class="pil"/>`,
+  peanut:(x,y)=>`<circle cx="${x-6}" cy="${y}" r="7.5" class="ball"/><circle cx="${x+6}" cy="${y}" r="7.5" class="ball"/><rect x="${x-6}" y="${y-5.5}" width="12" height="11" class="ball"/>`,
+  cushion:(a,b,top)=>R(a,top,b-a,FL-top,'cush',6),
+  press:(x,y)=>`<circle cx="${x}" cy="${y}" r="7" class="press"/>`,
+};
+
+/* pose helpers */
+const st=(x,f=1,o={})=>({v:'s',f,hip:[x,123],t:180,hands:[[x-f*3,121],[x+f*2,122]],feet:[[x-f*3,FL],[x+f*4,FL]],...o});
+const stF=(x,o={})=>({v:'f',hip:[x,123],t:180,hands:[[x-17,121],[x+17,121]],feet:[[x-11,FL],[x+11,FL]],...o});
+const sitF=(x,o={})=>({v:'f',hip:[x,150],t:180,hands:[[x-12,147],[x+12,147]],kn:[[x-15,153],[x+15,153]],feet:[[x-17,FL],[x+17,FL]],...o});
+const sitS=(x,f=1,o={})=>({v:'s',f,hip:[x,152],t:180,hands:[[x+f*20,146],[x+f*22,147]],feet:[[x+f*26,FL],[x+f*30,FL]],...o});
+const K=(d,hold,cap,m,q,p)=>({d,hold,cap,m,q,p});
+const hipHands=(hx,hy)=>[[hx-13,hy-4],[hx+13,hy-4]];
+
+/* ---------- exercises ---------- */
+const CATS=[
+  {id:'seated',name:'Seated on a chair',blurb:'Upper-body release with your partner standing behind.'},
+  {id:'standing',name:'Standing & wall',blurb:'Hip mobility, balance and back stretches.'},
+  {id:'ball',name:'Birth ball',blurb:'Gentle pelvic movement while you sit.'},
+  {id:'floor',name:'On the mat',blurb:'Floor stretches, child\'s pose and knee-chest.'},
+  {id:'labour',name:'Labour positions',blurb:'Comfort and positioning moves for labour day.'},
+];
+
+const EX=[
+/* ---- seated ---- */
+{id:'side-stretch',cat:'seated',name:'Partner side stretch',partner:true,props:['Chair'],dose:'3–5 breaths each side',clip:'IMG_7024, 7025',
+ order:['q','P','m'],props_:()=>PR.floor()+PR.chairF(130),
+ frames:[
+  K(1.2,.6,'Sit tall. Partner rests hands on the shoulders',sitF(130),stF(130,{hands:[[119,105],[141,105]]})),
+  K(1.4,.6,'Inhale · lift the right arm',sitF(130,{hands:[[118,147],[145,61]]}),stF(130,{hands:[[119,105],[145,62]]})),
+  K(1.8,2.2,'Exhale · lean left while the partner supports the arm',sitF(130,{t:200,h:206,hands:[[110,150],[103,68]]}),stF(130,{hands:[[107,111],[103,68]]})),
+  K(1.4,.4,'Inhale · come back to centre',sitF(130,{hands:[[118,147],[145,61]]}),stF(130,{hands:[[119,105],[145,62]]})),
+  K(1.2,.4,'Lower the arm and relax',sitF(130),stF(130,{hands:[[119,105],[141,105]]})),
+  K(1.4,.6,'Inhale · lift the left arm',sitF(130,{hands:[[115,61],[142,147]]}),stF(130,{hands:[[115,62],[141,105]]})),
+  K(1.8,2.2,'Exhale · lean right, partner supports',sitF(130,{t:160,h:154,hands:[[157,68],[150,150]]}),stF(130,{hands:[[157,68],[153,111]]})),
+  K(1.4,.4,'Inhale · back to centre',sitF(130,{hands:[[115,61],[142,147]]}),stF(130,{hands:[[115,62],[141,105]]})),
+ ],
+ steps:['Sit on a sturdy chair, feet flat and hip-width apart. Get comfortable and settle your breath.','Lift one arm straight up beside the ear.','Breathing out, lean slowly to the opposite side. Keep both sit bones on the chair.','Lift the chin slightly and take 3–5 slow breaths in the stretch.','Breathe in to come back up, lower the arm, then repeat on the other side.'],
+ pt:['Stand behind the chair. Rest one hand on her far shoulder to keep her steady.','Hold the raised wrist and gently draw it up and outward to lengthen the side. Don\'t push her deeper.','She says "stop" where she feels the most stretch. Hold there while she breathes.'],
+ why:'Opens the side ribs and waist, giving the diaphragm more room as the bump grows, and eases upper-back stiffness.',
+ care:'Keep the lean small. If you feel pulling in the belly or ribs, come up a little.'},
+
+{id:'elbow-stretch',cat:'seated',name:'Overhead elbow stretch',partner:true,props:['Chair'],dose:'Hold 20–30 s each arm',clip:'IMG_7027',
+ order:['q','P','m'],props_:()=>PR.floor()+PR.chairS(122,1),
+ frames:[
+  K(1.2,.6,'Sit tall with your partner standing behind you',sitS(122,1,{el:[null,[121,130]]}),st(96,1,{hands:[[116,110],[119,108]]})),
+  K(1.5,.6,'Bend the right arm overhead, hand behind the head',sitS(122,1,{el:[null,[128,86]],hands:[[142,146],[112,94]]}),st(96,1,{hands:[[116,110],[128,86]]})),
+  K(1.8,2.4,'Partner draws the elbow back to his chest · lean back, chin up',sitS(122,1,{t:188,h:196,el:[null,[119,86]],hands:[[140,146],[106,94]]}),st(96,1,{t:185,hands:[[113,110],[119,86]]})),
+  K(.1,1.4,'Breathe in · breathe out',sitS(122,1,{t:188,h:196,el:[null,[119,86]],hands:[[140,146],[106,94]]}),st(96,1,{t:185,hands:[[113,110],[119,86]]})),
+  K(1.4,.6,'Release slowly and lower the arm',sitS(122,1,{el:[null,[121,130]]}),st(96,1,{hands:[[116,110],[119,108]]})),
+ ],
+ steps:['Sit tall on a chair. Partner stands close behind you.','Bend one arm overhead so the hand drops behind your head and the elbow points up.','Lean back to rest against your partner and lift the chin a little.','Breathe in and out slowly for 20–30 seconds, then change arms.'],
+ pt:['Hold her elbow and wrist. Draw the elbow gently back toward your own chest.','Lean forward so she can rest on you. Let her set the intensity and speed.','You can slowly slide your palm down the back of her upper arm.'],
+ why:'Stretches the back of the upper arm, the side of the back and the shoulder, which tighten from carrying and changed posture.',
+ care:'Find a comfortable range. Stop if you feel tingling down the arm.'},
+
+{id:'neck-release',cat:'seated',name:'Neck release',partner:true,props:['Chair'],dose:'3 breaths each side',clip:'IMG_7026',
+ order:['q','P','m'],props_:()=>PR.floor()+PR.chairF(130),
+ frames:[
+  K(1.2,.5,'Sit tall, shoulders relaxed',sitF(130),stF(130,{hands:[[113,121],[147,121]]})),
+  K(1.4,.5,'Bring the right hand over the head to the left ear',sitF(130,{hands:[[118,147],[123,84]]}),stF(130,{hands:[[118,104],[147,121]]})),
+  K(1.8,2.4,'Exhale · let the head tilt right. Left hand reaches down',sitF(130,{h:150,hands:[[106,166],[129,85]]}),stF(130,{hands:[[118,106],[147,121]]})),
+  K(1.4,.4,'Lift the head back to centre',sitF(130),stF(130,{hands:[[113,121],[147,121]]})),
+  K(1.4,.5,'Left hand over the head to the right ear',sitF(130,{hands:[[137,84],[142,147]]}),stF(130,{hands:[[113,121],[142,104]]})),
+  K(1.8,2.4,'Exhale · tilt left. Right hand reaches down',sitF(130,{h:210,hands:[[131,85],[154,166]]}),stF(130,{hands:[[113,121],[142,106]]})),
+ ],
+ steps:['Sit tall with shoulders soft and away from the ears.','Bring one hand over the top of the head to rest on the opposite ear.','Breathing out, let the weight of the hand tilt the head toward that shoulder. Don\'t pull.','Let the other arm hang or reach toward the floor to deepen the stretch.','Hold for 3 slow breaths, return the head to centre, then switch sides.'],
+ pt:['Stand behind and rest a palm on the shoulder that is being stretched, so it stays down.','You can steady her head with a hand, but never press it.'],
+ why:'Releases the neck and upper shoulders, a common spot for tension and headaches in pregnancy.',
+ care:'Keep it slow and small. No neck circles if you feel dizzy.'},
+
+{id:'prayer-reach',cat:'seated',name:'Overhead reach & shoulder opener',partner:true,props:['Chair'],dose:'5 slow rounds',clip:'IMG_7028',
+ order:['q','P','m'],props_:()=>PR.floor()+PR.chairF(130),
+ frames:[
+  K(1.2,.5,'Sit tall, knees wide',sitF(130),stF(130,{hands:[[113,121],[147,121]]})),
+  K(1.6,1.6,'Inhale · palms together overhead, partner supports the arms',sitF(130,{hands:[[128,64],[132,64]]}),stF(130,{hands:[[116,84],[144,84]]})),
+  K(1.5,1.2,'Exhale · fingertips to the shoulders, elbows wide',sitF(130,{hands:[[121,99],[139,99]]}),stF(130,{hands:[[106,104],[154,104]]})),
+  K(1.6,1.6,'Inhale · open the arms up into a wide V',sitF(130,{hands:[[100,68],[160,68]]}),stF(130,{hands:[[102,72],[158,72]]})),
+  K(1.4,.6,'Exhale · lower the arms',sitF(130),stF(130,{hands:[[113,121],[147,121]]})),
+ ],
+ steps:['Sit tall with knees apart and feet flat.','Breathing in, join the palms and reach them straight up.','Breathing out, bend the elbows and bring the fingertips to the shoulders. Circle the elbows slowly if that feels good.','Breathing in, open the arms up and out into a wide V.','Breathe out to lower. Repeat about 5 rounds.'],
+ pt:['Stand behind. Support the upper arms or wrists so she can relax into the reach.','Follow her rhythm and keep a light hold.'],
+ why:'Mobilises the shoulders and opens the chest, counteracting the rounded posture that comes with a heavier front.',
+ care:'If your hands tingle overhead, keep the arms lower.'},
+
+/* ---- standing ---- */
+{id:'wall-chest',cat:'standing',name:'Wall chest opener',partner:true,props:['Wall'],dose:'Hold 20–30 s each side',clip:'IMG_7029',
+ order:['P','q','m'],props_:()=>PR.floor()+PR.wallL(96),
+ frames:[
+  K(1.2,.5,'Stand side-on to a wall',stF(150),stF(205)),
+  K(1.4,.6,'Left palm on the wall at shoulder height',stF(150,{hands:[[97,80],[167,121]]}),stF(205,{hands:[[163,83],[222,121]]})),
+  K(1.8,2.6,'Exhale · step forward and turn the chest away from the wall',stF(152,{t:175,h:162,hands:[[97,80],[169,121]],feet:[[142,FL],[165,FL]]}),stF(205,{hands:[[167,85],[222,121]]})),
+  K(1.4,.6,'Turn back and lower the arm',stF(150),stF(205)),
+ ],
+ steps:['Stand side-on to a wall, about an arm\'s length away.','Place the near palm flat on the wall at shoulder height, fingers pointing back.','Breathing out, step the near foot forward and slowly turn the chest away from the wall until you feel a stretch across the chest and front of the shoulder.','Hold 20–30 seconds with easy breathing. Turn around and repeat on the other arm.'],
+ pt:['Stand on her open side. Place a hand on the front of her free shoulder to guide the turn.','Move slowly with her. Stop when she says it\'s enough.'],
+ why:'Stretches the chest and front of the shoulders, helping posture and making breathing feel easier.',
+ care:'Keep the hand at or below shoulder height. Stop if the hand goes numb.'},
+
+{id:'wall-lean',cat:'standing',name:'Wall lean & hip sway',partner:true,labour:true,props:['Wall'],dose:'1–2 minutes, or through a contraction',clip:'IMG_7030',
+ order:['P','m','q'],props_:()=>PR.wallBack()+PR.floor(),
+ frames:[
+  K(1.2,.5,'Face the wall, feet wide',stF(120,{back:true,feet:[[100,FL],[140,FL]]}),stF(168,{back:true})),
+  K(1.5,.8,'Hands high on the wall · let the head and belly hang',stF(120,{back:true,hip:[120,128],hands:[[104,50],[136,50]],feet:[[100,FL],[140,FL]]}),stF(168,{back:true,hands:[[132,114],[140,104]]})),
+  K(1.4,.6,'Sway the hips to the left',stF(120,{back:true,hip:[113,129],t:171,hands:[[104,50],[136,50]],feet:[[100,FL],[140,FL]]}),stF(168,{back:true,hands:[[128,116],[138,108]]})),
+  K(1.4,.6,'and to the right · partner rubs the low back',stF(120,{back:true,hip:[127,129],t:189,hands:[[104,50],[136,50]],feet:[[100,FL],[140,FL]]}),stF(168,{back:true,hands:[[136,114],[142,102]]})),
+  K(1.4,.6,'Back to centre · breathe out slowly',stF(120,{back:true,hip:[120,128],hands:[[104,50],[136,50]],feet:[[100,FL],[140,FL]]}),stF(168,{back:true,hands:[[132,114],[140,104]]})),
+ ],
+ steps:['Face a wall with feet wider than hips and toes slightly turned out.','Place both hands high on the wall and let your chest and belly relax toward it.','Sway or circle the hips slowly side to side.','Breathe in through the nose and out long through the mouth.'],
+ pt:['Stand behind or beside her. Massage the lower back and the shoulder blades with firm, slow strokes.','Ask what pressure feels good and keep checking in.'],
+ why:'Upright and forward-leaning, it takes weight off the back, uses gravity, and gives room for the baby to rotate. A good contraction position.',
+ care:'Keep the knees soft. Rest whenever you need to.'},
+
+{id:'hip-circles',cat:'standing',name:'Hip rocks, circles & figure-eights',labour:true,props:[],dose:'About 30 s each movement',clip:'IMG_7031',
+ props_:()=>PR.floor()+PR.mat(90,170),
+ frames:(()=>{const fr=[];const P=(x,y,t=180,cap,d=1.1,h=.25)=>fr.push(K(d,h,cap,stF(130,{hip:[x,y],t,hands:hipHands(x,y),feet:[[110,FL],[150,FL]]})));
+  P(130,125,180,'Feet wide, hands on hips',1.1,.5);
+  P(136,127,176,'Half-circle to the right');P(130,129,180,'');P(124,127,184,'Half-circle to the left');P(130,125,180,'');
+  P(134,129,174,'Figure-eight: bend the right knee, rotate');P(130,126,180,'');P(126,129,186,'bend the left knee, rotate');P(130,125,180,'Breathe in through the nose, out through the mouth',1.1,.6);
+  return fr})(),
+ steps:['Stand with feet wider than hips, knees soft, hands on hips.','Rock: shift the hips forward, then push them back until you feel a stretch in the back of the thighs. About 30 seconds.','Half-circles: push the hips forward and sweep them to the right, then forward and sweep to the left. About 30 seconds.','Figure-eights: bend the right knee and roll the hip around, then bend the left knee and roll the other way, drawing an 8. About 30 seconds.','Breathe in through the nose and out through the mouth throughout. Stop any time you want a break.'],
+ pt:['Stand nearby for balance if she wants a hand.','In labour, you can massage the back of the thighs during the rocking.'],
+ why:'Mobilising movements that loosen the hip joints and pelvis. In labour, moving the pelvis helps you cope and helps the baby find its way down.',
+ care:'Move slowly and keep the movements comfortable. You never need to push into them.'},
+
+{id:'leg-swings',cat:'standing',name:'Wall-supported leg swings',props:['Wall'],dose:'10 swings each leg',clip:'IMG_7036',
+ props_:()=>PR.floor()+PR.wallL(76),
+ frames:[
+  K(1.1,.5,'Stand side-on, hand on the wall',stF(128,{hands:[[77,88],[141,119]]})),
+  K(1,.2,'Swing the outer leg out',stF(128,{hands:[[77,88],[141,119]],feet:[[120,FL],[162,175]]})),
+  K(1,.2,'and back across, like a pendulum',stF(128,{hands:[[77,88],[141,119]],feet:[[121,FL],[118,178]]})),
+  K(1,.2,'Out again · keep the standing knee soft',stF(128,{hands:[[77,88],[141,119]],feet:[[120,FL],[162,175]]})),
+  K(1,.4,'Place the foot down',stF(128,{hands:[[77,88],[141,119]]})),
+ ],
+ steps:['Stand side-on to a wall and rest the near hand on it for balance.','Shift your weight onto the leg nearest the wall, knee soft.','Swing the outer leg gently forward and back, then out to the side and across, like a pendulum.','Do about 10 easy swings, then turn around and swap legs.'],
+ pt:['Stand close by if her balance feels off.'],
+ why:'Loosens the hip joints and helps balance as your centre of gravity shifts.',
+ care:'Keep the swings small. Skip this if you have pubic bone (SPD) pain.'},
+
+{id:'step-ups',cat:'standing',name:'Wall step-ups',labour:true,props:['Wall','Step or block'],dose:'5–8 each side',clip:'IMG_7037',
+ props_:()=>PR.floor()+PR.wallR(198)+PR.block(166,170,22,16),
+ frames:[
+  K(1.1,.5,'Face the wall, hands on it',st(156,1,{hands:[[196,84],[196,86]]})),
+  K(1.3,.4,'Step the right foot up onto the block',st(156,1,{hip:[157,121],hands:[[196,84],[196,86]],feet:[[152,FL],[176,170]]})),
+  K(1.2,1.2,'Lean gently into the raised leg · breathe',st(156,1,{hip:[162,124],t:172,hands:[[196,84],[196,86]],feet:[[152,FL],[176,170]]})),
+  K(1.2,.4,'Step down',st(156,1,{hands:[[196,84],[196,86]]})),
+  K(1.3,.4,'Now the left foot up',st(156,1,{hip:[157,121],hands:[[196,84],[196,86]],feet:[[176,170],[152,FL]]})),
+  K(1.2,1.2,'Lean in and breathe',st(156,1,{hip:[162,124],t:172,hands:[[196,84],[196,86]],feet:[[176,170],[152,FL]]})),
+ ],
+ steps:['Stand facing a wall with a low step or yoga block in front of you.','Place both hands on the wall for support.','Lift one foot onto the block and gently lean your weight toward it, keeping the back straight.','Hold for a breath or two, step down and switch legs.'],
+ pt:['Hold the block steady or stand beside her for support.'],
+ why:'An asymmetrical stance tilts the pelvis and creates more room on one side. Stair-stepping is often used in labour to help the baby descend.',
+ care:'Use a low, stable step. Avoid it if you have pelvic girdle pain.'},
+
+{id:'partner-squat',cat:'standing',name:'Partner-supported squat',partner:true,labour:true,props:[],dose:'5 slow squats',clip:'IMG_7038',
+ props_:()=>PR.floor(),
+ frames:[
+  K(1.2,.5,'Face each other and hold hands',st(100,1,{hands:[[146,100],[146,101]]}),st(192,-1,{hands:[[146,100],[146,101]]})),
+  K(2,1.6,'Both sink slowly into a squat · keep the heels down',st(100,1,{hip:[98,160],t:166,feet:[[110,FL],[114,FL]],hands:[[148,118],[148,119]]}),st(192,-1,{hip:[194,160],t:194,feet:[[182,FL],[178,FL]],hands:[[148,118],[148,119]]})),
+  K(.1,1.2,'Breathe in · breathe out',st(100,1,{hip:[98,160],t:166,feet:[[110,FL],[114,FL]],hands:[[148,118],[148,119]]}),st(192,-1,{hip:[194,160],t:194,feet:[[182,FL],[178,FL]],hands:[[148,118],[148,119]]})),
+  K(2,.6,'Push through the feet to stand together',st(100,1,{hands:[[146,100],[146,101]]}),st(192,-1,{hands:[[146,100],[146,101]]})),
+ ],
+ steps:['Face your partner, feet wider than hips and toes turned out. Hold each other\'s wrists or hands.','Lean back slightly against each other\'s grip and sink slowly into a squat, keeping heels down and knees over toes.','Hold for one or two breaths.','Press through the feet to rise together.'],
+ pt:['Mirror her and squat at the same time so your weight balances hers.','Keep a firm grip and say what you\'re doing as you go.'],
+ why:'Squatting opens the pelvic outlet and strengthens the legs. The partner\'s counterweight makes it safe and controlled.',
+ care:'Only go as low as is comfortable. Avoid deep squats late in pregnancy if the baby is breech, unless your care team says otherwise.'},
+
+{id:'wall-l-stretch',cat:'standing',name:'Wall L-stretch with hip traction',partner:true,props:['Wall'],dose:'Hold 30 s',clip:'IMG_7039',
+ order:['P','q','m'],props_:()=>PR.floor()+PR.wallR(204),
+ frames:[
+  K(1.2,.5,'Stand facing the wall, hands on it',st(158,1,{hands:[[202,80],[202,82]]}),st(70,1)),
+  K(2,.8,'Walk the hands down and step back into an L-shape',st(116,1,{t:92,h:96,hands:[[202,118],[202,120]],feet:[[112,FL],[117,FL]]}),st(70,1)),
+  K(1.5,2.6,'Partner holds the hips and gently pulls back',st(116,1,{t:92,h:96,hands:[[202,118],[202,120]],feet:[[112,FL],[117,FL]]}),st(92,1,{t:186,hands:[[108,118],[111,121]],feet:[[86,FL],[96,FL]]})),
+  K(.1,1.4,'Hold 30 seconds · breathe in through the nose',st(116,1,{t:92,h:96,hands:[[202,118],[202,120]],feet:[[112,FL],[117,FL]]}),st(92,1,{t:186,hands:[[108,118],[111,121]],feet:[[86,FL],[96,FL]]})),
+  K(2,.6,'Partner releases · walk the hands up the wall',st(158,1,{hands:[[202,80],[202,82]]}),st(70,1)),
+ ],
+ steps:['Stand facing a wall and place your hands on it at shoulder height.','Walk the hands down to hip height while stepping the feet back, until the back is flat and the body makes an L-shape.','Keep the feet hip-width apart, knees soft, head in line with the arms.','Hold about 30 seconds with slow breaths, then walk the hands back up.'],
+ pt:['Stand behind her and hold the front of her hips or upper thighs.','Gently pull back until she feels a comfortable stretch along the back. Hold, then ease off slowly.'],
+ why:'Lengthens the spine, shoulders and the back of the legs, and relieves lower-back compression.',
+ care:'Come up slowly to avoid light-headedness.'},
+
+{id:'back-to-back',cat:'standing',name:'Back-to-back stretch',partner:true,props:[],dose:'3 gentle rounds',clip:'IMG_7040',
+ order:['P','q','m'],props_:()=>PR.floor()+PR.mat(80,190),
+ frames:[
+  K(1.2,.6,'Stand back to back and link elbows',st(122,1,{hands:[[128,116],[130,118]]}),st(138,-1,{hands:[[132,116],[130,118]]})),
+  K(2.2,2.2,'Partner hinges forward slowly · she rests back over him',st(124,1,{t:204,h:218,hip:[126,121],hands:[[118,104],[120,106]]}),st(140,-1,{t:222,hip:[142,121],hands:[[118,104],[120,106]],feet:[[146,FL],[150,FL]]})),
+  K(.1,1.2,'Breathe in, breathe out',st(124,1,{t:204,h:218,hip:[126,121],hands:[[118,104],[120,106]]}),st(140,-1,{t:222,hip:[142,121],hands:[[118,104],[120,106]],feet:[[146,FL],[150,FL]]})),
+  K(2,.8,'Return to neutral · drop the shoulders',st(122,1,{hands:[[128,116],[130,118]]}),st(138,-1,{hands:[[132,116],[130,118]]})),
+ ],
+ steps:['Stand back to back with your partner and hook your elbows together.','Drop the shoulders and find a neutral position, leaning on each other.','Your partner bends forward a little so you rest back over his back and feel a stretch through the front of the body and spine.','Breathe in through the nose and out through the mouth, then come back to neutral. Repeat if it felt good.'],
+ pt:['Bend forward slowly and only a little. Her feet should stay on the floor.','Keep talking to each other about what you\'re doing.'],
+ why:'A gentle back bend that opens the chest and front body and relieves a stiff upper back.',
+ care:'Skip it if you feel unsteady, dizzy or have back pain that gets worse when you arch. Feet stay on the ground.'},
+
+{id:'partner-tree',cat:'standing',name:'Partner tree pose',partner:true,props:[],dose:'3–5 breaths each side',clip:'IMG_7041',
+ props_:()=>PR.floor()+PR.mat(80,180),
+ frames:[
+  K(1.2,.5,'Stand side by side, inside arms around each other\'s waists',stF(115,{hands:[[98,121],[146,118]]}),stF(150,{hands:[[119,118],[167,121]]})),
+  K(1.4,.6,'Lift the outer foot to the inner calf',stF(115,{hands:[[98,121],[146,118]],feet:[[121,152],[121,FL]]}),stF(150,{hands:[[119,118],[167,121]]})),
+  K(1.6,2.6,'Join outer palms overhead · inhale and exhale',stF(115,{hands:[[129,44],[146,118]],feet:[[121,152],[121,FL]]}),stF(150,{hands:[[119,118],[132,44]]})),
+  K(1.4,.6,'Lower arms and foot',stF(115,{hands:[[98,121],[146,118]]}),stF(150,{hands:[[119,118],[167,121]]})),
+ ],
+ steps:['Stand next to your partner and wrap your inside arms around each other\'s waists.','Shift your weight onto the inside leg. Place the outer foot on the inner calf or ankle (not the knee).','Bring the outer hands up and join palms overhead.','Lift the chin slightly and take 3–5 breaths, then switch sides.'],
+ pt:['Be the steady "trunk". Keep a firm hold at her waist.','Match her breathing and lower together.'],
+ why:'Builds balance and ankle stability, which help as the body changes shape. The partner makes it safe.',
+ care:'Keep the foot low (ankle or calf). Never press it into the knee.'},
+
+{id:'partner-warrior',cat:'standing',name:'Partner warrior II',partner:true,props:[],dose:'3–5 breaths each side',clip:'IMG_7042',
+ props_:()=>PR.floor(),
+ frames:[
+  K(1.2,.5,'Wide stance, partners side by side',stF(105,{feet:[[80,FL],[142,FL]],hip:[110,126],kn:[[91,156],[130,156]]}),stF(200,{feet:[[163,FL],[225,FL]],hip:[195,126],kn:[[175,156],[214,156]]})),
+  K(1.4,.6,'Arms out at shoulder height · hold hands',stF(105,{feet:[[80,FL],[142,FL]],hip:[110,126],kn:[[91,156],[130,156]],hands:[[56,84],[156,84]]}),stF(200,{feet:[[163,FL],[225,FL]],hip:[195,126],kn:[[175,156],[214,156]],hands:[[156,84],[250,84]]})),
+  K(1.6,2.4,'Bend the front knee over the ankle · breathe',stF(105,{feet:[[80,FL],[142,FL]],hip:[100,134],kn:[[82,160],[125,160]],hands:[[48,92],[152,92]]}),stF(200,{feet:[[163,FL],[225,FL]],hip:[205,134],kn:[[180,160],[223,160]],hands:[[154,92],[256,92]]})),
+  K(1.4,.6,'Straighten up',stF(105,{feet:[[80,FL],[142,FL]],hip:[110,126],kn:[[91,156],[130,156]],hands:[[56,84],[156,84]]}),stF(200,{feet:[[163,FL],[225,FL]],hip:[195,126],kn:[[175,156],[214,156]],hands:[[156,84],[250,84]]})),
+ ],
+ steps:['Stand with feet wide. Turn the front foot out and the back foot slightly in.','Lift the arms to shoulder height and hold your partner\'s hand on the inside.','Bend the front knee so it sits over the ankle. Keep the torso upright.','Breathe for 3–5 breaths, straighten, then face the other way.'],
+ pt:['Mirror her stance and hold her hand firmly for balance.','Keep the arm steady rather than pulling.'],
+ why:'Strengthens the legs, opens the hips and builds stamina for labour.',
+ care:'Keep the stance shorter if you feel pubic or groin pain.'},
+
+/* ---- ball ---- */
+{id:'ball-circles',cat:'ball',name:'Birth ball hip circles',labour:true,props:['Birth ball'],dose:'1–2 minutes',clip:'IMG_7032, 7033',
+ props_:p=>PR.floor()+PR.ball(p.bx,168,18),
+ frames:(()=>{const fr=[];const P=(x,y,cap,d=1.1,h=.1)=>fr.push(K(d,h,cap,{v:'f',hip:[x,y],t:180+(130-x)*.6,hands:hipHands(x,y),kn:[[104+(x-130)*.3,157],[156+(x-130)*.3,157]],feet:[[100,FL],[160,FL]]},null,{bx:130+(x-130)*.5}));
+  P(130,149,'Sit tall, feet wide, hands on hips',1.1,.5);P(136,149,'Draw slow circles with the hips');P(130,152,'');P(124,149,'');P(130,146,'');P(136,149,'Breathe slowly');P(130,152,'');P(124,149,'');P(130,146,'Change direction whenever you like',1.1,.4);return fr})(),
+ steps:['Sit in the middle of a birth ball with feet flat and wider than hips. Knees should be a little lower than the hips.','Place your hands on your hips.','Roll the pelvis in slow, wide circles. Change direction every few circles.','When you\'re rested and active you can do this standing. When tired, sit on the ball.'],
+ pt:['Sit or kneel in front and hold her hands or knees if she wants more stability.'],
+ why:'Keeps the pelvis moving and relaxed, eases back pain, and in labour helps the baby settle into a good position.',
+ care:'Use a ball sized so your hips are above your knees. Keep the feet planted.'},
+
+{id:'ball-rock',cat:'ball',name:'Ball rocking with a chair',labour:true,props:['Birth ball','Chair'],dose:'1–2 minutes',clip:'IMG_7034',
+ props_:p=>PR.floor()+PR.chairS(176,1)+PR.ball(p.bx,168,18),
+ frames:[
+  K(1.1,.5,'Sit on the ball, hands on the chair back',sitS(120,1,{hip:[120,150],feet:[[146,FL],[150,FL]],hands:[[160,116],[162,116]]}),null,{bx:120}),
+  K(1.4,.4,'Rock forward',sitS(120,1,{hip:[126,150],t:166,feet:[[146,FL],[150,FL]],hands:[[160,116],[162,116]]}),null,{bx:123}),
+  K(1.4,.4,'Rock back',sitS(120,1,{hip:[116,150],t:182,feet:[[146,FL],[150,FL]],hands:[[158,116],[160,116]]}),null,{bx:118}),
+  K(1.4,.4,'Forward · breathe out',sitS(120,1,{hip:[126,150],t:166,feet:[[146,FL],[150,FL]],hands:[[160,116],[162,116]]}),null,{bx:123}),
+  K(1.4,.4,'Back · breathe in',sitS(120,1,{hip:[116,150],t:182,feet:[[146,FL],[150,FL]],hands:[[158,116],[160,116]]}),null,{bx:118}),
+ ],
+ steps:['Sit on the ball facing the back of a sturdy chair (or a bed or counter).','Hold the chair back with both hands.','Rock the pelvis slowly forward and back, letting the ball roll a little under you.','Keep breathing in a slow rhythm with the movement.'],
+ pt:['Hold the chair still, or sit in it facing her so she can hold your hands.'],
+ why:'The chair gives you stability so you can relax and keep the pelvis moving without worrying about balance.',
+ care:'Make sure the chair can\'t slide.'},
+
+{id:'ball-bounce',cat:'ball',name:'Gentle ball bounce',labour:true,props:['Birth ball'],dose:'1–3 minutes',clip:'IMG_7035',
+ props_:p=>PR.floor()+PR.ball(124,168+(18-p.sq),18,p.sq),
+ frames:(()=>{const fr=[];const P=(y,sq,cap,d=.55,h=.05)=>fr.push(K(d,h,cap,sitS(124,1,{hip:[124,y],feet:[[150,FL],[154,FL]],hands:[[135,y-22],[138,y-14]]}),null,{sq}));
+  P(150,18,'Sit tall with hands on the belly',1,.6);P(153,16.4,'Bounce gently');P(149,18.4,'');P(153,16.4,'Breathe slowly with the bounce');P(149,18.4,'');P(153,16.4,'');P(149,18.4,'Let the baby settle',.55,.4);return fr})(),
+ steps:['Sit centred on the ball with feet flat and wide.','Rest your hands on your belly and close your eyes if you like.','Bounce very gently, letting your weight drop into the ball.','Keep the breath slow and even.'],
+ pt:['Sit or kneel in front and hold her knees if she wants extra stability.'],
+ why:'A soothing rhythmic movement that relaxes the pelvic floor. In labour, it is a comfortable way to stay upright.',
+ care:'Small bounces only, feet planted.'},
+
+/* ---- floor ---- */
+{id:'ankle-pumps',cat:'floor',name:'Ankle pumps',partner:true,props:['Mat'],dose:'10–15 pumps',clip:'IMG_7043',
+ props_:()=>PR.floor()+PR.mat(30,240),
+ frames:(()=>{const fr=[];const P=(fa,fq,cap,d=.9,h=.25)=>fr.push(K(d,h,cap,{v:'s',f:1,hip:[70,178],t:200,hands:[[52,182],[55,182]],feet:[[130,180],[133,180]],fa},{v:'s',f:-1,hip:[198,178],t:160,hands:[[216,182],[214,182]],feet:[[137,180],[135,180]],fa:fq}));
+  P(180,180,'Sit tall, legs straight, soles facing each other',1,.6);P(118,242,'Push the toes forward');P(202,158,'Pull the toes toward you');P(118,242,'Forward · inhale');P(202,158,'Toward you · exhale');P(180,180,'Relax the feet',.9,.5);return fr})(),
+ steps:['Sit on the mat with legs straight and lean back on your hands.','Point the toes forward, away from you.','Pull the toes back toward you so you feel the calves stretch.','Keep a slow rhythm with your breath: 10–15 pumps.'],
+ pt:['Sit opposite her, legs straight and feet near hers, and pump together so you keep the same rhythm.'],
+ why:'Gets the circulation going in the legs, eases swelling and helps prevent calf cramps.',
+ care:'If you get a calf cramp, pull the toes toward you and hold until it eases.'},
+
+{id:'wide-fold',cat:'floor',name:'Wide-leg forward fold',partner:true,props:['Mat'],dose:'Hold at least 30 s',clip:'IMG_7044',
+ props_:()=>PR.floor()+PR.mat(30,240),
+ frames:[
+  K(1.2,.5,'Sit with legs wide. Partner sits facing you',{v:'s',f:1,hip:[70,178],t:180,hands:[[92,176],[96,176]],feet:[[132,180],[134,180]]},{v:'s',f:-1,hip:[198,176],t:180,hands:[[184,176],[182,176]],feet:[[176,182],[180,184]]}),
+  K(1.6,.6,'Reach forward · partner holds your forearms',{v:'s',f:1,hip:[70,178],t:140,hands:[[140,150],[142,151]],feet:[[132,180],[134,180]]},{v:'s',f:-1,hip:[198,176],t:200,hands:[[142,150],[144,151]],feet:[[176,182],[180,184]]}),
+  K(1.6,2.6,'Partner gently draws you closer · hold 30 s',{v:'s',f:1,hip:[70,178],t:125,h:118,hands:[[148,156],[150,157]],feet:[[132,180],[134,180]]},{v:'s',f:-1,hip:[198,176],t:205,hands:[[150,156],[152,157]],feet:[[176,182],[180,184]]}),
+  K(.1,1.2,'In through the nose, out through the mouth',{v:'s',f:1,hip:[70,178],t:125,h:118,hands:[[148,156],[150,157]],feet:[[132,180],[134,180]]},{v:'s',f:-1,hip:[198,176],t:205,hands:[[150,156],[152,157]],feet:[[176,182],[180,184]]}),
+  K(1.6,.6,'Gently come out',{v:'s',f:1,hip:[70,178],t:180,hands:[[92,176],[96,176]],feet:[[132,180],[134,180]]},{v:'s',f:-1,hip:[198,176],t:180,hands:[[184,176],[182,176]],feet:[[176,182],[180,184]]}),
+ ],
+ steps:['Sit tall on the mat with the legs spread comfortably wide, toes pointing up.','Your partner sits cross-legged facing you.','Reach forward with a long spine. Your partner takes your forearms, or your waist if they can reach.','Let your partner gently draw you forward until you feel the inner thighs stretch. Hold at least 30 seconds.','Breathe deeply in through the nose and out through the mouth, then come out slowly.'],
+ pt:['Pull slowly and steadily. Never bounce or jerk.','Stop as soon as she says. Hold the position for her rather than pushing further.'],
+ why:'Opens the inner thighs and hips and lengthens the lower back.',
+ care:'Fold from the hips and leave room for the bump. Go less deep if you feel pubic or groin pain.'},
+
+{id:'side-bend-floor',cat:'floor',name:'Seated side bend',props:['Mat'],dose:'3 breaths each side',clip:'IMG_7051',
+ props_:()=>PR.floor()+PR.mat(60,200),
+ frames:[
+  K(1.2,.5,'Sit cross-legged, hands on the knees',{v:'f',hip:[130,176],t:180,hands:[[106,170],[154,170]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+  K(1.4,.4,'Right hand on the floor · left arm reaches up',{v:'f',hip:[130,176],t:180,hands:[[124,90],[160,182]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+  K(1.8,2.2,'Exhale · lean right, let the head follow',{v:'f',hip:[130,176],t:160,h:150,hands:[[152,96],[162,182]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+  K(1.4,.4,'Inhale · back to centre',{v:'f',hip:[130,176],t:180,hands:[[106,170],[154,170]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+  K(1.4,.4,'Left hand down · right arm up',{v:'f',hip:[130,176],t:180,hands:[[100,182],[136,90]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+  K(1.8,2.2,'Exhale · lean left',{v:'f',hip:[130,176],t:200,h:210,hands:[[98,182],[108,96]],kn:[[100,181],[160,181]],feet:[[138,183],[122,183]]}),
+ ],
+ steps:['Sit cross-legged on a mat or folded blanket. Hands rest on the knees.','Place one hand on the floor beside you and reach the other arm up.','Breathing out, lean toward the hand on the floor. Let the head tilt gently the same way.','Breathe into the stretched side for 3 breaths, come back up, and switch.'],
+ pt:['Sit behind her as a backrest if she wants support.'],
+ why:'Stretches the side body and the muscles between the ribs, freeing up space to breathe.',
+ care:'Sit on a cushion if your knees are higher than your hips.'},
+
+{id:'butterfly',cat:'floor',name:'Butterfly with knee press',partner:true,props:['Mat'],dose:'1 minute',clip:'IMG_7052',
+ props_:()=>PR.floor()+PR.mat(60,200),
+ frames:[
+  K(1.2,.5,'Sit tall, soles of the feet together',{v:'f',hip:[130,174],t:180,hands:[[127,182],[133,182]],kn:[[99,176],[161,176]],feet:[[124,184],[136,184]]}),
+  K(.8,.1,'Flutter the knees gently',{v:'f',hip:[130,174],t:180,hands:[[127,181],[133,181]],kn:[[101,167],[159,167]],feet:[[124,184],[136,184]]}),
+  K(.8,.1,'',{v:'f',hip:[130,174],t:180,hands:[[127,182],[133,182]],kn:[[99,176],[161,176]],feet:[[124,184],[136,184]]}),
+  K(.8,.1,'Breathe out and let the knees drop',{v:'f',hip:[130,174],t:180,hands:[[127,181],[133,181]],kn:[[101,167],[159,167]],feet:[[124,184],[136,184]]}),
+  K(.8,1.6,'Hold · partner may press the knees very lightly',{v:'f',hip:[130,174],t:180,hands:[[127,182],[133,182]],kn:[[99,176],[161,176]],feet:[[124,184],[136,184]]}),
+ ],
+ steps:['Sit tall and bring the soles of the feet together, heels a comfortable distance from you.','Hold the feet or ankles and let the knees fall out to the sides.','Flutter the knees gently up and down like wings.','Then sit still and breathe, letting the knees sink with each breath out. Lean forward slightly if it feels good.'],
+ pt:['Kneel beside or behind her. Rest your palms on her knees and press very gently, only as much as she asks for.'],
+ why:'Opens the hips and inner thighs and is a restful way to sit with the pelvis open.',
+ care:'Never force the knees down. Skip the partner press if you have pubic bone pain.'},
+
+{id:'childs-pose',cat:'floor',name:'Supported child\'s pose',labour:true,props:['Mat','Bolster or pillows'],dose:'1–3 minutes',clip:'IMG_7045, 7046',
+ props_:()=>PR.floor()+PR.mat(60,226)+PR.bolster(144,206,174,9),
+ frames:[
+  K(1.2,.5,'Kneel with knees wide and a bolster in front',{v:'s',f:1,hip:[134,153],t:180,hands:[[133,152],[136,152]],feet:[[104,184],[106,184]],fa:[-80,-80]}),
+  K(1.5,.4,'Sit back toward the heels',{v:'s',f:1,hip:[114,168],t:150,hands:[[146,170],[148,170]],feet:[[104,184],[106,184]],fa:[-80,-80]}),
+  K(1.8,2,'Fold forward · rest the chest and cheek on the bolster',{v:'s',f:1,hip:[114,168],t:100,h:112,hands:[[188,170],[190,172]],feet:[[104,184],[106,184]],fa:[-80,-80]}),
+  K(1.4,.4,'Breathe into the back',{v:'s',f:1,hip:[114,166],t:102,h:113,hands:[[188,170],[190,172]],feet:[[104,184],[106,184]],fa:[-80,-80]}),
+  K(1.4,1.2,'Let the shoulders soften',{v:'s',f:1,hip:[114,168],t:100,h:112,hands:[[188,170],[190,172]],feet:[[104,184],[106,184]],fa:[-80,-80]}),
+ ],
+ steps:['Kneel on a mat with big toes together and knees wide to make room for the bump.','Place a bolster or a stack of pillows lengthwise in front of you.','Sit back toward the heels, then fold forward and rest your chest and one cheek on the bolster.','Hug the bolster or let the arms rest on the floor. Breathe slowly into the back.','Turn the head halfway through.'],
+ pt:['Rest your hands on her lower back or stroke slowly down either side of the spine.'],
+ why:'A restful position that releases the lower back and hips. Useful for resting between contractions.',
+ care:'Add height under the chest if the belly feels squashed. Put a cushion between heels and hips if the knees complain.'},
+
+{id:'knee-chest',cat:'floor',name:'Knee-chest with sacral pressure',partner:true,labour:true,props:['Cushion','Mat'],dose:'30 s to a few minutes',clip:'IMG_7047, 7048, 7049, 7050',
+ order:['P','q','m','F'],props_:()=>PR.floor()+PR.mat(70,220)+PR.cushion(100,150,174),
+ front:()=>PR.press(118,140),
+ frames:[
+  K(1.2,.5,'Kneel on a cushion, hands on the floor',{v:'s',f:1,hip:[124,148],t:110,h:115,hands:[[166,184],[168,184]],feet:[[92,180],[94,180]],fa:[-80,-80]},st(70,1)),
+  K(1.8,.6,'Lower to the forearms · hips stay high, head rests on the arms',{v:'s',f:1,hip:[124,146],t:60,h:70,hands:[[184,184],[186,184]],feet:[[92,180],[94,180]],fa:[-80,-80]},st(70,1)),
+  K(1.5,2.2,'Partner presses both palms on the sacrum',{v:'s',f:1,hip:[124,146],t:60,h:70,hands:[[184,184],[186,184]],feet:[[92,180],[94,180]],fa:[-80,-80]},st(96,1,{hip:[96,140],t:150,hands:[[116,140],[119,141]],feet:[[82,FL],[88,FL]]})),
+  K(1.2,.8,'Lean in on the exhale',{v:'s',f:1,hip:[124,147],t:60,h:70,hands:[[184,184],[186,184]],feet:[[92,180],[94,180]],fa:[-80,-80]},st(96,1,{hip:[97,141],t:146,hands:[[117,142],[120,143]],feet:[[82,FL],[88,FL]]})),
+  K(1.2,.8,'Ease off on the inhale',{v:'s',f:1,hip:[124,146],t:60,h:70,hands:[[184,184],[186,184]],feet:[[92,180],[94,180]],fa:[-80,-80]},st(96,1,{hip:[96,140],t:150,hands:[[116,140],[119,141]],feet:[[82,FL],[88,FL]]})),
+ ],
+ steps:['Kneel on a firm cushion or folded mat, knees hip-width or wider.','Lower onto the forearms and rest the head on the hands. The hips stay higher than the chest.','Let the belly hang and the back relax. Breathe slowly.','To come out, walk the hands back and sit up slowly.'],
+ pt:['Stand or kneel behind her. Place both palms flat on the sacrum (the flat bony area just above the buttocks).','Press steadily as she breathes out or through a contraction, and ease off as she breathes in.','Ask "harder or softer?" and adjust.'],
+ why:'Takes pressure off the cervix and lower back, can help a baby turn from a back-to-back position, and gives relief from back labour.',
+ care:'Come up slowly. Avoid this position if you\'ve been told the baby must not move off the cervix, or if it causes dizziness or heartburn.'},
+
+/* ---- labour ---- */
+{id:'rebozo',cat:'labour',name:'Rebozo hip sifting',partner:true,labour:true,props:['Long scarf or sheet','Mat'],dose:'1–3 minutes',clip:'IMG_7053',
+ order:['P','q','m','F'],props_:()=>PR.floor()+PR.mat(50,220)+PR.pillow(80,183),
+ front:p=>`<path d="M${n1(p.ax)},${n1(p.ay)} C${n1(p.ax-6)},170 128,180 132,183" class="scarf"/><path d="M${n1(p.ax+3)},${n1(p.ay+1)} C${n1(p.ax+10)},172 158,180 154,183" class="scarf"/>`,
+ frames:(()=>{const fr=[];const M=(y=176)=>({v:'s',f:1,hip:[142,y],t:-90,h:-90,hands:[[124,170],[126,168]],feet:[[176,184],[179,184]],fa:[90,90]});
+  const Q=(dy)=>({v:'s',f:-1,hip:[160,146],t:205,hands:[[147,149+dy],[150,150+dy]],feet:[[150,FL],[146,FL]]});
+  fr.push(K(1.2,.6,'Lie back, knees bent, scarf under the hips',M(),Q(0),{ax:147,ay:149}));
+  fr.push(K(1.2,.4,'Partner takes both ends and lifts slightly',M(175),Q(-4),{ax:147,ay:145}));
+  for(let i=0;i<6;i++){const s=i%2?3:-3;fr.push(K(.32,.02,i<2?'Gently jiggle, side to side, in a rhythm':(i<4?'She lets the hips go loose':'Breathe slowly'),M(175+(i%2?.6:0)),Q(-4+s*.6),{ax:147,ay:145+s*.6}))}
+  fr.push(K(1.2,.8,'Lower slowly and rest',M(),Q(0),{ax:147,ay:149}));return fr})(),
+ steps:['Lie on your back on a mat with knees bent and a pillow under the head. Use your side if lying back makes you dizzy.','Your partner slides a long scarf or folded sheet under your hips.','Your partner stands over you, holds both ends, and lifts just enough to take a little weight.','Your partner shifts the ends alternately in a small, steady rhythm. You let the hips relax and move.'],
+ pt:['Bend your knees and keep your back straight. Lift with the legs.','Keep the movements small, soft and rhythmic. Watch her face and stop if she\'s uncomfortable.'],
+ why:'A traditional technique to relax the pelvic and belly muscles, which may give the baby more room to shift position.',
+ care:'Learn it with your instructor first. Limit time flat on the back in later pregnancy, and roll to the side if you feel faint.'},
+
+{id:'side-lying-release',cat:'labour',name:'Side-lying release',partner:true,labour:true,props:['Bed'],dose:'3 breaths each side',clip:'IMG_7054',
+ order:['q','P','m'],props_:()=>PR.floor()+PR.bed(30,186,140)+PR.pillow(86,136),
+ frames:[
+  K(1.2,.6,'Lie on your side at the edge of the bed',{v:'f',hip:[146,128],t:-90,h:-90,hands:[[94,136],[124,136]],kn:[[168,137],[170,126]],feet:[[184,137],[184,129]],es:[1,1]},stF(130,{hands:[[112,108],[147,113]]})),
+  K(1.6,.6,'Partner steadies the hip and shoulder',{v:'f',hip:[146,128],t:-90,h:-90,hands:[[94,136],[124,136]],kn:[[168,137],[170,126]],feet:[[184,137],[184,129]],es:[1,1]},stF(130,{hands:[[110,114],[148,117]]})),
+  K(2,2.6,'Let the top leg slide off the edge and hang · breathe',{v:'f',hip:[146,128],t:-90,h:-90,hands:[[94,136],[124,136]],kn:[[168,137],[166,141]],feet:[[184,137],[168,177]],es:[1,1]},stF(130,{hands:[[110,114],[148,117]]})),
+  K(.1,1.6,'Stay for 3 slow breaths',{v:'f',hip:[146,128],t:-90,h:-90,hands:[[94,136],[124,136]],kn:[[168,137],[166,141]],feet:[[184,137],[168,177]],es:[1,1]},stF(130,{hands:[[110,114],[148,117]]})),
+  K(1.8,.8,'Bring the leg back up and rest',{v:'f',hip:[146,128],t:-90,h:-90,hands:[[94,136],[124,136]],kn:[[168,137],[170,126]],feet:[[184,137],[184,129]],es:[1,1]},stF(130,{hands:[[112,108],[147,113]]})),
+ ],
+ steps:['Lie on your side right at the edge of a firm bed, with the back and hips lined up straight along the edge.','Bottom leg straight, a pillow under the head, bottom arm under the pillow.','Your partner stands behind you and steadies the top hip so you don\'t roll forward.','Let the top leg slide forward off the edge and hang down toward the floor, relaxed.','Stay for about 3 breaths, bring the leg back up, then do the other side.'],
+ pt:['Stand behind her. One hand keeps her shoulder steady, the other hand rests on the top of her hip to stop it rolling forward.','You can guide the leg slowly down and back up.'],
+ why:'Releases the pelvic floor and the ligaments around the pelvis, which can help when labour stalls or the baby hasn\'t engaged.',
+ care:'Always do both sides. Do it with your care team\'s okay and after learning it in class.'},
+
+{id:'peanut-ball',cat:'labour',name:'Peanut ball side-lying',labour:true,props:['Peanut ball','Bed'],dose:'Change sides every 30–60 min',clip:'IMG_7055',
+ order:['P','m','F'],props_:()=>PR.floor()+PR.bed(30,214,140)+PR.pillow(80,136),
+ front:p=>PR.peanut(p.px,p.py),
+ frames:[
+  K(1.2,.6,'Lie on your side, ball between the knees',{v:'f',hip:[140,128],t:-90,h:-90,hands:[[88,136],[116,136]],kn:[[170,137],[168,111]],feet:[[198,137],[194,124]],es:[1,1]},null,{px:168,py:124}),
+  K(1.5,.8,'Bring the pelvis forward',{v:'f',hip:[146,129],t:-94,h:-90,hands:[[88,136],[116,136]],kn:[[174,137],[173,111]],feet:[[200,137],[198,124]],es:[1,1]},null,{px:173,py:124}),
+  K(1.5,2.2,'Lift the top knee higher · toes in, knees wide',{v:'f',hip:[146,129],t:-94,h:-90,hands:[[88,136],[116,136]],kn:[[174,137],[174,104]],feet:[[200,137],[192,130]],es:[1,1]},null,{px:174,py:120}),
+  K(1.5,.8,'Settle back and rest',{v:'f',hip:[140,128],t:-90,h:-90,hands:[[88,136],[116,136]],kn:[[170,137],[168,111]],feet:[[198,137],[194,124]],es:[1,1]},null,{px:168,py:124}),
+ ],
+ steps:['Lie on your side with a pillow under the head and a peanut ball between the knees and ankles.','Bring the pelvis slightly forward and keep the top leg raised on the ball.','For more opening at the bottom of the pelvis, keep the knees wide and turn the toes in so the feet are close together.','Switch sides every 30–60 minutes, or as your midwife suggests.'],
+ pt:['Help her reposition the ball and pillows when she changes sides.','Keep water nearby and help her turn.'],
+ why:'Keeps the pelvis open while resting. Useful if you are tired or have an epidural and can\'t move around.',
+ care:'Ask your nurse or midwife which size ball and which position suits the stage of labour.'},
+
+{id:'legs-on-ball',cat:'labour',name:'Legs on the ball, partner-held',partner:true,labour:true,props:['Large ball','Mat'],dose:'1–2 minutes',clip:'IMG_7056',
+ props_:p=>PR.floor()+PR.mat(40,240)+PR.pillow(220,183)+PR.ball(p.bx,164,20),
+ frames:[
+  K(1.2,.6,'Lie back with the calves resting on a large ball',{v:'s',f:-1,hip:[158,176],t:90,h:90,hands:[[180,183],[182,181]],feet:[[106,146],[108,146]],fa:[150,150]},{v:'s',f:1,hip:[64,160],t:160,hands:[[86,156],[88,150]],feet:[[72,FL],[78,FL]]},{bx:110}),
+  K(1.6,.8,'Partner holds the ball steady, like a bridge',{v:'s',f:-1,hip:[158,176],t:90,h:90,hands:[[180,183],[182,181]],feet:[[106,146],[108,146]],fa:[150,150]},{v:'s',f:1,hip:[66,160],t:156,hands:[[90,154],[92,148]],feet:[[72,FL],[78,FL]]},{bx:110}),
+  K(1.6,1,'He rolls the ball slowly toward her',{v:'s',f:-1,hip:[158,176],t:90,h:90,hands:[[180,183],[182,181]],feet:[[118,146],[120,146]],fa:[150,150]},{v:'s',f:1,hip:[76,160],t:156,hands:[[102,154],[104,148]],feet:[[72,FL],[78,FL]]},{bx:122}),
+  K(1.6,1,'and slowly back',{v:'s',f:-1,hip:[158,176],t:90,h:90,hands:[[180,183],[182,181]],feet:[[106,146],[108,146]],fa:[150,150]},{v:'s',f:1,hip:[66,160],t:156,hands:[[90,154],[92,148]],feet:[[72,FL],[78,FL]]},{bx:110}),
+ ],
+ steps:['Lie back with a pillow under your head and rest both calves on a large birth ball.','Your partner kneels or squats at the ball and holds it steady with both hands.','Let the legs relax completely. Your partner rolls the ball slowly toward you, bending your knees, and back again.','Breathe slowly and let the hips and lower back go loose.'],
+ pt:['Hold the ball firmly like a bridge so she doesn\'t have to use her own strength.','Move slowly and guide her legs. Keep the ball centred.'],
+ why:'Relaxes the legs, hips and lower back and gives gentle movement to the pelvis without effort from her.',
+ care:'Don\'t lie flat on your back for long in later pregnancy. Prop the upper body on pillows, or stop if you feel faint.'},
+];
+
+/* ---------- description + timing per exercise ---------- */
+const INFO={
+ 'side-stretch':['Sitting on a chair, one arm reaches overhead and you lean gently to the opposite side while your partner holds the raised wrist and steadies your shoulder.',{hold:'15–20 s in the lean (3–5 slow breaths)',reps:'3 times per side',sides:'Right, then left',total:'About 2 min'}],
+ 'elbow-stretch':['One arm bends overhead with the hand behind your head. Your partner draws the elbow back toward his chest while you lean back on him and lift the chin.',{hold:'20–30 s per arm',reps:'2 times per arm',sides:'Both arms',total:'About 2 min'}],
+ 'neck-release':['One hand rests over the head on the opposite ear and the head tilts slowly toward the shoulder, while the other hand reaches down to the floor.',{hold:'15–20 s (3 slow breaths)',reps:'2 times per side',sides:'Right, then left',total:'About 1½ min'}],
+ 'prayer-reach':['A breathing flow: palms together overhead, fingertips to the shoulders, then arms open into a wide V. Your partner supports the arms from behind.',{hold:'3–5 s in each position (one breath)',reps:'5 full rounds',sides:'Both arms together',total:'About 1½ min'}],
+ 'wall-chest':['One palm on the wall at shoulder height. You step forward and turn the chest away to stretch the front of the shoulder.',{hold:'20–30 s per side',reps:'2 times per side',sides:'Right arm, then left',total:'About 2 min'}],
+ 'wall-lean':['Face the wall with feet wide and hands high, let the belly hang toward the wall and sway the hips while your partner rubs your lower back.',{hold:'Sway continuously for 1–2 min',reps:'2–3 sets, rest 30 s between',sides:'Side to side',total:'3–5 min. In labour: through each contraction (60–90 s)'}],
+ 'hip-circles':['Standing with feet wide and hands on hips: rock the hips forward and back, sweep them in half-circles, then draw figure-eights by bending one knee at a time.',{hold:'30 s on each movement (about 6–8 slow reps)',reps:'1–2 rounds of all three movements',sides:'Both directions',total:'About 3 min'}],
+ 'leg-swings':['Hold the wall for balance and swing the outer leg like a pendulum: forward and back, then out to the side and across.',{hold:'No hold: 10 slow swings (about 20 s)',reps:'2 sets per leg',sides:'Turn around to swap legs',total:'About 2 min'}],
+ 'step-ups':['Hands on the wall, one foot up on a low step or block. You lean gently into the raised leg, then step down and switch.',{hold:'About 10 s in the lean (2 breaths)',reps:'5–8 per side',sides:'Alternate right and left',total:'2–3 min'}],
+ 'partner-squat':['Face your partner holding hands and sink into a squat together, using each other\'s weight as a counterbalance.',{hold:'10–15 s at the bottom (1–2 breaths)',reps:'5 squats, rest 20 s between',sides:'Both legs together',total:'About 2 min'}],
+ 'wall-l-stretch':['Hands on the wall at hip height, step back until your body makes an L-shape. Your partner holds your hips and gently pulls back to lengthen the spine.',{hold:'30 s',reps:'2–3 times, rest 15 s between',sides:'Whole back',total:'About 2 min'}],
+ 'back-to-back':['Stand back to back with elbows linked. Your partner hinges forward a little so you rest back over him and feel your front body and spine open.',{hold:'10–15 s in the stretch',reps:'3 times',sides:'n/a',total:'About 1½ min'}],
+ 'partner-tree':['Balance on one leg with the other foot on the inner calf, arms around each other\'s waists and outer palms joined overhead.',{hold:'15–30 s (3–5 breaths)',reps:'2 times per side',sides:'Swap places to change legs',total:'About 2 min'}],
+ 'partner-warrior':['A wide-legged lunge with arms out at shoulder height, holding your partner\'s hand. You bend the front knee over the ankle.',{hold:'15–30 s (3–5 breaths)',reps:'2 times per side',sides:'Turn to face the other way',total:'About 2 min'}],
+ 'ball-circles':['Sitting on a birth ball with feet wide and hands on hips, roll the pelvis in slow, wide circles.',{hold:'No hold: 10 slow circles each way (about 1 min)',reps:'2 sets',sides:'Clockwise, then anticlockwise',total:'2–3 min'}],
+ 'ball-rock':['Sitting on the ball and holding the back of a chair, you rock the pelvis slowly forward and back.',{hold:'No hold: continuous rocking',reps:'15–20 slow rocks',sides:'Forward and back',total:'1–2 min'}],
+ 'ball-bounce':['Sit on the ball with hands on the belly and bounce very gently in rhythm with slow breathing.',{hold:'No hold: continuous small bounces',reps:'1 set',sides:'n/a',total:'1–3 min'}],
+ 'ankle-pumps':['Sitting with legs straight, point the toes away, then pull them toward you. Your partner can sit opposite and pump in the same rhythm.',{hold:'About 2 s at each end',reps:'10–15 pumps, 2 sets',sides:'Both feet together',total:'About 1 min. Repeat a few times a day for swelling'}],
+ 'wide-fold':['Sitting with legs wide, you reach forward while your partner, sitting opposite, holds your forearms and gently draws you closer.',{hold:'At least 30 s',reps:'2–3 times, rest 15 s between',sides:'Centre',total:'About 2 min'}],
+ 'side-bend-floor':['Sitting cross-legged, one hand goes to the floor, the other arm reaches up and over, and you lean to that side.',{hold:'15–20 s (3 breaths)',reps:'2 times per side',sides:'Right, then left',total:'About 1½ min'}],
+ 'butterfly':['Sitting with the soles together and knees falling outward, flutter the knees, then sit still and let them sink. Your partner can press very lightly on the knees.',{hold:'Flutter 30 s, then hold still 30–60 s',reps:'2 times',sides:'Both together',total:'About 2–3 min'}],
+ 'childs-pose':['Kneel with knees wide and fold forward so your chest and cheek rest on a bolster. A resting position.',{hold:'1–3 min',reps:'1–2 times. Turn the head halfway',sides:'n/a',total:'2–5 min. In labour: between contractions'}],
+ 'knee-chest':['On your knees and forearms with hips higher than chest, belly hanging, while your partner presses both palms on your sacrum.',{hold:'Start with 30 s, build up to 1–2 min',reps:'1–3 times, sit up slowly between',sides:'n/a',total:'Up to about 5 min. Partner presses on each exhale or contraction'}],
+ 'rebozo':['Lying on your back with knees bent, a scarf under the hips. Your partner holds both ends and jiggles it gently side to side so your hips relax.',{hold:'1–3 min of gentle sifting',reps:'2–3 rounds, rest 1 min on your side between',sides:'n/a',total:'5–10 min'}],
+ 'side-lying-release':['Lying on your side at the edge of the bed, you let the top leg slide off and hang while your partner steadies your hip and shoulder.',{hold:'3 deep breaths (about 30–45 s)',reps:'1 round per side (up to 3 in labour)',sides:'Always do both sides',total:'About 3 min'}],
+ 'peanut-ball':['Side-lying with a peanut ball between the knees, pelvis forward, top knee lifted and toes turned in to open the pelvis.',{hold:'Practice: 5–10 min. Labour: 30–60 min per side',reps:'Switch sides each time',sides:'Left and right',total:'As advised by your midwife'}],
+ 'legs-on-ball':['Lying back with the calves on a large ball. Your partner holds it steady like a bridge and rolls it slowly toward you and back.',{hold:'No hold: 10 slow rolls (about 1 min)',reps:'2 rounds',sides:'n/a',total:'1–2 min. Prop up on pillows if you feel faint'}],
+};
+EX.forEach(e=>{const r=INFO[e.id];e.desc=r[0];e.tm=r[1]});
+const TML=[['hold','Hold'],['reps','Repeat'],['sides','Sides'],['total','Total']];
+const timingHTML=tm=>`<dl class="tm">${TML.map(([k,l])=>`<div><dt>${l}</dt><dd>${tm[k]}</dd></div>`).join('')}</dl>`;
+
+/* ---------- player ---------- */
+const lerp=(a,b,e)=>{
+  if(typeof b==='number')return typeof a==='number'?a+(b-a)*e:b;
+  if(Array.isArray(b))return b.map((v,i)=>lerp(a&&a[i],v,e));
+  if(b&&typeof b==='object'){const o={};for(const k in b)o[k]=lerp(a?a[k]:undefined,b[k],e);return o}
+  return b};
+const ease=e=>e<.5?2*e*e:1-Math.pow(-2*e+2,2)/2;
+EX.forEach(ex=>{ex.frames.forEach(fr=>{[fr.m,fr.q].forEach(P=>{if(P&&P.h==null)P.h=P.t})});
+  ex.total=ex.frames.reduce((s,f)=>s+f.d+f.hold,0);
+  ex.cues=[];ex.frames.forEach((f,i)=>{if(f.cap)ex.cues.push({i,cap:f.cap})});
+  ex.hasPt=ex.frames.some(f=>f.q)});
+function sample(ex,t){
+  const fr=ex.frames,n=fr.length;t=((t%ex.total)+ex.total)%ex.total;let acc=0;
+  for(let i=0;i<n;i++){const f=fr[i],prev=fr[(i-1+n)%n];
+    if(t<acc+f.d){const e=ease((t-acc)/f.d);return{m:lerp(prev.m,f.m,e),q:f.q?lerp(prev.q||f.q,f.q,e):null,p:f.p?lerp(prev.p||f.p,f.p,e):{},i}}
+    acc+=f.d;if(t<acc+f.hold)return{m:f.m,q:f.q,p:f.p||{},i};acc+=f.hold}
+  const f=fr[n-1];return{m:f.m,q:f.q,p:f.p||{},i:n-1};
+}
+function babySvg(B){
+  if(!B)return'';const L=B.len||22,hr=B.hr||6.5,d=D(B.a),c=[B.x,B.y],top=add(c,d,L/2),bot=add(c,d,-L/2),hc=add(c,d,L/2+hr-1);let o='';
+  if(B.lg>.5){o+=pl([bot,add(bot,D(B.a+180-30),10)],'bs',5)+pl([bot,add(bot,D(B.a+180+30),10)],'bs',5)}
+  o+=pl([bot,top],B.sw>.5?'bw':'bc',13);
+  if(B.sw<=.5)o+=pl([add(c,d,L/2-4),add(add(c,d,L/2-4),D(B.a+(B.arm||120)),8)],'bs',4.5);
+  o+=`<circle cx="${n1(hc[0])}" cy="${n1(hc[1])}" r="${hr}" class="fbs"/>`;
+  return o;
+}
+function bottleSvg(x,y,a){const d=D(a),t=[x,y],n=add(t,d,4),e=add(t,d,22),mid=add(t,d,12);
+  return pl([t,n],'tt',3.5)+pl([n,e],'btl',9)+pl([mid,e],'milk',5.5)}
+function scene(ex,s,tm){
+  const order=ex.order||['P','q','m','F'];let o='';
+  const bsv=s.p&&s.p.b?babySvg(s.p.b):'';
+  for(const k of order){
+    if(k==='P')o+=ex.props_(s.p);
+    else if(k==='m')o+=fig(s.m,'m',ex.hold==='m'?bsv:'',ex.layer==='top');
+    else if(k==='q')o+=fig(s.q,'q',ex.hold==='q'?bsv:'',ex.layer==='top');
+    else if(k==='b')o+=bsv;
+    else if(k==='F'&&ex.front)o+=ex.front(s.p);
+  }
+  if(!order.includes('F')&&ex.front)o+=ex.front(s.p);
+  if(ex.mk&&ex.showMk!==false&&typeof marksSvg==='function')o+=marksSvg(ex,s,tm||0);
+  return o;
+}
+const SVGNS='http://www.w3.org/2000/svg';
+function makeSvg(){const s=document.createElementNS(SVGNS,'svg');s.setAttribute('viewBox',`0 0 ${W} ${H}`);s.setAttribute('aria-hidden','true');return s}
+function capIndex(ex,i){let c=0;for(let k=0;k<ex.cues.length;k++)if(ex.cues[k].i<=i)c=k;return c}
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mstate={log:{},plan:{},times:{am:'07:30',pm:'19:00'},sub:'today'};
+try{Object.assign(mstate,JSON.parse(localStorage.getItem('bloom-mom')||'{}'))}catch(e){}
+const msave=()=>{try{localStorage.setItem('bloom-mom',JSON.stringify(mstate))}catch(e){}if(window.bloomOnSave)window.bloomOnSave()};
+const dayKey=(d=new Date())=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const doneToday=id=>(mstate.log[id]||[]).includes(dayKey());
+const weekCount=()=>{const t=new Date();const keys=new Set();for(let i=0;i<7;i++){const d=new Date(t);d.setDate(t.getDate()-i);keys.add(dayKey(d))}let n=0;Object.values(mstate.log).forEach(a=>a.forEach(k=>{if(keys.has(k))n++}));return n};
+function toggleDone(id){const k=dayKey(),a=mstate.log[id]||[];mstate.log[id]=a.includes(k)?a.filter(x=>x!==k):[...a,k];msave()}
+const thumbs=new Map();
+let last=performance.now();
+function loop(now){
+  const dt=Math.min(.1,(now-last)/1000);last=now;
+  thumbs.forEach(th=>{if(!th.vis||th.paused)return;th.t+=dt*(th.speed||1);th.acc+=dt;if(th.acc<1/24)return;th.acc=0;const smp=sample(th.ex,th.t);th.svg.innerHTML=scene(th.ex,smp,th.t);if(th.cap){const ci=capIndex(th.ex,smp.i);if(th.ci!==ci){th.ci=ci;th.cap.textContent=th.ex.cues[ci].cap}}});
+  if(detail.ex&&detail.playing){detail.t+=dt*detail.speed;drawDetail()}
+  requestAnimationFrame(loop);
+}
+
+/* ---------- list UI ---------- */
+const state={cat:'all',partner:false,labour:false};
+try{const s=JSON.parse(localStorage.getItem('bloom-filters')||'null');if(s)Object.assign(state,s)}catch(e){}
+const chipsEl=document.getElementById('chips'),listEl=document.getElementById('list');
+function save(){try{localStorage.setItem('bloom-filters',JSON.stringify(state))}catch(e){}}
+function visible(ex){return(!state.partner||ex.partner)&&(!state.labour||ex.labour)}
+function renderChips(){
+  const opts=[{id:'all',name:'All'},...CATS.map(c=>({id:c.id,name:c.name.replace(' on a chair','').replace(' & wall','')}))];
+  chipsEl.innerHTML=opts.map(o=>{const n=EX.filter(e=>(o.id==='all'||e.cat===o.id)&&visible(e)).length;
+    return`<button class="chip" data-cat="${o.id}" aria-pressed="${state.cat===o.id}">${o.name}<span class="n">${n}</span></button>`}).join('');
+  document.getElementById('tPartner').setAttribute('aria-pressed',state.partner);
+  document.getElementById('tLabour').setAttribute('aria-pressed',state.labour);
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{const th=thumbs.get(e.target);if(th)th.vis=e.isIntersecting&&!reduce}),{rootMargin:'80px'});
+function renderList(){
+  thumbs.forEach((th,el)=>{if(th.mom){io.unobserve(el);thumbs.delete(el)}});listEl.innerHTML='';let any=false;
+  CATS.forEach(c=>{
+    if(state.cat!=='all'&&state.cat!==c.id)return;
+    const items=EX.filter(e=>e.cat===c.id&&visible(e));if(!items.length)return;any=true;
+    const sec=document.createElement('section');
+    sec.innerHTML=`<div class="section-h"><h2>${c.name}</h2><p>${c.blurb}</p></div><div class="grid"></div>`;
+    const grid=sec.querySelector('.grid');
+    items.forEach(ex=>{
+      const b=document.createElement('button');b.className='card';b.dataset.id=ex.id;
+      const tags=[doneToday(ex.id)?'<span class="tag ok">✓ Done today</span>':'',ex.partner?'<span class="tag pt">With partner</span>':'',ex.labour?'<span class="tag lab">Labour</span>':'',...ex.props.map(p=>`<span class="tag">${p}</span>`)].join('');
+      b.innerHTML=`<div class="stg"></div><div class="txt"><h3>${ex.name}</h3><div class="tags">${tags}</div><p class="desc">${ex.desc}</p>${timingHTML(ex.tm)}<span class="more">Watch with cues →</span></div>`;
+      const svg=makeSvg();b.querySelector('.stg').appendChild(svg);
+      const key=ex.frames[Math.min(2,ex.frames.length-1)];const t0=ex.frames.slice(0,Math.min(3,ex.frames.length)).reduce((s,f)=>s+f.d+f.hold,0)-key.hold/2;
+      svg.innerHTML=scene(ex,sample(ex,t0));
+      const th={ex,svg,t:t0,acc:0,vis:false,mom:true};thumbs.set(b,th);io.observe(b);
+      b.addEventListener('click',()=>openDetail(ex.id));
+      grid.appendChild(b)});
+    listEl.appendChild(sec)});
+  if(!any)listEl.innerHTML='<p class="empty">Nothing matches these filters. Turn a filter off to see more.</p>';
+}
+chipsEl.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;state.cat=b.dataset.cat;save();renderChips();renderList()});
+document.getElementById('tPartner').onclick=()=>{state.partner=!state.partner;save();renderChips();renderList()};
+document.getElementById('tLabour').onclick=()=>{state.labour=!state.labour;save();renderChips();renderList()};
+
+/* ---------- detail ---------- */
+const dlg=document.getElementById('dlg'),$=id=>document.getElementById(id);
+const detail={ex:null,t:0,playing:!reduce,speed:1,svg:makeSvg(),lastCue:-1};
+$('dStage').appendChild(detail.svg);
+function drawDetail(){
+  const ex=detail.ex,s=sample(ex,detail.t);detail.svg.innerHTML=scene(ex,s);
+  const tt=((detail.t%ex.total)+ex.total)%ex.total;$('dProg').style.width=(tt/ex.total*100).toFixed(1)+'%';
+  const ci=capIndex(ex,s.i);
+  if(ci!==detail.lastCue){detail.lastCue=ci;$('dCap').textContent=ex.cues[ci].cap;$('dStepN').textContent=`${ci+1}/${ex.cues.length}`;
+    [...$('dCues').children].forEach((li,k)=>li.classList.toggle('on',k===ci))}
+}
+function currentList(){return EX.filter(visible).filter(e=>state.cat==='all'||e.cat===state.cat)}
+function syncDoneBtn(){const on=detail.ex&&doneToday(detail.ex.id);$('dDone').setAttribute('aria-pressed',!!on);$('dDone').textContent=on?'✓ Done today':'Mark done today'}
+function openDetail(id){
+  const ex=EX.find(e=>e.id===id);detail.ex=ex;detail.t=0;detail.lastCue=-1;
+  $('dTitle').textContent=ex.name;
+  const cat=CATS.find(c=>c.id===ex.cat).name;
+  $('dFacts').innerHTML=`<p class="desc big">${ex.desc}</p>`+timingHTML(ex.tm)+`<div class="sub">${[['Props',ex.props.length?ex.props.join(', '):'None'],['Who',ex.partner?'Mum + partner':'Mum'],['Section',cat]].map(([a,b])=>`<span><b>${a}:</b> ${b}</span>`).join('')}</div>`;
+  $('dCues').innerHTML=ex.cues.map(c=>`<li>${c.cap}</li>`).join('');
+  $('dSteps').innerHTML=ex.steps.map(s=>`<li>${s}</li>`).join('');
+  $('dPtWrap').hidden=!(ex.pt&&ex.pt.length);$('dPt').innerHTML=(ex.pt||[]).map(s=>`<li>${s}</li>`).join('');
+  $('dWhy').innerHTML=`<strong>Why it helps.</strong> ${ex.why}`;
+  $('dCare').innerHTML=`<strong>Take care.</strong> ${ex.care}`;
+  $('dSrc').textContent=`Redrawn from your class clip ${ex.clip}.`;
+  $('dLegPt').hidden=!ex.hasPt;
+  syncDoneBtn();
+  $('dPlay').textContent=detail.playing?'Pause':'Play';
+  drawDetail();
+  if(!dlg.open)dlg.showModal();
+  try{history.replaceState(null,'','#'+ex.id)}catch(e){}
+}
+$('dClose').onclick=()=>dlg.close();
+$('dDone').onclick=()=>{toggleDone(detail.ex.id);syncDoneBtn();renderList();renderWeek();if(window.renderMom)renderMom()};
+function renderWeek(){const el=document.getElementById('weekLine');if(el){const n=weekCount();el.textContent=n?`${n} stretch session${n>1?'s':''} done in the last 7 days.`:'Open a stretch and tap “Mark done today” to track your sessions.'}}
+dlg.addEventListener('close',()=>{detail.ex=null;try{history.replaceState(null,'','#mom')}catch(e){}});
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+$('dPlay').onclick=()=>{detail.playing=!detail.playing;$('dPlay').textContent=detail.playing?'Pause':'Play'};
+$('dRestart').onclick=()=>{detail.t=0;detail.lastCue=-1;drawDetail()};
+const speeds=[1,.5,1.5];let si=0;
+$('dSpeed').onclick=()=>{si=(si+1)%speeds.length;detail.speed=speeds[si];$('dSpeed').textContent=`Speed ${speeds[si]}×`};
+function step(dir){const L=currentList();const i=L.findIndex(e=>e.id===detail.ex.id);const nx=L[(i+dir+L.length)%L.length];if(nx)openDetail(nx.id)}
+$('dPrev').onclick=()=>step(-1);$('dNext').onclick=()=>step(1);
+dlg.addEventListener('keydown',e=>{if(e.key==='ArrowRight')step(1);else if(e.key==='ArrowLeft')step(-1);else if(e.key===' '&&e.target.tagName!=='BUTTON'){e.preventDefault();$('dPlay').click()}});
+
+renderChips();renderList();renderWeek();requestAnimationFrame(loop);
+</script>
+
+<script>
+/* ================= BABY CARE ================= */
+const DOMAINS=[['social','Social & emotional','var(--plum)'],['lang','Language & communication','var(--teal)'],['cog','Thinking & learning','var(--ball)'],['move','Movement & physical','var(--warn)']];
+const MS=[
+ {id:'nb',label:'Newborn',sub:'0–1 month',m:0,
+  social:['Looks at faces for a few seconds','Calms when held, rocked or spoken to softly'],
+  lang:['Cries to say hungry, wet or uncomfortable','Startles or blinks at loud sounds'],
+  cog:['Focuses best on things 20–30 cm away, about the distance to your face while feeding','Prefers faces and high-contrast black-and-white patterns'],
+  move:['Strong reflexes: rooting (turns to a touch on the cheek), sucking, gripping your finger, startle (arms fling out)','Lifts the head briefly and turns it side to side on the tummy'],
+  flags:['Feeds poorly or is too sleepy to feed','Does not react to loud sounds','Arms and legs are very stiff or very floppy','Jaundice that is spreading or lasts beyond 2 weeks']},
+ {id:'m2',label:'2 months',sub:'8 weeks',m:2,
+  social:['Calms down when spoken to or picked up','Looks at your face','Seems happy to see you','Smiles back when you talk or smile (the social smile)'],
+  lang:['Makes sounds other than crying, like cooing','Reacts to loud sounds'],
+  cog:['Watches you as you move','Looks at a toy for several seconds'],
+  move:['Holds the head up briefly during tummy time','Moves both arms and both legs','Opens the hands briefly'],
+  flags:['No reaction to loud sounds','Does not watch things as they move','Does not smile at people','Cannot lift the head at all during tummy time']},
+ {id:'m4',label:'4 months',sub:'16 weeks',m:4,
+  social:['Smiles on their own to get your attention','Chuckles when you try to make them laugh','Moves or makes sounds to keep your attention'],
+  lang:['Coos: "oooo", "aahh"','Makes sounds back when you talk','Turns the head toward your voice'],
+  cog:['Opens the mouth when hungry and sees the breast or bottle','Looks at their own hands with interest'],
+  move:['Holds the head steady without support when held','Holds a toy you put in the hand','Swings an arm at toys','Brings hands to the mouth','Pushes up onto elbows or forearms on the tummy'],
+  flags:['Head still wobbly when held upright','Does not bring things to the mouth','Does not push down with the legs when feet touch a hard surface','One eye constantly turns in or out','Does not coo or make sounds']},
+ {id:'m6',label:'6 months',sub:'half a year',m:6,
+  social:['Knows familiar people','Likes looking at themselves in a mirror','Laughs'],
+  lang:['Takes turns making sounds with you','Blows "raspberries"','Squeals'],
+  cog:['Puts things in the mouth to explore them','Reaches to grab a toy they want','Closes the lips to show they don\'t want more food'],
+  move:['Rolls from tummy to back','Pushes up with straight arms on the tummy','Leans on the hands to support themselves when sitting'],
+  flags:['Does not try to reach things','Shows no affection for caregivers','Does not respond to sounds around them','Cannot roll over in either direction','Does not laugh or make squealing sounds','Seems very stiff or very floppy']},
+ {id:'m9',label:'9 months',sub:'',m:9,
+  social:['Shy, clingy or fearful around strangers','Shows several facial expressions: happy, sad, angry, surprised','Looks when you call their name','Reacts when you leave (looks, reaches or cries)','Smiles or laughs at peek-a-boo'],
+  lang:['Babbles "mamamama", "bababababa"','Lifts arms up to be picked up'],
+  cog:['Looks for objects when dropped out of sight','Bangs two things together'],
+  move:['Gets into a sitting position alone','Sits without support','Moves things from one hand to the other','Uses fingers to rake food toward themselves'],
+  flags:['Does not bear weight on the legs with support','Does not sit with help','Does not babble','Does not respond to their own name','Does not look where you point','Does not pass toys from one hand to the other']},
+ {id:'m12',label:'12 months',sub:'1 year',m:12,
+  social:['Plays games with you like pat-a-cake'],
+  lang:['Waves bye-bye','Calls a parent "mama", "dada" or another special name','Understands "no" (pauses or stops)'],
+  cog:['Puts something into a container, like a block in a cup','Looks for things they saw you hide'],
+  move:['Pulls up to stand','Walks holding on to furniture (cruising)','Drinks from an open cup you hold','Picks up small things between thumb and pointer finger (pincer grasp)'],
+  flags:['Does not crawl or move around at all','Cannot stand when supported','Does not search for things they see you hide','Says no single words','Does not use gestures like waving or shaking the head','Does not point to things']},
+ {id:'m15',label:'15 months',sub:'',m:15,
+  social:['Copies other children while playing','Shows you an object they like','Claps when excited','Hugs a doll or soft toy','Shows affection: hugs, cuddles, kisses'],
+  lang:['Tries to say one or two words besides mama/dada','Looks at a familiar object when you name it','Follows directions given with a gesture and words','Points to ask for something or for help'],
+  cog:['Tries to use things the right way: phone, cup, book','Stacks at least two small objects'],
+  move:['Takes a few steps alone','Feeds themselves some food with fingers'],
+  flags:['Is not trying to take steps','Has no words at all','Does not point to show things','Does not respond when you name a familiar object']},
+ {id:'m18',label:'18 months',sub:'1½ years',m:18,
+  social:['Moves away from you but checks you are close','Points to show you something interesting','Puts hands out to have them washed','Looks at a few pages of a book with you','Helps dress themselves by pushing an arm through a sleeve'],
+  lang:['Tries to say three or more words besides mama/dada','Follows one-step directions without gestures, like "give it to me"'],
+  cog:['Copies you doing chores, like sweeping','Plays with toys simply, like pushing a toy car'],
+  move:['Walks without holding on','Scribbles','Drinks from an open cup (may spill)','Tries to use a spoon','Climbs on and off a sofa or chair without help'],
+  flags:['Cannot walk','Has fewer than 6 words','Does not point to show you things','Does not know what familiar things are for','Does not copy others','Does not notice or mind when a caregiver leaves or returns']},
+ {id:'y2',label:'2 years',sub:'24 months',m:24,
+  social:['Notices when others are hurt or upset','Looks at your face to see how to react in a new situation'],
+  lang:['Points to things in a book when you ask','Says at least two words together, like "more milk"','Points to at least two body parts','Uses gestures like blowing a kiss or nodding yes'],
+  cog:['Holds something in one hand while using the other','Tries switches, knobs or buttons on a toy','Plays with more than one toy at the same time'],
+  move:['Kicks a ball','Runs','Walks up a few stairs with or without help','Eats with a spoon'],
+  flags:['Does not use two-word phrases','Does not know what to do with common things (brush, phone, spoon)','Does not copy actions or words','Does not follow simple instructions','Does not walk steadily']},
+ {id:'y3',label:'3 years',sub:'36 months',m:36,
+  social:['Calms down within 10 minutes after you leave, e.g. at day care','Notices other children and joins them to play'],
+  lang:['Has back-and-forth conversations of at least two exchanges','Asks who, what, where or why questions','Says what is happening in a picture','Says their first name when asked','Is understood by others most of the time'],
+  cog:['Draws a circle after you show how','Avoids touching hot objects when warned'],
+  move:['Strings large beads or pasta','Puts on some clothes alone, like loose pants or a jacket','Uses a spoon and fork'],
+  flags:['Falls down a lot or has trouble with stairs','Speech is very unclear or they drool a lot','Does not speak in sentences','Does not understand simple instructions','Does not play pretend or with other children','Does not make eye contact']},
+];
+const GROWTH=[['Week 1','Up to 7–10% weight loss is normal'],['Day 10–14','Back to birth weight'],['0–3 months','Gains about 150–200 g a week'],['4–5 months','About double the birth weight'],['12 months','About triple the birth weight; length up by about 50%'],['6–10 months','First tooth usually appears'],['12–18 months','Soft spot on the head closes']];
+
+const TIPS=[
+ {h:'Feeding',l:['Breast milk only for the first 6 months: no water, honey, gripe water, ghutti or janam ghutti.','Newborns feed 8–12 times in 24 hours, roughly every 2–3 hours, including at night.','Hunger cues: turning to the breast (rooting), hands to the mouth, lip smacking. Crying is a late cue.','Burp halfway through and after each feed. Small spit-ups after feeds are normal.','From 6 months, start solids: mashed dal-rice, khichdi, ragi, mashed fruit and vegetables. One new food every 3–4 days, no salt or sugar before 1 year.','No honey before 1 year. No cow\'s milk as the main drink before 1 year.'],w:'Fewer than 6 wet nappies a day after day 5, or weight not regained by 2 weeks: see the doctor.'},
+ {h:'Nappies & poop',l:['Days 1–2: black, sticky meconium.','Days 3–5: changes to greenish.','Then breastfed poop is mustard-yellow, soft and seedy. Formula poop is firmer and tan.','At least 6 wet nappies a day from day 5 means baby is getting enough milk.','After 6 weeks, a breastfed baby may poop after every feed or only once in several days. Both are fine if it stays soft.'],w:'White, chalky or very pale poop, black poop after day 4, blood in poop, or hard pellets.'},
+ {h:'Skin & body: normal things',l:['Milia (tiny white spots on the nose), baby acne and peeling skin settle without creams.','Mongolian spots: blue-grey patches on the lower back or bottom. Very common in Indian babies. They are not bruises and fade over years.','Swollen breasts, sometimes with a drop of milk, in boys and girls. In girls, a little white discharge or spotting in the first week. Both come from the mother\'s hormones.','The soft spot (fontanelle) on top of the head may pulse. It is safe to touch gently while washing hair.','Sneezing, hiccups, noisy breathing in sleep, crossed eyes now and then, and the startle reflex are all normal.'],w:'Rash with fever, blisters, or skin that looks grey, blue or mottled.'},
+ {h:'Jaundice',l:['Yellow skin and eyes on days 2–5 are common, especially in breastfed babies.','Check in daylight: press a fingertip on the forehead or chest and see if the skin looks yellow as it blanches.','Feed often. Frequent feeds help clear jaundice.','Sunlight through a window is not a reliable treatment. Follow the doctor\'s bilirubin test advice.'],w:'Yellow in the first 24 hours, yellow reaching the palms or soles, a very sleepy baby, or jaundice beyond 2 weeks.'},
+ {h:'Umbilical cord',l:['Keep the stump clean and dry. Fold the nappy below it.','Do not apply oil, powder, ash, turmeric or ointments unless the doctor advises.','Sponge baths until it falls off, usually in 7–14 days.','A drop of blood when it falls off is normal.'],w:'Redness spreading onto the tummy, pus, a bad smell, or bleeding that continues.'},
+ {h:'Sleep',l:['Newborns sleep 14–17 hours a day in short stretches. Long night sleep comes gradually.','Always put baby to sleep on the back, on a firm flat surface.','Keep pillows, bolsters, soft toys, loose blankets and bumpers away from the face.','Room-share in the early months. Avoid bed-sharing if anyone smokes, has had alcohol or sedating medicine, or is very tired.','Swaddle with room for the hips: legs should bend up and out. Stop swaddling once baby starts trying to roll.'],w:'Long pauses in breathing, or blue colour during sleep: emergency.'},
+ {h:'Crying & settling',l:['Crying often peaks around 6–8 weeks, usually in the evening, and eases by 3–4 months.','Go through a checklist: hunger, burp, nappy, too hot or cold, tired, wants to be held.','Try skin-to-skin, swaddling, gentle rocking, a "shh" sound or white noise, or a walk.','If you feel overwhelmed, put baby down safely in the cot and step away for a few minutes. Never shake a baby.'],w:'High-pitched, weak or non-stop crying for more than 2–3 hours, or crying with fever or poor feeding.'},
+ {h:'Temperature',l:['Normal: 36.5–37.5 °C (97.7–99.5 °F). Use a digital thermometer in the armpit.','Feel the back of the neck or chest to judge warmth, not the hands and feet (they are often cool).','Dress baby in one more layer than you are wearing. Avoid over-wrapping in summer.','Kangaroo care (skin-to-skin on your chest) is the best way to keep a small baby warm.'],w:'38 °C (100.4 °F) or more, or below 35.5 °C, in a baby under 3 months: go to hospital.'},
+ {h:'Traditional practices: safer choices',l:['Skip kajal or surma in the eyes. It can contain lead and cause eye infections.','Do not put oil in the ears, nose or on the soft spot. A gentle body oil massage is fine.','No vigorous stretching of the limbs or shaping of the nose and head during massage.','Avoid black threads or chains around the neck while baby sleeps (choking or strangling risk).','Ask before giving any home remedy, gutti or herbal drops.'],w:''},
+ {h:'Daily care & checks',l:['Vitamin D drops (400 IU a day) from the first weeks, as your paediatrician advises.','Tummy time while awake and watched, a few minutes several times a day from the first days.','Hearing screen (OAE) before discharge or within the first month.','Wash hands before handling baby. Keep visitors with a cold or cough away.','Well-baby visits usually happen at the vaccine visits. Bring the vaccine card each time and track weight and length on the growth chart.'],w:'Constant eye-turning after 4 months, or no reaction to sounds: mention it at the next visit.'},
+];
+
+const TIERS=[
+ {c:'t1',pill:'Go now',h:'Go to hospital now, or call 112 / 108',s:'Don\'t wait for an appointment.',l:[
+  '<b>Fever under 3 months:</b> 38 °C (100.4 °F) or higher. Also too cold: below 35.5 °C.',
+  '<b>Breathing trouble:</b> fast breathing (60 or more breaths a minute under 2 months, 50 or more at 2–12 months), chest sucking in below the ribs, grunting, nostrils flaring, or pauses over 15–20 seconds.',
+  '<b>Blue or grey</b> lips, tongue or face.',
+  '<b>Not able to feed:</b> won\'t suck at all, or vomits everything.',
+  '<b>Very sleepy,</b> hard to wake, floppy or limp.',
+  '<b>Fits or convulsions:</b> stiffening, jerking, eyes rolling, or repeated lip smacking you can\'t stop.',
+  '<b>Jaundice in the first 24 hours,</b> or yellow reaching the palms and soles.',
+  '<b>Green (bile) vomit,</b> blood in vomit, or a swollen, hard tummy.',
+  '<b>Dehydration:</b> no wet nappy for 6–8 hours, sunken soft spot, dry mouth, no tears.',
+  '<b>Bulging soft spot</b> when calm, especially with fever or vomiting.',
+  '<b>Rash that does not fade</b> when you press a glass against it.',
+  '<b>Bleeding that won\'t stop,</b> or a lot of blood in the poop.',
+  '<b>Injury or swallowing:</b> fall from a bed or height followed by vomiting, drowsiness or a swelling; swallowed a button battery, magnet, medicine or chemical.',
+  '<b>Choking</b> and baby cannot cry, cough or breathe: start infant first aid (below) and call 112.',
+ ]},
+ {c:'t2',pill:'Today',h:'Call the paediatrician today',s:'Same-day advice or visit.',l:[
+  'Fever of 38 °C or more at 3–6 months, any fever lasting more than 2 days, or fever with unusual crankiness.',
+  'Feeding much less than usual, or fewer wet nappies.',
+  'Diarrhoea (more than 6 watery stools a day) or vomiting more than 2–3 times.',
+  'Redness, pus or a bad smell around the umbilical cord.',
+  'Jaundice getting deeper, or lasting beyond 2 weeks (3 weeks if born early). Pale poop or dark urine is urgent.',
+  'Red, swollen eyelids or yellow-green sticky discharge from the eyes.',
+  'White patches in the mouth that don\'t wipe off, with poor feeding.',
+  'Cough with noisy breathing, or pulling at the ear with fever.',
+  'Crying that is high-pitched or can\'t be soothed for more than 2–3 hours.',
+ ]},
+ {c:'t3',pill:'Next visit',h:'Mention it at the next check-up',s:'Write it down so you remember.',l:[
+  'Mild rash, dry skin or cradle cap (scaly scalp).',
+  'Spit-ups after feeds, if baby is gaining weight and happy.',
+  'Eye that keeps turning in or out after 4 months.',
+  'Not reacting to sounds, or missing milestones for their age.',
+  'Flat spot on the head, possible tongue-tie, or a soft bulge at the belly button (umbilical hernia).',
+  'Hard or infrequent poop, with a baby who is otherwise well.',
+ ]},
+];
+
+/* vaccine schedule: IAP ACVIP 2023 + National Immunization Schedule (UIP) */
+const VX=[
+ {age:'Birth',d:0,v:[['BCG',1],['OPV 0',1],['Hepatitis B 1',1]],n:'Hep B birth dose ideally within 24 hours of birth. BCG leaves a small scar on the left upper arm after a few weeks; this is expected.'},
+ {age:'6 weeks',d:42,v:[['DTwP / DTaP 1',1],['IPV 1',1],['Hib 1',1],['Hepatitis B 2',1],['Rotavirus 1',1],['PCV 1',1]],n:'Government centres give DTwP + Hep B + Hib as one Pentavalent shot, plus OPV 1 and fractional IPV. Private clinics often give a single "hexavalent" shot (DTaP-IPV-Hib-HepB).'},
+ {age:'10 weeks',d:70,v:[['DTwP / DTaP 2',1],['IPV 2',0],['Hib 2',1],['Hepatitis B 3',1],['Rotavirus 2',1],['PCV 2',0]],n:'Under the government schedule, OPV 2 is given here and PCV/IPV are not. Paracetamol for fever only if your doctor advises the dose.'},
+ {age:'14 weeks',d:98,v:[['DTwP / DTaP 3',1],['IPV 3',1],['Hib 3',1],['Hepatitis B 4',0],['Rotavirus 3',1],['PCV 3',1]],n:'Rotavirus dose 3 only for 3-dose brands (Rotavac, Rotasiil). Rotarix is 2 doses. Government centres give OPV 3 here too.'},
+ {age:'6 months',d:182,v:[['Influenza 1',0],['Typhoid conjugate (TCV)',0]],n:'TCV can be given any time between 6 and 9 months. Flu vaccine needs 2 doses 4 weeks apart the first time.'},
+ {age:'7 months',d:212,v:[['Influenza 2',0]],n:'After this, one flu shot every year until 5 years, ideally before the monsoon or flu season.'},
+ {age:'9 months',d:273,v:[['MMR 1',1]],n:'Government centres give MR 1, plus PCV booster, fractional IPV 3, JE 1 (in JE-endemic districts) and the first Vitamin A dose at 9–12 months.'},
+ {age:'12 months',d:365,v:[['Hepatitis A 1',0]],n:'Live Hep A vaccine is a single dose. Inactivated Hep A needs a second dose 6 months later.'},
+ {age:'12–15 months',d:365,v:[['PCV booster',1]],n:'Under the government schedule, the PCV booster is given at 9 months.'},
+ {age:'15 months',d:456,v:[['MMR 2',1],['Varicella (chickenpox) 1',0]],n:'Government centres give MR 2 at 16–24 months.'},
+ {age:'16–18 months',d:487,v:[['DTwP / DTaP booster 1',1],['IPV booster 1',0],['Hib booster 1',0]],n:'Government centres give DPT booster 1 and OPV booster at 16–24 months, plus JE 2 in endemic districts.'},
+ {age:'18–19 months',d:548,v:[['Hepatitis A 2',0],['Varicella 2',0]],n:'Hep A 2 only if the inactivated vaccine was used. Varicella 2 is given 3–6 months after dose 1.'},
+ {age:'4–6 years',d:1461,v:[['DTwP / DTaP booster 2',1],['IPV booster 2',0],['MMR 3',0]],n:'Government centres give DPT booster 2 at 5–6 years.'},
+ {age:'9–14 years',d:3287,v:[['HPV (2 doses, 6 months apart)',1]],n:'Recommended for girls, and can be given to boys. Being added to the government programme for girls.'},
+ {age:'10–12 years',d:3652,v:[['Tdap / Td',1]],n:'Government centres give Td at 10 and again at 16 years.'},
+];
+const VXOPT=[
+ ['Japanese Encephalitis (JE)','2 doses at 9 months and 16–18 months, if you live in or travel to a JE-endemic area. Free in endemic districts.'],
+ ['Meningococcal','For high-risk children or travel (e.g. Hajj, some countries). Ask your paediatrician.'],
+ ['Rabies (pre-exposure)','Consider if you have a pet at home or many stray dogs nearby. After any animal bite, wash with soap and water for 15 minutes and see a doctor the same day.'],
+ ['Cholera','Only during outbreaks or for travel to affected areas.'],
+ ['Vitamin A','Not a vaccine. Given free with MR at 9 months, then every 6 months until 5 years at government centres.'],
+];
+
+/* ---------- state ---------- */
+const bstate={sub:'milestones',ms:null,dob:'',done:{},ec:{},shop:{},shopMust:false,shopHide:false};
+try{Object.assign(bstate,JSON.parse(localStorage.getItem('bloom-baby')||'{}'))}catch(e){}
+const bsave=()=>{try{localStorage.setItem('bloom-baby',JSON.stringify({dob:bstate.dob,done:bstate.done,ec:bstate.ec,sub:bstate.sub,shop:bstate.shop,shopMust:bstate.shopMust,shopHide:bstate.shopHide}))}catch(e){}if(window.bloomOnSave)window.bloomOnSave()};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const DAY=864e5;
+function dobDate(){if(!bstate.dob)return null;const d=new Date(bstate.dob+'T00:00:00');return isNaN(d)?null:d}
+function today(){const t=new Date();t.setHours(0,0,0,0);return t}
+function ageMonths(){const d=dobDate();if(!d)return null;const t=today();let m=(t.getFullYear()-d.getFullYear())*12+(t.getMonth()-d.getMonth());if(t.getDate()<d.getDate())m--;return m}
+function ageText(){const d=dobDate();if(!d)return'';const days=Math.round((today()-d)/DAY);if(days<0)return'not born yet';
+  if(days<84){const w=Math.floor(days/7),r=days%7;return w?`${w} week${w>1?'s':''}${r?` ${r} day${r>1?'s':''}`:''}`:`${days} day${days===1?'':'s'}`}
+  const m=ageMonths();if(m<24)return`${m} months`;const y=Math.floor(m/12),mm=m%12;return`${y} year${y>1?'s':''}${mm?` ${mm} month${mm>1?'s':''}`:''}`}
+const fmt=d=>d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+
+function currentMs(){const m=ageMonths();if(m==null||m<0)return null;let pick=MS[0];MS.forEach(x=>{if(x.m<=m)pick=x});return pick.id}
+
+/* ---------- renderers ---------- */
+function renderAge(){
+  const el=document.getElementById('ageLine');const a=ageText();
+  el.innerHTML=a?(a==='not born yet'?'Due date saved. Milestones and vaccine dates start from birth.':`Your baby is <b>${esc(a)}</b> old.`):'Add it to see your baby\'s age, the milestones for that age, and vaccine due dates. Saved only in this browser.';
+}
+function renderMilestones(){
+  const cur=currentMs();const sel=bstate.ms||cur||'m2';const x=MS.find(m=>m.id===sel)||MS[1];
+  const i=MS.indexOf(x),next=MS[i+1];
+  document.getElementById('p-milestones').innerHTML=`
+   <div class="agechips" role="group" aria-label="Choose age">${MS.map(m=>`<button data-ms="${m.id}" aria-pressed="${m.id===x.id}" class="${m.id===cur?'now':''}">${m.label}<small>${m.id===cur?'Your baby now':(m.sub||'&nbsp;')}</small></button>`).join('')}</div>
+   <div class="ms-head"><h2>By ${x.id==='nb'?'the end of the first month':x.label}</h2><p>Most babies do these by this age.${next?` Next check: ${next.label}.`:''}</p></div>
+   <div class="ms-grid">${DOMAINS.map(([k,l,c])=>`<div class="ms"><h3><i style="background:${c}"></i>${l}</h3><ul>${x[k].map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>`).join('')}
+   <div class="ms flag"><h3>Talk to your paediatrician if baby…</h3><ul>${x.flags.map(s=>`<li>${esc(s)}</li>`).join('')}<li>Loses skills they once had (at any age)</li></ul></div></div>
+   <div><h3 style="font-size:1.1rem;margin:8px 0 10px">Growth at a glance</h3><div class="growth">${GROWTH.map(([a,b])=>`<div><b>${a}</b><span>${b}</span></div>`).join('')}</div></div>
+   <p class="vnote">Every baby develops at their own pace, within a range. These are the skills most babies (about 3 in 4) have by each age. A missed milestone is a reason to ask, not to panic. Early help works best.</p>`;
+}
+function renderNotice(){
+  document.getElementById('p-notice').innerHTML=`<div class="tips">${TIPS.map(t=>`<div class="tip"><h3>${t.h}</h3><ul>${t.l.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>${t.w?`<div class="watch"><b>Watch for:</b> ${esc(t.w)}</div>`:''}</div>`).join('')}</div>`;
+}
+function renderEmergency(){
+  const ec=bstate.ec||{};
+  const f=(id,l,ph)=>`<label>${l}<input id="ec-${id}" value="${esc(ec[id]||'')}" placeholder="${ph}"></label>`;
+  document.getElementById('p-emergency').innerHTML=TIERS.map(t=>`<div class="tier ${t.c}"><header><span class="pill">${t.pill}</span><h2>${t.h}</h2><span>${t.s}</span></header><ul>${t.l.map(s=>`<li>${s}</li>`).join('')}</ul></div>`).join('')+`
+   <div class="duo">
+    <div class="tip"><h3>Infant choking (under 1 year)</h3><ul>
+     <li>If baby is coughing hard or crying, let them cough. Watch closely.</li>
+     <li>If baby cannot cry, cough or breathe: shout for help and have someone call <b>112</b>.</li>
+     <li><b>5 back blows:</b> lay baby face-down along your forearm, head lower than the chest, jaw supported. Give 5 firm blows between the shoulder blades with the heel of your hand.</li>
+     <li><b>5 chest thrusts:</b> turn baby face-up on your other arm, head low. Push 5 times on the centre of the chest, just below the nipple line, with two fingers.</li>
+     <li>Repeat until the object comes out. Don\'t sweep blindly with a finger. If baby becomes unresponsive, start infant CPR.</li></ul>
+     <div class="watch">A short infant first-aid and CPR class before delivery is worth it. Many hospitals in India run one.</div></div>
+    <div class="tip"><h3>Count breaths the right way</h3><ul>
+     <li>Count when baby is calm or asleep, not crying or feeding.</li>
+     <li>Watch the tummy rise and fall and count for a full 60 seconds.</li>
+     <li>Fast breathing: 60 or more a minute under 2 months, 50 or more at 2–12 months, 40 or more at 1–5 years.</li>
+     <li>Lift the shirt and look for the chest sucking in below the ribs with each breath.</li></ul>
+     <h3 style="margin-top:14px">Fever basics</h3><ul>
+     <li>Measure, don\'t guess: digital thermometer in the armpit.</li>
+     <li>Give fever medicine only in the dose your paediatrician sets for baby\'s weight. Never aspirin.</li>
+     <li>Keep feeding, dress lightly, and don\'t use cold-water sponging.</li></ul></div>
+    <div class="tip ecard"><h3>Your emergency card</h3>
+     ${f('ped','Paediatrician (name & phone)','Dr. … · 98…')}${f('hosp','Nearest hospital with a children\'s emergency','Hospital name, area')}${f('blood','Baby\'s blood group / allergies','e.g. O+ · no known allergies')}${f('weight','Latest weight (for medicine doses)','e.g. 5.2 kg on 1 Nov')}
+     <p class="vnote">Saved only in this browser on this device. Also save these numbers in your phone. Emergency: <b>112</b> · Ambulance: <b>108</b>.</p></div>
+   </div>`;
+  ['ped','hosp','blood','weight'].forEach(k=>{document.getElementById('ec-'+k).addEventListener('input',e=>{bstate.ec[k]=e.target.value;bsave()})});
+}
+function renderVaccines(){
+  const dob=dobDate(),t=today();let nextIdx=-1;
+  const rows=VX.map((r,i)=>{const id='v'+i,done=!!bstate.done[id];let st='',cls='';const due=dob?new Date(dob.getTime()+r.d*DAY):null;
+    if(dob){if(done){st='Done';cls='ok'}else{const diff=Math.round((due-t)/DAY);
+      if(diff<-30){st='Overdue';cls='over'}else if(diff<=7){st='Due now';cls='due'}else{st=diff<70?`In ${Math.round(diff/7)} weeks`:`In ${Math.round(diff/30.4)} months`}
+      if(nextIdx<0)nextIdx=i}}
+    return{r,i,id,done,st,cls,due}});
+  document.getElementById('p-vaccines').innerHTML=`
+   <div class="ms-head"><h2>Vaccine schedule</h2><p>As recommended by the Indian Academy of Pediatrics (IAP 2023).${dob?' Due dates are worked out from your baby\'s birth date.':' Add the birth date above to see due dates.'}</p></div>
+   <p class="vnote" style="margin:0"><span class="vac uip">Vaccine</span> &nbsp;Green-marked doses are free at government centres and Anganwadi sessions (Universal Immunization Programme). The rest are mostly given at private clinics, at a cost. Tick "Given" on each row when done. It is saved in this browser only; your vaccine card remains the official record.</p>
+   <div class="vx">${rows.map(x=>`<div class="vrow ${x.done?'done':''} ${x.i===nextIdx?'next':''}">
+     <div class="vage"><b>${x.r.age}</b><span>${x.due?fmt(x.due):''}</span></div>
+     <div><div class="vlist">${x.r.v.map(([n,u])=>`<span class="vac ${u?'uip':''}">${n}</span>`).join('')}</div><p class="vnote">${esc(x.r.n)}</p></div>
+     <div class="vstat">${x.st?`<span class="st ${x.cls}">${x.st}</span>`:''}<label><input type="checkbox" data-v="${x.id}" ${x.done?'checked':''}>Given</label></div></div>`).join('')}</div>
+   <div><h3 style="font-size:1.1rem;margin:10px 0">Optional or area-specific</h3><div class="optv">${VXOPT.map(([a,b])=>`<div class="tip"><h3 style="font-size:1rem">${a}</h3><p class="vnote" style="margin:0">${esc(b)}</p></div>`).join('')}</div></div>
+   <div class="tip"><h3>On vaccine day</h3><ul><li>Carry the vaccine card and note the brand and batch given.</li><li>Breastfeed during or right after the shot. It soothes and eases the pain.</li><li>Mild fever, fussiness and a sore lump at the injection site for 1–2 days are common. Don\'t rub or apply anything hot on the spot.</li><li>Missed a dose? Don\'t restart. Ask your paediatrician for the catch-up schedule.</li><li>Call the doctor for fever above 39 °C, crying for more than 3 hours, or a seizure (emergency).</li></ul></div>`;
+}
+document.getElementById('p-vaccines').addEventListener('change',e=>{const c=e.target.closest('[data-v]');if(!c)return;if(c.checked)bstate.done[c.dataset.v]=true;else delete bstate.done[c.dataset.v];bsave();renderVaccines()});
+document.getElementById('p-milestones').addEventListener('click',e=>{const b=e.target.closest('[data-ms]');if(!b)return;bstate.ms=b.dataset.ms;renderMilestones()});
+
+const SUBS=['milestones','holding','feeding','notice','emergency','vaccines','shopping'];
+function setSub(sub){
+  if(!SUBS.includes(sub))sub='milestones';bstate.sub=sub;bsave();
+  document.querySelectorAll('#babyTabs .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.sub===sub));
+  SUBS.forEach(s=>document.getElementById('p-'+s).hidden=s!==sub);
+}
+document.getElementById('babyTabs').addEventListener('click',e=>{const b=e.target.closest('[data-sub]');if(!b)return;setSub(b.dataset.sub);try{history.replaceState(null,'','#baby-'+b.dataset.sub)}catch(err){}});
+const dobIn=document.getElementById('dob');dobIn.value=bstate.dob||'';
+dobIn.addEventListener('change',()=>{bstate.dob=dobIn.value;bstate.ms=null;bsave();renderAge();renderMilestones();renderVaccines()});
+
+
+function showView(v,sub){
+  document.getElementById('view-mom').hidden=v!=='mom';document.getElementById('view-baby').hidden=v!=='baby';
+  document.getElementById('navMom').setAttribute('aria-selected',v==='mom');document.getElementById('navBaby').setAttribute('aria-selected',v==='baby');
+  if(v==='baby')setSub(sub||bstate.sub);
+  try{localStorage.setItem('bloom-view',v)}catch(e){}
+}
+document.querySelector('.seg').addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;const v=b.dataset.view;showView(v);window.scrollTo(0,0);
+  try{history.replaceState(null,'',v==='mom'?'#mom':'#baby-'+bstate.sub)}catch(err){}});
+document.querySelector('.brand').addEventListener('click',e=>{e.preventDefault();showView('mom');try{history.replaceState(null,'','#mom')}catch(err){}});
+
+</script>
+
+<script>
+/* ================= HOLDING · FEEDING · SHOPPING ================= */
+const B=(x,y,a,o={})=>({x,y,a,sw:1,lg:0,len:22,hr:6.5,arm:120,...o});
+function sh(o,dx,dy){
+  if(Array.isArray(o)){if(o.length===2&&typeof o[0]==='number'&&typeof o[1]==='number')return[o[0]+dx,o[1]+dy];return o.map(v=>sh(v,dx,dy))}
+  if(o&&typeof o==='object'){const r={};for(const k in o){if(k==='feet'||k==='kn')r[k]=o[k];else if(k==='x')r.x=o.x+dx;else if(k==='y')r.y=o.y+dy;else r[k]=sh(o[k],dx,dy)}return r}
+  return o}
+function prep(ex){ex.frames.forEach(fr=>{[fr.m,fr.q].forEach(P=>{if(P&&P.h==null)P.h=P.t})});
+  ex.total=ex.frames.reduce((a,f)=>a+f.d+f.hold,0);ex.cues=[];ex.frames.forEach((f,i)=>{if(f.cap)ex.cues.push({i,cap:f.cap})});return ex}
+const lapPillow=(x,y,rx)=>`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="6" class="pil"/>`;
+const cot=()=>PR.bed(140,224,140)+R(140,118,3,22,'pr2')+R(221,118,3,22,'pr2')+R(140,117,84,3,'pr2',1);
+
+/* --- holds --- */
+const M1=stF(130,{nb:1,el:[[105,95],[156,97]],hands:[[126,105],[136,106]]}),b1=B(128,97,-90);
+const Q2=st(130,1,{hands:[[142,110],[149,92]]}),b2=B(142,96,180);
+const pat=(P,dy,n,cap,who)=>{const out=[];for(let i=0;i<n;i++){const Pd={...P,hands:[P.hands[0],[P.hands[1][0],P.hands[1][1]+dy]]};out.push([i===0?cap:'',Pd],['',P])}return out};
+const M3=st(130,1,{nb:1,el:[null,[122,100]],hands:[[127,121],[145,116]]}),b3=B(126,110,90);
+const Q4=st(130,1,{el:[null,[126,101]],hands:[[127,121],[150,104]]}),b4=B(137,97,90,{sw:0,lg:1,arm:200});
+const M5=sitS(124,1,{nb:1,t:168,hands:[[156,151],[159,152]]}),b5=B(142,146,90);
+const Q6=stF(130,{t:177,hands:[[113,121],[153,113]]}),b6=B(149,99,180,{sw:0,lg:1,len:20,hr:7,arm:150});
+
+const HOLDS=[
+ prep({id:'h-cradle',mk:[{j:'e0',l:'Head rests in|your elbow crook',o:[-14,-24]},{j:'h1',l:'Hand under|the bottom',o:[30,20]},{j:'h0',l:'Forearm under|the back',o:[-22,30]}],vb:'40 44 182 140',name:'Cradle hold',hold:'m',order:['P','m'],props_:()=>PR.floor(),
+  desc:'The classic newborn hold for cuddling, rocking and feeding.',
+  frames:[K(1.4,.8,'Head rests in the crook of your elbow',M1,null,{b:b1}),K(1.6,.3,'Rock gently from side to side',sh(M1,-3,0),null,{b:sh(b1,-3,0)}),K(1.6,.3,'Forearm along the back, hand under the bottom',sh(M1,3,0),null,{b:sh(b1,3,0)})],
+  steps:['Slide one hand under the head and neck and the other under the bottom.','Lift baby to your chest.','Move the head into the crook of your elbow, with that forearm along the back and your hand on the bottom or thigh.','Put your other arm underneath for extra support.'],
+  good:'Calming, rocking, feeding, everyday cuddles.',care:'Keep the face visible and the nose clear of your chest or clothes.'}),
+ prep({id:'h-shoulder',mk:[{j:'h1',l:'Hand on the back,|supporting the neck',o:[22,-16]},{j:'h0',l:'Hand under|the bottom',o:[22,18]}],vb:'48 44 182 140',name:'Shoulder hold',hold:'q',order:['P','q'],props_:()=>PR.floor(),
+  desc:'Baby upright against your chest with the chin on your shoulder. The go-to hold for burping and settling.',
+  frames:[K(1.2,.8,'Baby upright, chin resting on your shoulder',null,Q2,{b:b2}),...pat(Q2,5,3,'Pat or rub the back gently').map(([c,P])=>K(.35,.05,c,null,P,{b:b2})),K(1,.8,'Other hand under the bottom',null,Q2,{b:b2})],
+  steps:['Lift baby so the chest rests against yours and the chin sits on your shoulder.','One hand supports the bottom.','The other hand supports the head and neck, or pats and rubs the back.','Keep your shoulder clear of baby\'s mouth and nose.'],
+  good:'Burping, calming crying, walking around.',care:'Support the head until baby holds it steady, around 3–4 months.'}),
+ prep({id:'h-football',mk:[{j:'h1',l:'Palm cups the|head and neck',o:[20,18]},{j:'e1',l:'Elbow tucked|at your side',o:[-30,-14]}],vb:'48 44 182 140',name:'Football (rugby) hold',hold:'m',layer:'top',order:['P','m'],props_:()=>PR.floor(),
+  desc:'Baby tucked along your forearm at your side, head cupped in your palm.',
+  frames:[K(1.4,.8,'Baby along your forearm, at your side',M3,null,{b:b3}),K(1.6,.4,'Head and neck rest in your palm',sh(M3,0,-1.5),null,{b:sh(b3,0,-1.5)}),K(1.6,.4,'Body tucked against your side',M3,null,{b:b3})],
+  steps:['Hold baby along the forearm on one side, face up.','Cup the head and neck in your palm.','Tuck the body and legs between your arm and your side, like carrying a ball.','Use the free hand for support or to feed.'],
+  good:'After a C-section (no weight on your tummy), twins, small babies.',care:'Keep the neck straight, not bent forward onto the chest.'}),
+ prep({id:'h-tummy',mk:[{j:'h1',l:'Hand under the chest,|head turned sideways',o:[18,18]},{j:'e1',l:'Forearm along|the tummy',o:[-30,-14]}],vb:'48 44 182 140',name:'Tummy (colic) hold',hold:'q',layer:'top',order:['P','q'],props_:()=>PR.floor(),
+  desc:'Baby face-down along your forearm. Gentle pressure on the tummy can ease gas and colic.',
+  frames:[K(1.4,.8,'Baby tummy-down along your forearm',null,Q4,{b:b4}),K(1.6,.3,'Head turned to the side on your hand',null,sh(Q4,-3,0),{b:sh(b4,-3,0)}),K(1.6,.3,'Sway slowly · other hand rubs the back',null,sh(Q4,3,0),{b:sh(b4,3,0)})],
+  steps:['Lay baby face-down along your forearm, legs on either side of your arm.','Rest the head, turned to one side, on your hand or in the crook of your elbow.','Put your other hand on baby\'s back to keep them steady.','Sway or walk slowly.'],
+  good:'Colic, gas, evening fussiness.',care:'Only while baby is awake. Keep the mouth and nose clear.'}),
+ prep({id:'h-face',mk:[{j:'h1',l:'Both hands cradle|the head',o:[14,-28]},{j:'e1',l:'Knees together',o:[-6,40]}],vb:'52 52 175 134',name:'Face-to-face lap hold',hold:'m',layer:'top',order:['P','m'],props_:()=>PR.floor()+PR.chairS(124,1),
+  desc:'Baby lies on your thighs looking up at you. Perfect for talking and bonding.',
+  frames:[K(1.4,1,'Sit with knees together, baby on your thighs',M5,null,{b:b5}),K(1.4,1,'Hands cradle the head',{...M5,h:156},null,{b:b5}),K(1.4,1,'Talk, sing, make faces',{...M5,h:172},null,{b:b5})],
+  steps:['Sit with your feet flat and knees together.','Lay baby on your thighs with the head near your knees and the feet against your belly.','Cradle the head with both hands.','Talk, sing and make faces. Newborns see best at about 20–30 cm.'],
+  good:'Bonding, eye contact, early talking games.',care:'Keep your knees together so baby can\'t slip.'}),
+ prep({id:'h-hip',mk:[{j:'h1',l:'Arm around the back,|hand under the bottom',o:[26,14]}],vb:'48 44 182 140',name:'Hip hold (6 months+)',hold:'q',order:['P','q'],props_:()=>PR.floor(),
+  desc:'Baby sits on your hip with the legs around you. For babies with good head and trunk control.',
+  frames:[K(1.2,.6,'Baby straddles your hip',null,Q6,{b:b6}),K(.8,.2,'Arm around the back and bottom',null,{...Q6,hands:[Q6.hands[0],[153,111.5]]},{b:sh(b6,0,-1.5)}),K(.8,.2,'',null,Q6,{b:b6})],
+  steps:['Once baby sits well and holds the head steady, lift baby onto your hip.','Baby\'s legs go around your waist.','Wrap your arm around baby\'s back, with your hand under the bottom.','Stand tall and don\'t push the hip out too far.'],
+  good:'Older babies; frees one hand.',care:'Switch sides often to protect your back.'}),
+ prep({id:'h-pickup',mk:[{j:'h1',l:'Hand under the|head and neck',o:[4,-30]},{j:'h0',l:'Hand under|the bottom',o:[-34,-26]}],vb:'64 46 182 140',name:'Picking up & laying down',hold:'m',order:['P','m'],props_:()=>PR.floor()+cot(),
+  desc:'How to lift a newborn from the cot and put them back without startling them.',
+  frames:[
+   K(1.4,1,'One hand under the head and neck, one under the bottom',st(122,1,{nb:1,t:120,h:118,hands:[[166,139],[184,139]]}),null,{b:B(172,133,90)}),
+   K(1.8,.6,'Lift slowly, head supported',st(124,1,{nb:1,t:150,h:150,hands:[[146,113],[162,111]]}),null,{b:B(156,106,110)}),
+   K(1.6,1.2,'Bring baby close to your chest',st(126,1,{nb:1,hands:[[138,110],[147,92]]}),null,{b:B(141,96,180),mk:[{j:'h1',l:'Hand on the back|and neck',o:[22,-14]},{j:'h0',l:'Hand under|the bottom',o:[22,18]}]}),
+   K(1.8,.6,'Laying down: lower the bottom first',st(124,1,{nb:1,t:150,h:150,hands:[[146,113],[162,111]]}),null,{b:B(156,106,110)}),
+   K(1.6,1,'Then the head, then slide your hands out',st(122,1,{nb:1,t:120,h:118,hands:[[166,139],[184,139]]}),null,{b:B(172,133,90)})],
+  steps:['Wash your hands. Talk softly so baby knows you\'re coming.','Slide one hand under the head and neck and the other under the bottom.','Lift slowly, bringing baby close to your body.','To lay baby down, lower the bottom first, then the head, then slide your hands out.','Always on the back for sleep.'],
+  good:'Every time, especially in the first 3 months.',care:'Never lift by the arms, and never pick baby up from behind the head alone.'}),
+];
+
+/* --- feeding --- */
+const FEEDS=[
+ prep({id:'f-cradle',mk:[{j:'e0',l:'Head in your|elbow crook',o:[-22,-22]},{j:'h1',l:'Hand supports|the bottom',o:[26,18]}],vb:'52 66 156 120',name:'Cradle hold',hold:'m',order:['P','m'],props_:()=>PR.floor()+PR.chairF(130)+lapPillow(130,132,30),
+  desc:'The most familiar breastfeeding position, easiest once latching is going well.',
+  frames:[K(1.4,1.4,'Tummy to tummy, nose level with the nipple',sitF(130,{nb:1,el:[[104,124],[153,127]],hands:[[132,124],[141,126]],h:188}),null,{b:B(132,118,-90)}),
+   K(1.4,1.4,'Head in the crook of your elbow · pillow under baby',sitF(130,{nb:1,el:[[104,124],[153,127]],hands:[[132,124],[141,126]],h:194}),null,{b:B(132,118,-90)})],
+  steps:['Sit upright with your back supported and a pillow on your lap.','Lay baby on their side facing you, tummy to tummy.','Baby\'s head rests in the crook of the elbow on the feeding side, nose level with the nipple.','Bring baby to the breast, not the breast to baby.'],
+  good:'Babies who already latch well.',care:'Keep baby\'s ear, shoulder and hip in one line so the head isn\'t turned.'}),
+ prep({id:'f-cross',mk:[{j:'h1',l:'Palm behind shoulders,|fingers at base of head',o:[-28,26]},{j:'h0',l:'C-hold on|the breast',o:[-36,-20]}],vb:'52 66 156 120',name:'Cross-cradle hold',hold:'m',order:['P','m'],props_:()=>PR.floor()+PR.chairF(130)+lapPillow(130,132,30),
+  desc:'Like the cradle, but the opposite hand guides the head, giving more control. Best for learning to latch.',
+  frames:[K(1.4,1.4,'Opposite hand supports the neck and shoulders',sitF(130,{nb:1,el:[[101,118],[139,129]],hands:[[121,112],[114,122]],h:188}),null,{b:B(132,121,-90)}),
+   K(1.4,1.4,'Other hand shapes the breast in a C',sitF(130,{nb:1,el:[[101,118],[139,129]],hands:[[121,112],[114,122]],h:194}),null,{b:B(132,121,-90)})],
+  steps:['Hold baby with the arm opposite the breast you\'re feeding from.','Your palm supports the shoulders and your fingers support the base of the head. Don\'t push the head.','Your other hand supports the breast in a C shape, thumb on top, well back from the areola.','Wait for a wide-open mouth, then bring baby on quickly, chin first.'],
+  good:'Newborns, first weeks, small or sleepy babies.',care:'Keep your fingers off the areola so they don\'t block the latch.'}),
+ prep({id:'f-football',mk:[{j:'h1',l:'Hand cradles|the head',o:[30,16]},{j:'e1',l:'Baby along|your forearm',o:[22,-26]},{j:'h0',l:'C-hold on|the breast',o:[-40,-18]}],vb:'60 66 156 120',name:'Football (rugby) hold',hold:'m',order:['P','m'],props_:()=>PR.floor()+PR.chairF(130)+lapPillow(160,132,22),
+  desc:'Baby tucked under your arm at your side, head at the breast.',
+  frames:[K(1.4,1.4,'Baby along your side, supported on a pillow',sitF(130,{nb:1,el:[[108,124],[164,130]],hands:[[135,114],[143,125]],h:192}),null,{b:B(157,120,-90)}),
+   K(1.4,1.4,'Your hand cradles the head at the breast',sitF(130,{nb:1,el:[[108,124],[164,130]],hands:[[135,114],[143,125]],h:198}),null,{b:B(157,120,-90)})],
+  steps:['Put a pillow at your side.','Lay baby on it along your side, feet toward your back.','Support the head and neck with the hand on that side.','Bring baby\'s nose to the nipple and wait for a wide mouth.'],
+  good:'After a C-section, large breasts, twins, flat nipples.',care:'Make sure baby\'s legs aren\'t pushing against the chair back.'}),
+ prep({id:'f-side',mk:[{j:'h1',l:'Top hand keeps|baby close',o:[6,-30]}],vb:'24 56 182 140',name:'Side-lying',hold:'m',order:['P','m'],props_:()=>PR.floor()+PR.bed(30,200,140)+PR.pillow(86,136),
+  desc:'You and baby both lie on your sides facing each other. Lets you rest during night feeds.',
+  frames:[K(1.4,1.4,'Both on your sides, tummy to tummy',{v:'f',nb:1,hip:[150,128],t:-90,h:-90,hands:[[92,132],[140,131]],kn:[[168,137],[170,126]],feet:[[184,137],[184,129]],es:[1,1]},null,{b:B(130,130,-90,{len:18,hr:6})}),
+   K(1.4,1.4,'Top hand keeps baby close',{v:'f',nb:1,hip:[150,128],t:-90,h:-90,hands:[[92,132],[137,131]],kn:[[168,137],[170,126]],feet:[[184,137],[184,129]],es:[1,1]},null,{b:B(128,130,-90,{len:18,hr:6})})],
+  steps:['Lie on your side with a pillow under your head and one behind your back.','Lay baby on their side facing you, nose level with the nipple.','Use your top hand to bring baby close. A rolled towel behind baby\'s back helps.','After the feed, put baby back on their own sleep surface, on the back.'],
+  good:'Night feeds, recovery after birth or a C-section.',care:'Keep pillows and blankets away from baby\'s face. Move baby to their own space if you feel sleepy.'}),
+ prep({id:'f-laid',mk:[{j:'h1',l:'Hand on|baby\'s back',o:[14,-28]},{j:'h0',l:'Hand under|the bottom',o:[22,16]}],vb:'42 56 182 140',name:'Laid-back (reclined)',hold:'m',order:['P','m'],props_:()=>PR.floor()+PR.bed(30,220,160)+'<polygon points="50,160 110,160 62,102 50,102" class="pr"/>',
+  desc:'You recline and baby lies tummy-down on you, using their natural reflexes to find the breast.',
+  frames:[K(1.4,1.4,'Recline about 45°, baby tummy-down on you',{v:'s',f:1,nb:1,hip:[104,152],t:228,h:205,hands:[[108,132],[100,116]],feet:[[166,156],[168,156]],fa:[180,180]},null,{b:B(95,129,228,{sw:0,lg:1,arm:90})}),
+   K(1.4,1.4,'Gravity holds baby close · let them find the breast',{v:'s',f:1,nb:1,hip:[104,152],t:228,h:212,hands:[[108,132],[100,118]],feet:[[166,156],[168,156]],fa:[180,180]},null,{b:B(96,131,226,{sw:0,lg:1,arm:90})})],
+  steps:['Lean back about 45° with your back and head well supported.','Lay baby tummy-down on your chest, cheek near the breast.','Let baby bob and root toward the nipple. Help only as needed.','Skin-to-skin works especially well in this position.'],
+  good:'The first days, babies who fight the breast, a strong let-down.',care:'Stay awake in this position, and keep baby\'s nose clear.'}),
+];
+const BURPS=[
+ prep({id:'u-shoulder',mk:[{j:'h1',l:'Cupped hand|pats the back',o:[22,-14]},{j:'h0',l:'Hand under|the bottom',o:[22,18]}],vb:'48 44 182 140',name:'Over the shoulder',hold:'m',order:['P','m'],props_:()=>PR.floor(),desc:'Baby upright with the chin over your shoulder. Lay a cloth on your shoulder first.',
+  frames:[K(1.2,.6,'Chin over your shoulder, cloth underneath',st(130,1,{nb:1,hands:[[142,110],[149,92]]}),null,{b:b2}),...pat(st(130,1,{nb:1,hands:[[142,110],[149,92]]}),5,4,'Pat the back gently with a cupped hand').map(([c,P])=>K(.35,.05,c,P,null,{b:b2}))],
+  steps:['Put a burp cloth on your shoulder.','Hold baby upright with the chin resting over your shoulder.','Support the bottom with one hand.','Pat or rub the back with the other, using a cupped hand.'],good:'',care:''}),
+ prep({id:'u-sit',mk:[{j:'h0',l:'Fingers along the jaw,|not the throat',o:[16,-24]},{j:'h1',l:'Pat the back',o:[-36,-18]}],vb:'48 52 175 134',name:'Sitting on your lap',hold:'q',order:['P','q'],props_:()=>PR.floor()+PR.chairS(110,1),desc:'Baby sits on your knee, leaning slightly forward, with one hand supporting the chest and chin.',
+  frames:[K(1.2,.6,'Baby sits on your knee, leaning forward',null,sitS(110,1,{t:172,hands:[[151,124],[135,132]]}),{b:B(142,138,180,{sw:0,lg:1,len:18,arm:40})}),...pat(sitS(110,1,{t:172,hands:[[151,124],[135,132]]}),4,4,'Support chin and chest · pat the back').map(([c,P])=>K(.35,.05,c,null,P,{b:B(142,138,180,{sw:0,lg:1,len:18,arm:40})}))],
+  steps:['Sit baby on your knee, facing sideways.','Support the chest and chin with one hand: fingers along the jaw, not the throat.','Lean baby slightly forward.','Pat or rub the back with your other hand.'],good:'',care:''}),
+ prep({id:'u-lap',mk:[{j:'h1',l:'Rub the back',o:[-6,-26]},{j:'h0',l:'Support the jaw',o:[14,18]}],vb:'48 52 175 134',name:'Face-down on your lap',hold:'q',layer:'top',order:['P','q'],props_:()=>PR.floor()+PR.chairS(110,1),desc:'Baby lies tummy-down across your thighs, head slightly higher than the chest.',
+  frames:[K(1.2,.6,'Tummy-down across your thighs',null,sitS(110,1,{t:170,hands:[[150,150],[130,138]]}),{b:B(134,144,92,{sw:0,lg:1,arm:150})}),K(.7,.1,'Rub the back in slow circles',null,sitS(110,1,{t:170,hands:[[150,150],[138,138]]}),{b:B(134,144,92,{sw:0,lg:1,arm:150})}),K(.7,.1,'',null,sitS(110,1,{t:170,hands:[[150,150],[130,138]]}),{b:B(134,144,92,{sw:0,lg:1,arm:150})})],
+  steps:['Lay baby tummy-down across your thighs.','Keep the head a little higher than the chest, turned to one side.','Support the jaw with one hand.','Rub or pat the back with the other.'],good:'',care:''}),
+];
+const BOTTLE=prep({id:'f-bottle',mk:[{j:'h1',l:'Bottle nearly flat,|milk fills the teat',o:[24,-22]},{j:'h0',l:'Arm keeps baby|semi-upright',o:[-30,22]}],vb:'40 52 175 134',name:'Paced bottle feeding',hold:'q',order:['P','q','F'],props_:()=>PR.floor()+PR.chairS(110,1),front:p=>bottleSvg(122,123,p.ba),
+  desc:'Hold baby fairly upright and the bottle nearly flat, so baby controls the flow, much like breastfeeding.',
+  frames:[K(1.2,1.2,'Baby upright, bottle almost flat',null,sitS(110,1,{t:186,hands:[[118,144],[140,119]]}),{b:B(131,135,235,{len:20}),ba:100}),
+   K(1.2,1.4,'Every few sucks, tip the bottle down to pause',null,sitS(110,1,{t:186,hands:[[118,144],[140,127]]}),{b:B(131,135,235,{len:20}),ba:78}),
+   K(1.2,1,'Tip it back up when baby starts sucking again',null,sitS(110,1,{t:186,hands:[[118,144],[140,119]]}),{b:B(131,135,235,{len:20}),ba:100})],
+  steps:['Hold baby semi-upright with the head higher than the tummy.','Touch the teat to the lips and let baby draw it in.','Keep the bottle nearly horizontal, with just enough milk in the teat.','Every 20–30 seconds, tip the bottle down to let baby pause. Switch arms halfway.','Stop when baby turns away or slows down. Don\'t push to finish the bottle.'],
+  good:'Expressed breast milk or formula, any caregiver.',care:'Never prop the bottle or feed baby lying flat (choking and ear infections).'});
+
+const SOLIDS=[
+ ['6 months','Smooth, thick purées and mashes','Ragi porridge, mashed moong dal and rice, mashed banana, stewed apple, mashed potato or sweet potato','Once a day, starting with 2–3 teaspoons'],
+ ['7–8 months','Thicker mash with soft lumps','Khichdi, mashed idli with dal, suji upma, curd, egg yolk, mashed paneer, mashed vegetables','2–3 meals a day, building to ½ cup (125 ml) per meal'],
+ ['9–11 months','Finely chopped and soft finger foods','Soft chapati pieces in dal, soft dosa, steamed vegetable sticks, soft fruit pieces, well-cooked egg, minced fish or chicken','3–4 meals of ½–¾ cup, plus 1–2 snacks'],
+ ['12 months +','Family food, mildly spiced','Same food as the family with less salt and chilli, cut small','3–4 meals of ¾–1 cup (250 ml), plus 1–2 snacks'],
+];
+
+/* --- shopping --- */
+const SHOP=[
+ ['Clothing (0–3 months)',[['Jhablas / front-open vests','8–10',1,'Soft cotton, ties or snaps in front. Easiest for newborns.'],['Onesies / rompers','6–8',1,'Mostly 0–3 months, a few 3–6 months. Babies outgrow newborn sizes in weeks.'],['Pyjamas / leggings','6–8',1,''],['Caps','3–4',1,'Cotton for summer, wool for winter'],['Mittens','3–4 pairs',1,'Prevents face scratches in the first weeks'],['Socks / booties','4–6 pairs',1,''],['Muslin swaddles','4–6',1,'Also work as burp cloths and light covers'],['Sweaters / sleep suits','2–3',0,'Only for a winter baby or an AC room']]],
+ ['Diapering',[['Newborn (NB) diapers','2–3 packs',1,'8–12 a day at first. Don\'t stock up on NB size.'],['Cloth nappies / langot','12–15',0,'For diaper-free time and to save cost'],['Waterproof dry sheets / mats','3–4',1,'Under baby on the bed and for changing'],['Diaper rash cream (zinc oxide)','1',1,''],['Cotton rolls or unscented wipes','1–2 packs',1,'Cotton and warm water is gentlest in the first weeks'],['Changing mat','1',0,'']]],
+ ['Feeding',[['Nursing bras','2–3',1,'Buy in the last month of pregnancy, one size up'],['Nursing pads','1 box',1,'For leaks in the first weeks'],['Burp cloths','6–8',1,'Muslin squares work well'],['Feeding pillow','1',0,'Ordinary pillows also work'],['Nipple cream (lanolin)','1',0,'For soreness in the first week'],['Breast pump','1',0,'Handy for engorgement or returning to work'],['Bottles + steriliser + brush','2 bottles',0,'Only if expressing or using formula'],['Steel katori + soft spoon','2 sets',0,'For solids from 6 months']]],
+ ['Sleep',[['Cot or bassinet with a firm, flat mattress','1',1,'A bedside cot lets baby sleep in your room safely'],['Fitted cot sheets','3',1,''],['Mosquito net for the cot','1',1,'Essential in most of India. Keep coils and liquid vaporisers away from baby.'],['Sleep sack / wearable blanket','1–2',0,'Safer than loose blankets']]],
+ ['Bath & daily care',[['Mild, fragrance-free baby wash','1',1,''],['Hooded towels','2–3',1,''],['Baby nail clipper or file','1',1,'Newborn nails are sharp'],['Cotton balls','1 pack',1,'For eyes and the cord area'],['Baby bathtub or bath seat','1',0,'A large tub, or bathing on your lap, also works'],['Massage oil','1',0,'Plain coconut or a light baby oil. Keep it off the face.'],['Soft hairbrush','1',0,'']]],
+ ['Health & safety',[['Digital thermometer','1',1,'For armpit readings. Avoid mercury thermometers.'],['Saline nasal drops','1',1,'For a blocked nose, as your doctor advises'],['Rear-facing infant car seat','1',1,'Needed from the first car ride home. A lap is not safe.'],['Paracetamol drops','1',0,'Only in the dose your paediatrician sets'],['Ergonomic carrier (M-position)','1',0,'Knees higher than the bottom, face visible'],['Pram / stroller (lie-flat)','1',0,''],['Room thermometer','1',0,'Aim for about 24–26 °C']]],
+ ['Hospital bag',[['Documents','—',1,'ID, insurance, pregnancy (ANC) reports, blood group, hospital file'],['Front-open kurtis / nightgowns','3–4',1,'For feeding'],['Maternity pads','2 packs',1,'Heavy flow for 1–2 weeks'],['Disposable or high-waist underwear','5–6',1,'Comfortable after a C-section too'],['Baby\'s going-home set','1',1,'Clothes, cap, socks, mittens, swaddle, a few diapers, blanket'],['Charger, slippers, toiletries, snacks','—',1,'']]],
+];
+const SKIP=['<b>Baby walkers:</b> they cause falls and injuries. The IAP advises against them.','<b>Talcum powder:</b> baby can inhale it.','<b>Kajal / surma:</b> can contain lead and cause eye infections.','<b>Cot bumpers, pillows, sleep positioners:</b> risk of suffocation.','<b>Mustard-seed (rai) pillows</b> to shape the head: no proven benefit.','<b>Gripe water, janam ghutti:</b> nothing but breast milk for 6 months.','<b>Lots of newborn-size clothes:</b> they are outgrown in weeks.','<b>Shoes before walking,</b> amber teething necklaces, black threads at night.'];
+
+/* --- hand markers --- */
+function markPts(ex,s){const P=s[ex.hold];if(!P)return[];const k=solve(P);const list=(s.p&&s.p.mk)||ex.mk||[];
+  return list.map(m=>{const i=+m.j[1],pt=m.j[0]==='h'?k.arms[i][2]:k.arms[i][1];return{pt,m}})}
+function marksSvg(ex,s,tm){
+  const pulse=4.6+1.6*Math.sin(tm*4.5);let o='';
+  markPts(ex,s).forEach(({pt,m})=>{const lx=pt[0]+m.o[0],ly=pt[1]+m.o[1],anc=m.o[0]>=0?'start':'end',lines=m.l.split('|');
+    const ex2=lx+(m.o[0]>=0?-1.5:1.5);
+    o+=`<line x1="${n1(pt[0])}" y1="${n1(pt[1])}" x2="${n1(ex2)}" y2="${n1(ly-2)}" class="mkl"/>`;
+    o+=`<circle cx="${n1(pt[0])}" cy="${n1(pt[1])}" r="${n1(pulse)}" class="mkr"/><circle cx="${n1(pt[0])}" cy="${n1(pt[1])}" r="1.8" class="mkd"/>`;
+    o+=`<text x="${n1(lx)}" y="${n1(ly-(lines.length-1)*3.6)}" text-anchor="${anc}" class="mkt">${lines.map((t,j)=>`<tspan x="${n1(lx)}" dy="${j?7.2:0}">${t}</tspan>`).join('')}</text>`});
+  return o}
+function autoZoom(ex,base){
+  const pts=[];let acc=0;
+  if(base){const v=base.split(' ').map(Number);pts.push([v[0],v[1]],[v[0]+v[2],v[1]+v[3]])}
+  ex.frames.forEach(f=>{acc+=f.d+f.hold/2;const smp=sample(ex,acc);acc+=f.hold/2;
+    const b=smp.p&&smp.p.b;if(b){const r=(b.len||22)/2+(b.hr||6.5)*2;pts.push([b.x-r,b.y-r],[b.x+r,b.y+r])}
+    markPts(ex,smp).forEach(({pt,m})=>{pts.push(pt);const lx=pt[0]+m.o[0],w=Math.max(...m.l.split('|').map(t=>t.length))*3.3;
+      pts.push([lx+(m.o[0]>=0?w:-w),pt[1]+m.o[1]-8],[lx,pt[1]+m.o[1]+8])})});
+  let x0=Math.min(...pts.map(p=>p[0]))-6,x1=Math.max(...pts.map(p=>p[0]))+6,y0=Math.min(...pts.map(p=>p[1]))-6,y1=Math.max(...pts.map(p=>p[1]))+6;
+  if(base){x0+=6;x1-=6;y0+=6;y1-=6;const v=base.split(' ').map(Number);y1=Math.min(y1,v[1]+v[3]);x0-=4;x1+=4}
+  let w=Math.max(x1-x0,(y1-y0)*1.3,104),h=w/1.3;const cx=(x0+x1)/2,cy=(y0+y1)/2;
+  return`${n1(cx-w/2)} ${n1(cy-h/2)} ${n1(w)} ${n1(h)}`}
+
+/* --- renderers --- */
+function illoCard(ex){
+  const a=document.createElement('article');a.className='icard';
+  a.innerHTML=`<div class="stg"></div>${ex.mk?`<div class="ictl"><button class="btn" data-z aria-pressed="false">Zoom in on hands</button><button class="btn" data-mk aria-pressed="true">Hand markers</button><button class="btn" data-sl aria-pressed="false">Slow motion</button><button class="btn" data-pp aria-pressed="false">Pause</button></div>`:''}<div class="txt"><h3>${ex.name}</h3><p class="desc">${ex.desc}</p><p class="capl"><i>▶</i><span></span></p><ol>${ex.steps.map(s=>`<li>${s}</li>`).join('')}</ol>${ex.good?`<p class="kv"><b>Good for:</b> ${ex.good}</p>`:''}${ex.care?`<p class="kv c"><b>Careful:</b> ${ex.care}</p>`:''}</div>`;
+  const svg=makeSvg();if(ex.vb)svg.setAttribute('viewBox',ex.vb);a.querySelector('.stg').appendChild(svg);const cap=a.querySelector('.capl span');
+  const t0=ex.frames[0].d+ex.frames[0].hold/2,smp=sample(ex,t0);svg.innerHTML=scene(ex,smp);cap.textContent=ex.cues[0].cap;
+  const th={ex,svg,t:t0,acc:0,vis:false,cap,ci:0};thumbs.set(a,th);io.observe(a);
+  if(ex.mk){const vbFull=autoZoom(ex,ex.vb||`0 0 ${W} ${H}`),vbZ=autoZoom(ex);svg.setAttribute('viewBox',vbFull);
+    a.querySelector('.ictl').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);
+      if(b.hasAttribute('data-z'))svg.setAttribute('viewBox',on?vbZ:vbFull);
+      if(b.hasAttribute('data-mk'))ex.showMk=on;
+      if(b.hasAttribute('data-sl'))th.speed=on?.45:1;
+      if(b.hasAttribute('data-pp')){th.paused=on;b.textContent=on?'Play':'Pause'}
+      svg.innerHTML=scene(ex,sample(ex,th.t),th.t)})}
+  return a}
+function grid(list){const g=document.createElement('div');g.className='icards wide';list.forEach(e=>g.appendChild(illoCard(e)));return g}
+function head(h,p){const d=document.createElement('div');d.className='sec-h';d.innerHTML=`<h2>${h}</h2><p>${p}</p>`;return d}
+function renderHolding(){
+  const el=document.getElementById('p-holding');el.innerHTML='';
+  el.appendChild(head('Ways to hold your baby','Moving illustrations; each loops through the steps.'));
+  el.appendChild(grid(HOLDS));
+  const r=document.createElement('div');r.className='tip';
+  r.innerHTML=`<h3>Golden rules</h3><ul><li>Wash your hands before picking baby up.</li><li>Support the head and neck at all times until baby holds the head steady (around 3–4 months).</li><li>Never shake a baby, even in play.</li><li>Don\'t hold baby while cooking or carrying hot tea or water.</li><li>If you feel sleepy while holding baby, put them down safely in the cot.</li><li>In a carrier or sling: knees higher than the bottom (M-position), face visible, and close enough to kiss.</li></ul>`;
+  el.appendChild(r)}
+function renderFeeding(){
+  const el=document.getElementById('p-feeding');el.innerHTML='';
+  el.appendChild(head('Breastfeeding positions','Try a few. Most mothers use two or three, depending on the time of day.'));
+  el.appendChild(grid(FEEDS));
+  const d=document.createElement('div');d.className='duo';
+  d.innerHTML=`<div class="tip"><h3>Signs of a good latch</h3><ul><li>Baby\'s mouth is wide open, like a yawn, before latching.</li><li>Lips are turned out like a fish, especially the lower lip.</li><li>More of the dark areola shows above the top lip than below.</li><li>The chin presses into the breast and the nose is free.</li><li>You hear swallowing: slow, rhythmic sucks with pauses.</li><li>It may tug, but shouldn\'t hurt after the first few seconds. If it hurts, slide a clean finger in to break the seal and try again.</li></ul></div>
+   <div class="tip"><h3>How often, how much</h3><ul><li>8–12 feeds in 24 hours for the first weeks, on cue. Wake baby to feed if it has been 3 hours (in the first 2 weeks).</li><li>Let baby finish the first breast (10–20 min or more), then offer the second.</li><li>Enough milk: 6+ wet nappies a day from day 5, yellow poop, steady weight gain, a content baby between feeds.</li><li>Growth spurts around 2–3 weeks, 6 weeks and 3 months bring extra feeding. That\'s normal.</li><li>Lactation help: ask your hospital for a lactation consultant if feeding hurts or baby isn\'t gaining.</li></ul></div>`;
+  el.appendChild(d);
+  el.appendChild(head('Burping','Burp halfway through and at the end of each feed. If nothing comes up after a few minutes, that\'s fine.'));
+  el.appendChild(grid(BURPS));
+  el.appendChild(head('Bottle feeding','For expressed breast milk or formula. Any caregiver can do it.'));
+  const g=grid([BOTTLE]);const st=document.createElement('div');st.className='tip';
+  st.innerHTML=`<h3>Safe storage & preparation</h3><ul><li><b>Expressed breast milk:</b> up to 4 hours at room temperature (less in a hot room), 4 days in the fridge, about 6 months in the freezer.</li><li>Thaw in the fridge or in warm water, never in the microwave. Use thawed milk within 24 hours. Never refreeze.</li><li>Leftover milk from a feed: use within 2 hours, then throw it away.</li><li><b>Formula:</b> boil water and let it cool for no more than 30 minutes (so it\'s still at least 70 °C), add the powder, then cool to body temperature.</li><li>Follow the scoop count exactly. Don\'t add extra powder, sugar or cereal.</li><li>Wash bottles and teats in hot soapy water and sterilise them daily for the first months.</li></ul>`;
+  g.appendChild(st);el.appendChild(g);
+  el.appendChild(head('Starting solids (from 6 months)','Keep breastfeeding alongside. Introduce one new food every 3–4 days.'));
+  const t=document.createElement('div');t.className='tblwrap';
+  t.innerHTML=`<table class="stbl"><thead><tr><th>Age</th><th>Texture</th><th>Indian food ideas</th><th>How much</th></tr></thead><tbody>${SOLIDS.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  el.appendChild(t);
+  const av=document.createElement('div');av.className='tip';
+  av.innerHTML=`<h3>Avoid before 1 year</h3><ul><li>Honey (risk of botulism)</li><li>Added salt and sugar, packaged juices and biscuits</li><li>Cow\'s milk as the main drink (small amounts in cooking are fine)</li><li>Whole nuts, whole grapes, popcorn (choking). Give nuts as powder or smooth paste.</li><li>Tea and coffee</li></ul><div class="watch">Always feed baby sitting upright, and stay with them while they eat.</div>`;
+  el.appendChild(av)}
+function renderShopping(){
+  const el=document.getElementById('p-shopping');const got=bstate.shop||{};
+  let total=0,done=0;SHOP.forEach(([c,items])=>items.forEach((it,i)=>{if(bstate.shopMust&&!it[2])return;total++;if(got[c+'|'+i])done++}));
+  el.innerHTML=`<div class="sec-h"><h2>Shopping essentials</h2><p>What you need for the first 3 months, with a hospital bag list. Tick items as you buy them.</p></div>
+   <div class="shop-top"><div class="shop-prog"><span><b>${done}</b> of ${total} bought</span><span class="bar2"><i style="width:${total?done/total*100:0}%"></i></span></div>
+   <div class="toggles"><button class="tog" id="sMust" aria-pressed="${!!bstate.shopMust}">Must-haves only</button><button class="tog" id="sHide" aria-pressed="${!!bstate.shopHide}">Hide bought</button></div></div>
+   <div class="shops">${SHOP.map(([c,items])=>{const rows=items.map((it,i)=>({it,i,k:c+'|'+i})).filter(x=>(!bstate.shopMust||x.it[2])&&(!bstate.shopHide||!got[x.k]));
+     const n=items.filter((it,i)=>(!bstate.shopMust||it[2])).length,g=items.filter((it,i)=>(!bstate.shopMust||it[2])&&got[c+'|'+i]).length;
+     return`<div class="shopc"><h3>${c}<span>${g}/${n}</span></h3>${rows.map(x=>`<label class="sitem ${got[x.k]?'got':''}"><input type="checkbox" data-k="${esc(x.k)}" ${got[x.k]?'checked':''}><span class="nm">${esc(x.it[0])}${x.it[2]?'<span class="mtag">Must</span>':''}</span><span class="q">${esc(x.it[1])}</span>${x.it[3]?`<span class="nt">${esc(x.it[3])}</span>`:''}</label>`).join('')||'<p class="vnote">All bought.</p>'}</div>`}).join('')}</div>
+   <div class="skip"><h3>Skip these</h3><ul>${SKIP.map(s=>`<li>${s}</li>`).join('')}</ul></div>
+   <p class="vnote">Ticks are saved only in this browser.</p>`;
+  document.getElementById('sMust').onclick=()=>{bstate.shopMust=!bstate.shopMust;bsave();renderShopping()};
+  document.getElementById('sHide').onclick=()=>{bstate.shopHide=!bstate.shopHide;bsave();renderShopping()};
+}
+document.getElementById('p-shopping').addEventListener('change',e=>{const c=e.target.closest('[data-k]');if(!c)return;bstate.shop=bstate.shop||{};if(c.checked)bstate.shop[c.dataset.k]=true;else delete bstate.shop[c.dataset.k];bsave();renderShopping()});
+
+renderHolding();renderFeeding();renderShopping();
+renderAge();renderMilestones();renderNotice();renderEmergency();renderVaccines();
+(()=>{const h=location.hash.slice(1);
+  if(h.startsWith('baby'))return showView('baby',h.split('-')[1]);
+  if(h&&EX.find(e=>e.id===h)){showView('mom');return openDetail(h)}
+  if(h.startsWith('mom'))return showView('mom');
+  let v='mom';try{v=localStorage.getItem('bloom-view')||'mom'}catch(e){}showView(v);
+})();
+
+window.bloomRerender=()=>{dobIn.value=bstate.dob||'';renderAge();renderMilestones();renderVaccines();renderShopping();renderEmergency();renderList();renderWeek();if(window.renderMom)renderMom()};
+window.bloomState=()=>({baby:{dob:bstate.dob,done:bstate.done,ec:bstate.ec,shop:bstate.shop},mom:{log:mstate.log,plan:mstate.plan||{},times:mstate.times||{am:'07:30',pm:'19:00'},since:mstate.since||''}});
+window.bloomApply=(st)=>{if(st.baby){['dob','done','ec','shop'].forEach(k=>{if(st.baby[k]!==undefined)bstate[k]=st.baby[k]})}if(st.mom){if(st.mom.log)mstate.log=st.mom.log;if(st.mom.plan)mstate.plan=st.mom.plan;if(st.mom.times)mstate.times=st.mom.times;if(st.mom.since!==undefined)mstate.since=st.mom.since}
+  try{localStorage.setItem('bloom-mom',JSON.stringify(mstate));localStorage.setItem('bloom-baby',JSON.stringify({dob:bstate.dob,done:bstate.done,ec:bstate.ec,sub:bstate.sub,shop:bstate.shop,shopMust:bstate.shopMust,shopHide:bstate.shopHide}))}catch(e){}window.bloomRerender()};
+</script>
+
+<script>
+/* ================= MOM PLANNER: today · plan · progress ================= */
+const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],ORDER=[1,2,3,4,5,6,0];
+const exById=id=>EX.find(e=>e.id===id);
+mstate.plan=mstate.plan||{};mstate.times=mstate.times||{am:'07:30',pm:'19:00'};
+const slotOf=(id,dow)=>((mstate.plan[id]||[])[dow])||'';
+function plannedFor(date){const dow=date.getDay();const out={am:[],pm:[]};if(!mstate.since||dayKey(date)<mstate.since)return out;EX.forEach(e=>{const s=slotOf(e.id,dow);if(s)out[s].push(e.id)});return out}
+const doneOn=(id,key)=>(mstate.log[id]||[]).includes(key);
+function dayStats(date){const k=dayKey(date),p=plannedFor(date),ids=[...p.am,...p.pm];const done=ids.filter(id=>doneOn(id,k)).length;
+  const extra=Object.keys(mstate.log).filter(id=>!ids.includes(id)&&doneOn(id,k)).length;return{planned:ids.length,done,extra}}
+const markSince=()=>{if(!mstate.since)mstate.since=dayKey()};
+const hasPlan=()=>Object.values(mstate.plan).some(a=>a&&a.some(Boolean));
+function snapSvg(ex){const svg=makeSvg();const key=ex.frames[Math.min(2,ex.frames.length-1)];const t0=ex.frames.slice(0,Math.min(3,ex.frames.length)).reduce((a,f)=>a+f.d+f.hold,0)-key.hold/2;svg.innerHTML=scene(ex,sample(ex,t0));return svg.outerHTML}
+const fmtTime=t=>{const [h,m]=t.split(':').map(Number);const ap=h<12?'am':'pm';return`${((h+11)%12)+1}:${String(m).padStart(2,'0')} ${ap}`};
+
+const TEMPLATES=[
+ {id:'gentle',name:'Gentle daily',desc:'Second trimester basics: 2 short morning stretches, 3 relaxing evening ones. About 15 min a day.',
+  am:{'neck-release':[0,1,2,3,4,5,6],'side-stretch':[0,1,2,3,4,5,6]},pm:{'ball-circles':[0,1,2,3,4,5,6],'ankle-pumps':[0,1,2,3,4,5,6],'childs-pose':[0,1,2,3,4,5,6]}},
+ {id:'back',name:'Back & hips focus',desc:'For back ache and stiff hips. Hip mobility every morning, gentle openers in the evening.',
+  am:{'hip-circles':[0,1,2,3,4,5,6],'wall-chest':[1,3,5]},pm:{'ball-rock':[0,1,2,3,4,5,6],'butterfly':[0,1,2,3,4,5,6],'wall-l-stretch':[2,4,6],'childs-pose':[0,1,2,3,4,5,6]}},
+ {id:'partner',name:'Weekend with partner',desc:'Partner stretches on Saturday and Sunday mornings, with a light routine on weekdays.',
+  am:{'side-stretch':[1,2,3,4,5],'partner-tree':[0,6],'back-to-back':[0,6],'wide-fold':[0,6],'elbow-stretch':[0,6]},pm:{'ankle-pumps':[1,2,3,4,5],'ball-circles':[1,2,3,4,5]}},
+ {id:'labour',name:'Labour prep (36 weeks+)',desc:'Positions that help the baby settle and open the pelvis. Check with your doctor first.',
+  am:{'hip-circles':[0,1,2,3,4,5,6],'step-ups':[1,3,5],'partner-squat':[2,4,6]},pm:{'ball-bounce':[0,1,2,3,4,5,6],'butterfly':[0,1,2,3,4,5,6],'knee-chest':[1,3,5],'side-lying-release':[0]}},
+];
+function applyTemplate(t){const plan={};[['am',t.am],['pm',t.pm]].forEach(([slot,map])=>Object.entries(map).forEach(([id,days])=>{plan[id]=plan[id]||['','','','','','',''];days.forEach(d=>plan[id][d]=slot)}));mstate.plan=plan;markSince();msave();renderMom()}
+
+function renderToday(){
+  const el=document.getElementById('m-today');const now=new Date(),k=dayKey(now),p=plannedFor(now),st=dayStats(now);
+  const pct=st.planned?Math.round(st.done/st.planned*100):0;
+  const row=id=>{const ex=exById(id);if(!ex)return'';const d=doneOn(id,k);
+    return`<div class="trow ${d?'done':''}">${snapSvg(ex)}<div><div class="nm">${ex.name}</div><div class="ds">${ex.tm?ex.tm.hold:ex.dose}</div></div><div class="acts"><button class="linkb" data-watch="${id}">Watch</button><button class="chk" data-done="${id}" aria-pressed="${d}">${d?'✓ Done':'Mark done'}</button></div></div>`};
+  const extras=Object.keys(mstate.log).filter(id=>![...p.am,...p.pm].includes(id)&&doneOn(id,k));
+  let html=`<div class="today-head"><div class="ring" style="--p:${pct}"><b>${st.planned?`${st.done}/${st.planned}`:st.extra||0}</b></div><div><h2>${now.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'})}</h2><p>${st.planned?(st.done>=st.planned?'All of today\'s stretches are done. Well done!':`${st.planned-st.done} stretch${st.planned-st.done>1?'es':''} left today.`):'Nothing planned for today.'} ${streak()?`· ${streak()}-day streak`:''}</p></div></div>`;
+  if(!hasPlan()){html+=`<div class="empty-card"><h3>Make your stretch plan</h3><p class="vnote" style="margin:0 0 12px">Pick a starter plan to fill your week, then adjust it day by day in <b>My plan</b>.</p><div class="tpls">${TEMPLATES.map(t=>`<button class="tpl" data-tpl="${t.id}"><b>${t.name}</b><span>${t.desc}</span></button>`).join('')}</div></div>`}
+  else{
+    if(p.am.length)html+=`<div class="slot"><h3>Morning <span>${fmtTime(mstate.times.am)}</span></h3>${p.am.map(row).join('')}</div>`;
+    if(p.pm.length)html+=`<div class="slot"><h3>Evening <span>${fmtTime(mstate.times.pm)}</span></h3>${p.pm.map(row).join('')}</div>`;
+    if(!p.am.length&&!p.pm.length)html+=`<div class="empty-card"><h3>Rest day</h3><p class="vnote" style="margin:0">Nothing is planned today. Enjoy the rest, or pick any stretch from <b>All stretches</b>.</p></div>`;
+  }
+  if(extras.length)html+=`<div class="slot"><h3>Extra today <span>not in your plan</span></h3>${extras.map(row).join('')}</div>`;
+  el.innerHTML=html;
+}
+function streak(){let n=0;const d=new Date();for(let i=0;i<400;i++){const s=dayStats(d);const ok=s.planned?s.done>=s.planned:s.extra>0;if(ok)n++;else if(i>0||s.planned)break;d.setDate(d.getDate()-1)}return n}
+
+function renderPlan(){
+  const el=document.getElementById('m-plan');const todayDow=new Date().getDay();
+  const cats=CATS.filter(c=>EX.some(e=>e.cat===c.id));
+  const totals=ORDER.map(d=>EX.filter(e=>slotOf(e.id,d)).length);
+  el.innerHTML=`<div class="sec-h"><h2>My weekly plan</h2><p>Tap a box to cycle: empty → morning → evening. Your plan repeats every week.</p></div>
+   <div class="tpls">${TEMPLATES.map(t=>`<button class="tpl" data-tpl="${t.id}"><b>${t.name}</b><span>${t.desc}</span></button>`).join('')}<button class="tpl" data-tpl="clear"><b>Clear plan</b><span>Start from an empty week.</span></button></div>
+   <div class="plan-tools"><label for="tAm">Morning time<input type="time" id="tAm" value="${mstate.times.am}"></label><label for="tPm">Evening time<input type="time" id="tPm" value="${mstate.times.pm}"></label>
+    <button class="btn pri" id="icsBtn">Add to my calendar</button><div class="legend2"><span><i style="background:var(--swaddle)"></i>Morning</span><span><i style="background:var(--pt)"></i>Evening</span></div></div>
+   <div class="pgrid-wrap"><table class="pgrid"><thead><tr><th>Stretch</th>${ORDER.map(d=>`<th class="${d===todayDow?'today':''}">${DAYS[d]}</th>`).join('')}</tr></thead><tbody>
+   ${cats.map(c=>`<tr class="cat"><td colspan="8">${c.name}</td></tr>`+EX.filter(e=>e.cat===c.id).map(e=>`<tr><td><button class="linkb" style="padding:0;color:var(--ink);text-align:left" data-watch="${e.id}">${e.name}</button></td>${ORDER.map(d=>{const s=slotOf(e.id,d);return`<td><button class="cell ${s}" data-cell="${e.id}|${d}" aria-label="${e.name} on ${DAYS[d]}: ${s==='am'?'morning':s==='pm'?'evening':'not planned'}">${s==='am'?'AM':s==='pm'?'PM':'+'}</button></td>`}).join('')}</tr>`).join('')).join('')}
+   </tbody><tfoot><tr><td>Stretches per day</td>${totals.map(n=>`<td>${n}</td>`).join('')}</tr></tfoot></table></div>
+   <p class="vnote">"Add to my calendar" downloads a calendar file with one repeating reminder per morning or evening session. Open it on your phone to add it to Google Calendar or Apple Calendar.</p>`;
+  const tAm=el.querySelector('#tAm'),tPm=el.querySelector('#tPm');
+  tAm.onchange=()=>{mstate.times.am=tAm.value||'07:30';msave();renderToday()};tPm.onchange=()=>{mstate.times.pm=tPm.value||'19:00';msave();renderToday()};
+  el.querySelector('#icsBtn').onclick=downloadIcs;
+}
+function cycleCell(id,d){const a=mstate.plan[id]||['','','','','','',''];a[d]=a[d]===''?'am':a[d]==='am'?'pm':'';mstate.plan[id]=a;markSince();msave();renderPlan();renderToday()}
+
+function downloadIcs(){
+  if(!hasPlan())return;
+  const pad=n=>String(n).padStart(2,'0'),BY=['SU','MO','TU','WE','TH','FR','SA'];
+  const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//BloomMom//Stretch plan//EN','CALSCALE:GREGORIAN'];
+  const stamp=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');
+  [0,1,2,3,4,5,6].forEach(d=>['am','pm'].forEach(slot=>{
+    const ids=EX.filter(e=>slotOf(e.id,d)===slot).map(e=>e.name);if(!ids.length)return;
+    const [h,m]=mstate.times[slot].split(':').map(Number);const start=new Date();start.setHours(h,m,0,0);
+    while(start.getDay()!==d)start.setDate(start.getDate()+1);
+    const dt=`${start.getFullYear()}${pad(start.getMonth()+1)}${pad(start.getDate())}T${pad(h)}${pad(m)}00`;
+    const endM=h*60+m+Math.max(10,ids.length*4),dtE=`${start.getFullYear()}${pad(start.getMonth()+1)}${pad(start.getDate())}T${pad(Math.floor(endM/60)%24)}${pad(endM%60)}00`;
+    lines.push('BEGIN:VEVENT',`UID:bloommom-${d}-${slot}@bloommom.in`,`DTSTAMP:${stamp}`,`DTSTART:${dt}`,`DTEND:${dtE}`,`RRULE:FREQ=WEEKLY;BYDAY=${BY[d]}`,
+      `SUMMARY:BloomMom ${slot==='am'?'morning':'evening'} stretches (${ids.length})`,`DESCRIPTION:${ids.join('\\n')}\\n\\nOpen BloomMom to follow along and tick them off.`,`URL:${location.origin}${location.pathname}#mom`,
+      'BEGIN:VALARM','TRIGGER:-PT5M','ACTION:DISPLAY','DESCRIPTION:Time to stretch','END:VALARM','END:VEVENT')}));
+  lines.push('END:VCALENDAR');
+  const blob=new Blob([lines.join('\r\n')],{type:'text/calendar'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bloommom-stretch-plan.ics';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
+}
+
+let calMonth=new Date();calMonth.setDate(1);
+function renderProgress(){
+  const el=document.getElementById('m-progress');const today=new Date();today.setHours(0,0,0,0);
+  let wk=0,mo=0,total=0;const counts={};
+  Object.entries(mstate.log).forEach(([id,arr])=>arr.forEach(k=>{total++;counts[id]=(counts[id]||0)+1;const d=new Date(k+'T00:00:00');const age=(today-d)/864e5;if(age<7)wk++;if(d.getMonth()===today.getMonth()&&d.getFullYear()===today.getFullYear())mo++}));
+  const y=calMonth.getFullYear(),m=calMonth.getMonth(),first=new Date(y,m,1),lead=(first.getDay()+6)%7,dim=new Date(y,m+1,0).getDate();
+  let cells=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<div class="dn">${d}</div>`).join('')+'<div></div>'.repeat(lead);
+  for(let i=1;i<=dim;i++){const d=new Date(y,m,i);const s=dayStats(d);const fut=d>today;let c='';
+    if(!fut){if(s.planned&&s.done>=s.planned)c='full';else if(s.done||s.extra)c='part';else if(s.planned&&d<today)c='miss'}
+    const lbl=s.planned?`${s.done}/${s.planned}`:(s.extra?`+${s.extra}`:'');
+    cells+=`<div class="d ${c} ${fut?'fut':''} ${+d===+today?'now':''}" title="${d.toDateString()}: ${s.done} of ${s.planned} planned done${s.extra?`, ${s.extra} extra`:''}">${i}${lbl&&!fut?`<small>${lbl}</small>`:''}</div>`}
+  const top=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  el.innerHTML=`<div class="stats"><div class="stat"><b>${streak()}</b><span>day streak</span></div><div class="stat"><b>${wk}</b><span>stretches in the last 7 days</span></div><div class="stat"><b>${mo}</b><span>this month</span></div><div class="stat"><b>${total}</b><span>all time</span></div></div>
+   <div class="duo"><div class="cal"><div class="cal-h"><button class="btn" id="calPrev" aria-label="Previous month">←</button><h3>${first.toLocaleDateString('en-IN',{month:'long',year:'numeric'})}</h3><button class="btn" id="calNext" aria-label="Next month">→</button></div><div class="cal-g">${cells}</div>
+    <div class="legend2" style="margin-top:10px"><span><i style="background:var(--ok)"></i>All planned done</span><span><i style="background:color-mix(in srgb,var(--ok) 30%,var(--bg))"></i>Some done</span><span><i style="background:color-mix(in srgb,var(--crit) 12%,var(--bg))"></i>Missed</span></div></div>
+    <div class="tip"><h3>Most practised</h3>${top.length?`<ol class="toplist">${top.map(([id,n])=>`<li>${(exById(id)||{name:id}).name}: <b>${n}</b> time${n>1?'s':''}</li>`).join('')}</ol>`:'<p class="vnote" style="margin:0">Mark stretches done on the Today tab and they\'ll show up here.</p>'}
+    <h3 style="margin-top:14px">How the streak works</h3><p class="vnote" style="margin:0">A day counts when you finish everything planned for it. On days with nothing planned, any stretch counts.</p></div></div>`;
+  el.querySelector('#calPrev').onclick=()=>{calMonth.setMonth(calMonth.getMonth()-1);renderProgress()};
+  el.querySelector('#calNext').onclick=()=>{calMonth.setMonth(calMonth.getMonth()+1);renderProgress()};
+}
+function renderMom(){renderToday();renderPlan();renderProgress()}
+window.renderMom=renderMom;
+function setMsub(sub){if(!['today','plan','progress','library'].includes(sub))sub='today';mstate.sub=sub;
+  document.querySelectorAll('#momTabs .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.msub===sub));
+  ['today','plan','progress','library'].forEach(s=>document.getElementById('m-'+s).hidden=s!==sub);
+  try{localStorage.setItem('bloom-msub',sub)}catch(e){}}
+document.getElementById('momTabs').addEventListener('click',e=>{const b=e.target.closest('[data-msub]');if(!b)return;setMsub(b.dataset.msub);try{history.replaceState(null,'','#mom-'+b.dataset.msub)}catch(err){}});
+document.getElementById('view-mom').addEventListener('click',e=>{
+  const w=e.target.closest('[data-watch]');if(w){openDetail(w.dataset.watch);return}
+  const d=e.target.closest('[data-done]');if(d){toggleDone(d.dataset.done);renderMom();renderList();renderWeek();return}
+  const t=e.target.closest('[data-tpl]');if(t){if(t.dataset.tpl==='clear'){mstate.plan={};msave();renderMom()}else applyTemplate(TEMPLATES.find(x=>x.id===t.dataset.tpl));return}
+  const c=e.target.closest('[data-cell]');if(c){const [id,d]=c.dataset.cell.split('|');cycleCell(id,+d)}
+});
+renderMom();
+(()=>{let s='today';try{s=localStorage.getItem('bloom-msub')||'today'}catch(e){}const h=location.hash.slice(1);if(h.startsWith('mom-'))s=h.slice(4);setMsub(s)})();
+</script>
+
+<footer style="max-width:1180px;margin:0 auto;padding:0 20px 40px;font-size:.85rem;color:var(--muted)"><a href="/privacy.html" style="color:inherit">Privacy</a> · <a href="/terms.html" style="color:inherit">Terms</a></footer>
+<script src="/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/auth.js"></script>
+<script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));</script>
+</body>
+</html>

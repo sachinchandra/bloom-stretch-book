@@ -2,7 +2,7 @@
   "name": "BloomMom: pregnancy & baby care",
   "short_name": "BloomMom",
   "description": "Pregnancy stretches, baby holding and feeding guides, milestones, vaccines and a shopping checklist.",
-  "start_url": "/",
+  "start_url": "/app/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#F2F5F3",

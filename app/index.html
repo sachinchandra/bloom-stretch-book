@@ -2927,6 +2927,226 @@ renderPlan();renderToday();renderProgress();
 renderToday();
 
 </script>
+<script id="plus-js">
+/* ================= BLOOMMOM PLUS
+   Live: doctor-visit report (visit log, symptoms, questions, one-page printable summary).
+   Coming soon: paid features shown as "I want this" cards, so we learn what moms will pay for
+   before building it. Wants are saved in the user's own synced state (mom.plus.want). ================= */
+(()=>{const s=document.createElement('style');s.textContent=`
+.pbadge{display:inline-block;font:800 .66rem var(--body);letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:2px 8px;background:linear-gradient(90deg,var(--plum),var(--plum-soft));color:var(--surface);vertical-align:middle}
+.pbadge.soon{background:var(--plum-tint);color:var(--plum)}
+.jtile .pbadge{margin-top:2px}
+.pstrip{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.pfeat{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;gap:12px;align-items:flex-start;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
+.pfeat:hover{border-color:var(--plum)} .pfeat .pic{flex:none;width:52px;height:52px;background:var(--plum-tint);border-radius:14px;padding:4px}
+.pfeat b{font-family:var(--display);display:block;margin:3px 0 2px} .pfeat span.d{font-size:.82rem;color:var(--muted);line-height:1.35}
+.pfeat.wanted{border-color:var(--ok)} .pfeat .wtick{color:var(--ok);font-weight:800;font-size:.78rem;display:block;margin-top:4px}
+.pcta{display:flex;gap:14px;align-items:center;background:linear-gradient(120deg,var(--plum-tint),var(--teal-soft));border-radius:20px;padding:14px 16px;margin:14px 0;cursor:pointer;border:0;width:100%;text-align:left;font:inherit;color:var(--ink)}
+.pcta .pic{flex:none;width:52px;height:52px} .pcta b{font-family:var(--display);display:block} .pcta span{font-size:.85rem;color:var(--muted)}
+#plusDlg{border:0;border-radius:24px;padding:0;max-width:min(440px,calc(100vw - 32px));width:100%;height:fit-content!important;max-height:calc(100dvh - 40px);overflow:auto;background:var(--surface);color:var(--ink);box-shadow:0 30px 80px -30px #0008}
+#plusDlg::backdrop{background:#0006}
+.pd{padding:22px 22px 18px;text-align:center}.pd .pic{width:84px;height:84px;margin:0 auto 6px;background:var(--plum-tint);border-radius:22px;padding:8px}
+.pd h3{font-family:var(--display);font-size:1.3rem;margin:8px 0 6px}.pd p{margin:0 0 10px;color:var(--muted);line-height:1.45}
+.pd .price{font-family:var(--display);font-weight:800;color:var(--plum);font-size:1.05rem;margin:10px 0}
+.pd .acts{display:flex;flex-direction:column;gap:8px;margin-top:12px}.pd .acts .btn{justify-content:center;width:100%}
+.btn.solid{background:var(--plum);border-color:var(--plum);color:var(--surface)}
+.pd .ok{background:color-mix(in srgb,var(--ok) 14%,var(--surface));color:var(--ink);border-radius:14px;padding:10px 12px;font-size:.9rem;margin-top:10px}
+.passes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0 4px}
+.pass{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.pass.best{border:2px solid var(--plum)} .pass h3{font-family:var(--display);margin:0} .pass .amt{font:800 1.8rem var(--display);color:var(--plum)} .pass .amt small{font-size:.8rem;color:var(--muted);font-weight:600}
+.pass ul{margin:4px 0 8px;padding-left:18px;font-size:.88rem;color:var(--muted)} .pass .btn{justify-content:center;margin-top:auto}
+.freebox{background:color-mix(in srgb,var(--ok) 10%,var(--surface));border-radius:18px;padding:14px 16px;margin:12px 0;font-size:.92rem}
+.rp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;align-items:start}
+.rp-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px}
+.rp-card h3{font-family:var(--display);margin:0 0 10px;font-size:1.05rem}
+.rp-form{display:grid;grid-template-columns:1fr 1fr;gap:8px}.rp-form label{display:flex;flex-direction:column;font-size:.78rem;font-weight:700;color:var(--muted);gap:3px}
+.rp-form input{font:inherit;padding:8px 10px;border:1px solid var(--line-strong);border-radius:10px;background:var(--bg);color:var(--ink);min-width:0}
+.rp-form .full{grid-column:1/-1}.rp-form .bp{display:flex;gap:6px;align-items:center}.rp-form .bp input{width:100%}
+.vrow{display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding:8px 0;font-size:.88rem}.vrow:first-child{border-top:0}
+.vrow .x{border:0;background:none;color:var(--muted);cursor:pointer;font-size:1rem}
+.flag{color:var(--crit);font-weight:800}
+.symchips{display:flex;flex-wrap:wrap;gap:6px}.symchips button{border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 11px;font:600 .82rem var(--body);cursor:pointer}
+.symchips button[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--surface)}
+.symchips button.red[aria-pressed="true"]{background:var(--crit);border-color:var(--crit)}
+.redbar{background:color-mix(in srgb,var(--crit) 12%,var(--surface));border-left:4px solid var(--crit);border-radius:12px;padding:10px 12px;margin:10px 0;font-size:.9rem}
+.qlist{list-style:none;margin:0 0 8px;padding:0}.qlist li{display:flex;gap:8px;align-items:flex-start;border-top:1px solid var(--line);padding:7px 0;font-size:.9rem}.qlist li:first-child{border-top:0}.qlist li span{flex:1}
+.qadd{display:flex;gap:6px}.qadd input{flex:1;font:inherit;padding:8px 10px;border:1px solid var(--line-strong);border-radius:10px;background:var(--bg);color:var(--ink);min-width:0}
+.qsug{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.qsug button{border:1px dashed var(--plum);background:transparent;color:var(--plum);border-radius:999px;padding:4px 10px;font:600 .78rem var(--body);cursor:pointer;text-align:left}
+#rpt{background:#fff;color:#1d1b20;border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-top:14px;font-size:.9rem;line-height:1.45}
+#rpt h2{font-family:var(--display);margin:0;font-size:1.3rem;color:#8A2D6B}#rpt h4{margin:14px 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#5C6068}
+#rpt table{width:100%;border-collapse:collapse;font-size:.85rem}#rpt td,#rpt th{border-bottom:1px solid #e3e6e4;padding:5px 6px;text-align:left}#rpt th{font-size:.74rem;color:#5C6068}
+#rpt .rh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid #8A2D6B;padding-bottom:10px}
+#rpt .meta{font-size:.85rem;color:#5C6068;text-align:right}#rpt .bad{color:#B3261E;font-weight:700}#rpt .muted{color:#5C6068}
+#rpt ul{margin:0;padding-left:18px}#rpt .foot{margin-top:16px;font-size:.74rem;color:#5C6068;border-top:1px solid #e3e6e4;padding-top:8px}
+.rpbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+@media print{body *{visibility:hidden!important}#rpt,#rpt *{visibility:visible!important}#rpt{position:absolute;left:0;top:0;width:100%;border:0;margin:0;padding:0}.tabbar{display:none!important}}
+`;document.head.appendChild(s)})();
+
+const PCFG=window.BLOOM_CONFIG||{};
+mstate.visits=mstate.visits||[];mstate.sym=mstate.sym||{};mstate.qs=mstate.qs||[];mstate.plus=mstate.plus||{};mstate.plus.want=mstate.plus.want||{};
+const _bS3=window.bloomState;window.bloomState=()=>{const s=_bS3();Object.assign(s.mom,{visits:mstate.visits,sym:mstate.sym,qs:mstate.qs,plus:mstate.plus});return s};
+const _bA3=window.bloomApply;window.bloomApply=st=>{if(st.mom)['visits','sym','qs','plus'].forEach(k=>{if(st.mom[k]!==undefined)mstate[k]=st.mom[k]});mstate.plus.want=mstate.plus.want||{};_bA3(st)};
+
+/* ---------- Plus catalogue ---------- */
+const PASSES=[
+ {id:'preg',name:'Pregnancy Pass',amt:499,per:'once',sub:'Until 6 weeks after birth',pts:['Doctor-visit reports','WhatsApp reminders for you and family','Voice-guided stretches in your language','Diet plan for your region']},
+ {id:'full',name:'Complete',amt:999,per:'once',sub:'Pregnancy to baby\'s 1st birthday',best:1,pts:['Everything in both passes','Postpartum recovery program','Monthly expert Q&A','Save ₹299']},
+ {id:'baby',name:'Baby Year',amt:799,per:'once',sub:'Baby\'s first 12 months',pts:['Postpartum recovery program','WhatsApp reminders for feeds, vaccines and you','Growth and visit reports for the paediatrician','Monthly expert Q&A']},
+];
+const PLUS=[
+ {id:'report',ic:'docs',live:1,t:'Doctor-visit report',d:'Weight, BP, tests, tablets taken and your questions, on one page for your doctor.'},
+ {id:'whatsapp',ic:'phone',t:'WhatsApp reminders for you and family',d:'Tablet and kick-count reminders on WhatsApp. Your husband and parents get a weekly update so they can help.'},
+ {id:'voice',ic:'talk',t:'Voice-guided stretches in your language',d:'Telugu, Tamil, Hindi, Kannada or English. Press play and follow the voice: counts, holds and breathing.'},
+ {id:'postpartum',ic:'heart',t:'12-week postpartum recovery',d:'Heal your core, pelvic floor and back safely, after a normal delivery or a C-section.'},
+ {id:'diet',ic:'katori',t:'Diet plan for your region',d:'South Indian, North Indian, Jain or Bengali meals, adjusted for anaemia or gestational diabetes.'},
+ {id:'expert',ic:'star',t:'Ask an expert, every month',d:'Live Q&A with a lactation consultant and a women\'s physiotherapist. Ask anything.'},
+ {id:'book',ic:'camera',t:'Printed memory book',d:'Your bump photos, milestones and firsts printed as a hardcover photobook. Delivered home.',price:'₹1,499 per book'},
+ {id:'gift',ic:'baby',t:'Gift BloomMom Plus',d:'Give a Pregnancy Pass to your daughter, daughter-in-law or a friend who is expecting.',price:'From ₹499'},
+];
+const pById=id=>PLUS.find(p=>p.id===id);
+const wanted=id=>!!mstate.plus.want[id];
+const pbadge=p=>p.live?'<span class="pbadge">Plus · free in early access</span>':'<span class="pbadge soon">Plus · coming soon</span>';
+function pfeatHtml(p){return`<button class="pfeat ${wanted(p.id)?'wanted':''}" data-plus="${p.id}">${icon(p.ic,52)}<div>${pbadge(p)}<b>${esc(p.t)}</b><span class="d">${esc(p.d)}</span>${!p.live&&wanted(p.id)?'<span class="wtick">✓ You asked for this</span>':''}</div></button>`}
+
+/* ---------- Plus sheet ---------- */
+const plusDlg=document.createElement('dialog');plusDlg.id='plusDlg';document.body.appendChild(plusDlg);
+function openPlus(id){const p=pById(id);if(!p)return;
+  mstate.plus.seen=mstate.plus.seen||{};mstate.plus.seen[id]=(mstate.plus.seen[id]||0)+1;msave();
+  if(p.live){showView('journey','report');try{history.replaceState(null,'','#journey-report')}catch(e){}window.scrollTo(0,0);return}
+  const pay=PCFG.plusPayLink;
+  plusDlg.innerHTML=`<div class="pd">${icon(p.ic,84)}<span class="pbadge soon">BloomMom Plus · coming soon</span><h3>${esc(p.t)}</h3><p>${esc(p.d)}</p>
+   <div class="price">${p.price||'Part of BloomMom Plus, from ₹499 for your whole pregnancy'}</div>
+   <div id="pdMsg">${wanted(p.id)?'<div class="ok">✓ You\'re on the early-access list for this. We\'ll let you know in the app when it\'s ready.</div>':''}</div>
+   <div class="acts">${wanted(p.id)?'':`<button class="btn solid" data-pwant="${p.id}">I want this</button>`}
+    ${pay?`<a class="btn" href="${esc(pay)}" target="_blank" rel="noopener" data-ppay="${p.id}">Pre-book now (UPI)</a>`:''}
+    <button class="btn" data-pall="1">See everything in Plus</button><button class="btn" data-pclose="1" style="border:0">Not now</button></div>
+   <p class="vnote" style="margin:12px 0 0;font-size:.78rem">Medicines, emergency signs, vaccines and your daily plan always stay free.</p></div>`;
+  if(!plusDlg.open)plusDlg.showModal()}
+plusDlg.addEventListener('click',e=>{if(e.target===plusDlg){plusDlg.close();return}const b=e.target.closest('button,a');if(!b)return;
+  if(b.dataset.pwant){mstate.plus.want[b.dataset.pwant]=new Date().toISOString();msave();b.remove();$j('pdMsg').innerHTML='<div class="ok">✓ Thank you! You\'re on the early-access list, with a founding-member price. We\'ll let you know in the app when it\'s ready.</div>';refreshPlus()}
+  if(b.dataset.ppay){mstate.plus.prebook=mstate.plus.prebook||{};mstate.plus.prebook[b.dataset.ppay]=new Date().toISOString();msave()}
+  if(b.dataset.pall){plusDlg.close();showView('journey','plus');try{history.replaceState(null,'','#journey-plus')}catch(err){}window.scrollTo(0,0)}
+  if(b.dataset.pclose)plusDlg.close()});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-plus]');if(b&&!plusDlg.contains(b)){e.preventDefault();e.stopImmediatePropagation();openPlus(b.dataset.plus);return}
+  const w=e.target.closest('[data-pwantpass]');if(w){mstate.plus.want['pass-'+w.dataset.pwantpass]=new Date().toISOString();msave();renderJourney('plus')}},true);
+function refreshPlus(){if(!$j('view-journey').hidden)renderJourney(jtool);renderToday()}
+
+/* ---------- Plus page ---------- */
+TOOLS.push(['report','Doctor-visit report','docs','Weight, BP, tablets and questions on one page',[0,1,2]]);
+TOOLS.push(['plus','BloomMom Plus','star','Reminders on WhatsApp, voice-guided stretches and more',[]]);
+TOOL_RENDER.plus=()=>{const pay=PCFG.plusPayLink;return`<div class="sec-h"><h2>BloomMom Plus</h2><p>Extra help for the months that matter. Pay once, no subscription.</p></div>
+ <div class="freebox"><b>Always free:</b> your recommended medicines and daily plan, stretches, emergency signs, the vaccine schedule, milestones and every guide.</div>
+ <div class="passes">${PASSES.map(p=>{const w=wanted('pass-'+p.id);return`<div class="pass ${p.best?'best':''}">${p.best?'<span class="pbadge">Best value</span>':''}<h3>${p.name}</h3><div class="amt">₹${p.amt} <small>${p.per} · ${p.sub}</small></div><ul>${p.pts.map(x=>`<li>${x}</li>`).join('')}</ul>
+   ${pay?`<a class="btn solid" href="${esc(pay)}" target="_blank" rel="noopener">Pre-book (UPI)</a>`:w?'<span class="wtick" style="color:var(--ok);font-weight:800;text-align:center">✓ On the early-access list</span>':`<button class="btn solid" data-pwantpass="${p.id}">Notify me at launch</button>`}</div>`}).join('')}</div>
+ <p class="vnote">Plus is launching soon. Founding members on the list get the launch price, and the doctor-visit report is free for everyone while in early access.</p>
+ <div class="sec-h"><h2>What's in Plus</h2><p>Tap the ones you'd use. It tells us what to build first.</p></div>
+ <div class="pstrip">${PLUS.map(pfeatHtml).join('')}</div>`};
+
+/* ---------- Doctor-visit report ---------- */
+const SYMS=[
+ ['bleed','Bleeding or spotting',1],['fluid','Leaking fluid',1],['move','Baby moving less',1],['head','Severe headache',1],['vision','Blurred vision',1],
+ ['swell','Swollen face or hands',1],['itch','Itching on palms and soles',1],['fever','Fever',1],['pain','Strong belly pain',1],['urine','Burning when passing urine',1],
+ ['nausea','Nausea or vomiting'],['heart','Heartburn'],['back','Back pain'],['const','Constipation'],['cramp','Leg cramps'],['sleep','Poor sleep'],['breath','Breathless'],['feet','Swollen feet'],['mood','Low mood or worry'],['tired','Very tired'],
+];
+const symById=id=>SYMS.find(s=>s[0]===id);
+const QSUG=[
+ [1,13,['Which tablets should I take, and when?','Is my nausea normal, or do I need medicine?','When is my NT scan due?','What foods should I avoid?']],
+ [14,27,['Should I start iron and calcium now?','What did my anomaly scan show?','When is my glucose (OGTT) test?','Is my weight gain okay?','Which exercises are safe for me?']],
+ [28,36,['When should I get the Tdap vaccine?','How do I count kicks, and when should I call?','Is baby\'s position okay?','What are the signs of preterm labour?','Which hospital bag items does this hospital need?']],
+ [37,42,['When should I come to the hospital?','What are my pain-relief options?','What happens if I go past my due date?','Can my partner stay with me?','How soon can I breastfeed after birth?']],
+];
+function sugQs(){const wk=pregWeek()||20;const row=QSUG.find(r=>wk>=r[0]&&wk<=r[1])||QSUG[1];return row[2].filter(q=>!mstate.qs.some(x=>x.t===q))}
+function vFlags(v){const f=[];if(v.sys>=140||v.dia>=90)f.push('BP high');if(v.hb&&v.hb<11)f.push('Hb low');if(v.sug&&v.sug>=140)f.push('Sugar high');return f}
+function firstLogDay(){const ks=Object.keys(mstate.daily.log||{}).filter(k=>Object.keys(mstate.daily.log[k]||{}).length).sort();return ks[0]||dayKey()}
+function medStats(days){const out={},once={};const t0=today(),first=firstLogDay();
+  for(let i=0;i<days;i++){const d=new Date(t0);d.setDate(d.getDate()-i);const k=dayKey(d);if(k<first)break;const l=(mstate.daily.log||{})[k]||{};
+    taskOcc(d).filter(o=>o.task.type==='med').forEach(o=>{const n=o.task.title;if(o.task.once){if(l[o.key]==='done')once[n]=k;else if(!(n in once))once[n]=null;return}
+      if(i===0&&!l[o.key])return;const s=out[n]=out[n]||{dose:o.task.dose||'',sch:0,done:0};s.sch++;if(l[o.key]==='done')s.done++})}
+  taskOcc(t0).filter(o=>o.task.type==='med'&&!o.task.once).forEach(o=>{const n=o.task.title;if(!out[n])out[n]={dose:o.task.dose||'',sch:0,done:0}});
+  Object.entries(mstate.daily.log||{}).forEach(([k,l])=>Object.keys(l).forEach(x=>{if(x.startsWith('t:rec-deworm@')&&l[x]==='done')once['Deworming tablet (albendazole)']=k}));
+  return{out,once}}
+function countDays(prefix,days){const t0=today();let n=0;for(let i=0;i<days;i++){const d=new Date(t0);d.setDate(d.getDate()-i);const l=(mstate.daily.log||{})[dayKey(d)]||{};if(Object.keys(l).some(x=>x.startsWith(prefix)&&l[x]==='done'))n++}return n}
+function stretchCount(days){const lim=dayKey(new Date(Date.now()-days*DAY));let n=0;Object.values(mstate.log||{}).forEach(a=>a.forEach(k=>{if(k>lim)n++}));return n}
+const fdate=k=>new Date(k+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+
+function reportHtml(){const st=stageNow(),wk=pregWeek();const vs=mstate.visits.slice().sort((a,b)=>a.d<b.d?-1:1);const last=vs.slice(-6);
+  const {out:meds,once}=medStats(14);const symDays={};Object.entries(mstate.sym).forEach(([k,a])=>{if(k>dayKey(new Date(Date.now()-14*DAY)))a.forEach(s=>symDays[s]=(symDays[s]||0)+1)});
+  const reds=Object.keys(symDays).filter(s=>(symById(s)||[])[2]);
+  const tests=TESTS.map(([id,n,a,b])=>({id,n,a,b,r:mstate.tests[id]||{}}));const done=tests.filter(t=>t.r.done),due=wk?tests.filter(t=>!t.r.done&&wk>=t.a&&wk<=t.b+1):[];
+  const wch=vs.length>1&&vs[0].w&&vs[vs.length-1].w?(vs[vs.length-1].w-vs[0].w).toFixed(1):null;
+  const qs=mstate.qs.filter(q=>!q.done);
+  return`<div class="rh"><div><h2>Antenatal visit summary</h2><div class="muted">Prepared with BloomMom</div></div><div class="meta">${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}<br>${st.mode==='preg'?`<b>${st.label.replace(/<\/?b>/g,'')}</b><br>Due date: ${fdate(mstate.daily.due)}`:st.mode==='baby'?st.label.replace(/<\/?b>/g,''):''}</div></div>
+  <h4>Readings</h4>${last.length?`<table><tr><th>Date</th><th>Weight</th><th>BP</th><th>Hb</th><th>Sugar</th><th>Note</th></tr>${last.map(v=>{const f=vFlags(v);return`<tr><td>${fdate(v.d)}</td><td>${v.w?v.w+' kg':'–'}</td><td class="${v.sys>=140||v.dia>=90?'bad':''}">${v.sys?v.sys+'/'+v.dia:'–'}</td><td class="${v.hb&&v.hb<11?'bad':''}">${v.hb||'–'}</td><td class="${v.sug>=140?'bad':''}">${v.sug||'–'}</td><td>${esc(v.n||'')}${f.length?` <span class="bad">${f.join(', ')}</span>`:''}</td></tr>`}).join('')}</table>${wch!==null?`<p class="muted" style="margin:6px 0 0">Weight change since ${fdate(vs[0].d)}: <b>${wch>0?'+':''}${wch} kg</b></p>`:''}`:'<p class="muted">No readings added yet.</p>'}
+  <h4>Tablets, last 14 days</h4>${Object.keys(meds).length||Object.keys(once).length?`<table><tr><th>Medicine</th><th>Dose</th><th>Taken</th></tr>${Object.entries(meds).map(([n,s])=>`<tr><td>${esc(n)}</td><td>${esc(s.dose)}</td><td class="${s.sch&&s.done/s.sch<.7?'bad':''}">${s.sch?`${s.done} of ${s.sch} doses`:'Not tracked yet'}</td></tr>`).join('')}${Object.entries(once).map(([n,k])=>`<tr><td>${esc(n)}</td><td>single dose</td><td>${k?'Taken '+fdate(k):'Not yet'}</td></tr>`).join('')}</table>`:'<p class="muted">No medicines in the plan.</p>'}
+  ${wk&&wk>=28?`<h4>Baby's movements</h4><p style="margin:0">Kick count done on <b>${countDays('t:rec-kicks@',7)} of the last 7 days</b>.</p>`:''}
+  <h4>Activity</h4><p style="margin:0">${stretchCount(14)} stretch sessions and ${countDays('t:rec-walk@',14)} walks in the last 14 days.</p>
+  <h4>Symptoms, last 14 days</h4>${Object.keys(symDays).length?`<ul>${Object.entries(symDays).sort((a,b)=>b[1]-a[1]).map(([s,n])=>{const x=symById(s)||[s,s];return`<li class="${x[2]?'bad':''}">${x[1]}: ${n} day${n>1?'s':''}</li>`}).join('')}</ul>`:'<p class="muted">None noted.</p>'}
+  ${reds.length?`<p class="bad" style="margin:6px 0 0">Warning signs noted: ${reds.map(s=>symById(s)[1].toLowerCase()).join(', ')}.</p>`:''}
+  <h4>Scans and tests</h4>${done.length?`<ul>${done.map(t=>`<li>${t.n}${t.r.date?` (${fdate(t.r.date)})`:''}</li>`).join('')}</ul>`:'<p class="muted">None marked done yet.</p>'}${due.length?`<p style="margin:6px 0 0"><b>Due now:</b> ${due.map(t=>t.n).join('; ')}</p>`:''}
+  <h4>Questions for the doctor</h4>${qs.length?`<ol style="margin:0;padding-left:20px">${qs.map(q=>`<li>${esc(q.t)}</li>`).join('')}</ol>`:'<p class="muted">None added.</p>'}
+  <div class="foot">Made from the mother's own entries in BloomMom. It is a summary to help the conversation, not a medical record.</div>`}
+function reportText(){const d=document.createElement('div');d.innerHTML=reportHtml();d.querySelectorAll('tr').forEach(tr=>tr.append(document.createTextNode('\n')));d.querySelectorAll('td,th').forEach(c=>c.append(document.createTextNode('  ')));d.querySelectorAll('h4,li,p,.rh').forEach(x=>x.prepend(document.createTextNode('\n')));return d.textContent.replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim()}
+
+TOOL_RENDER.report=()=>{const td=dayKey();const sy=mstate.sym[td]||[];const vs=mstate.visits.slice().sort((a,b)=>a.d<b.d?1:-1);const reds=sy.filter(s=>(symById(s)||[])[2]);
+ return`<div class="sec-h"><h2>Doctor-visit report ${pbadge(pById('report'))}</h2><p>Add readings after each check-up, note how you feel and save your questions. Show the one-page summary at your next visit.</p></div>
+ <div class="rp-grid">
+  <div class="rp-card"><h3>${icon('chart',30)} Add a reading</h3>
+   <div class="rp-form"><label>Date<input type="date" id="vD" value="${td}"></label><label>Weight (kg)<input id="vW" inputmode="decimal" placeholder="62.5"></label>
+    <label>Blood pressure<span class="bp"><input id="vS" inputmode="numeric" placeholder="110" aria-label="Systolic">/<input id="vDi" inputmode="numeric" placeholder="70" aria-label="Diastolic"></span></label><label>Hb (g/dL)<input id="vH" inputmode="decimal" placeholder="11.5"></label>
+    <label>Blood sugar (mg/dL)<input id="vG" inputmode="numeric" placeholder="Optional"></label><label>Note<input id="vN" placeholder="e.g. scan normal"></label>
+    <div class="full"><button class="btn solid" id="vAdd">Save reading</button> <span id="vMsg" class="vnote"></span></div></div>
+   ${vs.length?`<div style="margin-top:10px">${vs.slice(0,6).map((v,i)=>{const f=vFlags(v);return`<div class="vrow"><span><b>${fdate(v.d)}</b> · ${[v.w&&v.w+' kg',v.sys&&'BP '+v.sys+'/'+v.dia,v.hb&&'Hb '+v.hb,v.sug&&'sugar '+v.sug].filter(Boolean).join(' · ')}${f.length?` <span class="flag">${f.join(', ')}</span>`:''}</span><button class="x" data-vdel="${v.id}" aria-label="Delete reading">✕</button></div>`}).join('')}</div>`:''}
+   <p class="vnote" style="margin:8px 0 0">BP of 140/90 or more: call your doctor the same day.</p></div>
+  <div class="rp-card"><h3>${icon('heart',30)} How do you feel today?</h3>
+   <div class="symchips">${SYMS.map(s=>`<button class="${s[2]?'red':''}" data-sym="${s[0]}" aria-pressed="${sy.includes(s[0])}">${s[1]}</button>`).join('')}</div>
+   ${reds.length?`<div class="redbar"><b>Don't wait for your visit.</b> ${reds.map(s=>symById(s)[1]).join(', ')} can be serious in pregnancy. Call your doctor or go to the hospital today.</div>`:'<p class="vnote" style="margin:8px 0 0">The ones in the first row are warning signs. If you tap one, we\'ll tell you what to do.</p>'}</div>
+  <div class="rp-card"><h3>${icon('talk',30)} Questions for my doctor</h3>
+   ${mstate.qs.length?`<ul class="qlist">${mstate.qs.map((q,i)=>`<li><input type="checkbox" data-qdone="${i}" ${q.done?'checked':''} aria-label="Asked"><span style="${q.done?'text-decoration:line-through;color:var(--muted)':''}">${esc(q.t)}</span><button class="x" data-qdel="${i}" aria-label="Remove" style="border:0;background:none;color:var(--muted);cursor:pointer">✕</button></li>`).join('')}</ul>`:''}
+   <div class="qadd"><input id="qIn" placeholder="Type a question"><button class="btn" id="qAdd">Add</button></div>
+   ${sugQs().length?`<div class="vnote" style="margin:10px 0 0">Often asked around now:</div><div class="qsug">${sugQs().map(q=>`<button data-qsug="${esc(q)}">+ ${esc(q)}</button>`).join('')}</div>`:''}</div>
+ </div>
+ <div class="sec-h" style="margin-top:18px"><h2>Your one-page summary</h2><p>Print it, save it as a PDF or share it on WhatsApp before your appointment.</p></div>
+ <div class="rpbtns"><button class="btn solid" id="rpPrint">Print or save as PDF</button><button class="btn" id="rpShare">Share</button><span id="rpMsg" class="vnote"></span></div>
+ <div id="rpt">${reportHtml()}</div>`};
+TOOL_AFTER.report=()=>{const el=$j('view-journey');const num=id=>{const v=parseFloat(($j(id).value||'').replace(',','.'));return isNaN(v)?null:v};
+ $j('vAdd').onclick=()=>{const v={id:Date.now().toString(36),d:$j('vD').value||dayKey(),w:num('vW'),sys:num('vS'),dia:num('vDi'),hb:num('vH'),sug:num('vG'),n:$j('vN').value.trim()};
+  if(!v.w&&!v.sys&&!v.hb&&!v.sug&&!v.n){$j('vMsg').textContent='Add at least one reading.';return}if((v.sys&&!v.dia)||(!v.sys&&v.dia)){$j('vMsg').textContent='Enter both BP numbers, like 110 / 70.';return}
+  Object.keys(v).forEach(k=>{if(v[k]===null||v[k]==='')delete v[k]});mstate.visits.push(v);msave();renderJourney('report')};
+ $j('qAdd').onclick=()=>{const t=$j('qIn').value.trim();if(!t)return;mstate.qs.push({t});msave();renderJourney('report')};
+ $j('qIn').onkeydown=e=>{if(e.key==='Enter')$j('qAdd').click()};
+ $j('rpPrint').onclick=()=>window.print();
+ $j('rpShare').onclick=async()=>{const text=reportText();try{if(navigator.share){await navigator.share({title:'Antenatal visit summary',text});return}await navigator.clipboard.writeText(text);$j('rpMsg').textContent='Copied. Paste it into WhatsApp or an email.'}catch(e){if(e.name!=='AbortError')$j('rpMsg').textContent='Could not share. Try Print instead.'}};
+ el.querySelectorAll('[data-sym]').forEach(b=>b.onclick=()=>{const td=dayKey();const a=mstate.sym[td]=mstate.sym[td]||[];const i=a.indexOf(b.dataset.sym);if(i<0)a.push(b.dataset.sym);else a.splice(i,1);if(!a.length)delete mstate.sym[td];msave();renderJourney('report')});
+ el.querySelectorAll('[data-vdel]').forEach(b=>b.onclick=()=>{mstate.visits=mstate.visits.filter(v=>v.id!==b.dataset.vdel);msave();renderJourney('report')});
+ el.querySelectorAll('[data-qsug]').forEach(b=>b.onclick=()=>{mstate.qs.push({t:b.dataset.qsug});msave();renderJourney('report')});
+ el.querySelectorAll('[data-qdel]').forEach(b=>b.onclick=()=>{mstate.qs.splice(+b.dataset.qdel,1);msave();renderJourney('report')});
+ el.querySelectorAll('[data-qdone]').forEach(b=>b.onchange=()=>{const q=mstate.qs[+b.dataset.qdone];q.done=b.checked;msave();renderJourney('report')});
+};
+
+/* ---------- entry points ---------- */
+const _renderJourney3=renderJourney;
+renderJourney=function(tool){_renderJourney3(tool);if(jtool)return;const el=$j('view-journey');
+  el.querySelectorAll('.jtile[data-jt="report"],.jtile[data-jt="plus"]').forEach(t=>t.querySelector('b').insertAdjacentHTML('afterend',t.dataset.jt==='report'?'<span class="pbadge">Plus · free now</span>':'<span class="pbadge soon">Coming soon</span>'));
+  const anchor=[...el.querySelectorAll('.sec-h')].find(h=>h.textContent.startsWith('The whole journey'));if(!anchor)return;
+  const si=stageIndex();const order=si>=4?['postpartum','whatsapp','expert','book']:['whatsapp','voice','diet','postpartum'];
+  const box=document.createElement('div');box.innerHTML=`<div class="sec-h"><h2>Coming to BloomMom Plus</h2><p>Tap the ones you'd use. It tells us what to build first.</p></div><div class="pstrip">${order.map(id=>pfeatHtml(pById(id))).join('')}</div><p style="margin:10px 0 0"><button class="chipb" data-jt="plus">See plans and prices →</button></p>`;
+  anchor.before(...box.childNodes)};
+const _renderToday3=renderToday;
+renderToday=function(){_renderToday3();const inner=document.querySelector('#m-today .panel-inner');if(!inner||inner.querySelector('.pcta'))return;
+  const st=stageNow();let id=null,html='';
+  if(st.mode==='preg'){const td=dayKey();const v=mstate.visits.some(x=>x.d>=dayKey(new Date(Date.now()-21*DAY)));
+    if(!v){html=`<button class="pcta" data-jgoto="report">${icon('docs',52)}<div><b>Doctor visit coming up?</b><span>Add your BP and weight, note how you feel, and take a one-page summary with you.</span></div></button>`}
+    else id='whatsapp'}
+  else if(st.mode==='baby'&&st.days<180)id='postpartum';
+  if(id){const p=pById(id);html=`<button class="pcta" data-plus="${id}">${icon(p.ic,52)}<div><span class="pbadge soon">Plus · coming soon</span><b>${esc(p.t)}</b><span>${esc(p.d)}</span></div></button>`}
+  if(html)inner.insertAdjacentHTML('beforeend',html)};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-jgoto]');if(!b)return;showView('journey',b.dataset.jgoto);try{history.replaceState(null,'','#journey-'+b.dataset.jgoto)}catch(err){}window.scrollTo(0,0)});
+(()=>{const lib=$j('m-library');if(lib&&!lib.querySelector('.pcta')){const p=pById('voice');lib.insertAdjacentHTML('afterbegin',`<button class="pcta" data-plus="voice">${icon(p.ic,52)}<div><span class="pbadge soon">Plus · coming soon</span><b>${esc(p.t)}</b><span>${esc(p.d)}</span></div></button>`)}})();
+const _bumpR=TOOL_RENDER.bump;TOOL_RENDER.bump=()=>_bumpR()+`<button class="pcta" data-plus="book">${icon('camera',52)}<div><span class="pbadge soon">Plus · coming soon</span><b>Turn these photos into a printed book</b><span>Hardcover photobook of your bump, milestones and firsts, delivered home.</span></div></button>`;
+(()=>{const h=location.hash.slice(1);if(h==='journey-report'||h==='journey-plus')showView('journey',h.split('-')[1]);else if(!$j('view-journey').hidden)renderJourney(jtool)})();
+renderToday();
+
+</script>
 
 <footer style="max-width:1180px;margin:0 auto;padding:0 20px 40px;font-size:.85rem;color:var(--muted)"><a href="/privacy.html" style="color:inherit">Privacy</a> · <a href="/terms.html" style="color:inherit">Terms</a></footer>
 <script src="/config.js"></script>

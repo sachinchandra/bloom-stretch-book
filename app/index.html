@@ -134,6 +134,55 @@ h1 em{font-style:normal;color:var(--plum)}
 .ms.flag{background:var(--warn-bg);border-color:transparent;grid-column:1/-1}
 .ms.flag ul{display:block;columns:3 220px;column-gap:28px}.ms.flag li{margin-bottom:5px;break-inside:avoid}
 [hidden]{display:none!important}
+.dots i.x{background:var(--crit)}
+.rb.no{color:var(--crit);border-color:var(--crit)}
+.kind.med{background:var(--teal-soft);color:var(--teal)}
+.kind.late{background:var(--crit-bg);color:var(--crit)}
+.donelist .dl.missed b{color:var(--muted)}
+/* task manager */
+.tk-actions{display:flex;flex-wrap:wrap;gap:8px}
+.tk-group h3{font-size:1.05rem;margin:6px 0 8px;display:flex;justify-content:space-between;align-items:baseline}
+.tk-group h3 span{font-family:var(--body);font-weight:400;font-size:.82rem;color:var(--muted)}
+.tk{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px}
+.tk .nm{font-weight:700;font-family:var(--display)}
+.tk .sub{font-size:.84rem;color:var(--muted)}
+.tk .times{display:flex;flex-wrap:wrap;gap:5px;grid-column:1/-1}
+.tk .times span{font-size:.76rem;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--plum-tint);color:var(--plum);font-variant-numeric:tabular-nums}
+.tk .ops{display:flex;gap:2px;align-items:flex-start}
+.tform{background:var(--surface);border:2px solid var(--plum);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.tform h3{font-size:1.15rem}
+.tform .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.tform label{display:flex;flex-direction:column;gap:4px;font-size:.8rem;color:var(--muted)}
+.tform input,.tform select{font:inherit;padding:8px 10px;border:1px solid var(--line-strong);border-radius:8px;background:var(--bg);color:var(--ink);min-width:0}
+.tform .timesed{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tform .timesed input{width:120px}
+.daychips{display:flex;flex-wrap:wrap;gap:5px}
+.daychips button{border:1px solid var(--line-strong);background:var(--surface);border-radius:8px;padding:5px 9px;font-weight:700;font-size:.8rem;cursor:pointer}
+.daychips button[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--surface)}
+.tform .row{display:flex;gap:8px;flex-wrap:wrap}
+.sched{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;max-width:620px}
+.sched .dn{font-size:.7rem;text-align:center;color:var(--muted)}
+.sched button{aspect-ratio:1.1;border:1px solid var(--line);border-radius:9px;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;cursor:pointer;font-variant-numeric:tabular-nums;font-size:.8rem;color:var(--ink)}
+.sched button small{font-size:.62rem;color:var(--muted)}
+.sched button.sel{border:2px solid var(--plum)}
+.sched button.full{background:var(--ok);color:var(--surface)} .sched button.full small{color:inherit}
+.sched button.part{background:color-mix(in srgb,var(--ok) 28%,var(--surface))}
+.sched button.miss{background:color-mix(in srgb,var(--crit) 14%,var(--surface))}
+.agenda{max-width:620px}
+.ag{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.ag .t{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.85rem}
+.ag .st{display:flex;gap:4px}
+.ag .st button{border:1px solid var(--line-strong);background:var(--surface);border-radius:8px;padding:4px 9px;font-weight:700;font-size:.78rem;cursor:pointer}
+.ag .st button.on.d{background:var(--ok);border-color:var(--ok);color:var(--surface)}
+.ag .st button.on.m{background:var(--crit);border-color:var(--crit);color:var(--surface)}
+.adh{display:flex;flex-direction:column;gap:8px}
+.adh .r{display:grid;grid-template-columns:minmax(0,1fr) 120px 44px;gap:10px;align-items:center;font-size:.9rem}
+.adh .bar{height:8px;border-radius:6px;background:var(--line);overflow:hidden}.adh .bar i{display:block;height:100%;background:var(--ok)}
+.adh .pct{font-variant-numeric:tabular-nums;text-align:right;font-weight:700}
+details.grid-box{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px}
+details.grid-box summary{cursor:pointer;font-family:var(--display);font-weight:700}
+details.grid-box[open] summary{margin-bottom:12px}
+
 /* swipe deck */
 .stagebar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px}
 .stagebar .when{font-family:var(--display);font-weight:800;font-size:1.35rem}
@@ -432,7 +481,7 @@ svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
   <div class="bar subbar" role="tablist" aria-label="Mom care sections">
     <div class="chips" id="momTabs">
       <button class="chip" data-msub="today">Today</button>
-      <button class="chip" data-msub="plan">My plan</button>
+      <button class="chip" data-msub="plan">Tasks</button>
       <button class="chip" data-msub="progress">Progress</button>
       <button class="chip" data-msub="library">All stretches</button>
     </div>
@@ -490,7 +539,7 @@ svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
 
 <nav class="tabbar" aria-label="App sections">
   <button data-tab="today"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4L19 6"/></svg>Today</button>
-  <button data-tab="plan"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Plan</button>
+  <button data-tab="plan"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Tasks</button>
   <button data-tab="baby"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 21c1-4 4-6 7-6s6 2 7 6"/></svg>Baby</button>
   <button data-tab="progress"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Progress</button>
 </nav>
@@ -1646,8 +1695,8 @@ renderAge();renderMilestones();renderNotice();renderEmergency();renderVaccines()
 })();
 
 window.bloomRerender=()=>{dobIn.value=bstate.dob||'';renderAge();renderMilestones();renderVaccines();renderShopping();renderEmergency();renderList();renderWeek();if(window.renderMom)renderMom()};
-window.bloomState=()=>({baby:{dob:bstate.dob,done:bstate.done,ec:bstate.ec,shop:bstate.shop},mom:{log:mstate.log,plan:mstate.plan||{},times:mstate.times||{am:'07:30',pm:'19:00'},since:mstate.since||'',daily:mstate.daily||{}}});
-window.bloomApply=(st)=>{if(st.baby){['dob','done','ec','shop'].forEach(k=>{if(st.baby[k]!==undefined)bstate[k]=st.baby[k]})}if(st.mom){if(st.mom.log)mstate.log=st.mom.log;if(st.mom.plan)mstate.plan=st.mom.plan;if(st.mom.times)mstate.times=st.mom.times;if(st.mom.since!==undefined)mstate.since=st.mom.since;if(st.mom.daily)mstate.daily=st.mom.daily}
+window.bloomState=()=>({baby:{dob:bstate.dob,done:bstate.done,ec:bstate.ec,shop:bstate.shop},mom:{log:mstate.log,plan:mstate.plan||{},times:mstate.times||{am:'07:30',pm:'19:00'},since:mstate.since||'',daily:mstate.daily||{},tasks:mstate.tasks||[]}});
+window.bloomApply=(st)=>{if(st.baby){['dob','done','ec','shop'].forEach(k=>{if(st.baby[k]!==undefined)bstate[k]=st.baby[k]})}if(st.mom){if(st.mom.log)mstate.log=st.mom.log;if(st.mom.plan)mstate.plan=st.mom.plan;if(st.mom.times)mstate.times=st.mom.times;if(st.mom.since!==undefined)mstate.since=st.mom.since;if(st.mom.daily)mstate.daily=st.mom.daily;if(st.mom.tasks)mstate.tasks=st.mom.tasks}
   try{localStorage.setItem('bloom-mom',JSON.stringify(mstate));localStorage.setItem('bloom-baby',JSON.stringify({dob:bstate.dob,done:bstate.done,ec:bstate.ec,sub:bstate.sub,shop:bstate.shop,shopMust:bstate.shopMust,shopHide:bstate.shopHide}))}catch(e){}window.bloomRerender()};
 </script>
 
@@ -1659,8 +1708,8 @@ mstate.plan=mstate.plan||{};mstate.times=mstate.times||{am:'07:30',pm:'19:00'};
 const slotOf=(id,dow)=>((mstate.plan[id]||[])[dow])||'';
 function plannedFor(date){const dow=date.getDay();const out={am:[],pm:[]};if(dayKey(date)<(mstate.since||dayKey()))return out;EX.forEach(e=>{const s=slotOf(e.id,dow);if(s)out[s].push(e.id)});return out}
 const doneOn=(id,key)=>(mstate.log[id]||[]).includes(key);
-function dayStats(date){const k=dayKey(date),p=plannedFor(date),ids=[...p.am,...p.pm];const done=ids.filter(id=>doneOn(id,k)).length;
-  const extra=Object.keys(mstate.log).filter(id=>!ids.includes(id)&&doneOn(id,k)).length;return{planned:ids.length,done,extra}}
+function dayStats(date){const k=dayKey(date),p=plannedFor(date),occ=(typeof taskOcc==='function'?taskOcc(date):[]),tl=(mstate.daily&&mstate.daily.log&&mstate.daily.log[k])||{};const ids=[...p.am,...p.pm].filter(id=>!occ.some(o=>o.task.exId===id));const done=ids.filter(id=>doneOn(id,k)).length+occ.filter(o=>tl[o.key]==='done').length;const planned0=ids.length+occ.length;
+  const extra=Object.keys(mstate.log).filter(id=>!ids.includes(id)&&doneOn(id,k)).length;return{planned:planned0,done,extra}}
 const markSince=()=>{if(!mstate.since)mstate.since=dayKey()};
 const hasPlan=()=>Object.values(mstate.plan).some(a=>a&&a.some(Boolean));
 function snapSvg(ex){const svg=makeSvg();const key=ex.frames[Math.min(2,ex.frames.length-1)];const t0=ex.frames.slice(0,Math.min(3,ex.frames.length)).reduce((a,f)=>a+f.d+f.hold,0)-key.hold/2;svg.innerHTML=scene(ex,sample(ex,t0));return svg.outerHTML}
@@ -1696,11 +1745,11 @@ function renderToday(){
 }
 function streak(){let n=0;const d=new Date();for(let i=0;i<400;i++){const s=dayStats(d);const ok=s.planned?s.done>=s.planned:s.extra>0;if(ok)n++;else if(i>0||s.planned)break;d.setDate(d.getDate()-1)}return n}
 
-function renderPlan(){
-  const el=document.getElementById('m-plan');const todayDow=new Date().getDay();
+function renderStretchGrid(){
+  const el=document.getElementById('m-plan-grid');if(!el)return;const todayDow=new Date().getDay();
   const cats=CATS.filter(c=>EX.some(e=>e.cat===c.id));
   const totals=ORDER.map(d=>EX.filter(e=>slotOf(e.id,d)).length);
-  el.innerHTML=`<div class="sec-h"><h2>My weekly plan</h2><p>Tap a box to cycle: empty → morning → evening. Your plan repeats every week.</p></div>
+  el.innerHTML=`<p class="vnote" style="margin:0">Tap a box to cycle: empty → morning → evening. This weekly plan repeats every week and adds stretch cards to Today.</p>
    <div class="tpls">${TEMPLATES.map(t=>`<button class="tpl" data-tpl="${t.id}"><b>${t.name}</b><span>${t.desc}</span></button>`).join('')}<button class="tpl" data-tpl="clear"><b>Clear plan</b><span>Start from an empty week.</span></button></div>
    <div class="plan-tools"><label for="tAm">Morning time<input type="time" id="tAm" value="${mstate.times.am}"></label><label for="tPm">Evening time<input type="time" id="tPm" value="${mstate.times.pm}"></label>
     <button class="btn pri" id="icsBtn">Add to my calendar</button><div class="legend2"><span><i style="background:var(--swaddle)"></i>Morning</span><span><i style="background:var(--pt)"></i>Evening</span></div></div>
@@ -1752,7 +1801,7 @@ function renderProgress(){
   el.querySelector('#calPrev').onclick=()=>{calMonth.setMonth(calMonth.getMonth()-1);renderProgress()};
   el.querySelector('#calNext').onclick=()=>{calMonth.setMonth(calMonth.getMonth()+1);renderProgress()};
 }
-function renderMom(){renderToday();renderPlan();renderProgress()}
+function renderMom(){renderToday();if(typeof renderPlan==='function')renderPlan();renderProgress()}
 window.renderMom=renderMom;
 function setMsub(sub){if(!['today','plan','progress','library'].includes(sub))sub='today';mstate.sub=sub;
   document.querySelectorAll('#momTabs .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.msub===sub));
@@ -1792,6 +1841,7 @@ const ART={
  water:()=>({vb:'-35 -12 170 130',svg:'<path d="M32 22h36l-6 60H38z" fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="4"/><path d="M35 46h30l-4 34H39z" fill="var(--teal)" opacity=".5"/>'}),
  heart:()=>({vb:'-35 -12 170 130',svg:'<path d="M50 80 C20 60 18 40 30 30 a14 14 0 0 1 20 4 a14 14 0 0 1 20 -4 C82 40 80 60 50 80Z" fill="var(--plum)"/>'}),
  star:()=>({vb:'-35 -12 170 130',svg:'<path d="M50 16l10 22 24 3-18 16 5 24-21-12-21 12 5-24-18-16 24-3z" fill="var(--swaddle)"/>'}),
+ pill:()=>({vb:'-35 -12 170 130',svg:'<g transform="rotate(-30 50 50)"><rect x="18" y="36" width="64" height="28" rx="14" fill="var(--teal)"/><rect x="50" y="36" width="32" height="28" rx="14" fill="var(--swaddle)"/><rect x="50" y="36" width="14" height="28" fill="var(--swaddle)"/></g><circle cx="22" cy="82" r="9" fill="var(--prop2)"/><circle cx="82" cy="20" r="7" fill="var(--plum-soft)"/>'}),
  walk:()=>({vb:'60 40 140 140',svg:fig(st(124,1,{hands:[[116,118],[140,116]],feet:[[112,FL],[140,FL]]}),'m')+PR.floor()}),
 };
 /* action library: show(ctx) decides if it appears today; pr = priority (lower first) */
@@ -1804,8 +1854,8 @@ const ACTIONS=[
  {id:'p-labour',mode:'preg',pr:0,art:'mom',kind:'Pregnancy',show:c=>c.week>=36&&!mstate.daily.labourPlan,t:'Switch to the labour-prep plan',d:'From 36 weeks, hip-opening positions help baby settle low. One tap swaps your stretch plan.',m:'Check with your doctor first.',cta:['Use labour prep','tpl:labour']},
  {id:'p-side',mode:'preg',pr:3,art:'mom',kind:'Pregnancy',show:c=>c.week>=28&&c.dow===0,t:'Sleep on your side',d:'From 28 weeks, sleep on your side (left is best). Tuck a pillow between your knees and behind your back.',m:''},
  {id:'p-signs',mode:'preg',pr:3,art:'heart',kind:'Pregnancy',show:c=>c.dow===5,t:'Know when to call',d:'Call your doctor for bleeding, a gush or leak of fluid, baby moving less, severe headache or blurred vision.',m:'Emergency: 112 or 108.'},
- {id:'p-water',mode:'preg',pr:4,art:'water',kind:'Pregnancy',show:()=>true,t:'Drink 8–10 glasses of water',d:'Keep a bottle with you. Dark urine means drink more.',m:''},
- {id:'p-tabs',mode:'preg',pr:4,art:'drop',kind:'Pregnancy',show:()=>true,t:'Take your iron & calcium',d:'Take them at different times. Have iron with lemon water or amla, not with tea or milk.',m:'Only as your doctor prescribed.'},
+ {id:'p-water',mode:'preg',pr:4,art:'water',kind:'Pregnancy',show:()=>!(mstate.tasks||[]).some(t=>/water/i.test(t.title)),t:'Drink 8–10 glasses of water',d:'Keep a bottle with you. Dark urine means drink more.',m:''},
+ {id:'p-tabs',mode:'preg',pr:4,art:'drop',kind:'Pregnancy',show:()=>!(mstate.tasks||[]).some(t=>t.type==='med'),t:'Take your iron & calcium',d:'Take them at different times. Have iron with lemon water or amla, not with tea or milk.',m:'Only as your doctor prescribed.'},
  {id:'p-walk',mode:'preg',pr:5,art:'walk',kind:'Pregnancy',show:c=>c.dow%2===0,t:'Walk for 20–30 minutes',d:'An easy pace where you can still talk. Morning or evening, away from the midday heat.',m:''},
  // baby
  {id:'b-vax',mode:'baby',pr:0,art:'shot',kind:'Baby care',show:c=>!!nextVaccine()||!!dlog()['b-vax'],t:()=>{const n=nextVaccine();return n?`Vaccine ${n.due<=0?'due now':'due in '+n.due+' days'}`:'Vaccine given today'},d:()=>{const n=nextVaccine();return n?`${n.row.age}: ${n.row.v.map(v=>v[0]).join(', ')}. Swipe right once it's given.`:'Ticked in your vaccine tracker.'},m:'Book the visit and carry the vaccine card.',cta:['Open vaccines','#baby-vaccines']},
@@ -1825,63 +1875,89 @@ function nextVaccine(){const dob=dobDate();if(!dob)return null;const t=today();f
 function nextMilestone(){const m=ageMonths()||0;const x=MS.find(s=>s.m>m)||MS[MS.length-1];const pick=[...x.move,...x.social][(Math.floor(Date.now()/(7*DAY)))%(x.move.length+x.social.length)];return{title:pick.split(/[,:(]/)[0],text:`By ${x.label}, most babies: ${pick.toLowerCase()}.`}}
 const val=(v,c)=>typeof v==='function'?v(c):v;
 
+function taskOcc(date){const k=dayKey(date),dow=date.getDay(),out=[];(mstate.tasks||[]).forEach(t=>{if(k<t.start||k>t.end)return;if(t.days&&t.days.length&&!t.days.includes(dow))return;(t.times&&t.times.length?t.times:['']).forEach(tm=>out.push({key:'t:'+t.id+'@'+tm,type:'task',task:t,time:tm}))});return out}
+const tmin=t=>{if(!t)return 9999;const [h,m]=t.split(':').map(Number);return h*60+m};
 function deckItems(){
   const now=new Date(),st=stageNow(),ctx={...st,dow:now.getDay()},items=[];
-  const p=plannedFor(now),time=x=>fmtTime(mstate.times[x]);
-  [['am','Morning stretch'],['pm','Evening stretch']].forEach(([slot,label])=>p[slot].forEach(id=>{const ex=exById(id);if(ex)items.push({key:'s:'+id,type:'stretch',ex,kind:label+' · '+time(slot)})}));
-  if(st.mode!=='none'){ACTIONS.filter(a=>a.mode===st.mode&&a.show(ctx)).sort((a,b)=>a.pr-b.pr).slice(0,4).forEach(a=>items.push({key:'a:'+a.id,type:'action',a,ctx}))}
+  const p=plannedFor(now);
+  taskOcc(now).forEach(o=>items.push(o));
+  [['am','Morning stretch'],['pm','Evening stretch']].forEach(([slot,label])=>p[slot].forEach(id=>{const ex=exById(id);if(ex&&!items.some(o=>o.task&&o.task.exId===id))items.push({key:'s:'+id,type:'stretch',ex,kind:label,time:mstate.times[slot]})}));
+  if(st.mode!=='none'){ACTIONS.filter(a=>a.mode===st.mode&&a.show(ctx)).sort((a,b)=>a.pr-b.pr).slice(0,4).forEach(a=>items.push({key:'a:'+a.id,type:'action',a,ctx,time:''}))}
+  items.sort((x,y)=>tmin(x.time)-tmin(y.time));
   return items;
 }
-const dlog=()=>{const k=dayKey();mstate.daily.log[k]=mstate.daily.log[k]||{};return mstate.daily.log[k]};
-function isDone(it){return it.type==='stretch'?doneToday(it.ex.id):!!dlog()[it.a.id]}
-function setDone(it,on){if(it.type==='stretch'){if(doneToday(it.ex.id)!==on)toggleDone(it.ex.id)}else{const l=dlog();if(it.a.id==='b-vax'){const nv=on?nextVaccine():null;if(nv){l['b-vax']='v'+nv.i;bstate.done['v'+nv.i]=true}else if(!on&&l['b-vax']){delete bstate.done[l['b-vax']];delete l['b-vax']}bsave();renderVaccines()}else{if(on)l[it.a.id]='done';else delete l[it.a.id]}msave()}}
+const dlogAt=k=>{mstate.daily.log[k]=mstate.daily.log[k]||{};return mstate.daily.log[k]};
+const dlog=()=>dlogAt(dayKey());
+function statusOf(it){const l=dlog();
+  if(it.type==='stretch')return doneToday(it.ex.id)?'done':l[it.key];
+  if(it.type==='action'){const v=l[it.a.id];return v==='missed'?'missed':v?'done':undefined}
+  return l[it.key]}
+function isDone(it){return !!statusOf(it)}
+function setStatus(it,st){const l=dlog();
+  if(it.type==='stretch'){if(doneToday(it.ex.id)!==(st==='done'))toggleDone(it.ex.id);if(st==='missed')l[it.key]='missed';else delete l[it.key]}
+  else if(it.type==='action'){if(it.a.id==='b-vax'){const prev=l['b-vax'];if(st==='done'){const nv=nextVaccine();if(nv){l['b-vax']='v'+nv.i;bstate.done['v'+nv.i]=true}}else{if(prev&&prev!=='missed'){delete bstate.done[prev]}if(st==='missed')l['b-vax']='missed';else delete l['b-vax']}bsave();renderVaccines()}
+    else{if(st)l[it.a.id]=st;else delete l[it.a.id]}}
+  else{if(st)l[it.key]=st;else delete l[it.key];if(it.task.type==='stretch'&&it.task.exId){const want=st==='done';if(doneToday(it.task.exId)!==want&&(want||!taskOcc(new Date()).some(o=>o.key!==it.key&&o.task.exId===it.task.exId&&l[o.key]==='done')))toggleDone(it.task.exId)}}
+  msave()}
+function setDone(it,on){setStatus(it,on?'done':null)}
 let later=[];let lastAct=null;const deckThumbs=new Set();
 
+function itemTitle(it){return it.type==='stretch'?it.ex.name:it.type==='task'?(it.task.type==='stretch'?(exById(it.task.exId)||{name:it.task.title}).name:it.task.title):val(it.a.t,it.ctx)}
 function renderToday(){
   const el=document.getElementById('m-today');const st=stageNow();const now=new Date();
   deckThumbs.forEach(a=>{io.unobserve(a);thumbs.delete(a)});deckThumbs.clear();
   const items=deckItems();const pending=items.filter(it=>!isDone(it));
-  pending.sort((a,b)=>later.indexOf(a.key)-later.indexOf(b.key));
-  const doneN=items.length-pending.length;
+  const doneN=items.filter(it=>statusOf(it)==='done').length,missN=items.filter(it=>statusOf(it)==='missed').length;
   let html=`<div class="stagebar"><div><div class="when">${now.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'short'})}</div><div class="stage">${st.label}</div></div>
-    <div class="dots" aria-label="${doneN} of ${items.length} done">${items.map(it=>`<i class="${isDone(it)?'d':it===pending[0]?'c':''}"></i>`).join('')}</div></div>
+    <div class="dots" aria-label="${doneN} of ${items.length} done">${items.map(it=>{const s=statusOf(it);return`<i class="${s==='done'?'d':s==='missed'?'x':it===pending[0]?'c':''}"></i>`}).join('')}</div></div>
     <div class="panel-inner">`;
-  if(st.mode==='none'||!hasPlan()){
+  const noTasks=!(mstate.tasks||[]).length;
+  if(st.mode==='none'||(noTasks&&!hasPlan())){
     html+=`<div class="setup"><b style="font-family:var(--display);font-size:1.1rem">Set up your daily cards</b>
       ${st.mode==='none'?`<div class="row"><label for="sDue">Due date<input type="date" id="sDue" value="${mstate.daily.due||''}"></label><label for="sDob">or baby's birth date<input type="date" id="sDob" value="${bstate.dob||''}"></label></div>`:''}
-      ${!hasPlan()?`<div style="font-size:.9rem;color:var(--muted)">Pick a stretch plan to add stretch cards:</div><div class="row">${TEMPLATES.map(t=>`<button class="btn" data-tpl="${t.id}">${t.name}</button>`).join('')}</div>`:''}</div>`}
+      ${noTasks?`<div style="font-size:.9rem;color:var(--muted)">Add your medicines and daily targets so they show up here each day.</div><div class="row"><button class="btn pri" data-gotasks="routine">Start a pregnancy routine</button><button class="btn" data-gotasks="1">Add my own tasks</button></div>`:''}</div>`}
   html+=`<div class="deck" id="deck">`;
-  if(!items.length){html+=`<div class="alldone"><div class="big">Nothing for today yet</div><p class="vnote">Add a due date or birth date, or pick a stretch plan above.</p></div>`}
+  if(!items.length){html+=`<div class="alldone"><div class="big">Nothing scheduled today</div><p class="vnote">Add tasks in the Tasks tab, or set a due date for daily tips.</p></div>`}
   else if(!pending.length){const sk=streak();
-    html+=`<div class="alldone"><div class="confetti">${Array.from({length:26},(_,i)=>`<i style="left:${(i*37)%100}%;background:${['var(--plum)','var(--swaddle)','var(--teal)','var(--ok)'][i%4]};animation-delay:${(i%9)*.08}s"></i>`).join('')}</div>
-      <div class="flame">${sk||'✓'}</div><div class="big">All done for today</div><p class="vnote">${sk?`${sk}-day streak. See you tomorrow!`:'Lovely work. See you tomorrow!'}</p></div>`}
+    html+=`<div class="alldone"><div class="confetti">${missN?'':Array.from({length:26},(_,i)=>`<i style="left:${(i*37)%100}%;background:${['var(--plum)','var(--swaddle)','var(--teal)','var(--ok)'][i%4]};animation-delay:${(i%9)*.08}s"></i>`).join('')}</div>
+      <div class="flame">${doneN}/${items.length}</div><div class="big">${missN?'Day reviewed':'All done for today'}</div><p class="vnote">${doneN} done${missN?`, ${missN} not done`:''}.${sk?` ${sk}-day streak.`:''} See you tomorrow!</p></div>`}
   else{pending.slice(0,3).reverse().forEach((it,ri,arr)=>{const depth=arr.length-1-ri;html+=cardHtml(it,depth)})}
   html+=`</div>`;
-  if(pending.length)html+=`<div class="deck-btns"><button class="rb" id="bLater" aria-label="Later">↩</button>${pending[0].type==='stretch'||pending[0].a.cta?`<button class="rb mid" id="bOpen" aria-label="${pending[0].type==='stretch'?'Watch how':pending[0].a.cta[0]}">${pending[0].type==='stretch'?'▶':'›'}</button>`:''}<button class="rb go" id="bDone" aria-label="Done">✓</button></div>
-    <div class="deck-hint">Swipe right when done · left for later${pending[0].type==='stretch'?' · ▶ to watch how':''}</div>`;
-  const doneItems=items.filter(isDone);
-  if(doneItems.length)html+=`<div class="donelist">${doneItems.map(it=>`<div class="dl"><b>✓ ${it.type==='stretch'?it.ex.name:val(it.a.t,it.ctx)}</b><button class="linkb" data-undo="${it.key}">Undo</button></div>`).join('')}</div>`;
+  if(pending.length){const top=pending[0];const watch=top.type==='stretch'||(top.type==='task'&&top.task.type==='stretch');const cta=top.type==='action'&&top.a.cta;
+    html+=`<div class="deck-btns"><button class="rb no" id="bLater" aria-label="Not done">✕</button>${watch||cta?`<button class="rb mid" id="bOpen" aria-label="${watch?'Watch how':cta[0]}">${watch?'▶':'›'}</button>`:''}<button class="rb go" id="bDone" aria-label="Done">✓</button></div>
+    <div class="deck-hint">${pending.length} left · swipe right if done, left if not done${watch?' · ▶ to watch how':''}</div>`}
+  const fin=items.filter(isDone);
+  if(fin.length)html+=`<div class="donelist">${fin.map(it=>{const s=statusOf(it);return`<div class="dl ${s}"><b>${s==='done'?'✓':'✕'} ${esc(itemTitle(it))}${it.time?` <span>· ${fmtTime(it.time)}</span>`:''}${s==='missed'?' <span>· not done</span>':''}</b><button class="linkb" data-undo="${it.key}">Undo</button></div>`}).join('')}</div>`;
   html+=`</div>`;
   el.innerHTML=html;
-  // live animation on the top stretch card
-  const top=el.querySelector('.dcard.u0');
-  if(top&&pending[0].type==='stretch'){const svg=top.querySelector('svg');const ex=pending[0].ex;const th={ex,svg,t:0,acc:0,vis:true};thumbs.set(top,th);deckThumbs.add(top);io.observe(top)}
+  const top=el.querySelector('.dcard.u0');const t0=pending[0];
+  const tex=t0&&(t0.type==='stretch'?t0.ex:t0.type==='task'&&t0.task.type==='stretch'?exById(t0.task.exId):null);
+  if(top&&tex){const svg=top.querySelector('svg');const th={ex:tex,svg,t:0,acc:0,vis:true};thumbs.set(top,th);deckThumbs.add(top);io.observe(top)}
+  el.querySelectorAll('[data-gotasks]').forEach(b=>b.onclick=()=>{if(b.dataset.gotasks==='routine')addRoutine();setMsub('plan');try{history.replaceState(null,'','#mom-plan')}catch(e){}window.scrollTo(0,0)});
   wireDeck(el,pending,items);
 }
+function taskArt(t){if(t.type==='med')return'pill';const x=(t.title||'').toLowerCase();return /water|drink/.test(x)?'water':/walk/.test(x)?'walk':/kick|massage|rest/.test(x)?'heart':/check|visit|scan|test|doctor/.test(x)?'cal':'star'}
 function cardHtml(it,depth){
-  let art,kind,kcls='',title,desc,meta;
-  if(it.type==='stretch'){const ex=it.ex;const s=sample(ex,ex.frames[0].d+ex.frames[0].hold/2);art=`<svg viewBox="${ex.vb||'30 30 200 155'}">${scene(ex,s,0)}</svg>`;kind=it.kind;title=ex.name;desc=ex.desc;meta=ex.tm?`${/^no hold/i.test(ex.tm.hold)?ex.tm.hold.replace(/^No hold: /i,''):'Hold '+ex.tm.hold} · ${ex.tm.reps}`:ex.dose}
+  let art,kind,kcls='',title,desc,meta,late='';
+  const nowM=new Date().getHours()*60+new Date().getMinutes();
+  if(it.time&&tmin(it.time)+60<nowM)late=' late';
+  const at=it.time?` · ${fmtTime(it.time)}`:'';
+  const exArt=ex=>{const s=sample(ex,ex.frames[0].d+ex.frames[0].hold/2);return`<svg viewBox="${ex.vb||'30 30 200 155'}">${scene(ex,s,0)}</svg>`};
+  const exMeta=ex=>ex.tm?`${/^no hold/i.test(ex.tm.hold)?ex.tm.hold.replace(/^No hold: /i,''):'Hold '+ex.tm.hold} · ${ex.tm.reps}`:ex.dose;
+  if(it.type==='stretch'){const ex=it.ex;art=exArt(ex);kind=it.kind+at;title=ex.name;desc=ex.desc;meta=exMeta(ex)}
+  else if(it.type==='task'){const t=it.task;
+    if(t.type==='stretch'){const ex=exById(t.exId);art=ex?exArt(ex):'';kind='Stretch'+at;title=ex?ex.name:t.title;desc=ex?ex.desc:'';meta=`Target: ${esc(t.count||'1 round')}${ex&&ex.tm?' · hold '+ex.tm.hold.replace(/^No hold: /i,''):''}`}
+    else{const A=ART[taskArt(t)]();art=`<svg viewBox="${A.vb}">${A.svg}</svg>`;kind=(t.type==='med'?'Medicine':'Task')+at;kcls=t.type==='med'?'med':'';title=esc(t.title);desc=esc([t.dose,t.note].filter(Boolean).join(' · '));meta=t.type==='med'?'Only as prescribed by your doctor.':''}}
   else{const a=it.a,A=ART[a.art]();art=`<svg viewBox="${A.vb}">${A.svg}</svg>`;kind=a.kind;kcls=a.mode==='preg'?'preg':'baby';title=val(a.t,it.ctx);desc=val(a.d,it.ctx);meta=val(a.m,it.ctx)}
-  return`<article class="dcard u${depth}" data-key="${it.key}"><div class="stamp ok">DONE</div><div class="stamp lt">LATER</div><div class="art">${art}</div><div class="body"><span class="kind ${kcls}">${kind}</span><h3>${title}</h3><p>${desc}</p>${meta?`<div class="meta">${meta}</div>`:''}</div></article>`;
+  return`<article class="dcard u${depth}" data-key="${it.key}"><div class="stamp ok">DONE</div><div class="stamp lt">NOT DONE</div><div class="art">${art}</div><div class="body"><span class="kind ${kcls}${late}">${late?'Overdue':''}${late?' · ':''}${kind}</span><h3>${title}</h3>${desc?`<p>${desc}</p>`:''}${meta?`<div class="meta">${meta}</div>`:''}</div></article>`;
 }
 function act(it,kind){
-  if(kind==='done'){setDone(it,true);later=later.filter(k=>k!==it.key);lastAct=it;if(navigator.vibrate)try{navigator.vibrate(15)}catch(e){}}
-  else{later=later.filter(k=>k!==it.key);later.push(it.key)}
-  renderToday();renderProgress();if(typeof renderList==='function'){renderList();renderWeek()}
+  setStatus(it,kind==='done'?'done':'missed');lastAct=it;if(kind==='done'&&navigator.vibrate)try{navigator.vibrate(15)}catch(e){}
+  renderToday();renderProgress();if(document.getElementById('taskSched'))renderPlan();if(typeof renderList==='function'){renderList();renderWeek()}
 }
 function fling(card,dir,cb){card.classList.remove('drag');card.style.transform=`translateX(${dir*130}%) rotate(${dir*18}deg)`;card.style.opacity='0';setTimeout(cb,230)}
 function wireDeck(el,pending,items){
-  el.querySelectorAll('[data-undo]').forEach(b=>b.onclick=()=>{const it=items.find(x=>x.key===b.dataset.undo);if(it){setDone(it,false);renderToday();renderProgress()}});
+  el.querySelectorAll('[data-undo]').forEach(b=>b.onclick=()=>{const it=items.find(x=>x.key===b.dataset.undo);if(it){setStatus(it,null);renderToday();renderProgress()}});
   el.querySelectorAll('#sDue,#sDob').forEach(inp=>inp.onchange=()=>{if(inp.id==='sDue'){mstate.daily.due=inp.value;msave()}else{bstate.dob=inp.value;bsave();dobIn.value=inp.value;renderAge();renderMilestones();renderVaccines()}renderToday()});
   if(!pending.length)return;
   const it=pending[0],card=el.querySelector('.dcard.u0');
@@ -1898,6 +1974,7 @@ function wireDeck(el,pending,items){
 }
 function openItem(it){
   if(it.type==='stretch'){openDetail(it.ex.id);return}
+  if(it.type==='task'){if(it.task.type==='stretch'&&it.task.exId)openDetail(it.task.exId);return}
   const c=it.a.cta;if(!c)return;
   if(c[1].startsWith('tpl:')){applyTemplate(TEMPLATES.find(t=>t.id===c[1].slice(4)));mstate.daily.labourPlan=true;setDone(it,true);renderToday();return}
   const h=c[1].slice(1);showView('baby',h.split('-')[1]);window.scrollTo(0,0);try{history.replaceState(null,'',c[1])}catch(e){}markTab();
@@ -1915,7 +1992,119 @@ document.querySelector('.tabbar').addEventListener('click',e=>{const b=e.target.
   window.scrollTo(0,0);markTab()});
 document.querySelector('.seg').addEventListener('click',()=>setTimeout(markTab,0));
 window.renderMom=function(){renderToday();renderPlan();renderProgress()};
-renderToday();setMsub(mstate.sub||'today');
+renderToday();(()=>{const h=location.hash.slice(1);setMsub(h.startsWith('mom-')?h.slice(4):(mstate.sub||'today'))})();
+</script>
+
+<script>
+/* ================= TASK MANAGER: medicines, stretch targets, other tasks ================= */
+mstate.tasks=mstate.tasks||[];
+const plusDays=(n,d=new Date())=>{const x=new Date(d);x.setDate(x.getDate()+n);return dayKey(x)};
+const MED_SUGG=['Folic acid','Prenatal multivitamin','Iron','Calcium','Vitamin D3','DHA / Omega-3','Thyroid tablet','Low-dose aspirin','Progesterone','Metformin','Insulin'];
+const OTHER_SUGG=['Drink 8–10 glasses of water','Walk 30 minutes','Count baby kicks','Rest with feet up for 20 minutes','Perineal massage (5 min)','Antenatal check-up','Pelvic floor squeezes (10 ×)'];
+const NOTES=['','After food','Before food','With food','Empty stomach','At bedtime','With water, not milk or tea'];
+let tform=null,selDay=dayKey(),delAsk=null;
+function newTask(type){const ex=EX[0];return{id:'t'+Date.now().toString(36),type,title:type==='med'?'':type==='other'?'':'',dose:type==='med'?'1 tablet':'',note:type==='med'?'After food':'',exId:type==='stretch'?'side-stretch':'',count:type==='stretch'?(exById('side-stretch').tm||{}).reps||'2 rounds':'',times:[type==='med'?'08:00':type==='stretch'?'07:30':'10:00'],days:[0,1,2,3,4,5,6],start:dayKey(),end:plusDays(29)}}
+function addRoutine(){if((mstate.tasks||[]).length)return;const s=dayKey(),e=plusDays(29),all=[0,1,2,3,4,5,6],id=n=>'t'+Date.now().toString(36)+n;
+  mstate.tasks=[
+   {id:id(1),type:'med',title:'Folic acid / prenatal vitamin',dose:'1 tablet',note:'After breakfast',times:['08:30'],days:all,start:s,end:e},
+   {id:id(2),type:'med',title:'Iron',dose:'1 tablet',note:'After lunch, with lemon water',times:['14:00'],days:all,start:s,end:e},
+   {id:id(3),type:'med',title:'Calcium',dose:'1 tablet',note:'After dinner (keep apart from iron)',times:['21:00'],days:all,start:s,end:e},
+   {id:id(4),type:'stretch',title:'',exId:'side-stretch',count:'3 rounds per side',times:['07:30'],days:all,start:s,end:e},
+   {id:id(5),type:'stretch',title:'',exId:'ball-circles',count:'2 sets of 10 circles',times:['19:30'],days:all,start:s,end:e},
+   {id:id(6),type:'other',title:'Drink 8–10 glasses of water',dose:'',note:'Keep a bottle with you',times:['11:00'],days:all,start:s,end:e},
+   {id:id(7),type:'other',title:'Walk 30 minutes',dose:'',note:'Easy pace, away from the midday heat',times:['18:00'],days:[1,3,5,0],start:s,end:e},
+  ];msave();renderPlan();renderToday()}
+const dayList=d=>d.length===7?'Every day':d.length===0?'No days':ORDER.filter(x=>d.includes(x)).map(x=>DAYS[x]).join(', ');
+const fmtD=k=>new Date(k+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+function taskName(t){return t.type==='stretch'?(exById(t.exId)||{name:'Stretch'}).name:t.title}
+function adherence(t){const today=new Date();let sch=0,done=0;for(let i=0;i<60;i++){const d=new Date(today);d.setDate(today.getDate()-i);const k=dayKey(d);if(k<t.start||k>t.end)continue;if(t.days.length&&!t.days.includes(d.getDay()))continue;const l=(mstate.daily.log[k])||{};t.times.forEach(tm=>{const key='t:'+t.id+'@'+tm;if(i===0&&!l[key])return;sch++;if(l[key]==='done')done++})}return{sch,done}}
+
+function formHtml(t){
+  const typeName={med:'medicine',stretch:'stretch target',other:'task'}[t.type];
+  const isNew=!mstate.tasks.some(x=>x.id===t.id);
+  let f=`<div class="tform" id="tform"><h3>${isNew?'Add a':'Edit'} ${typeName}</h3><div class="grid2">`;
+  if(t.type==='med')f+=`<label for="fTitle">Medicine name<input id="fTitle" list="medSugg" value="${esc(t.title)}" placeholder="e.g. Iron"><datalist id="medSugg">${MED_SUGG.map(x=>`<option value="${x}">`).join('')}</datalist></label>
+    <label for="fDose">Dose<input id="fDose" value="${esc(t.dose)}" placeholder="e.g. 1 tablet, 5 ml"></label>
+    <label for="fNote">When to take<select id="fNote">${NOTES.map(n=>`<option ${n===t.note?'selected':''} value="${n}">${n||'No instruction'}</option>`).join('')}${NOTES.includes(t.note)?'':`<option selected value="${esc(t.note)}">${esc(t.note)}</option>`}</select></label>`;
+  else if(t.type==='stretch')f+=`<label for="fEx">Stretch<select id="fEx">${CATS.map(c=>`<optgroup label="${c.name}">${EX.filter(e=>e.cat===c.id).map(e=>`<option value="${e.id}" ${e.id===t.exId?'selected':''}>${e.name}</option>`).join('')}</optgroup>`).join('')}</select></label>
+    <label for="fCount">How many<input id="fCount" value="${esc(t.count)}" placeholder="e.g. 3 rounds per side"></label>`;
+  else f+=`<label for="fTitle">Task<input id="fTitle" list="otherSugg" value="${esc(t.title)}" placeholder="e.g. Walk 30 minutes"><datalist id="otherSugg">${OTHER_SUGG.map(x=>`<option value="${x}">`).join('')}</datalist></label>
+    <label for="fNote">Details (optional)<input id="fNote" value="${esc(t.note)}" placeholder="e.g. Easy pace"></label>`;
+  f+=`</div><div><div style="font-size:.8rem;color:var(--muted);margin-bottom:4px">Times each day</div><div class="timesed">${t.times.map((tm,i)=>`<input type="time" data-ti="${i}" value="${tm}" aria-label="Time ${i+1}">${t.times.length>1?`<button class="linkb" data-trm="${i}" aria-label="Remove time">✕</button>`:''}`).join('')}<button class="btn" data-tadd>+ Add time</button></div></div>
+   <div><div style="font-size:.8rem;color:var(--muted);margin-bottom:4px">Repeat on</div><div class="daychips">${ORDER.map(d=>`<button data-day="${d}" aria-pressed="${t.days.includes(d)}">${DAYS[d]}</button>`).join('')}</div></div>
+   <div class="grid2"><label for="fStart">From<input type="date" id="fStart" value="${t.start}"></label><label for="fEnd">Until<input type="date" id="fEnd" value="${t.end}"></label>
+    <label for="fLen">Quick length<select id="fLen"><option value="">Choose…</option><option value="0">Just today</option><option value="6">1 week</option><option value="13">2 weeks</option><option value="29">30 days</option><option value="59">60 days</option>${mstate.daily.due?'<option value="due">Until my due date</option>':''}</select></label></div>
+   <p class="amsg" id="fMsg"></p>
+   <div class="row"><button class="btn pri" data-tsave>Save</button><button class="btn" data-tcancel>Cancel</button></div></div>`;
+  return f}
+function readForm(){const t=tform;const g=id=>document.getElementById(id);
+  if(g('fTitle'))t.title=g('fTitle').value.trim();if(g('fDose'))t.dose=g('fDose').value.trim();if(g('fNote'))t.note=g('fNote').value.trim();
+  if(g('fEx'))t.exId=g('fEx').value;if(g('fCount'))t.count=g('fCount').value.trim();
+  t.times=[...document.querySelectorAll('#tform [data-ti]')].map(i=>i.value).filter(Boolean);
+  t.start=g('fStart').value||dayKey();t.end=g('fEnd').value||t.start}
+
+function renderPlan(){
+  const el=document.getElementById('m-plan');const tasks=mstate.tasks||[];
+  const grp=(type,label)=>{const list=tasks.filter(t=>t.type===type);return`<div class="tk-group"><h3>${label}<span>${list.length?list.length+' scheduled':''}</span></h3>${list.length?list.map(t=>{const a=adherence(t);const ended=t.end<dayKey();
+    return`<div class="tk"><div><div class="nm">${esc(taskName(t))}</div><div class="sub">${esc([t.type==='stretch'?t.count:t.dose,t.note].filter(Boolean).join(' · '))}${t.type==='stretch'||t.dose||t.note?' · ':''}${dayList(t.days)} · ${fmtD(t.start)} – ${fmtD(t.end)}${ended?' (ended)':''}${a.sch?` · ${Math.round(a.done/a.sch*100)}% done so far`:''}</div></div>
+     <div class="ops">${delAsk===t.id?`<button class="linkb" style="color:var(--crit)" data-tdelyes="${t.id}">Delete</button><button class="linkb" data-tdelno>Keep</button>`:`<button class="linkb" data-tedit="${t.id}">Edit</button><button class="linkb" data-tdel="${t.id}" aria-label="Delete ${esc(taskName(t))}">✕</button>`}</div>
+     <div class="times">${t.times.map(x=>`<span>${fmtTime(x)}</span>`).join('')}</div></div>`}).join(''):`<p class="vnote" style="margin:0 0 6px">None yet.</p>`}</div>`};
+  // 30-day schedule
+  const start=new Date();start.setHours(0,0,0,0);const lead=(start.getDay()+6)%7;
+  let cal=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d=>`<div class="dn">${d}</div>`).join('')+'<div></div>'.repeat(lead);
+  for(let i=0;i<30;i++){const d=new Date(start);d.setDate(start.getDate()+i);const k=dayKey(d);const occ=taskOcc(d);const l=mstate.daily.log[k]||{};const dn=occ.filter(o=>l[o.key]==='done').length,ms=occ.filter(o=>l[o.key]==='missed').length;
+    const c=!occ.length?'':dn===occ.length?'full':dn?'part':ms?'miss':'';
+    cal+=`<button class="${c} ${k===selDay?'sel':''}" data-sday="${k}" aria-label="${d.toDateString()}: ${occ.length} tasks">${d.getDate()}${i===0?'':''}<small>${occ.length?occ.length+' task'+(occ.length>1?'s':''):'—'}</small></button>`}
+  const sd=new Date(selDay+'T00:00:00');const occ=taskOcc(sd).sort((a,b)=>tmin(a.time)-tmin(b.time));const l=mstate.daily.log[selDay]||{};const past=selDay<=dayKey();
+  const agenda=occ.length?occ.map(o=>`<div class="ag"><span class="t">${o.time?fmtTime(o.time):'Any time'}</span><span><b>${esc(taskName(o.task))}</b> <span style="color:var(--muted);font-size:.85rem">${esc(o.task.type==='stretch'?o.task.count:o.task.dose||'')}</span></span>
+    ${past?`<span class="st"><button class="d ${l[o.key]==='done'?'on':''}" data-mark="${selDay}|${o.key}|done">✓ Done</button><button class="m ${l[o.key]==='missed'?'on':''}" data-mark="${selDay}|${o.key}|missed">✕ Not done</button></span>`:'<span class="t">Upcoming</span>'}</div>`).join(''):'<p class="vnote">Nothing scheduled this day.</p>';
+  el.innerHTML=`<div class="sec-h"><h2>My tasks</h2><p>Set your daily targets. Each task repeats on the days and dates you choose, and appears as a card on Today.</p></div>
+   ${tform?formHtml(tform):`<div class="tk-actions"><button class="btn pri" data-tnew="med">+ Medicine</button><button class="btn pri" data-tnew="stretch">+ Stretch target</button><button class="btn" data-tnew="other">+ Other task</button>${tasks.length?'':'<button class="btn" data-troutine>Use a typical pregnancy routine</button>'}</div>`}
+   ${grp('med','Medicines')}${grp('stretch','Stretch targets')}${grp('other','Other daily tasks')}
+   <p class="vnote" style="margin:0">Medicine names and timings are reminders only. Always follow your doctor's prescription.</p>
+   <div class="sec-h" id="taskSched"><h2>Next 30 days</h2><p>Tap a day to see its tasks. Mark today's or past tasks here too.</p></div>
+   <div class="duo"><div class="sched">${cal}</div><div class="agenda"><h3 style="font-size:1.05rem;margin-bottom:4px">${sd.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'})}</h3>${agenda}</div></div>
+   <details class="grid-box"><summary>Weekly stretch plan (optional)</summary><div id="m-plan-grid"></div></details>`;
+  renderStretchGrid();
+}
+document.getElementById('m-plan').addEventListener('click',e=>{
+  const q=sel=>e.target.closest(sel);let b;
+  if(b=q('[data-tnew]')){tform=newTask(b.dataset.tnew);delAsk=null;renderPlan();document.getElementById('tform').scrollIntoView({block:'nearest'});return}
+  if(q('[data-troutine]')){addRoutine();return}
+  if(b=q('[data-tedit]')){tform=JSON.parse(JSON.stringify(mstate.tasks.find(t=>t.id===b.dataset.tedit)));renderPlan();document.getElementById('tform').scrollIntoView({block:'nearest'});return}
+  if(b=q('[data-tdel]')){delAsk=b.dataset.tdel;renderPlan();return}
+  if(q('[data-tdelno]')){delAsk=null;renderPlan();return}
+  if(b=q('[data-tdelyes]')){mstate.tasks=mstate.tasks.filter(t=>t.id!==b.dataset.tdelyes);delAsk=null;msave();renderPlan();renderToday();return}
+  if(q('[data-tcancel]')){tform=null;renderPlan();return}
+  if(q('[data-tadd]')){readForm();tform.times.push('12:00');renderPlan();return}
+  if(b=q('[data-trm]')){readForm();tform.times.splice(+b.dataset.trm,1);renderPlan();return}
+  if(b=q('[data-day]')){readForm();const d=+b.dataset.day;tform.days=tform.days.includes(d)?tform.days.filter(x=>x!==d):[...tform.days,d];renderPlan();return}
+  if(q('[data-tsave]')){readForm();const t=tform,msg=document.getElementById('fMsg');
+    if(t.type!=='stretch'&&!t.title){msg.textContent='Give it a name.';msg.className='amsg err';return}
+    if(!t.times.length){msg.textContent='Add at least one time.';msg.className='amsg err';return}
+    if(!t.days.length){msg.textContent='Pick at least one day.';msg.className='amsg err';return}
+    if(t.end<t.start){msg.textContent='The end date is before the start date.';msg.className='amsg err';return}
+    t.times=[...new Set(t.times)].sort();
+    const i=mstate.tasks.findIndex(x=>x.id===t.id);if(i>=0)mstate.tasks[i]=t;else mstate.tasks.push(t);
+    tform=null;msave();renderPlan();renderToday();return}
+  if(b=q('[data-sday]')){selDay=b.dataset.sday;renderPlan();return}
+  if(b=q('[data-mark]')){const [k,key,st]=b.dataset.mark.split('|');const l=dlogAt(k);l[key]=l[key]===st?undefined:st;if(!l[key])delete l[key];
+    const tid=key.slice(2).split('@')[0],t=mstate.tasks.find(x=>x.id===tid);if(t&&t.type==='stretch'&&t.exId&&k===dayKey()){if(doneToday(t.exId)!==(l[key]==='done'))toggleDone(t.exId)}
+    msave();renderPlan();renderToday();renderProgress();return}
+});
+document.getElementById('m-plan').addEventListener('change',e=>{
+  if(e.target.id==='fEx'&&tform){readForm();const ex=exById(tform.exId);if(ex&&ex.tm)tform.count=ex.tm.reps;renderPlan()}
+  if(e.target.id==='fLen'&&tform){readForm();const v=e.target.value;if(v==='due')tform.end=mstate.daily.due;else if(v!=='')tform.end=plusDays(+v,new Date(tform.start+'T00:00:00'));renderPlan()}
+});
+/* progress: adherence per task */
+const _renderProgressBase=renderProgress;
+renderProgress=function(){_renderProgressBase();const el=document.getElementById('m-progress');const tasks=(mstate.tasks||[]).filter(t=>adherence(t).sch);
+  if(!tasks.length)return;
+  const card=document.createElement('div');card.className='tip';
+  card.innerHTML=`<h3>Sticking to your tasks</h3><p class="vnote" style="margin:0 0 10px">Share of scheduled times marked done (including "not done" ticks), last 60 days.</p><div class="adh">${tasks.map(t=>{const a=adherence(t),p=Math.round(a.done/a.sch*100);return`<div class="r"><span>${esc(taskName(t))}${t.type==='med'?' <span style="color:var(--muted);font-size:.8rem">· medicine</span>':''}</span><span class="bar"><i style="width:${p}%"></i></span><span class="pct">${p}%</span></div>`}).join('')}</div>`;
+  el.insertBefore(card,el.children[1]||null)};
+window.renderMom=function(){renderToday();renderPlan();renderProgress()};
+renderPlan();renderToday();renderProgress();
 </script>
 
 <footer style="max-width:1180px;margin:0 auto;padding:0 20px 40px;font-size:.85rem;color:var(--muted)"><a href="/privacy.html" style="color:inherit">Privacy</a> · <a href="/terms.html" style="color:inherit">Terms</a></footer>

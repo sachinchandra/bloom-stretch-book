@@ -134,7 +134,34 @@ h1 em{font-style:normal;color:var(--plum)}
 .ms ul,.tip ul,.tier ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:.93rem}
 .ms.flag{background:var(--warn-bg);border-color:transparent;grid-column:1/-1}
 .ms.flag ul{display:block;columns:3 220px;column-gap:28px}.ms.flag li{margin-bottom:5px;break-inside:avoid}
-[hidden]{display:none!important}.tst .st{font-size:.75rem;font-weight:700;border-radius:999px;padding:3px 10px;background:var(--bg);color:var(--muted)}
+[hidden]{display:none!important}
+#m-plan .duo{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.srcb{display:block;margin-top:6px;font-size:.75rem;font-weight:700;color:var(--teal);letter-spacing:.02em}
+[data-troutine]{display:none!important}
+.dayline{width:min(100%,560px);background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:14px 16px}
+.dayline h3{font-size:1.15rem;margin-bottom:6px}
+.dl-g{margin-top:8px}.dl-h{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--muted);margin-bottom:4px}
+.dl-r{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line)}
+.dl-r .pic{width:38px;height:38px;background:var(--bg);border-radius:10px;padding:3px}
+.dl-t b{display:block;font-size:.93rem;line-height:1.25}.dl-t span{font-size:.78rem;color:var(--muted)}
+.dl-r.done .dl-t b{text-decoration:line-through;color:var(--muted)} .dl-r.missed .dl-t b{color:var(--muted)}
+.dl-b{display:flex;gap:4px}
+.mini{width:34px;height:34px;border-radius:10px;border:1.5px solid var(--line-strong);background:var(--surface);font-weight:800;cursor:pointer;color:var(--muted)}
+.mini.on.d{background:var(--ok);border-color:var(--ok);color:#fff}.mini.on.m{background:var(--crit);border-color:var(--crit);color:#fff}
+.recs{display:flex;flex-direction:column;gap:8px}
+.rec{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.rec.off{opacity:.55}
+.rec .pic{width:46px;height:46px;background:var(--bg);border-radius:12px;padding:3px}
+.rt b{display:block;font-family:var(--display)} .rt span{display:block;font-size:.84rem;color:var(--muted)}
+.rt .rsrc{color:var(--teal);font-weight:700;font-size:.75rem;margin-top:2px}
+.rt .times{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}.rt .times span{display:inline-block;font-size:.74rem;font-weight:700;border-radius:999px;padding:1px 8px;background:var(--plum-tint);color:var(--plum)}
+.rt .times .edited{background:var(--warn-bg);color:var(--warn)}
+.rops{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.sw{width:44px;height:26px;border-radius:999px;border:0;background:var(--line-strong);position:relative;cursor:pointer;padding:0}
+.sw i{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}
+.sw.on{background:var(--ok)} .sw.on i{left:21px}
+.recsec{display:flex;flex-direction:column;gap:10px}
+.tst .st{font-size:.75rem;font-weight:700;border-radius:999px;padding:3px 10px;background:var(--bg);color:var(--muted)}
 .tst .st.due{background:var(--teal);color:var(--surface)} .tst .st.over{background:var(--warn-bg);color:var(--warn)} .tst .st.ok{background:var(--ok);color:var(--surface)}
 .test .tw{white-space:nowrap}.test{grid-template-columns:110px minmax(0,1fr) auto}
 .clist li>span:only-child{grid-column:1/-1}
@@ -2299,7 +2326,7 @@ function renderToday(){
   let html=`<div class="stagebar"><div><div class="when">${now.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'short'})}</div><div class="stage">${st.label}</div></div>
     <div class="dots" aria-label="${doneN} of ${items.length} done">${items.map(it=>{const s=statusOf(it);return`<i class="${s==='done'?'d':s==='missed'?'x':it===pending[0]?'c':''}"></i>`}).join('')}</div></div>
     <div class="panel-inner">`;
-  const noTasks=!(mstate.tasks||[]).length;
+  const noTasks=!(mstate.tasks||[]).length&&!(window.recActive&&recActive());
   if(st.mode==='none'||(noTasks&&!hasPlan())){
     html+=`<div class="setup"><b style="font-family:var(--display);font-size:1.1rem">Set up your daily cards</b>
       ${st.mode==='none'?`<div class="row"><label for="sDue">Due date<input type="date" id="sDue" value="${mstate.daily.due||''}"></label><label for="sDob">or baby's birth date<input type="date" id="sDob" value="${bstate.dob||''}"></label></div>`:''}
@@ -2324,7 +2351,7 @@ function renderToday(){
   el.querySelectorAll('[data-gotasks]').forEach(b=>b.onclick=()=>{if(b.dataset.gotasks==='routine')addRoutine();setMsub('plan');try{history.replaceState(null,'','#mom-plan')}catch(e){}window.scrollTo(0,0)});
   wireDeck(el,pending,items);
 }
-function taskArt(t){if(t.type==='med')return'pill';const x=(t.title||'').toLowerCase();return /water|drink/.test(x)?'water':/walk/.test(x)?'walk':/kick|massage|rest/.test(x)?'heart':/check|visit|scan|test|doctor/.test(x)?'cal':'star'}
+function taskArt(t){if(t.ic&&ART[t.ic])return t.ic;if(t.type==='med')return'pill';const x=(t.title||'').toLowerCase();return /water|drink/.test(x)?'water':/walk/.test(x)?'walk':/kick|massage|rest/.test(x)?'heart':/check|visit|scan|test|doctor/.test(x)?'cal':'star'}
 function cardHtml(it,depth){
   let art,kind,kcls='',title,desc,meta,late='';
   const nowM=new Date().getHours()*60+new Date().getMinutes();
@@ -2335,7 +2362,7 @@ function cardHtml(it,depth){
   if(it.type==='stretch'){const ex=it.ex;art=exArt(ex);kind=it.kind+at;title=ex.name;desc=ex.desc;meta=exMeta(ex)}
   else if(it.type==='task'){const t=it.task;
     if(t.type==='stretch'){const ex=exById(t.exId);art=ex?exArt(ex):'';kind='Stretch'+at;title=ex?ex.name:t.title;desc=ex?ex.desc:'';meta=`Target: ${esc(t.count||'1 round')}${ex&&ex.tm?' · hold '+ex.tm.hold.replace(/^No hold: /i,''):''}`}
-    else{const A=ART[taskArt(t)]();art=`<svg viewBox="${A.vb}">${A.svg}</svg>`;kind=(t.type==='med'?'Medicine':'Task')+at;kcls=t.type==='med'?'med':'';title=esc(t.title);desc=esc([t.dose,t.note].filter(Boolean).join(' · '));meta=t.type==='med'?'Only as prescribed by your doctor.':''}}
+    else{const A=ART[taskArt(t)]();art=`<svg viewBox="${A.vb}">${A.svg}</svg>`;kind=(t.type==='med'?'Medicine':'Task')+at;kcls=t.type==='med'?'med':'';title=esc(t.title);desc=esc([t.dose,t.note].filter(Boolean).join(' · '));meta=t.why?esc(t.why):(t.type==='med'?'Only as prescribed by your doctor.':'');if(t.src)meta+=`<span class="srcb">${t.rec?'Recommended':'Source'}: ${esc(t.src)}</span>`}}
   else{const a=it.a,A=ART[a.art]();art=`<svg viewBox="${A.vb}">${A.svg}</svg>`;kind=a.kind;kcls=a.mode==='preg'?'preg':'baby';title=val(a.t,it.ctx);desc=val(a.d,it.ctx);meta=val(a.m,it.ctx)}
   return`<article class="dcard u${depth}" data-key="${it.key}"><div class="stamp ok">DONE</div><div class="stamp lt">NOT DONE</div><div class="art">${art}</div><div class="body"><span class="kind ${kcls}${late}">${late?'Overdue':''}${late?' · ':''}${kind}</span><h3>${title}</h3>${desc?`<p>${desc}</p>`:''}${meta?`<div class="meta">${meta}</div>`:''}</div></article>`;
 }
@@ -2807,6 +2834,97 @@ const _markTab=markTab;markTab=function(){if(!$j('view-journey').hidden){documen
 document.querySelector('.tabbar').addEventListener('click',e=>{const b=e.target.closest('[data-tab="journey"]');if(!b)return;e.stopImmediatePropagation();showView('journey');try{history.replaceState(null,'','#journey')}catch(err){}window.scrollTo(0,0)},true);
 document.querySelector('.seg').addEventListener('click',e=>{const b=e.target.closest('[data-view="journey"]');if(!b)return;e.stopImmediatePropagation();showView('journey');try{history.replaceState(null,'','#journey')}catch(err){}window.scrollTo(0,0)},true);
 (()=>{const h=location.hash.slice(1);if(h.startsWith('journey'))showView('journey',h.split('-')[1]||'');else{let v='';try{v=localStorage.getItem('bloom-view')}catch(e){}if(v==='journey'&&!h)showView('journey')}})();
+
+/* ================= RECOMMENDED DAILY PLAN (MoHFW / WHO defaults, editable) ================= */
+const REC=[
+ {id:'folic',type:'med',title:'Folic acid',dose:'400 mcg tablet',note:'After breakfast',why:'Protects baby\'s brain and spine as they form.',src:'MoHFW · WHO',times:['08:30'],w:[1,13]},
+ {id:'calc1',type:'med',title:'Calcium (tablet 1)',dose:'500 mg + vitamin D3',note:'After breakfast, never on an empty stomach',why:'Lowers the risk of high blood pressure (pre-eclampsia) and protects your bones.',src:'MoHFW calcium guidelines',times:['09:00'],w:[14,42],pp:[0,182]},
+ {id:'ifa',type:'med',title:'Iron + folic acid (IFA)',dose:'1 tablet: 60 mg iron + 500 mcg folic acid',note:'2 hours after lunch, with lemon water. Not with tea, coffee or milk',why:'Prevents anaemia, which affects about half of pregnant women in India.',src:'Anaemia Mukt Bharat',times:['15:30'],w:[14,42],pp:[0,182]},
+ {id:'calc2',type:'med',title:'Calcium (tablet 2)',dose:'500 mg + vitamin D3',note:'After dinner, at least 2 hours apart from iron',why:'Two tablets a day make up the 1 g of calcium you need.',src:'MoHFW calcium guidelines',times:['21:00'],w:[14,42],pp:[0,182]},
+ {id:'deworm',type:'med',once:1,title:'Deworming tablet (albendazole)',dose:'400 mg, a single dose',note:'Ask your doctor at your next visit',why:'Clears intestinal worms that can cause anaemia. Given once, after the first trimester.',src:'Anaemia Mukt Bharat',times:['11:00'],w:[14,27]},
+ {id:'water',type:'other',ic:'drop',title:'Drink 8–10 glasses of water',dose:'',note:'Keep a bottle with you. Dark urine means drink more',why:'',src:'',times:['11:00'],w:[1,42],pp:[0,182]},
+ {id:'protein',type:'other',ic:'katori',title:'Protein and greens at every meal',dose:'',note:'Dal, paneer, curd, eggs or sprouts, with a green vegetable',why:'',src:'',times:['13:00'],w:[1,42]},
+ {id:'walk',type:'other',ic:'move',title:'Walk 30 minutes',dose:'',note:'An easy pace where you can still talk. Skip if your doctor advised rest',why:'',src:'',times:['18:00'],w:[1,40],days:[1,2,3,4,5]},
+ {id:'kicks',type:'other',ic:'heart',title:'Count baby\'s kicks',dose:'',note:'After a meal, lying on your left side: 10 movements within 2 hours',why:'Fewer movements than usual? Call your doctor the same day.',src:'',times:['19:30'],w:[28,42]},
+ {id:'pelvic',type:'other',ic:'heart',title:'Pelvic floor squeezes',dose:'',note:'Squeeze and hold for 5 seconds, 10 times, 3 times today',why:'',src:'',times:['20:00'],w:[12,42],pp:[3,182]},
+ {id:'side',type:'other',ic:'moon',title:'Sleep on your side',dose:'',note:'Left side is best, with a pillow between your knees',why:'',src:'',times:['22:00'],w:[28,42]},
+ {id:'rest',type:'other',ic:'moon',title:'Rest when baby sleeps',dose:'',note:'Accept help. Eat a proper meal before you feed',why:'',src:'',times:['14:00'],pp:[0,42]},
+ {id:'st-am',type:'stretch',exId:'side-stretch',count:'3 rounds per side',title:'',times:['07:30'],w:[14,35],stretch:1},
+ {id:'st-pm',type:'stretch',exId:'ball-circles',count:'2 sets of 10 circles',title:'',times:['19:00'],w:[14,35],stretch:1},
+ {id:'st-lab1',type:'stretch',exId:'hip-circles',count:'30 s each movement',title:'',times:['07:30'],w:[36,42],stretch:1},
+ {id:'st-lab2',type:'stretch',exId:'butterfly',count:'1 minute',title:'',times:['19:00'],w:[36,42],stretch:1},
+];
+mstate.rec=mstate.rec||{};
+const _bS2=window.bloomState;window.bloomState=()=>{const s=_bS2();s.mom.rec=mstate.rec;return s};
+const _bA2=window.bloomApply;window.bloomApply=st=>{if(st.mom&&st.mom.rec)mstate.rec=st.mom.rec;_bA2(st)};
+function stageAt(date){const d=new Date(date);d.setHours(0,0,0,0);const dob=dobDate();
+  if(dob&&d>=dob)return{pp:Math.round((d-dob)/DAY)};
+  if(mstate.daily.due){const due=new Date(mstate.daily.due+'T00:00:00');const left=Math.round((due-d)/DAY);return{wk:Math.max(1,Math.floor((280-left)/7))}}
+  return null}
+function recActive(){return !!(mstate.daily.due||dobDate())}
+window.recActive=recActive;
+function userHasStretches(){return hasPlan()||(mstate.tasks||[]).some(t=>t.type==='stretch')}
+function recFor(date){const s=stageAt(date);if(!s)return[];const dow=new Date(date).getDay();
+  return REC.filter(r=>{if(r.stretch&&userHasStretches())return false;const o=mstate.rec[r.id]||{};if(o.off)return false;
+    if(s.wk!=null){if(!r.w||s.wk<r.w[0]||s.wk>r.w[1])return false}else{if(!r.pp||s.pp<r.pp[0]||s.pp>r.pp[1])return false}
+    const days=o.days||r.days;if(days&&!days.includes(dow))return false;
+    if(r.once){const done=Object.entries(mstate.daily.log||{}).some(([k,l])=>k<dayKey(date)&&Object.keys(l).some(x=>x.startsWith('t:rec-'+r.id+'@')&&l[x]==='done'));if(done)return false}
+    return true}).map(r=>{const o=mstate.rec[r.id]||{};return{...r,...o,id:'rec-'+r.id,rid:r.id,rec:1,start:'2000-01-01',end:'2999-12-31',days:o.days||r.days||[0,1,2,3,4,5,6]}})}
+const _taskOcc=taskOcc;
+taskOcc=function(date){const own=_taskOcc(date);const out=[...own];recFor(date).forEach(t=>t.times.forEach(tm=>out.push({key:'t:'+t.id+'@'+tm,type:'task',task:t,time:tm})));return out};
+/* hide stage tips that the plan already covers */
+['p-water','p-tabs','p-kicks','p-side','p-walk'].forEach(id=>{const a=ACTIONS.find(x=>x.id===id);if(a){const f=a.show;a.show=c=>!recActive()&&f(c)}});
+
+/* Today: add a whole-day timeline under the deck */
+const _renderToday2=renderToday;
+renderToday=function(){_renderToday2();const el=document.getElementById('m-today');const inner=el.querySelector('.panel-inner');if(!inner)return;
+  const items=deckItems();if(!items.length)return;
+  const part=t=>{const m=tmin(t);return m<720?'Morning':m<1020?'Afternoon':m<9999?'Evening':'Any time'};
+  const groups={};items.forEach(it=>{const g=it.time?part(it.time):'Any time';(groups[g]=groups[g]||[]).push(it)});
+  const order=['Morning','Afternoon','Evening','Any time'].filter(g=>groups[g]);
+  const icFor=it=>it.type==='stretch'?'move':it.type==='task'?(it.task.type==='med'?'pill':it.task.type==='stretch'?'move':(it.task.ic||taskArt(it.task))):(it.a.art==='shot'?'syringe':it.a.art);
+  const sub=it=>it.type==='task'?(it.task.type==='med'?it.task.dose:it.task.type==='stretch'?it.task.count:''):'';
+  const box=document.createElement('section');box.className='dayline';
+  box.innerHTML=`<h3>Today's plan</h3>${order.map(g=>`<div class="dl-g"><div class="dl-h">${g}</div>${groups[g].map(it=>{const s=statusOf(it);return`<div class="dl-r ${s||''}">${icon(icFor(it),36)}<div class="dl-t"><b>${esc(itemTitle(it))}</b><span>${it.time?fmtTime(it.time):''}${sub(it)?' · '+esc(sub(it)):''}${it.task&&it.task.rec&&it.task.type==='med'?' · recommended':''}</span></div><div class="dl-b"><button class="mini ${s==='done'?'on d':''}" data-dl="${it.key}|done" aria-label="Done">✓</button><button class="mini ${s==='missed'?'on m':''}" data-dl="${it.key}|missed" aria-label="Not done">✕</button></div></div>`}).join('')}</div>`).join('')}
+   <p class="vnote">Medicines follow India's national antenatal guidance (MoHFW). Change any of them to match your prescription in <a href="#mom-plan" data-gotasks="1">Tasks</a>.</p>`;
+  inner.appendChild(box);
+  const dl=inner.querySelector('.donelist');if(dl)dl.remove();
+  box.onclick=e=>{const b=e.target.closest('[data-dl]');if(b){const [key,st]=b.dataset.dl.split('|');const it=items.find(x=>x.key===key);if(it){setStatus(it,statusOf(it)===st?null:st);renderToday();renderProgress()}return}
+    const g=e.target.closest('[data-gotasks]');if(g){e.preventDefault();setMsub('plan');try{history.replaceState(null,'','#mom-plan')}catch(err){}window.scrollTo(0,0)}};
+};
+
+/* Tasks tab: recommended plan section with on/off and edit */
+const _renderPlan2=renderPlan;
+renderPlan=function(){_renderPlan2();const el=$j('m-plan');const s=stageAt(new Date());
+  const sec=document.createElement('section');sec.className='recsec';
+  if(!s){sec.innerHTML=`<div class="setup" style="width:auto"><b style="font-family:var(--display)">Get your recommended daily plan</b><p class="vnote" style="margin:0">Add your due date and BloomMom sets up the medicines and habits India's antenatal guidelines recommend for each week. You can change any of them.</p><div class="row"><label for="rDue">Due date<input type="date" id="rDue"></label><label for="rDob">or baby's birth date<input type="date" id="rDob"></label></div></div>`}
+  else{const label=s.wk!=null?`week ${s.wk} of pregnancy`:`${Math.floor(s.pp/7)} weeks after birth`;
+    const rel=REC.slice().sort((a,b)=>tmin((mstate.rec[a.id]||{}).times?.[0]||a.times[0])-tmin((mstate.rec[b.id]||{}).times?.[0]||b.times[0])).filter(r=>s.wk!=null?(r.w&&s.wk>=r.w[0]&&s.wk<=r.w[1]):(r.pp&&s.pp>=r.pp[0]&&s.pp<=r.pp[1])).filter(r=>!(r.stretch&&userHasStretches()));
+    const up=s.wk!=null?REC.filter(r=>r.w&&r.w[0]>s.wk&&r.type==='med'):[];
+    sec.innerHTML=`<div class="sec-h"><h2>Recommended for you</h2><p>Set up for ${label}, following India's antenatal guidance. Turn items off or edit them to match your doctor's prescription.</p></div>
+    <div class="recs">${rel.map(r=>{const o=mstate.rec[r.id]||{};const t={...r,...o};const name=r.type==='stretch'?(exById(r.exId)||{}).name:t.title;
+      return`<div class="rec ${o.off?'off':''}">${icon(r.type==='med'?'pill':r.type==='stretch'?'move':(r.ic||taskArt(t)),44)}<div class="rt"><b>${esc(name)}</b><span>${esc([r.type==='stretch'?t.count:t.dose,t.note].filter(Boolean).join(' · '))}</span>${r.src?`<span class="rsrc">${esc(r.src)}${r.once?' · one dose':''}</span>`:''}<div class="times">${t.times.map(x=>`<span>${fmtTime(x)}</span>`).join('')}${o.title||o.dose||o.times?'<span class="edited">edited</span>':''}</div></div>
+      <div class="rops"><button class="sw ${o.off?'':'on'}" data-rtog="${r.id}" role="switch" aria-checked="${!o.off}" aria-label="Include ${esc(name)}"><i></i></button><button class="linkb" data-redit="${r.id}">Edit</button>${o.title||o.dose||o.times||o.note?`<button class="linkb" data-rreset="${r.id}">Reset</button>`:''}</div></div>`}).join('')}</div>
+    ${up.length?`<p class="vnote">Coming up: ${up.map(r=>`${esc(r.title)} from week ${r.w[0]}`).join(', ')}.</p>`:''}
+    <p class="vnote">These are standard recommendations, not a prescription. If your doctor has prescribed a different medicine, dose or timing, edit or switch these off. Never stop a prescribed medicine on your own.</p>
+    <div class="sec-h"><h2>Added by you</h2><p>Your own prescriptions and targets.</p></div>`}
+  el.insertBefore(sec,el.querySelector('.tk-actions')||el.querySelector('#tform')||el.children[1]);
+  const t1=el.querySelector('.sec-h');if(t1&&t1.textContent.startsWith('My tasks'))t1.remove();
+};
+$j('m-plan').addEventListener('click',e=>{let b;
+  if(b=e.target.closest('[data-rtog]')){const id=b.dataset.rtog;const o=mstate.rec[id]=mstate.rec[id]||{};o.off=!o.off;msave();renderPlan();renderToday();e.stopImmediatePropagation();return}
+  if(b=e.target.closest('[data-rreset]')){delete mstate.rec[b.dataset.rreset];msave();renderPlan();renderToday();e.stopImmediatePropagation();return}
+  if(b=e.target.closest('[data-redit]')){const r=REC.find(x=>x.id===b.dataset.redit);const o=mstate.rec[r.id]||{};tform={...JSON.parse(JSON.stringify({...r,...o})),id:'rec-'+r.id,rid:r.id,isRec:1,days:o.days||r.days||[0,1,2,3,4,5,6],start:dayKey(),end:plusDays(29)};renderPlan();const f=$j('tform');if(f){f.querySelector('h3').textContent='Edit recommended item';f.querySelectorAll('.grid2')[1].hidden=true;f.scrollIntoView({block:'nearest'})}e.stopImmediatePropagation();return}
+  if(e.target.closest('[data-tsave]')&&tform&&tform.isRec){readForm();const t=tform,msg=$j('fMsg');if(!t.times.length){msg.textContent='Add at least one time.';msg.className='amsg err';e.stopImmediatePropagation();return}
+    const r=REC.find(x=>x.id===t.rid);const o=mstate.rec[t.rid]=mstate.rec[t.rid]||{};['title','dose','note','count','exId'].forEach(k=>{if(t[k]!==undefined&&t[k]!==r[k])o[k]=t[k];else delete o[k]});
+    const tm=[...new Set(t.times)].sort();if(JSON.stringify(tm)!==JSON.stringify(r.times))o.times=tm;else delete o.times;
+    const dd=(t.days||[]).slice().sort();const rd=(r.days||[0,1,2,3,4,5,6]).slice().sort();if(JSON.stringify(dd)!==JSON.stringify(rd))o.days=dd;else delete o.days;
+    tform=null;msave();renderPlan();renderToday();e.stopImmediatePropagation();return}
+},true);
+$j('m-plan').addEventListener('change',e=>{if(e.target.id==='rDue'){mstate.daily.due=e.target.value;msave();renderPlan();renderToday()}if(e.target.id==='rDob'){bstate.dob=e.target.value;bsave();dobIn.value=e.target.value;renderAge();renderMilestones();renderVaccines();renderPlan();renderToday()}});
+renderPlan();renderToday();renderProgress();
+['katori','moon','move','syringe'].forEach(k=>{if(!ART[k])ART[k]=()=>({vb:'-18 -8 84 64',svg:`<g class="pic">${ICONS[k]}</g>`})});
+renderToday();
 
 </script>
 

@@ -25,7 +25,8 @@
   --mom:#8A2D6B; --mom2:#CC93B9; --belly:#A8468A; --pt:#2C5D72; --pt2:#93B6C5;
   --prop:#D5DEDA; --prop2:#A2B3AD; --ball:#5B7C93; --mat:#3AA39C; --wall:#E5EBE8; --gnd:#E9EEEB; --bed:#E7B9B0; --cush:#7FB9C9;
   --stage:#F8FAF9;
-  --babyskin:#B97C57; --swaddle:#EDB840; --babycloth:#7FB394; --milk:#FFF4DA;
+  --skm:#C68B62; --skp:#9A6544; --hair:#2A1D1B; --clm:#8A2D6B; --trim:#E7B44A; --lgm:#3B3346; --clp:#2C5D72; --lgp:#3A4256;
+  --babyskin:#D39C76; --swaddle:#F2D27A; --babycloth:#7FB394; --milk:#FFF4DA;
   --crit:#B42A23; --crit-bg:#FBECEA; --warn:#A8620A; --warn-bg:#FBF1E2; --ok:#2E7D4F;
   --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
   --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
@@ -36,13 +37,13 @@
   --plum:#E48CC3; --plum-soft:#C66AA6; --teal:#5CC2BA; --teal-soft:#183331; --plum-tint:#2D1D28;
   --mom:#E07DBA; --mom2:#7A4468; --belly:#EFA0D0; --pt:#86BCD3; --pt2:#3E6070;
   --prop:#33393A; --prop2:#56615F; --ball:#6F93AB; --mat:#2F8F89; --wall:#202426; --gnd:#1A1D1E; --bed:#7A4B46; --cush:#3F7F90;
-  --stage:#18171B; --babyskin:#D9A27F; --swaddle:#E0B243; --babycloth:#6FA585; --milk:#F3E6C4; --crit:#FF8A80; --crit-bg:#3A1A18; --warn:#F2B35E; --warn-bg:#33261A; --ok:#6BCB8F; color-scheme:dark }}
+  --stage:#18171B; --skm:#C68B62; --skp:#9A6544; --hair:#140E0D; --clm:#C35A9B; --trim:#E7B44A; --lgm:#5A5068; --clp:#5D9AB4; --lgp:#59617A; --babyskin:#D9A27F; --swaddle:#E0B243; --babycloth:#6FA585; --milk:#F3E6C4; --crit:#FF8A80; --crit-bg:#3A1A18; --warn:#F2B35E; --warn-bg:#33261A; --ok:#6BCB8F; color-scheme:dark }}
 :root[data-theme="dark"]{
   --bg:#141317; --surface:#1D1B21; --ink:#EEEAF1; --muted:#A6A2AE; --line:#2E2B34; --line-strong:#4A4652;
   --plum:#E48CC3; --plum-soft:#C66AA6; --teal:#5CC2BA; --teal-soft:#183331; --plum-tint:#2D1D28;
   --mom:#E07DBA; --mom2:#7A4468; --belly:#EFA0D0; --pt:#86BCD3; --pt2:#3E6070;
   --prop:#33393A; --prop2:#56615F; --ball:#6F93AB; --mat:#2F8F89; --wall:#202426; --gnd:#1A1D1E; --bed:#7A4B46; --cush:#3F7F90;
-  --stage:#18171B; --babyskin:#D9A27F; --swaddle:#E0B243; --babycloth:#6FA585; --milk:#F3E6C4; --crit:#FF8A80; --crit-bg:#3A1A18; --warn:#F2B35E; --warn-bg:#33261A; --ok:#6BCB8F; color-scheme:dark }
+  --stage:#18171B; --skm:#C68B62; --skp:#9A6544; --hair:#140E0D; --clm:#C35A9B; --trim:#E7B44A; --lgm:#5A5068; --clp:#5D9AB4; --lgp:#59617A; --babyskin:#D9A27F; --swaddle:#E0B243; --babycloth:#6FA585; --milk:#F3E6C4; --crit:#FF8A80; --crit-bg:#3A1A18; --warn:#F2B35E; --warn-bg:#33261A; --ok:#6BCB8F; color-scheme:dark }
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
@@ -134,6 +135,18 @@ h1 em{font-style:normal;color:var(--plum)}
 .ms.flag{background:var(--warn-bg);border-color:transparent;grid-column:1/-1}
 .ms.flag ul{display:block;columns:3 220px;column-gap:28px}.ms.flag li{margin-bottom:5px;break-inside:avoid}
 [hidden]{display:none!important}
+.skm{fill:var(--skm)} .skp{fill:var(--skp)} .hair{fill:var(--hair)} .clm{fill:var(--clm)} .clp{fill:var(--clp)} .lgm{fill:var(--lgm)} .lgp{fill:var(--lgp)}
+.trim{stroke:var(--trim);stroke-width:1.6;stroke-linecap:round;fill:none}
+.shine{fill:#fff;opacity:.16}
+.bellyf{opacity:.98}
+.far{filter:brightness(.78)}
+.eye{fill:var(--hair)} .mouth{stroke:#7a3b2e;stroke-width:1;stroke-linecap:round;fill:none} .ear{opacity:.95}
+.hairline{fill:none;stroke:var(--hair);stroke-width:2.4;stroke-linecap:round}
+.blush{fill:#e07a6a;opacity:.35} .bindi{fill:#b3262e} .gold{fill:var(--trim)}
+.bw{fill:var(--swaddle)} .bc{fill:var(--babycloth)} .bs,.bs2{fill:var(--babyskin)} .fold{stroke:#fff;stroke-opacity:.55;stroke-width:1.2;stroke-linecap:round}
+.tuft{fill:none;stroke:var(--hair);stroke-width:1.4;stroke-linecap:round}
+.beye{fill:none;stroke:#3a2420;stroke-width:.9;stroke-linecap:round} .mouthf{fill:#a0524a}
+
 .dots i.x{background:var(--crit)}
 .rb.no{color:var(--crit);border-color:var(--crit)}
 .kind.med{background:var(--teal-soft);color:var(--teal)}
@@ -434,7 +447,7 @@ svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .pr{fill:var(--prop)} .pr2{fill:var(--prop2)} .ball{fill:var(--ball)} .seam{fill:none;stroke:var(--stage);stroke-width:1.2;opacity:.5}
 .mat{fill:var(--mat)} .bol{fill:var(--plum-soft)} .wall{fill:var(--wall)} .wl{stroke:var(--line-strong);stroke-width:1.5}
 .blk{fill:var(--plum-soft);opacity:.75} .bed{fill:var(--bed)} .pil{fill:var(--prop2)} .cush{fill:var(--cush)} .scarf{fill:none;stroke:#E0A13A;stroke-width:3.2;stroke-linecap:round}
-.bw{stroke:var(--swaddle)} .bc{stroke:var(--babycloth)} .bs{stroke:var(--babyskin)} .fbs{fill:var(--babyskin)}
+.fbs{fill:var(--babyskin)}
 .btl{stroke:var(--prop2)} .milk{stroke:var(--milk)} .tt{stroke:var(--warn)}
 .press{fill:none;stroke:var(--teal);stroke-width:1.4;stroke-dasharray:2 3}
 
@@ -606,25 +619,80 @@ const n1=x=>Math.round(x*10)/10;
 const pl=(pts,c,w)=>`<polyline points="${pts.map(p=>n1(p[0])+','+n1(p[1])).join(' ')}" class="${c}" stroke-width="${w}"/>`;
 function fig(P,who,ins,insTop){
   if(!P)return'';ins=ins||'';
-  const k=solve(P),c=who,far=c+'2',mom=who==='m';let o='';
-  const foot=i=>{const E=k.legs[i][2];
-    if(k.side){const fa=P.fa!=null?(Array.isArray(P.fa)?P.fa[i]:P.fa):(k.f>0?90:-90);return pl([E,add(E,D(fa),7)],i===0?far:c,6)}
-    return`<circle cx="${n1(E[0])}" cy="${n1(E[1])}" r="3.6" class="f${c}"/>`};
-  if(k.side){o+=pl(k.arms[0],far,7)+pl(k.legs[0],far,9)+foot(0)}
-  else{o+=pl(k.legs[0],c,9)+foot(0)+pl(k.legs[1],c,9)+foot(1)}
-  o+=pl([P.hip,k.S],c,k.side?17:24);
-  if(mom&&!P.back&&!P.nb){
-    if(k.side){const fw=[k.perp[0]*k.f,k.perp[1]*k.f],bc=add(add(P.hip,k.d,18),fw,7),ang=Math.atan2(k.d[1],k.d[0])*180/Math.PI;
-      o+=`<ellipse cx="${n1(bc[0])}" cy="${n1(bc[1])}" rx="12.5" ry="11" transform="rotate(${n1(ang)} ${n1(bc[0])} ${n1(bc[1])})" class="belly"/>`}
-    else{const bc=add(P.hip,k.d,15);o+=`<circle cx="${n1(bc[0])}" cy="${n1(bc[1])}" r="12.5" class="belly"/>`}
-  }
-  if(k.side){o+=pl(k.legs[1],c,9)+foot(1)+(insTop?'':ins)+pl(k.arms[1],c,7)}
-  else{o+=(insTop?'':ins)+pl(k.arms[0],c,7)+pl(k.arms[1],c,7)}
-  o+=pl([k.S,add(k.S,k.d,6)],c,8);
-  o+=`<circle cx="${n1(k.hc[0])}" cy="${n1(k.hc[1])}" r="9" class="f${c}"/>`;
-  if(mom){const ph=[-k.dh[1],k.dh[0]];
-    const bun=k.side?add(add(k.hc,ph,-7.5*k.f),k.dh,2.5):add(k.hc,k.dh,8.6);
-    o+=`<circle cx="${n1(bun[0])}" cy="${n1(bun[1])}" r="4.4" class="f${c}"/>`}
+  const k=solve(P),mom=who==='m',side=k.side,f=k.f;let o='';
+  const SK=mom?'skm':'skp',TOP=mom?'clm':'clp',BOT=mom?'lgm':'lgp',HAIR='hair';
+  const fw=side?[k.perp[0]*f,k.perp[1]*f]:k.perp;
+  const T=(u,v)=>add(add(P.hip,k.d,u),fw,v);
+  const lerp2=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];
+  const nrm=(a,b)=>{const dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy)||1;return[-dy/L,dx/L]};
+  const smooth=pts=>{const n=pts.length;const m=i=>lerp2(pts[i%n],pts[(i+1)%n],.5);let d=`M${n1(m(0)[0])},${n1(m(0)[1])}`;for(let i=1;i<=n;i++){const p=pts[i%n],q=m(i);d+=` Q${n1(p[0])},${n1(p[1])} ${n1(q[0])},${n1(q[1])}`}return d+'Z'};
+  const blob=(pts,cls)=>`<path d="${smooth(pts)}" class="${cls}"/>`;
+  const cap=(a,b,wa,wb,cls)=>{const nn=nrm(a,b);const pts=[add(a,nn,wa/2),add(b,nn,wb/2),add(b,nn,-wb/2),add(a,nn,-wa/2)];
+    return`<path d="M${pts.map(p=>n1(p[0])+','+n1(p[1])).join(' L')}Z" class="${cls}"/><circle cx="${n1(a[0])}" cy="${n1(a[1])}" r="${n1(wa/2)}" class="${cls}"/><circle cx="${n1(b[0])}" cy="${n1(b[1])}" r="${n1(wb/2)}" class="${cls}"/>`};
+  const g=(inner,far)=>far?`<g class="far">${inner}</g>`:inner;
+  const arm=(i,far)=>{const [B,J,E]=k.arms[i];let a='';
+    if(mom){a+=cap(B,J,9,7.6,TOP)+cap(J,lerp2(J,E,.35),7.6,6.6,TOP)+cap(lerp2(J,E,.33),E,6.4,5.4,SK)}
+    else{a+=cap(B,lerp2(B,J,.6),10,8.6,TOP)+cap(lerp2(B,J,.55),J,8,7.4,SK)+cap(J,E,7.4,5.8,SK)}
+    const hd=nrm(J,E),dir=[-hd[1],hd[0]];const hc=add(E,dir,2.2);
+    a+=`<ellipse cx="${n1(hc[0])}" cy="${n1(hc[1])}" rx="3.6" ry="3" transform="rotate(${n1(Math.atan2(dir[1],dir[0])*180/Math.PI)} ${n1(hc[0])} ${n1(hc[1])})" class="${SK}"/>`;
+    return g(a,far)};
+  const leg=(i,far)=>{const [B,J,E]=k.legs[i];let a=cap(B,J,mom?12.5:13,9.6,BOT)+cap(J,E,9.6,7,BOT);
+    if(side){const fa=P.fa!=null?(Array.isArray(P.fa)?P.fa[i]:P.fa):(f>0?90:-90);const toe=add(E,D(fa),8);a+=cap(add(E,D(fa),-1),toe,6,4.4,SK)}
+    else a+=`<ellipse cx="${n1(E[0])}" cy="${n1(E[1]+1.5)}" rx="4.2" ry="3" class="${SK}"/>`;
+    return g(a,far)};
+  const preg=mom&&!P.nb&&!P.back;
+  function torso(){let t='';
+    if(side){
+      const front=mom?(preg?[[45,4],[40,8.5],[33,10.5],[27.5,9],[22,15.5],[15,19.5],[7,15],[0,10]]:[[45,4],[40,8.5],[33,10.5],[27,9],[18,9.5],[8,9.5],[0,10]]):[[45,5],[38,9.5],[28,9.5],[14,8.5],[0,8.5]];
+      const back=mom?[[0,-10.5],[9,-8],[21,-6.5],[33,-8],[42,-8.5]]:[[0,-9],[14,-8.5],[30,-9],[42,-8.5]];
+      t+=blob([...front.map(([u,v])=>T(u,v)),...back.map(([u,v])=>T(u,v))],TOP);
+      if(mom){/* kurta skirt over the near thigh */
+        const [B,J]=k.legs[1],A=lerp2(B,J,.62),tn=nrm(B,J);let h1=add(A,tn,8.5),h2=add(A,tn,-8.5);
+        const hf=T(-1,10),hb=T(-1,-10.5);const dist=(p,q)=>Math.hypot(p[0]-q[0],p[1]-q[1]);if(dist(hf,h1)>dist(hf,h2))[h1,h2]=[h2,h1];
+        t+=`<path d="M${n1(hb[0])},${n1(hb[1])} L${n1(hf[0])},${n1(hf[1])} L${n1(h1[0])},${n1(h1[1])} L${n1(h2[0])},${n1(h2[1])}Z" class="${TOP}"/>`;
+        const tr1=lerp2(h1,h2,.04),tr2=lerp2(h1,h2,.96);t+=`<line x1="${n1(tr1[0])}" y1="${n1(tr1[1])}" x2="${n1(tr2[0])}" y2="${n1(tr2[1])}" class="trim"/>`;
+        if(preg){const hl=T(17,13);t+=`<ellipse cx="${n1(hl[0])}" cy="${n1(hl[1])}" rx="3.5" ry="6" transform="rotate(${n1(Math.atan2(k.d[1],k.d[0])*180/Math.PI)} ${n1(hl[0])} ${n1(hl[1])})" class="shine"/>`}
+        const nk=T(44,3.5),nk2=T(39,6.5);t+=`<path d="M${n1(T(44,-3)[0])},${n1(T(44,-3)[1])} Q${n1(nk2[0])},${n1(nk2[1])} ${n1(nk[0])},${n1(nk[1])}" class="trim" fill="none"/>`}
+    }else{
+      const sw=mom?11.5:13.5;
+      const pts=[[46,-sw],[46,sw],[34,sw-1],[22,mom?8.5:12],[8,mom?11:11.5],[-2,mom?11.5:11],[-2,mom?-11.5:-11],[8,mom?-11:-11.5],[22,mom?-8.5:-12],[34,-sw+1]];
+      t+=blob(pts.map(([u,v])=>T(u,v)),TOP);
+      if(mom){const [BL,JL]=k.legs[0],[BR,JR]=k.legs[1];const a1=lerp2(BL,JL,.55),a2=lerp2(BR,JR,.55);const out=k.perp;
+        const p1=T(-1,-11.5),p2=T(-1,11.5),q2=add(a2,out,6),q1=add(a1,out,-6);
+        t+=`<path d="M${n1(p1[0])},${n1(p1[1])} L${n1(p2[0])},${n1(p2[1])} L${n1(q2[0])},${n1(q2[1])} L${n1(q1[0])},${n1(q1[1])}Z" class="${TOP}"/>`;
+        t+=`<line x1="${n1(q1[0])}" y1="${n1(q1[1])}" x2="${n1(q2[0])}" y2="${n1(q2[1])}" class="trim"/>`;
+        if(!P.back){const v1=T(45,-3.5),v2=T(38,0),v3=T(45,3.5);t+=`<path d="M${n1(v1[0])},${n1(v1[1])} L${n1(v2[0])},${n1(v2[1])} L${n1(v3[0])},${n1(v3[1])}" class="trim" fill="none"/>`}
+        if(preg){const bc=T(15,0);t+=`<circle cx="${n1(bc[0])}" cy="${n1(bc[1])}" r="12.5" class="${TOP} bellyf"/><ellipse cx="${n1(bc[0]-3.5)}" cy="${n1(bc[1]-4)}" rx="3.2" ry="5" class="shine"/>`}}
+    }
+    return t}
+  function head(){const hc=k.hc,dh=k.dh,ph=[-dh[1],dh[0]],fh=side?[ph[0]*f,ph[1]*f]:ph;let h='';
+    const neck=cap(k.S,add(k.S,k.d,7),7.5,7,SK);h+=neck;
+    if(P.back){h+=`<circle cx="${n1(hc[0])}" cy="${n1(hc[1])}" r="9.6" class="${HAIR}"/>`;if(mom){const bn=add(hc,dh,7);h+=`<circle cx="${n1(bn[0])}" cy="${n1(bn[1])}" r="4.6" class="${HAIR}"/>`}return h}
+    if(side){
+      const hairC=add(add(hc,fh,-2),dh,1.4);h+=`<circle cx="${n1(hairC[0])}" cy="${n1(hairC[1])}" r="${mom?9.8:9.5}" class="${HAIR}"/>`;
+      if(mom){const bn=add(add(hc,fh,-8),dh,3);h+=`<circle cx="${n1(bn[0])}" cy="${n1(bn[1])}" r="4.8" class="${HAIR}"/>`}
+      const fc=add(add(hc,fh,1.6),dh,-.8);h+=`<ellipse cx="${n1(fc[0])}" cy="${n1(fc[1])}" rx="7.6" ry="8.6" transform="rotate(${n1(Math.atan2(dh[1],dh[0])*180/Math.PI-90)} ${n1(fc[0])} ${n1(fc[1])})" class="${SK}"/>`;
+      const fr=add(add(hc,fh,-3.5),dh,4.6),fr2=add(add(hc,fh,6),dh,3.4);h+=`<path d="M${n1(fr[0])},${n1(fr[1])} Q${n1(add(hc,dh,8)[0])},${n1(add(hc,dh,8)[1])} ${n1(fr2[0])},${n1(fr2[1])}" class="hairline"/>`;
+      const nose=add(add(hc,fh,8.6),dh,-.6);h+=`<circle cx="${n1(nose[0])}" cy="${n1(nose[1])}" r="1.7" class="${SK}"/>`;
+      const eye=add(add(hc,fh,5),dh,1.2);h+=`<circle cx="${n1(eye[0])}" cy="${n1(eye[1])}" r=".95" class="eye"/>`;
+      const m1=add(add(hc,fh,5.4),dh,-3.8),m2=add(add(hc,fh,7.4),dh,-3.4);h+=`<line x1="${n1(m1[0])}" y1="${n1(m1[1])}" x2="${n1(m2[0])}" y2="${n1(m2[1])}" class="mouth"/>`;
+      const ear=add(add(hc,fh,-1.2),dh,.2);h+=`<circle cx="${n1(ear[0])}" cy="${n1(ear[1])}" r="1.8" class="${SK} ear"/>`;
+      if(mom){const er=add(ear,dh,-2.6);h+=`<circle cx="${n1(er[0])}" cy="${n1(er[1])}" r=".9" class="gold"/>`}
+    }else{
+      const hairC=add(hc,dh,1.6);h+=`<circle cx="${n1(hairC[0])}" cy="${n1(hairC[1])}" r="${mom?10:9.6}" class="${HAIR}"/>`;
+      if(mom){const bn=add(hc,dh,9);h+=`<circle cx="${n1(bn[0])}" cy="${n1(bn[1])}" r="4.6" class="${HAIR}"/>`;
+        [-1,1].forEach(sg=>{const sd=add(add(hc,ph,sg*7.4),dh,-2);h+=`<ellipse cx="${n1(sd[0])}" cy="${n1(sd[1])}" rx="2.6" ry="6" class="${HAIR}"/>`})}
+      const fc=add(hc,dh,-.8);h+=`<ellipse cx="${n1(fc[0])}" cy="${n1(fc[1])}" rx="7.4" ry="8.4" transform="rotate(${n1(Math.atan2(dh[1],dh[0])*180/Math.PI-90)} ${n1(fc[0])} ${n1(fc[1])})" class="${SK}"/>`;
+      const fr1=add(add(hc,ph,-7.2),dh,4.4),fr2=add(add(hc,ph,7.2),dh,4.4),frm=add(add(hc,ph,1.5),dh,5.6);h+=`<path d="M${n1(fr1[0])},${n1(fr1[1])} Q${n1(frm[0])},${n1(frm[1])} ${n1(fr2[0])},${n1(fr2[1])} L${n1(add(hc,dh,9)[0])},${n1(add(hc,dh,9)[1])}Z" class="hair"/>`;
+      [-1,1].forEach(sg=>{const e=add(add(hc,ph,sg*3),dh,.6);h+=`<circle cx="${n1(e[0])}" cy="${n1(e[1])}" r=".95" class="eye"/>`;const ck=add(add(hc,ph,sg*4.6),dh,-2.4);h+=`<circle cx="${n1(ck[0])}" cy="${n1(ck[1])}" r="1.6" class="blush"/>`});
+      const m1=add(add(hc,ph,-2),dh,-3.6),m2=add(add(hc,ph,2),dh,-3.6),mc=add(hc,dh,-5);h+=`<path d="M${n1(m1[0])},${n1(m1[1])} Q${n1(mc[0])},${n1(mc[1])} ${n1(m2[0])},${n1(m2[1])}" class="mouth" fill="none"/>`;
+      if(mom){const b=add(hc,dh,6.6);h+=`<circle cx="${n1(b[0])}" cy="${n1(b[1])}" r=".9" class="bindi"/>`}
+    }
+    return h}
+  if(side){o+=arm(0,true)+leg(0,true)+torso()+leg(1,false);
+    if(mom){/* re-draw skirt over near thigh */const sk=torso().match(/<path d="M[^"]*" class="clm"\/><line[^>]*class="trim"\/>/);if(sk)o+=sk[0]}
+    o+=(insTop?'':ins)+head()+arm(1,false)}
+  else{o+=leg(0,false)+leg(1,false)+torso()+head()+(insTop?'':ins)+arm(0,false)+arm(1,false)}
   if(insTop)o+=ins;
   return o;
 }
@@ -1087,13 +1155,18 @@ function sample(ex,t){
   const f=fr[n-1];return{m:f.m,q:f.q,p:f.p||{},i:n-1};
 }
 function babySvg(B){
-  if(!B)return'';const L=B.len||22,hr=B.hr||6.5,d=D(B.a),c=[B.x,B.y],top=add(c,d,L/2),bot=add(c,d,-L/2),hc=add(c,d,L/2+hr-1);let o='';
-  if(B.lg>.5){o+=pl([bot,add(bot,D(B.a+180-30),10)],'bs',5)+pl([bot,add(bot,D(B.a+180+30),10)],'bs',5)}
-  o+=pl([bot,top],B.sw>.5?'bw':'bc',13);
-  if(B.sw<=.5)o+=pl([add(c,d,L/2-4),add(add(c,d,L/2-4),D(B.a+(B.arm||120)),8)],'bs',4.5);
-  o+=`<circle cx="${n1(hc[0])}" cy="${n1(hc[1])}" r="${hr}" class="fbs"/>`;
+  if(!B)return'';const L=B.len||22,hr=(B.hr||6.5)+.6,d=D(B.a),c=[B.x,B.y],top=add(c,d,L/2),bot=add(c,d,-L/2),hc=add(c,d,L/2+hr-1.5);const pp=[-d[1],d[0]];let o='';
+  const cap=(a,b,wa,wb,cls)=>{const L2=Math.hypot(b[0]-a[0],b[1]-a[1])||1,nn=[-(b[1]-a[1])/L2,(b[0]-a[0])/L2];const q=[add(a,nn,wa/2),add(b,nn,wb/2),add(b,nn,-wb/2),add(a,nn,-wa/2)];return`<path d="M${q.map(p=>n1(p[0])+','+n1(p[1])).join(' L')}Z" class="${cls}"/><circle cx="${n1(a[0])}" cy="${n1(a[1])}" r="${n1(wa/2)}" class="${cls}"/><circle cx="${n1(b[0])}" cy="${n1(b[1])}" r="${n1(wb/2)}" class="${cls}"/>`};
+  if(B.lg>.5){[-28,28].forEach(ang=>{const k1=add(bot,D(B.a+180+ang),6),f1=add(k1,D(B.a+180+ang*.4),5.5);o+=cap(bot,k1,5.8,5,'bc')+cap(k1,f1,4.6,3.8,'bs')})}
+  if(B.sw>.5){o+=cap(bot,top,14,15,'bw');const f1=lerp2b(bot,top,.35),f2=lerp2b(bot,top,.7);[f1,f2].forEach(fp=>{const x1=add(fp,pp,-6),x2=add(fp,pp,6);o+=`<line x1="${n1(x1[0])}" y1="${n1(x1[1])}" x2="${n1(x2[0])}" y2="${n1(x2[1])}" class="fold"/>`})}
+  else{o+=cap(bot,top,12,13,'bc');const ae=add(add(c,d,L/2-4),D(B.a+(B.arm||120)),8);o+=cap(add(c,d,L/2-4),ae,4.6,4,'bs')+`<circle cx="${n1(ae[0])}" cy="${n1(ae[1])}" r="2.4" class="bs2"/>`}
+  o+=`<circle cx="${n1(hc[0])}" cy="${n1(hc[1])}" r="${n1(hr)}" class="fbs"/>`;
+  const tuft=add(hc,d,hr-1);o+=`<path d="M${n1(add(tuft,pp,-2.5)[0])},${n1(add(tuft,pp,-2.5)[1])} Q${n1(add(tuft,d,2.6)[0])},${n1(add(tuft,d,2.6)[1])} ${n1(add(tuft,pp,2)[0])},${n1(add(tuft,pp,2)[1])}" class="tuft"/>`;
+  [-1,1].forEach(sg=>{const e=add(add(hc,pp,sg*2.4),d,.6),e1=add(e,pp,-1.1),e2=add(e,pp,1.1),em=add(e,d,-.9);o+=`<path d="M${n1(e1[0])},${n1(e1[1])} Q${n1(em[0])},${n1(em[1])} ${n1(e2[0])},${n1(e2[1])}" class="beye"/>`;const ck=add(add(hc,pp,sg*3.6),d,-1.6);o+=`<circle cx="${n1(ck[0])}" cy="${n1(ck[1])}" r="1.3" class="blush"/>`});
+  const m=add(hc,d,-2.8);o+=`<circle cx="${n1(m[0])}" cy="${n1(m[1])}" r=".7" class="mouthf"/>`;
   return o;
 }
+const lerp2b=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];
 function bottleSvg(x,y,a){const d=D(a),t=[x,y],n=add(t,d,4),e=add(t,d,22),mid=add(t,d,12);
   return pl([t,n],'tt',3.5)+pl([n,e],'btl',9)+pl([mid,e],'milk',5.5)}
 function scene(ex,s,tm){

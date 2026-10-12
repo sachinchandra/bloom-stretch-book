@@ -87,8 +87,8 @@ dialog.auth{max-width:420px!important;width:calc(100vw - 32px)!important;padding
     const local=window.bloomState();let key='bloom-synced-'+user.id,first=true;try{first=!localStorage.getItem(key)}catch(e){}
     let merged=local;
     if(data){const rb=data.baby||{},rm=data.mom||{};
-      merged=first?{baby:{dob:rb.dob||local.baby.dob||'',done:unionMap(rb.done,local.baby.done),ec:{...(local.baby.ec||{}),...(rb.ec||{})},shop:unionMap(rb.shop,local.baby.shop)},mom:{log:unionLog(rm.log,local.mom.log),plan:(rm.plan&&Object.keys(rm.plan).length?rm.plan:local.mom.plan),times:rm.times||local.mom.times,since:rm.since||local.mom.since}}
-                  :{baby:{dob:rb.dob||'',done:rb.done||{},ec:rb.ec||{},shop:rb.shop||{}},mom:{log:rm.log||{},plan:rm.plan||{},times:rm.times||{am:'07:30',pm:'19:00'},since:rm.since||''}};
+      merged=first?{baby:{dob:rb.dob||local.baby.dob||'',done:unionMap(rb.done,local.baby.done),ec:{...(local.baby.ec||{}),...(rb.ec||{})},shop:unionMap(rb.shop,local.baby.shop)},mom:{log:unionLog(rm.log,local.mom.log),plan:(rm.plan&&Object.keys(rm.plan).length?rm.plan:local.mom.plan),times:rm.times||local.mom.times,since:rm.since||local.mom.since,daily:(rm.daily&&rm.daily.log?{...local.mom.daily,...rm.daily,log:{...(local.mom.daily||{}).log,...rm.daily.log}}:local.mom.daily)}}
+                  :{baby:{dob:rb.dob||'',done:rb.done||{},ec:rb.ec||{},shop:rb.shop||{}},mom:{log:rm.log||{},plan:rm.plan||{},times:rm.times||{am:'07:30',pm:'19:00'},since:rm.since||'',daily:rm.daily||{}}};
       window.bloomApply(merged)}
     try{localStorage.setItem(key,'1')}catch(e){}
     ready=true;

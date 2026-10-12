@@ -3208,6 +3208,45 @@ const _bumpR=TOOL_RENDER.bump;TOOL_RENDER.bump=()=>_bumpR()+`<button class="pcta
 (()=>{const h=location.hash.slice(1);if(h==='journey-report'||h==='journey-plus')showView('journey',h.split('-')[1]);else if(!$j('view-journey').hidden)renderJourney(jtool)})();
 renderToday();
 
+/* ---------- first-run setup: ask where she is before showing any cards ---------- */
+(()=>{const s=document.createElement('style');s.textContent=`
+.onb{max-width:460px;margin:8px auto 24px;text-align:center}.onb h2{font-family:var(--display);font-size:1.6rem;margin:10px 0 6px}.onb>p{color:var(--muted);margin:0 0 18px}
+.onb .hero{width:150px;height:150px;margin:0 auto}
+.onb-opts{display:flex;flex-direction:column;gap:10px;text-align:left}
+.onb-opt{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
+.onb-opt.sel{border:2px solid var(--plum)}
+.onb-opt>button{all:unset;cursor:pointer;display:flex;gap:12px;align-items:center;width:100%}
+.onb-opt>button .pic{flex:none;width:48px;height:48px;background:var(--plum-tint);border-radius:14px;padding:3px}
+.onb-opt b{font-family:var(--display);display:block}.onb-opt span{font-size:.85rem;color:var(--muted)}
+.onb-f{margin-top:12px;display:flex;flex-direction:column;gap:8px}.onb-f label{font-size:.8rem;font-weight:700;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.onb-f input{font:inherit;padding:10px 12px;border:1px solid var(--line-strong);border-radius:12px;background:var(--bg);color:var(--ink)}
+.onb-f .btn{justify-content:center}.onb .skip{margin-top:14px;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;cursor:pointer}
+.onb .err{color:var(--crit);font-size:.85rem;min-height:1em}
+`;document.head.appendChild(s)})();
+let onbSel='preg';
+function needsSetup(){return !mstate.daily.due&&!bstate.dob&&!mstate.daily.skipSetup}
+function onbHtml(){const opt=(id,ic,t,d,body)=>`<div class="onb-opt ${onbSel===id?'sel':''}"><button data-onb="${id}">${icon(ic,48)}<div><b>${t}</b><span>${d}</span></div></button>${onbSel===id?`<div class="onb-f">${body}</div>`:''}</div>`;
+  return`<div class="onb">${wombSvg(24,150).replace('class="womb"','class="womb hero"')}<h2>Welcome to BloomMom</h2><p>Tell us where you are, and we'll set up your daily medicines, stretches and tips for that week.</p>
+  <div class="onb-opts">
+   ${opt('preg','fruit','I\'m pregnant','We\'ll plan each week from your due date',`<label>Due date<input type="date" id="oDue"></label><label>Don't know it? First day of your last period<input type="date" id="oLmp"></label><button class="btn solid" data-onbsave="preg">Start my plan</button>`)}
+   ${opt('baby','baby','My baby is born','Milestones, vaccines and care by age',`<label>Baby's date of birth<input type="date" id="oDob"></label><button class="btn solid" data-onbsave="baby">Start my plan</button>`)}
+  </div><div class="err" id="oErr"></div><button class="skip" data-onbskip="1">Just looking around for now</button></div>`}
+const _renderToday4=renderToday;
+renderToday=function(){if(!needsSetup())return _renderToday4();const el=$j('m-today');el.innerHTML=`<div class="panel-inner">${onbHtml()}</div>`};
+$j('m-today').addEventListener('click',e=>{let b;
+  if(b=e.target.closest('[data-onb]')){onbSel=b.dataset.onb;renderToday();return}
+  if(e.target.closest('[data-onbskip]')){mstate.daily.skipSetup=1;msave();renderToday();return}
+  if(b=e.target.closest('[data-onbsave]')){const err=$j('oErr');const td=today();
+    if(b.dataset.onbsave==='preg'){let due=$j('oDue').value;const lmp=$j('oLmp').value;if(!due&&lmp){const d=new Date(lmp+'T00:00:00');d.setDate(d.getDate()+280);due=dayKey(d)}
+      if(!due){err.textContent='Add your due date, or the first day of your last period.';return}
+      const dd=new Date(due+'T00:00:00');if(dd<new Date(td.getTime()-21*DAY)||dd>new Date(td.getTime()+300*DAY)){err.textContent='That date doesn\'t look right. A due date is within the next 9–10 months.';return}
+      mstate.daily.due=due;msave()}
+    else{const dob=$j('oDob').value;if(!dob){err.textContent='Add your baby\'s date of birth.';return}
+      const d=new Date(dob+'T00:00:00');if(d>td||d<new Date(td.getTime()-3*366*DAY)){err.textContent='Add a date in the last 3 years.';return}
+      bstate.dob=dob;bsave();if(typeof dobIn!=='undefined')dobIn.value=dob;renderAge();renderMilestones();renderVaccines()}
+    renderPlan();renderToday();renderProgress();if(!$j('view-journey').hidden)renderJourney(jtool);window.scrollTo(0,0)}},true);
+renderToday();
+
 </script>
 
 <footer style="max-width:1180px;margin:0 auto;padding:0 20px 40px;font-size:.85rem;color:var(--muted)"><a href="/privacy.html" style="color:inherit">Privacy</a> · <a href="/terms.html" style="color:inherit">Terms</a></footer>

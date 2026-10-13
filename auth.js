@@ -22,6 +22,9 @@ dialog.auth{max-width:420px!important;width:calc(100vw - 32px)!important;padding
 .auth .who b{display:block;color:var(--ink);word-break:break-all}
 .auth .danger{background:none;border:1px solid var(--crit);color:var(--crit)}
 .auth .stack{display:flex;flex-direction:column;gap:8px}
+.auth .delbox{border:1px solid var(--crit);border-radius:12px;padding:12px 14px;margin-top:6px}.auth .delbox b{color:var(--crit)}.auth .delbox p{margin:6px 0 10px}
+.auth .danger.solid{background:var(--crit);color:#fff}.auth .danger.solid:disabled{opacity:.45}
+@media (max-width:520px){.acct>span:last-child{display:none}.acct{padding:4px}}
 .gate{display:none}
 .gated .appnav,.gated .wrap{display:none!important}
 .gated dialog.auth::backdrop{background:var(--bg)}
@@ -55,7 +58,8 @@ dialog.auth{max-width:420px!important;width:calc(100vw - 32px)!important;padding
    <div id="aStepEmail"><label for="aEmail">Email</label><input id="aEmail" type="email" autocomplete="email" placeholder="you@example.com"><button class="btn pri" id="aSend" type="button">Email me a code</button></div>
    <div id="aStepCode" hidden><p style="margin:0 0 10px">We emailed <b id="aSentTo"></b>. Type the 6-digit code from that email below, or tap the link in the email on this phone. Can't find it? Check your spam or promotions folder.</p><label for="aCode">6-digit code</label><input id="aCode" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••"><button class="btn pri" id="aVerify" type="button">Verify and sign in</button><button class="linkbtn" id="aBack" type="button">Use a different email</button></div></div>
   <div id="aIn" hidden><h2>Your account</h2><div class="who"><span>Signed in as</span><b id="aWho"></b><span id="aSync"></span></div>
-   <div class="stack"><button class="btn" id="aOutBtn" type="button">Sign out</button><button class="btn danger" id="aDel" type="button">Delete my saved data</button><p id="aDelConfirm" hidden>This removes your ticks, baby details and stretch log from the cloud. <button class="linkbtn" id="aDelYes" type="button" style="color:var(--crit)">Yes, delete it</button></p></div></div>
+   <div class="stack"><button class="btn" id="aOutBtn" type="button">Sign out</button><button class="btn danger" id="aDel" type="button">Delete my account</button>
+   <div id="aDelConfirm" hidden class="delbox"><b>Delete your account for good?</b><p>This permanently deletes your BloomMom account and everything saved in it: your plan, ticks, readings, baby's details and checklists. It can't be undone.</p><label for="aDelType">Type DELETE to confirm</label><input id="aDelType" autocomplete="off" autocapitalize="characters" placeholder="DELETE"><button class="btn danger solid" id="aDelYes" type="button" disabled>Permanently delete my account</button><button class="linkbtn" id="aDelNo" type="button">Keep my account</button></div></div></div>
   <p class="amsg" id="aMsg" role="status"></p><p class="gate-home"><a href="/">← Back to the BloomMom home page</a></p>`;
   document.body.appendChild(dlg);
   const $=id=>document.getElementById(id);
@@ -63,6 +67,10 @@ dialog.auth{max-width:420px!important;width:calc(100vw - 32px)!important;padding
 
   const sb=window.supabase.createClient(C.supabaseUrl,C.supabaseAnonKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,flowType:'pkce'}});
   let user=null,ready=false,timer=null,syncText='',pulledFor=null;
+  /* local app data belongs to one account: clear it on sign-out, and when a different account signs in on this phone */
+  const OWNER='bloom-owner';
+  function wipeLocal(){try{Object.keys(localStorage).filter(k=>k.startsWith('bloom-')).forEach(k=>localStorage.removeItem(k))}catch(e){}try{indexedDB.deleteDatabase('bloom-bump')}catch(e){}}
+  function markReady(){window.bloomReady=true;document.dispatchEvent(new Event('bloom-ready'))}
 
   function setSync(t){syncText=t;paint()}
   function paint(){
@@ -82,8 +90,11 @@ dialog.auth{max-width:420px!important;width:calc(100vw - 32px)!important;padding
   }
   async function pull(){
     if(!user)return;setSync('Loading…');ready=false;
+    let owner=null;try{owner=localStorage.getItem(OWNER)}catch(e){}
+    if(owner&&owner!==user.id){wipeLocal();try{localStorage.setItem(OWNER,user.id)}catch(e){}location.reload();return}
+    try{localStorage.setItem(OWNER,user.id)}catch(e){}
     const {data,error}=await sb.from('user_state').select('baby,mom').eq('user_id',user.id).maybeSingle();
-    if(error){setSync('Sync unavailable');ready=true;return}
+    if(error){setSync('Sync unavailable');ready=true;markReady();return}
     const local=window.bloomState();let key='bloom-synced-'+user.id,first=true;try{first=!localStorage.getItem(key)}catch(e){}
     let merged=local;
     if(data){const rb=data.baby||{},rm=data.mom||{};
@@ -91,7 +102,7 @@ dialog.auth{max-width:420px!important;width:calc(100vw - 32px)!important;padding
                   :{baby:{dob:'',done:{},ec:{},shop:{},...rb},mom:{log:{},plan:{},tasks:[],daily:{},...rm}};
       window.bloomApply(merged)}
     try{localStorage.setItem(key,'1')}catch(e){}
-    ready=true;
+    ready=true;markReady();
     if(!data||first)await push();else setSync('Synced');
   }
   window.bloomOnSave=()=>{if(!user||!ready)return;clearTimeout(timer);setSync('Saving…');timer=setTimeout(push,700)};
@@ -108,7 +119,8 @@ dialog.auth{max-width:420px!important;width:calc(100vw - 32px)!important;padding
   const _push=push;push=async()=>{timer=null;return _push()};
 
   fetch(C.supabaseUrl+'/auth/v1/settings',{headers:{apikey:C.supabaseAnonKey}}).then(r=>r.json()).then(st=>{if(!(st.external&&st.external.google)){$('aGoogle').hidden=true;$('aOr').hidden=true}}).catch(()=>{});
-  btn.onclick=()=>{msg('');$('aDelConfirm').hidden=true;dlg.showModal()};
+  btn.onclick=()=>{msg('');$('aDelConfirm').hidden=true;$('aDel').hidden=false;dlg.showModal()};
+  window.bloomAccount=()=>btn.click();
   $('aClose').onclick=()=>dlg.close();
   dlg.addEventListener('click',e=>{if(e.target===dlg&&!gated)dlg.close()});
   $('aGoogle').onclick=async()=>{msg('Opening Google…');const {error}=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+'/app/'}});if(error)msg(error.message,true)};
@@ -123,8 +135,11 @@ dialog.auth{max-width:420px!important;width:calc(100vw - 32px)!important;padding
   $('aCode').addEventListener('keydown',e=>{if(e.key==='Enter')$('aVerify').click()});
   $('aEmail').addEventListener('keydown',e=>{if(e.key==='Enter')$('aSend').click()});
   $('aBack').onclick=()=>{$('aStepEmail').hidden=false;$('aStepCode').hidden=true;msg('')};
-  $('aOutBtn').onclick=async()=>{await sb.auth.signOut();dlg.close()};
-  $('aDel').onclick=()=>{$('aDelConfirm').hidden=false};
-  $('aDelYes').onclick=async()=>{const {error}=await sb.from('user_state').delete().eq('user_id',user.id);if(error)return msg(error.message,true);
-    try{localStorage.removeItem('bloom-synced-'+user.id)}catch(e){}await sb.auth.signOut();msg('');dlg.close()};
+  $('aOutBtn').onclick=async()=>{clearTimeout(timer);if(timer)await _push();await sb.auth.signOut();wipeLocal();location.replace('/app/')};
+  $('aDel').onclick=()=>{$('aDelConfirm').hidden=false;$('aDel').hidden=true;$('aDelType').value='';$('aDelYes').disabled=true;$('aDelType').focus()};
+  $('aDelNo').onclick=()=>{$('aDelConfirm').hidden=true;$('aDel').hidden=false;msg('')};
+  $('aDelType').oninput=()=>{$('aDelYes').disabled=$('aDelType').value.trim().toUpperCase()!=='DELETE'};
+  $('aDelYes').onclick=async()=>{$('aDelYes').disabled=true;msg('Deleting your account…');clearTimeout(timer);ready=false;
+    const {error}=await sb.rpc('delete_my_account');if(error){$('aDelYes').disabled=false;return msg('Could not delete your account. Check your connection and try again.',true)}
+    try{await sb.auth.signOut({scope:'local'})}catch(e){}wipeLocal();location.replace('/?deleted=1')};
 })();

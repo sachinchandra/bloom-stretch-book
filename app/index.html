@@ -3208,43 +3208,98 @@ const _bumpR=TOOL_RENDER.bump;TOOL_RENDER.bump=()=>_bumpR()+`<button class="pcta
 (()=>{const h=location.hash.slice(1);if(h==='journey-report'||h==='journey-plus')showView('journey',h.split('-')[1]);else if(!$j('view-journey').hidden)renderJourney(jtool)})();
 renderToday();
 
-/* ---------- first-run setup: ask where she is before showing any cards ---------- */
+/* ---------- first-run setup: a full-screen, step-by-step welcome shown right after sign-up ---------- */
 (()=>{const s=document.createElement('style');s.textContent=`
-.onb{max-width:460px;margin:8px auto 24px;text-align:center}.onb h2{font-family:var(--display);font-size:1.6rem;margin:10px 0 6px}.onb>p{color:var(--muted);margin:0 0 18px}
-.onb .hero{width:150px;height:150px;margin:0 auto}
-.onb-opts{display:flex;flex-direction:column;gap:10px;text-align:left}
-.onb-opt{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
-.onb-opt.sel{border:2px solid var(--plum)}
-.onb-opt>button{all:unset;cursor:pointer;display:flex;gap:12px;align-items:center;width:100%}
-.onb-opt>button .pic{flex:none;width:48px;height:48px;background:var(--plum-tint);border-radius:14px;padding:3px}
-.onb-opt b{font-family:var(--display);display:block}.onb-opt span{font-size:.85rem;color:var(--muted)}
-.onb-f{margin-top:12px;display:flex;flex-direction:column;gap:8px}.onb-f label{font-size:.8rem;font-weight:700;color:var(--muted);display:flex;flex-direction:column;gap:4px}
-.onb-f input{font:inherit;padding:10px 12px;border:1px solid var(--line-strong);border-radius:12px;background:var(--bg);color:var(--ink)}
-.onb-f .btn{justify-content:center}.onb .skip{margin-top:14px;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;cursor:pointer}
-.onb .err{color:var(--crit);font-size:.85rem;min-height:1em}
+#onb{position:fixed;inset:0;z-index:900;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(env(safe-area-inset-top,0px) + 18px) 20px calc(env(safe-area-inset-bottom,0px) + 28px)}
+#onb .in{max-width:440px;margin:0 auto;display:flex;flex-direction:column;min-height:100%}
+#onb .top{display:flex;align-items:center;justify-content:space-between;min-height:40px;margin-bottom:6px}
+#onb .back{background:none;border:0;font:700 .95rem var(--body);color:var(--plum);padding:8px 0;cursor:pointer}
+#onb .steps{display:flex;gap:6px}#onb .steps i{width:26px;height:6px;border-radius:3px;background:var(--line)}#onb .steps i.on{background:var(--plum)}
+#onb .art{display:flex;justify-content:center;margin:6px 0 4px}
+#onb h1{font-family:var(--display);font-size:1.75rem;line-height:1.15;margin:8px 0 8px;text-align:center}
+#onb .sub{color:var(--muted);text-align:center;margin:0 0 22px;font-size:1rem;line-height:1.45}
+#onb .choice{display:flex;align-items:center;gap:14px;width:100%;background:var(--surface);border:2px solid var(--line);border-radius:20px;padding:16px;margin-bottom:12px;text-align:left;font:inherit;color:var(--ink);cursor:pointer}
+#onb .choice:active,#onb .choice:hover{border-color:var(--plum)}
+#onb .choice .pic{flex:none;width:60px;height:60px;background:var(--plum-tint);border-radius:16px;padding:4px}
+#onb .choice b{font-family:var(--display);font-size:1.15rem;display:block}#onb .choice span{color:var(--muted);font-size:.9rem}
+#onb .choice .chev{margin-left:auto;font-size:1.4rem;color:var(--plum)}
+#onb label.big{display:block;font-weight:800;font-size:.95rem;margin:0 0 8px}
+#onb input[type=date]{display:block;width:100%;box-sizing:border-box;font:600 1.15rem var(--body);padding:16px;border:2px solid var(--line-strong);border-radius:16px;background:var(--surface);color:var(--ink);min-height:58px;-webkit-appearance:none;appearance:none}
+#onb input[type=date]:focus{outline:none;border-color:var(--plum)}
+#onb .alt{background:none;border:0;color:var(--teal);font:700 .95rem var(--body);padding:12px 0;cursor:pointer;text-align:left}
+#onb .prev{display:flex;gap:14px;align-items:center;background:var(--surface);border-radius:20px;padding:14px;margin-top:16px;border:1px solid var(--line)}
+#onb .prev .wkart{margin:0;flex-direction:column;gap:0}#onb .prev .wkart .eq{display:none}
+#onb .prev b{font-family:var(--display);font-size:1.1rem;display:block}#onb .prev span{color:var(--muted);font-size:.92rem}
+#onb .err{color:var(--crit);font-size:.92rem;margin-top:10px;min-height:1.2em}
+#onb .cta{margin-top:auto;padding-top:22px}
+#onb .go{width:100%;border:0;border-radius:16px;background:var(--plum);color:#fff;font:800 1.1rem var(--display);padding:17px;cursor:pointer}
+#onb .go:disabled{opacity:.4;cursor:default}
+#onb .skip{display:block;margin:14px auto 0;background:none;border:0;color:var(--muted);text-decoration:underline;font:inherit;cursor:pointer;padding:6px}
+#onb ul.ready{list-style:none;padding:0;margin:0}#onb ul.ready li{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 12px;margin-bottom:8px}
+#onb ul.ready .pic{flex:none;width:44px;height:44px}#onb ul.ready b{display:block}#onb ul.ready span{color:var(--muted);font-size:.88rem}
+html.onb-open{overflow:hidden}html.onb-open .tabbar{display:none!important}
+.setupcard{text-align:center;background:var(--surface);border:2px solid var(--plum);border-radius:22px;padding:22px 18px;margin:8px 0 16px}
+.setupcard h2{font-family:var(--display);margin:8px 0 6px}.setupcard p{color:var(--muted);margin:0 0 14px}
+.setupcard .go{border:0;border-radius:14px;background:var(--plum);color:#fff;font:800 1rem var(--display);padding:14px 22px;cursor:pointer}
 `;document.head.appendChild(s)})();
-let onbSel='preg';
+const ONB={step:'who',mode:'',date:'',lmp:false};
 function needsSetup(){return !mstate.daily.due&&!bstate.dob&&!mstate.daily.skipSetup}
-function onbHtml(){const opt=(id,ic,t,d,body)=>`<div class="onb-opt ${onbSel===id?'sel':''}"><button data-onb="${id}">${icon(ic,48)}<div><b>${t}</b><span>${d}</span></div></button>${onbSel===id?`<div class="onb-f">${body}</div>`:''}</div>`;
-  return`<div class="onb">${wombSvg(24,150).replace('class="womb"','class="womb hero"')}<h2>Welcome to BloomMom</h2><p>Tell us where you are, and we'll set up your daily medicines, stretches and tips for that week.</p>
-  <div class="onb-opts">
-   ${opt('preg','fruit','I\'m pregnant','We\'ll plan each week from your due date',`<label>Due date<input type="date" id="oDue"></label><label>Don't know it? First day of your last period<input type="date" id="oLmp"></label><button class="btn solid" data-onbsave="preg">Start my plan</button>`)}
-   ${opt('baby','baby','My baby is born','Milestones, vaccines and care by age',`<label>Baby's date of birth<input type="date" id="oDob"></label><button class="btn solid" data-onbsave="baby">Start my plan</button>`)}
-  </div><div class="err" id="oErr"></div><button class="skip" data-onbskip="1">Just looking around for now</button></div>`}
+const authOn=()=>{const C=window.BLOOM_CONFIG||{};return !!(C.supabaseUrl&&C.supabaseAnonKey&&window.supabase)};
+function onbDue(){if(!ONB.date)return'';if(!ONB.lmp)return ONB.date;const d=new Date(ONB.date+'T00:00:00');d.setDate(d.getDate()+280);return dayKey(d)}
+function onbCheck(){const td=today();if(!ONB.date)return{ok:false};
+  if(ONB.mode==='preg'){if(ONB.lmp){const l=new Date(ONB.date+'T00:00:00');if(l>td)return{ok:false,err:'That date is in the future.'};if(l<new Date(td.getTime()-300*DAY))return{ok:false,err:'That is more than 10 months ago. Check the date.'}}
+    const due=new Date(onbDue()+'T00:00:00');if(due<new Date(td.getTime()-21*DAY))return{ok:false,err:'That due date has passed. If your baby is born, go back and choose "My baby is born".'};
+    if(due>new Date(td.getTime()+300*DAY))return{ok:false,err:'A due date is within the next 9–10 months. Check the date.'};
+    const left=Math.round((due-td)/DAY),wk=Math.max(1,Math.min(42,Math.floor((280-left)/7)));return{ok:true,wk,left}}
+  const b=new Date(ONB.date+'T00:00:00');if(b>td)return{ok:false,err:'That date is in the future.'};if(b<new Date(td.getTime()-3*366*DAY))return{ok:false,err:'BloomMom covers babies up to 3 years old.'};
+  return{ok:true,days:Math.round((td-b)/DAY)}}
+function onbAge(days){if(days<14)return`${days} day${days===1?'':'s'} old`;if(days<70)return`${Math.floor(days/7)} weeks old`;const m=Math.floor(days/30.44);return m<24?`${m} months old`:`${Math.floor(m/12)} years ${m%12} months old`}
+function onbHtml(){const st=ONB.step;const dots=n=>`<div class="steps">${[1,2,3].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')}</div>`;
+  if(st==='who')return`<div class="top"><span></span>${dots(1)}</div><div class="art">${wombSvg(24,150)}</div><h1>Welcome to BloomMom</h1><p class="sub">Let's set up your plan. It takes 30 seconds.</p>
+   <button class="choice" data-o="preg">${icon('fruit',60)}<div><b>I'm pregnant</b><span>Medicines, stretches and tips for each week</span></div><span class="chev">›</span></button>
+   <button class="choice" data-o="baby">${icon('baby',60)}<div><b>My baby is born</b><span>Feeds, vaccines and milestones by age</span></div><span class="chev">›</span></button>
+   <button class="skip" data-o="skip">I'm just looking around</button>`;
+  if(st==='date'){const c=onbCheck();const p=ONB.mode==='preg';
+    const prev=c.ok?(p?(()=>{const w=WEEKS[Math.min(42,Math.max(4,c.wk))];return`<div class="prev">${weekArt(c.wk,w[0],76)}<div><b>You're ${c.wk} weeks pregnant</b><span>Baby is about the size of ${w[0]}. ${c.left>0?c.left+' days to go.':'Any day now!'}${ONB.lmp?` Due date: ${fdate(onbDue())}.`:''}</span></div></div>`})():`<div class="prev">${icon('baby',64)}<div><b>Your baby is ${onbAge(c.days)}</b><span>We'll show the milestones, vaccines and care for this age.</span></div></div>`):'';
+    return`<div class="top"><button class="back" data-o="back">← Back</button>${dots(2)}</div>
+     <h1>${p?(ONB.lmp?'When did your last period start?':'When is your baby due?'):'When was your baby born?'}</h1>
+     <p class="sub">${p?(ONB.lmp?'The first day of your last period. We\'ll work out your due date.':'Your doctor gives this at your first scan. You can change it later.'):'We\'ll set up care for your baby\'s age.'}</p>
+     <label class="big" for="oDate">${p?(ONB.lmp?'First day of last period':'Due date'):'Date of birth'}</label>
+     <input type="date" id="oDate" value="${ONB.date}" ${p&&!ONB.lmp?`min="${dayKey(new Date(Date.now()-21*DAY))}" max="${dayKey(new Date(Date.now()+300*DAY))}"`:`max="${dayKey()}"`}>
+     ${p?`<button class="alt" data-o="lmp">${ONB.lmp?'I know my due date':'I don\'t know my due date'}</button>`:''}
+     <div id="oPrev">${prev}</div><div class="err" id="oErr">${c.err||''}</div>
+     <div class="cta"><button class="go" data-o="save" ${c.ok?'':'disabled'}>Continue</button></div>`}
+  if(st==='ready'){const items=recFor(new Date());const meds=items.filter(t=>t.type==='med'),st2=items.filter(t=>t.type==='stretch'),other=items.filter(t=>t.type==='other');
+    const row=(ic,t,d)=>`<li>${icon(ic,44)}<div><b>${t}</b><span>${d}</span></div></li>`;
+    return`<div class="top"><span></span>${dots(3)}</div><div class="art">${icon('star',90)}</div><h1>Your plan is ready</h1><p class="sub">Based on India's antenatal and child-care guidance. You can change anything in the Tasks tab.</p>
+     <ul class="ready">${meds.length?row('pill',`${meds.length} medicine${meds.length>1?'s':''} a day`,meds.map(m=>m.title.replace(/ \(tablet \d\)/,'')).filter((v,i,a)=>a.indexOf(v)===i).join(', ')):''}
+      ${st2.length?row('move',`${st2.length} stretches a day`,'Morning and evening, with how-to animations'):''}
+      ${other.length?row('heart',`${other.length} healthy habits`,other.slice(0,3).map(o=>o.title).join(', ')):''}
+      ${ONB.mode==='baby'?row('syringe','Vaccines and milestones','Reminders for your baby\'s age')+row('list','Daily baby-care cards','Feeding, sleep and things to notice'):''}</ul>
+     <div class="cta"><button class="go" data-o="done">See today's plan</button></div>`}
+  return''}
+function onbRender(){let el=$j('onb');if(!el){el=document.createElement('div');el.id='onb';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label','Set up BloomMom');document.body.appendChild(el);
+  el.addEventListener('click',onbClick);el.addEventListener('change',e=>{if(e.target.id==='oDate'){ONB.date=e.target.value;onbRender()}});el.addEventListener('input',e=>{if(e.target.id==='oDate'&&e.target.value){ONB.date=e.target.value;const c=onbCheck();const g=el.querySelector('[data-o="save"]');if(g)g.disabled=!c.ok}})}
+  el.innerHTML=`<div class="in">${onbHtml()}</div>`;document.documentElement.classList.add('onb-open');el.scrollTop=0}
+function onbClose(){const el=$j('onb');if(el)el.remove();document.documentElement.classList.remove('onb-open')}
+function onbOpen(){ONB.step='who';ONB.mode='';ONB.date='';ONB.lmp=false;onbRender()}
+window.bloomSetup=onbOpen;
+function onbClick(e){const b=e.target.closest('[data-o]');if(!b)return;const o=b.dataset.o;
+  if(o==='preg'||o==='baby'){ONB.mode=o;ONB.step='date';ONB.date='';ONB.lmp=false;onbRender();return}
+  if(o==='skip'){mstate.daily.skipSetup=1;msave();onbClose();renderToday();return}
+  if(o==='back'){ONB.step='who';onbRender();return}
+  if(o==='lmp'){ONB.lmp=!ONB.lmp;ONB.date='';onbRender();return}
+  if(o==='save'){const c=onbCheck();if(!c.ok){$j('oErr').textContent=c.err||'Choose a date.';return}
+    if(ONB.mode==='preg'){mstate.daily.due=onbDue();delete mstate.daily.skipSetup;msave()}
+    else{bstate.dob=ONB.date;bsave();if(typeof dobIn!=='undefined')dobIn.value=ONB.date;renderAge();renderMilestones();renderVaccines()}
+    renderPlan();renderToday();renderProgress();ONB.step='ready';onbRender();return}
+  if(o==='done'){onbClose();showView(ONB.mode==='baby'?'baby':'mom');if(ONB.mode!=='baby'){setMsub('today');try{history.replaceState(null,'','#mom-today')}catch(err){}}window.scrollTo(0,0)}}
 const _renderToday4=renderToday;
-renderToday=function(){if(!needsSetup())return _renderToday4();const el=$j('m-today');el.innerHTML=`<div class="panel-inner">${onbHtml()}</div>`};
-$j('m-today').addEventListener('click',e=>{let b;
-  if(b=e.target.closest('[data-onb]')){onbSel=b.dataset.onb;renderToday();return}
-  if(e.target.closest('[data-onbskip]')){mstate.daily.skipSetup=1;msave();renderToday();return}
-  if(b=e.target.closest('[data-onbsave]')){const err=$j('oErr');const td=today();
-    if(b.dataset.onbsave==='preg'){let due=$j('oDue').value;const lmp=$j('oLmp').value;if(!due&&lmp){const d=new Date(lmp+'T00:00:00');d.setDate(d.getDate()+280);due=dayKey(d)}
-      if(!due){err.textContent='Add your due date, or the first day of your last period.';return}
-      const dd=new Date(due+'T00:00:00');if(dd<new Date(td.getTime()-21*DAY)||dd>new Date(td.getTime()+300*DAY)){err.textContent='That date doesn\'t look right. A due date is within the next 9–10 months.';return}
-      mstate.daily.due=due;msave()}
-    else{const dob=$j('oDob').value;if(!dob){err.textContent='Add your baby\'s date of birth.';return}
-      const d=new Date(dob+'T00:00:00');if(d>td||d<new Date(td.getTime()-3*366*DAY)){err.textContent='Add a date in the last 3 years.';return}
-      bstate.dob=dob;bsave();if(typeof dobIn!=='undefined')dobIn.value=dob;renderAge();renderMilestones();renderVaccines()}
-    renderPlan();renderToday();renderProgress();if(!$j('view-journey').hidden)renderJourney(jtool);window.scrollTo(0,0)}},true);
+renderToday=function(){if(!needsSetup())return _renderToday4();$j('m-today').innerHTML=`<div class="panel-inner"><div class="setupcard">${wombSvg(24,110)}<h2>Set up your plan</h2><p>Tell us your due date or baby's birth date, and we'll fill your day with the right medicines, stretches and tips.</p><button class="go" data-setup="1">Start setup</button></div></div>`};
+document.addEventListener('click',e=>{if(e.target.closest('[data-setup]'))onbOpen()});
+function onbMaybe(){if(needsSetup()&&!$j('onb')&&!document.documentElement.classList.contains('gated'))onbOpen()}
+/* auth.js and config.js load after this script, so decide once the page has parsed */
+(()=>{const go=()=>{if(authOn()){if(window.bloomReady)onbMaybe();document.addEventListener('bloom-ready',()=>setTimeout(onbMaybe,50))}else onbMaybe()};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go()})();
 renderToday();
 
 </script>

@@ -286,5 +286,6 @@ svg polyline{fill:none;stroke-linecap:round;stroke-linejoin:round}
 <script src="/icons.js"></script>
 <script>document.querySelectorAll("[data-ic]").forEach(e=>{e.innerHTML=icon(e.dataset.ic,44)});</script>
 <script>if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));</script>
+<script>if(/[?&]deleted=1/.test(location.search)){const n=document.createElement('div');n.setAttribute('role','status');n.style.cssText='position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:50;background:#231F29;color:#fff;padding:12px 18px;border-radius:12px;font:600 .95rem system-ui,sans-serif;max-width:calc(100vw - 32px);box-shadow:0 10px 30px -10px #0008';n.textContent='Your BloomMom account and data have been deleted.';document.body.appendChild(n);setTimeout(()=>n.remove(),7000);history.replaceState(null,'','/')}</script>
 </body>
 </html>
